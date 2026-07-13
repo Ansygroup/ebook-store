@@ -60,7 +60,7 @@ const caption =
   `📚 ${target.title} — ${target.author}\n` +
   `${target.description}\n\n` +
   `💰 $${target.price}\n` +
-  `🛒 اطلبه الآن: https://ebook-store-mg5ynw9qq-ansygroups-projects.vercel.app/book/${target.slug}\n\n` +
+  `🛒 اطلبه الآن: https://ansygroup.github.io/ebook-store/book/${target.slug}\n\n` +
   `#كتب_إلكترونية #قراءة #تطوير_الذات #leadership`;
 
 console.log('📤 سيُنشر على IG عبر Composio:');
@@ -71,7 +71,7 @@ console.log('   الـ caption:\n' + caption.split('\n').map((l) => '     ' + l)
 // الاستدعاء الفعلي عبر Composio v3.1 proxy execute (مصادقة الحساب سيرفر-سايد).
 // IG ليس له delete/schedule → النشر يدوي أو عبر cron خارجي.
 const API_KEY = process.env.COMPOSIO_API_KEY;
-const IG_ACCOUNT = process.env.IG_ACCOUNT || 'ca_d461BvmxN65-';
+const IG_ACCOUNT = process.env.IG_ACCOUNT; // معرّف حساب IG على Composio (يربطه المستخدم)
 
 if (!API_KEY) {
   console.log('\n⚠️  COMPOSIO_API_KEY غير معيّن — الاستدعاء معطّل.');
@@ -98,7 +98,7 @@ async function igProxy(method, endpoint, bodyObj) {
 }
 
 // 1) Create media container
-const absCover = `https://ebook-store-mg5ynw9qq-ansygroups-projects.vercel.app/covers/${target.id}.svg`;
+const absCover = `https://ansygroup.github.io/ebook-store/covers/${target.cover}`;
 const container = await igProxy('POST', '/me/media', {
   image_url: absCover,
   caption,
