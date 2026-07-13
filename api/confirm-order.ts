@@ -31,10 +31,15 @@ export default async function handler(req: any, res: any) {
 
   let books: Book[] = [];
   try {
-    books = JSON.parse(readFileSync(join(process.cwd(), 'src/data/books.json'), 'utf8'));
+    // على Vercel: public/books.json يُنسخ إلى dist/books.json
+    books = JSON.parse(readFileSync(join(process.cwd(), 'public/books.json'), 'utf8'));
   } catch {
-    res.status(500).json({ ok: false, error: 'Book data unavailable' });
-    return;
+    try {
+      books = JSON.parse(readFileSync(join(process.cwd(), 'src/data/books.json'), 'utf8'));
+    } catch {
+      res.status(500).json({ ok: false, error: 'Book data unavailable' });
+      return;
+    }
   }
   const book = books.find((b) => b.slug === slug);
   if (!book) {
