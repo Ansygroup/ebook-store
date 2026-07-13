@@ -1,11 +1,35 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { getBookBySlug, formatPrice, books } from '../data/books';
 import BookCard from '../components/BookCard';
 
 export default function BookDetail() {
   const { slug } = useParams<{ slug: string }>();
   const book = slug ? getBookBySlug(slug) : undefined;
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<{ ok: boolean; msg: string } | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  async function orderByEmail(e: React.FormEvent) {
+    e.preventDefault();
+    if (!book || !email) return;
+    setBusy(true);
+    setStatus(null);
+    try {
+      const r = await fetch('/api/confirm-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, slug: book.slug }),
+      });
+      const j = await r.json();
+      setStatus(j.ok ? { ok: true, msg: '✅ تم إرسال رابط التحميل إلى بريدك' } : { ok: false, msg: '❌ ' + (j.error || 'تعذر الطلب') });
+    } catch {
+      setStatus({ ok: false, msg: '❌ خطأ في الاتصال' });
+    } finally {
+      setBusy(false);
+    }
+  }
 
   if (!book) {
     return (
@@ -21,6 +45,10 @@ export default function BookDetail() {
   const related = books
     .filter((b) => b.id !== book.id && b.category === book.category)
     .slice(0, 3);
+
+  const buyHref = book.gumroadUrl && !book.gumroadUrl.includes('REPLACE_WITH_YOUR_LINK')
+    ? book.gumroadUrl
+    : undefined;
 
   return (
     <section className="section book-detail">
@@ -77,19 +105,49 @@ export default function BookDetail() {
                 <span>السعر</span>
                 <strong>{formatPrice(book.price)}</strong>
               </div>
-              <button
-                className="snipcart-add-item btn btn--primary btn--lg"
-                data-item-id={book.id}
-                data-item-name={book.title}
-                data-item-price={book.price}
-                data-item-url={typeof window !== 'undefined' ? `${window.location.origin}/book/${book.slug}` : `https://dar-ma3rifa.example/book/${book.slug}`}
-                data-item-description={book.description}
-                data-item-image={`/covers/${book.cover}`}
-                data-item-file-guid={`${book.id}-download`}
-                data-item-metadata='{"format":"PDF+EPUB"}'
-              >
-                اشترِ الآن وأضف للسلة
-              </button>
+              {buyHref ? (
+                <a
+                  className="btn btn--primary btn--lg"
+                  href={buyHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  اشترِ الآن من Gumroad
+                </a>
+              ) : (
+                <button
+                  className="snipcart-add-item btn btn--primary btn--lg"
+                  data-item-id={book.id}
+                  data-item-name={book.title}
+                  data-item-price={book.price}
+                  data-item-url={typeof window !== 'undefined' ? `${window.location.origin}/book/${book.slug}` : `https://dar-ma3rifa.example/book/${book.slug}`}
+                  data-item-description={book.description}
+                  data-item-image={`/covers/${book.cover}`}
+                  data-item-file-guid={`${book.id}-download`}
+                  data-item-metadata='{"format":"PDF+EPUB"}'
+                >
+                  اشترِ الآن وأضف للسلة
+                </button>
+              )}
+
+              <form className="book-detail__email" onSubmit={orderByEmail}>
+                <input
+                  type="email"
+                  required
+                  placeholder="بريدك لتأكيد الطلب"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="book-detail__email-input"
+                />
+                <button type="submit" className="btn btn--ghost btn--sm" disabled={busy || !email}>
+                  {busy ? '...' : 'أطلب عبر الإيميل'}
+                </button>
+              </form>
+              {status && (
+                <p className={status.ok ? 'book-detail__status--ok' : 'book-detail__status--err'}>
+                  {status.msg}
+                </p>
+              )}
             </div>
             <p className="book-detail__note">
               ✔ تسليم فوري · ✔ روابط تحميل دائمة · ✔ ضمان استرداد 7 أيام

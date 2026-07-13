@@ -15,4 +15,5 @@ export interface Book {
   cover: string;
   tags: string[];
   featured: boolean;
+  gumroadUrl?: string;
 }

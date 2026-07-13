@@ -8,7 +8,10 @@ interface Props {
   index?: number;
 }
 
+const isReal = (u?: string) => !!u && !u.includes('REPLACE_WITH_YOUR_LINK');
+
 export default function BookCard({ book, index = 0 }: Props) {
+  const buyHref = isReal(book.gumroadUrl) ? book.gumroadUrl : undefined;
   return (
     <motion.article
       className="book-card"
@@ -39,19 +42,30 @@ export default function BookCard({ book, index = 0 }: Props) {
 
         <div className="book-card__footer">
           <span className="book-card__price">{formatPrice(book.price)}</span>
-          <button
-            className="snipcart-add-item btn btn--primary btn--sm"
-            data-item-id={book.id}
-            data-item-name={book.title}
-            data-item-price={book.price}
-            data-item-url={typeof window !== 'undefined' ? `${window.location.origin}/book/${book.slug}` : `https://dar-ma3rifa.example/book/${book.slug}`}
-            data-item-description={book.description}
-            data-item-image={`/covers/${book.cover}`}
-            data-item-file-guid={`${book.id}-download`}
-            data-item-metadata='{"format":"PDF+EPUB"}'
-          >
-            أضف للسلة
-          </button>
+          {buyHref ? (
+            <a
+              className="btn btn--primary btn--sm"
+              href={buyHref}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              اشترِ الآن
+            </a>
+          ) : (
+            <button
+              className="snipcart-add-item btn btn--primary btn--sm"
+              data-item-id={book.id}
+              data-item-name={book.title}
+              data-item-price={book.price}
+              data-item-url={typeof window !== 'undefined' ? `${window.location.origin}/book/${book.slug}` : `https://dar-ma3rifa.example/book/${book.slug}`}
+              data-item-description={book.description}
+              data-item-image={`/covers/${book.cover}`}
+              data-item-file-guid={`${book.id}-download`}
+              data-item-metadata='{"format":"PDF+EPUB"}'
+            >
+              أضف للسلة
+            </button>
+          )}
         </div>
       </div>
     </motion.article>

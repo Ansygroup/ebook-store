@@ -1,4 +1,4 @@
-name: Deploy to Netlify
+name: Deploy to Vercel
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: netlify-deploy
+  group: vercel-deploy
   cancel-in-progress: true
 
 jobs:
@@ -36,12 +36,11 @@ jobs:
         env:
           VITE_SNIPCART_API_KEY: ${{ secrets.VITE_SNIPCART_API_KEY }}
 
-      - name: Deploy to Netlify (production)
-        uses: nwtgck/actions-netlify@v3
+      - name: Deploy to Vercel (production)
+        uses: amondnet/vercel-action@v25
         with:
-          publish-dir: './dist'
-          production-deploy: true
-          deploy-message: "deploy: ${{ github.sha }}"
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: "--prod"
+          working-directory: ./

@@ -15,7 +15,10 @@
     "lint": "tsc --noEmit",
     "covers": "node scripts/generate-covers.mjs",
     "check-env": "node scripts/setup-env.mjs",
-    "deploy": "bash deploy.sh"
+    "deploy": "bash deploy.sh",
+    "ig:promote": "node scripts/ig_promote.mjs",
+    "gumroad:sync": "node scripts/gumroad_sync.mjs",
+    "order:confirm": "node scripts/order_confirm.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.3.0",
