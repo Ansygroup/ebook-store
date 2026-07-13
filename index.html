@@ -54,6 +54,12 @@
       content="https://ansygroup.github.io/ebook-store/"
     />
 
+    <!-- Content Security Policy (يسمح لـ API على Vercel + Snipcart) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' https://cdn.snipcart.com; connect-src 'self' https://api.snipcart.com https://ebook-store-ansygroups-projects.vercel.app"
+    />
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="دار المعرفة · متجر الكتب الإلكترونية" />
