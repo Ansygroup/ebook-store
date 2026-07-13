@@ -30,3 +30,11 @@ export function pick<T = string>(book: Book, field: keyof Book, lang: Lang): T {
   }
   return book[`${String(field)}Ar` as keyof Book] as T;
 }
+
+// رابط Gumroad الحقيقي (بدون placeholders) — يفتح overlay مباشرة
+export function gumroadHref(book: Book): string | undefined {
+  const u = book.gumroadUrl;
+  if (!u || u.includes('REPLACE_WITH_YOUR_LINK')) return undefined;
+  // أضف ?wanted=true عشان يفتح overlay الشراء مباشرة
+  return u.includes('?') ? `${u}&wanted=true` : `${u}?wanted=true`;
+}

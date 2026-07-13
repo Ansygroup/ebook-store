@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Book } from '../types';
-import { formatPrice, pick } from '../data/books';
+import { formatPrice, pick, gumroadHref } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 
 interface Props {
@@ -9,11 +9,9 @@ interface Props {
   index?: number;
 }
 
-const isReal = (u?: string) => !!u && !u.includes('REPLACE_WITH_YOUR_LINK');
-
 export default function BookCard({ book, index = 0 }: Props) {
   const { lang } = useLang();
-  const buyHref = isReal(book.gumroadUrl) ? book.gumroadUrl : undefined;
+  const buyHref = gumroadHref(book);
   const title = pick<string>(book, 'title', lang);
   const author = pick<string>(book, 'author', lang);
   const category = pick<string>(book, 'category', lang);

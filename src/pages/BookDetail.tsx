@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { getBookBySlug, formatPrice, books, pick } from '../data/books';
+import { getBookBySlug, formatPrice, books, pick, gumroadHref } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 import BookCard from '../components/BookCard';
 
@@ -57,9 +57,7 @@ export default function BookDetail() {
     })
     .slice(0, 3);
 
-  const buyHref = book.gumroadUrl && !book.gumroadUrl.includes('REPLACE_WITH_YOUR_LINK')
-    ? book.gumroadUrl
-    : undefined;
+  const buyHref = gumroadHref(book);
 
   const title = pick<string>(book, 'title', lang);
   const author = pick<string>(book, 'author', lang);
