@@ -6,7 +6,7 @@
   "description": "متجر احترافي لبيع الكتب الإلكترونية مع Snipcart وفحوصات آلية",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/sync-books.mjs && node scripts/generate-seo.mjs && vite build",
+    "build": "node scripts/sync-books.mjs && node scripts/generate-pdfs.mjs && node scripts/generate-seo.mjs && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
