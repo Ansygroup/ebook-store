@@ -48,7 +48,7 @@ function svgFor(book, c1, c2) {
   <rect x="440" y="770" width="200" height="64" rx="32" fill="${c2}" opacity="0.18"/>
   <text x="540" y="813" font-family="Tahoma" font-size="34" fill="${c2}" text-anchor="middle" font-weight="bold">$${book.price} • PDF+EPUB</text>
   <text x="540" y="930" font-family="Tahoma" font-size="28" fill="#c4c8e8" text-anchor="middle">📚 دار المعرفة — رابط في البايو</text>
-  <text x="540" y="975" font-family="Tahoma" font-size="22" fill="#5b608f" text-anchor="middle">ebook-store.vercel.app</text>
+  <text x="540" y="975" font-family="Tahoma" font-size="22" fill="#5b608f" text-anchor="middle">ansygroup.github.io/ebook-store</text>
 </svg>`);
 }
 

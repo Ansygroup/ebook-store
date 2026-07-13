@@ -1,11 +1,27 @@
 # 📱 دليل تسويق الإنستغرام
 
-## الصور الترويجية
-موجودة في `public/promo/<slug>.png` (تُولّد تلقائيًا). كل كتاب له صورة 1080×1080.
+## ✅ الصور الترويجية جاهزة (10 صور 1080×1080)
+منشورة حية على GitHub Pages:
+`https://ansygroup.github.io/ebook-store/promo/<slug>.png`
 
-## الكابشنز الجاهزة (انسخ والصق)
+| # | الكتاب | slug الصورة | رابط مباشر |
+|---|---|---|---|
+| 1 | القائد المؤثر | the-influential-leader | [png](https://ansygroup.github.io/ebook-store/promo/the-influential-leader.png) |
+| 2 | ابنِ إمبراطوريتك | build-your-empire | [png](https://ansygroup.github.io/ebook-store/promo/build-your-empire.png) |
+| 3 | الإنتاجية العميقة | deep-productivity | [png](https://ansygroup.github.io/ebook-store/promo/deep-productivity.png) |
+| 4 | صمّم عقليتك | design-your-mindset | [png](https://ansygroup.github.io/ebook-store/promo/design-your-mindset.png) |
+| 5 | التقنية للجميع | tech-for-everyone | [png](https://ansygroup.github.io/ebook-store/promo/tech-for-everyone.png) |
+| 6 | صحة بلا حدود | health-without-limits | [png](https://ansygroup.github.io/ebook-store/promo/health-without-limits.png) |
+| 7 | فن التفاوض | art-of-negotiation | [png](https://ansygroup.github.io/ebook-store/promo/art-of-negotiation.png) |
+| 8 | الاستثمار الذكي | smart-investing | [png](https://ansygroup.github.io/ebook-store/promo/smart-investing.png) |
+| 9 | الكتابة للمحتوى | content-writing | [png](https://ansygroup.github.io/ebook-store/promo/content-writing.png) |
+| 10 | تعلّم اللغات | learn-languages | [png](https://ansygroup.github.io/ebook-store/promo/learn-languages.png) |
 
-### كابشن عام (يُستخدم مع أي صورة)
+تُولّد تلقائيًا عبر `scripts/generate-promo.mjs` (sharp) أثناء البناء.
+
+## 📝 الكابشنز الجاهزة (انسخ والصق)
+
+### كابشن عام (عربي)
 ```
 📚 كتاب جديد من دار المعرفة!
 
@@ -18,7 +34,7 @@
 #كتب_إلكترونية #تطوير_الذات #القراءة #قيادة #إنتاجية
 ```
 
-### كابشن إنجليزي (للمتابعين الدوليين)
+### كابشن إنجليزي
 ```
 📚 New ebook from Dar Al-Maarifa!
 
@@ -31,11 +47,12 @@
 #ebooks #selfdevelopment #reading #leadership #productivity
 ```
 
-## خطوات النشر
-1. اربط حساب إنستغرام على Composio: https://app.composio.dev
-2. فعّل cron اليومي: `f3d80ba9beeb` (ينشر كابشن يومي 9:00 ص)
-3. أو انشر يدويًا: اختر صورة من `public/promo/` + كابشن جاهز
+## 🚀 خطوات النشر
+1. **يدوي**: حمّل صورة من الرابط أعلاه + الصق كابشن + انشر على @dar_alma3rifa
+2. **تلقائي** (بعد ربط IG): فعّل cron `f3d80ba9beeb` (ينشر كابشن يومي 9:00 ص)
 
-## ملاحظة
-الحساب الحالي على Composio (`ca_ru-ZbwXlFsGQ` = Gumroad) — إنستغرام **غير موصول**.
-اربطه من لوحة Composio لتفعيل النشر التلقائي.
+## ⚠️ المتبقي
+- ربط حساب إنستغرام على Composio: https://app.composio.dev
+  (الحالي: Gumroad `ca_ru-ZbwXlFsGQ` ACTIVE — إنستغرام **غير موصول**)
+- تدوير Vercel token (الموقع الأصلي مجمّد للتحديثات)
+- روابط Gumroad الحقيقية في `books.json`
