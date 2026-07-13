@@ -30,3 +30,4 @@ ig-queue/
 # Playwright e2e output
 test-results/
 playwright-report/
+agentic-audit.json
