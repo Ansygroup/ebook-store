@@ -13,3 +13,4 @@ public/downloads/*
 !public/downloads/README.md
 
 .vercel
+scripts/set-gh-secrets.py
