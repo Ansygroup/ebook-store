@@ -23,6 +23,12 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_SNIPCART_API_KEY: ${{ secrets.VITE_SNIPCART_API_KEY }}
+          VITE_API_BASE: https://ebook-store-ansygroups-projects.vercel.app
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          GMAIL_ACCOUNT: ${{ secrets.GMAIL_ACCOUNT }}
+          SELLER_EMAIL: ${{ secrets.SELLER_EMAIL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

@@ -19,7 +19,7 @@ export default function BookDetail() {
     setBusy(true);
     setStatus(null);
     try {
-      const r = await fetch('/api/confirm-order', {
+      const r = await fetch(`${import.meta.env.VITE_API_BASE || ''}/api/confirm-order`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, slug: book.slug, honeypot: '' }),
