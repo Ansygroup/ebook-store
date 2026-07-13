@@ -20,6 +20,9 @@ public/downloads/*
 !public/downloads/README.md
 public/promo/*
 !public/promo/README.md
+# but allow dist/promo to be published by Pages
+!dist/promo/
+!dist/promo/*.png
 
 .vercel
 scripts/set-gh-secrets.py
