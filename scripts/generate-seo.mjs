@@ -33,11 +33,3 @@ ${urls}
 writeFileSync('public/sitemap.xml', sitemap);
 console.log(`✅ sitemap.xml (${books.length + 2} URLs)`);
 
-// og-cover.png placeholder (1x1 px transparent — استبدله بصورة 1200x630 حقيقية)
-const png = Buffer.from(
-  'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+M8AAAMBAQDJ/pLvAAAAAElFTkSuQmCC',
-  'base64',
-);
-mkdirSync('public', { recursive: true });
-writeFileSync('public/og-cover.png', png);
-console.log('✅ og-cover.png (placeholder — استبدله بصورة 1200x630)');
