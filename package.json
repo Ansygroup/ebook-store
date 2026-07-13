@@ -16,6 +16,7 @@
     "covers": "node scripts/generate-covers.mjs",
     "pdfs": "node scripts/generate-pdfs.mjs",
     "seo": "node scripts/generate-seo.mjs",
+    "share": "bash share.sh",
     "check-env": "node scripts/setup-env.mjs",
     "deploy": "bash deploy.sh",
     "ig:promote": "node scripts/ig_promote.mjs",
