@@ -9,11 +9,11 @@ interface Book {
   description: string;
 }
 
-const SITE = 'https://ebook-store-ansygroups-projects.vercel.app';
+const SITE = 'https://ansygroup.github.io/ebook-store';
 const GMAIL_ACCOUNT = process.env.GMAIL_ACCOUNT || 'ca_BmQnzbsU5u3T';
 const SELLER_EMAIL = process.env.SELLER_EMAIL || 'sales@ebook-store.dev';
 
-// ── simple in-memory rate limit: 5 requests / 10 min per email ──
+// ── simple in-memory rate limit: 5 requests / 10 min per key (email OR ip) ──
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_PER_WINDOW = 5;
 const hits = new Map<string, number[]>();
@@ -27,6 +27,13 @@ function rateLimited(key: string): boolean {
   arr.push(now);
   hits.set(key, arr);
   return false;
+}
+
+function clientIp(req: any): string {
+  const xff = req.headers?.['x-forwarded-for'];
+  if (typeof xff === 'string') return xff.split(',')[0].trim();
+  if (Array.isArray(xff)) return String(xff[0]).trim();
+  return req.headers?.['x-real-ip'] || 'unknown';
 }
 
 export default async function handler(req: any, res: any) {
@@ -58,7 +65,7 @@ export default async function handler(req: any, res: any) {
     res.status(400).json({ ok: false, error: 'Valid email and slug required' });
     return;
   }
-  if (rateLimited(email)) {
+  if (rateLimited(email) || rateLimited(clientIp(req))) {
     res.status(429).json({ ok: false, error: 'Too many requests, try later' });
     return;
   }
