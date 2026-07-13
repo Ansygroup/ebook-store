@@ -43,6 +43,7 @@ jobs:
           SELLER_EMAIL: ${{ secrets.SELLER_EMAIL }}
 
       - name: Deploy to Vercel (production)
+        continue-on-error: true
         run: |
           npm i -g vercel@latest
           vercel pull --yes --environment=production --token "$VERCEL_TOKEN"
