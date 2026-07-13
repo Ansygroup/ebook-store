@@ -20,9 +20,10 @@ public/downloads/*
 !public/downloads/README.md
 public/promo/*
 !public/promo/README.md
-# but allow dist/promo to be published by Pages
-!dist/promo/
-!dist/promo/*.png
+
+# dist is the build output — never ignore it (Pages artifact needs everything)
+!dist/
+!dist/**
 
 .vercel
 scripts/set-gh-secrets.py

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://ebook-store-ansygroups-projects.vercel.app?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://ebook-store-ansygroups-projects.vercel.app?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app" />
+    <changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/shop</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/shop" />
+    <changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/the-influential-leader</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/the-influential-leader" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/build-your-empire</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/build-your-empire" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/deep-productivity</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/deep-productivity" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/design-your-mindset</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/design-your-mindset" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/tech-for-everyone</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/tech-for-everyone" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/health-without-limits</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/health-without-limits" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/art-of-negotiation</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/art-of-negotiation" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/smart-investing</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/smart-investing" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/content-writing</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/content-writing" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ansygroups-projects.vercel.app/book/learn-languages</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ansygroups-projects.vercel.app/book/learn-languages" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+</urlset>
