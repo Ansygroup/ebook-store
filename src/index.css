@@ -490,6 +490,92 @@ img {
   color: var(--accent);
 }
 
+/* ---------- Testimonials ---------- */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.testimonial {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.testimonial__stars {
+  color: var(--accent);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+.testimonial blockquote {
+  margin: 0;
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: var(--text);
+  flex: 1;
+}
+.testimonial figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.testimonial figcaption strong {
+  color: var(--text);
+  font-size: 0.98rem;
+}
+.testimonial figcaption span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* ---------- Newsletter ---------- */
+.newsletter__inner {
+  background: linear-gradient(135deg, rgba(109, 94, 252, 0.12), rgba(0, 224, 255, 0.08));
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 48px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.newsletter__form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 520px;
+}
+.newsletter__input {
+  flex: 1;
+  min-width: 240px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+  font-family: inherit;
+}
+.newsletter__input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.newsletter__status--ok {
+  color: #4ade80;
+  font-weight: 600;
+}
+.newsletter__status--err {
+  color: #f87171;
+  font-weight: 600;
+}
+
 /* ---------- Shop ---------- */
 .shop__controls {
   display: flex;

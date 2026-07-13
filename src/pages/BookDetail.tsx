@@ -43,7 +43,13 @@ export default function BookDetail() {
   }
 
   const related = books
-    .filter((b) => b.id !== book.id && b.category === book.category)
+    .filter((b) => b.id !== book.id)
+    .sort((a, b) => {
+      // نفس التصنيف أولاً
+      if (a.category === book.category && b.category !== book.category) return -1;
+      if (a.category !== book.category && b.category === book.category) return 1;
+      return b.rating - a.rating;
+    })
     .slice(0, 3);
 
   const buyHref = book.gumroadUrl && !book.gumroadUrl.includes('REPLACE_WITH_YOUR_LINK')

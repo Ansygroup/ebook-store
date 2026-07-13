@@ -73,6 +73,24 @@ test('book detail shows email-order form and PDF download', async ({ page }) => 
   await expect(orderBtn).toBeEnabled();
 });
 
+test('home shows testimonials and newsletter subscribe form', async ({ page }) => {
+  await page.goto('/');
+
+  // Testimonials section present with 3 cards
+  await expect(page.locator('.testimonial').first()).toBeVisible();
+  await expect(page.locator('.testimonial')).toHaveCount(3);
+
+  // Newsletter form
+  const nlInput = page.locator('.newsletter__input');
+  await expect(nlInput).toBeVisible();
+  const nlBtn = page.getByRole('button', { name: /اشترك مجاناً/ });
+  await expect(nlBtn).toBeVisible();
+  await expect(nlBtn).toBeDisabled();
+
+  await nlInput.fill('reader@example.com');
+  await expect(nlBtn).toBeEnabled();
+});
+
 test('email-order form calls /api/confirm-order', async ({ page }) => {
   await page.goto('/book/the-influential-leader');
   const emailInput = page.locator('input[type="email"]');

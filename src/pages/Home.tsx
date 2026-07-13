@@ -3,12 +3,19 @@ import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import BookCard from '../components/BookCard';
 import FAQ from '../components/FAQ';
+import Newsletter from '../components/Newsletter';
 import { featuredBooks, formatPrice } from '../data/books';
 
 const steps = [
   { n: '١', t: 'تصفّح واختر', d: 'استكشف الكتب حسب التصنيف واقرأ الوصف والتقييمات.' },
   { n: '٢', t: 'ادفع بأمان', d: 'أكمل الطلب عبر بوابة Snipcart المعتمدة في ثوانٍ.' },
   { n: '٣', t: 'حمّل فوراً', d: 'تحصل على رابط التحميل مباشرة على جهازك.' },
+];
+
+const testimonials = [
+  { name: 'سارة المطيري', role: 'مديرة منتجات', text: 'كتاب "القائد المؤثر" غيّر طريقة إدارتي لفريقي. عملي أصبح أوضح.', rating: 5 },
+  { name: 'خالد العتيبي', role: 'رائد أعمال', text: 'اشتريت "بناء إمبراطورية" وطبّقت خطته في أسبوعين. أنصح به بشدة.', rating: 5 },
+  { name: 'منى الأحمد', role: 'مطوّرة', text: 'تحميل فوري وروابط دائمة. تجربة شراء سلسة من أول مرة.', rating: 5 },
 ];
 
 export default function Home() {
@@ -78,6 +85,36 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="section section--alt testimonials">
+        <div className="container">
+          <div className="section__head">
+            <span className="section__eyebrow">ماذا يقول القرّاء</span>
+            <h2 className="section__title">آلاف القرّاء يثقون بنا</h2>
+          </div>
+          <div className="testimonial-grid">
+            {testimonials.map((t, i) => (
+              <motion.figure
+                key={t.name}
+                className="testimonial"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <div className="testimonial__stars">{'★'.repeat(t.rating)}</div>
+                <blockquote>{t.text}</blockquote>
+                <figcaption>
+                  <strong>{t.name}</strong>
+                  <span>{t.role}</span>
+                </figcaption>
+              </motion.figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <Newsletter />
 
       <FAQ />
     </>
