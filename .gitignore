@@ -20,6 +20,7 @@ public/downloads/*
 !public/downloads/README.md
 # public/promo is generated during build then published by Pages — DO NOT ignore
 ig-queue/
+gumroad-links.json
 
 # dist is the build output — never ignore it (Pages artifact needs everything)
 !dist/

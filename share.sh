@@ -24,7 +24,7 @@ echo "✅ الموقع متاح للجميع على:"
 echo "   $URL"
 echo ""
 echo "⚠️  الرابط مؤقت — يبقى شغّالاً طالما هذا الأمر يعمل. Ctrl+C للإيقاف."
-echo "   للإنتاج الدائم: انشر على Vercel (بعد إيقاف Deployment Protection)."
+echo "   للإنتاج الدائم: انشر على GitHub Pages (git push → auto-deploy) أو Vercel."
 
 trap "kill $SERVE_PID $NGROK_PID 2>/dev/null" EXIT
 wait
