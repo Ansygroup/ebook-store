@@ -1,52 +1,65 @@
-// Generates consistent, on-brand SVG book covers into public/covers/.
-// Run with: node scripts/generate-covers.mjs
-import { mkdirSync, writeFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, resolve } from 'node:path';
+#!/usr/bin/env node
+/**
+ * generate-covers.mjs — يولّد 10 غلاف احترافية (1200x1800) من SVG → PNG عبر ImageMagick.
+ * نمط موحّد: خلفية متدرجة داكنة + شعاع لوني + العنوان (عربي) + المؤلف + شارة البرند.
+ */
+import { writeFileSync, readFileSync, mkdirSync } from 'node:fs';
+import { execSync } from 'node:child_process';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const outDir = resolve(__dirname, '../public/covers');
-mkdirSync(outDir, { recursive: true });
+const books = JSON.parse(readFileSync('src/data/books.json', 'utf8'));
+mkdirSync('public/covers', { recursive: true });
 
-const themes = {
-  leadership: { from: '#4f46e5', to: '#7c3aed', glyph: 'L', label: 'LEADERSHIP' },
-  business: { from: '#059669', to: '#0d9488', glyph: 'B', label: 'BUSINESS' },
-  productivity: { from: '#d97706', to: '#f59e0b', glyph: 'P', label: 'FOCUS' },
-  selfdev: { from: '#db2777', to: '#e11d48', glyph: 'M', label: 'MINDSET' },
-  tech: { from: '#0891b2', to: '#2563eb', glyph: 'T', label: 'TECH' },
-  health: { from: '#16a34a', to: '#65a30d', glyph: 'H', label: 'HEALTH' },
-  negotiation: { from: '#7c3aed', to: '#db2777', glyph: 'N', label: 'NEGOTIATE' },
-  investing: { from: '#059669', to: '#10b981', glyph: 'I', label: 'INVEST' },
-  content: { from: '#ea580c', to: '#f59e0b', glyph: 'W', label: 'CONTENT' },
-  languages: { from: '#2563eb', to: '#06b6d4', glyph: 'A', label: 'LANGUAGES' },
+// لوحة ألوان لكل تصنيف
+const palette = {
+  'القيادة': ['#6d5efc', '#a78bfa'],
+  'الأعمال': ['#f59e0b', '#fb923c'],
+  'الإنتاجية': ['#10b981', '#34d399'],
+  'التطوير الذاتي': ['#ec4899', '#f472b6'],
+  'التقنية': ['#06b6d4', '#22d3ee'],
+  'الصحة': ['#14b8a6', '#2dd4bf'],
+  'المهارات': ['#8b5cf6', '#c084fc'],
+  'المال': ['#eab308', '#facc15'],
+  'التسويق': ['#f43f5e', '#fb7185'],
+  'التعليم': ['#3b82f6', '#60a5fa'],
 };
+const fallback = ['#6d5efc', '#a78bfa'];
 
-function cover({ from, to, glyph, label }) {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="900" viewBox="0 0 600 900" role="img" aria-label="${label} book cover">
+for (const b of books) {
+  const [c1, c2] = palette[b.categoryAr] || fallback;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1800" viewBox="0 0 1200 1800">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="${from}"/>
-      <stop offset="1" stop-color="${to}"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0d17"/>
+      <stop offset="1" stop-color="#13152b"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.3" cy="0.2" r="0.9">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="${c1}"/>
+      <stop offset="1" stop-color="${c2}"/>
+    </linearGradient>
   </defs>
-  <rect width="600" height="900" fill="url(#g)"/>
-  <rect width="600" height="900" fill="url(#glow)"/>
-  <circle cx="470" cy="150" r="220" fill="#ffffff" opacity="0.08"/>
-  <circle cx="120" cy="760" r="180" fill="#000000" opacity="0.08"/>
-  <rect x="40" y="40" width="520" height="820" rx="18" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2"/>
-  <text x="300" y="360" font-family="Georgia, 'Times New Roman', serif" font-size="240" font-weight="700" fill="#ffffff" fill-opacity="0.92" text-anchor="middle">${glyph}</text>
-  <text x="300" y="470" font-family="Helvetica, Arial, sans-serif" font-size="22" letter-spacing="8" fill="#ffffff" fill-opacity="0.85" text-anchor="middle">${label}</text>
-  <line x1="210" y1="520" x2="390" y2="520" stroke="#ffffff" stroke-opacity="0.6" stroke-width="2"/>
-  <text x="300" y="830" font-family="Helvetica, Arial, sans-serif" font-size="18" letter-spacing="4" fill="#ffffff" fill-opacity="0.7" text-anchor="middle">DAR AL-MAʿRIFA</text>
+  <rect width="1200" height="1800" fill="url(#bg)"/>
+  <circle cx="980" cy="240" r="520" fill="url(#accent)" opacity="0.16"/>
+  <circle cx="180" cy="1560" r="400" fill="url(#accent)" opacity="0.12"/>
+  <rect x="90" y="90" width="1020" height="1620" rx="36" fill="none" stroke="url(#accent)" stroke-width="4" opacity="0.5"/>
+  <text x="600" y="250" font-family="Tahoma" font-size="120" fill="url(#accent)" text-anchor="middle" font-weight="700">د</text>
+  <text x="600" y="730" font-family="Tahoma" font-size="78" fill="#f4f5ff" text-anchor="middle" font-weight="700">${b.titleAr}</text>
+  <line x1="360" y1="800" x2="840" y2="800" stroke="url(#accent)" stroke-width="3"/>
+  <text x="600" y="880" font-family="Tahoma" font-size="44" fill="#a9addc" text-anchor="middle">${b.authorAr}</text>
+  <text x="600" y="980" font-family="Tahoma" font-size="34" fill="#7b80b0" text-anchor="middle">${b.categoryAr}</text>
+  <text x="600" y="1560" font-family="Tahoma" font-size="36" fill="#6d5efc" text-anchor="middle" font-weight="700" letter-spacing="2">دار المعرفة</text>
+  <text x="600" y="1620" font-family="Tahoma" font-size="26" fill="#5b608f" text-anchor="middle">Dar Al-Maarifa</text>
 </svg>`;
-}
 
-for (const [name, theme] of Object.entries(themes)) {
-  writeFileSync(resolve(outDir, `${name}.svg`), cover(theme), 'utf8');
-  console.log('wrote', `${name}.svg`);
+  const outName = b.cover.replace(/\.svg$/, '.png'); // e.g. leadership.png
+  const svgPath = `public/covers/${outName}.tmp.svg`;
+  writeFileSync(svgPath, svg);
+  const pngPath = `public/covers/${outName}`;
+  try {
+    execSync(`magick -density 150 -background none "${svgPath}" -resize 1200x1800 "${pngPath}"`);
+    execSync(`rm -f "${svgPath}"`);
+    console.log(`✅ ${outName}`);
+  } catch (e) {
+    console.error(`❌ ${b.slug}:`, e.message);
+  }
 }
-console.log('Done — covers generated in public/covers/');
+console.log('✅ covers generated');

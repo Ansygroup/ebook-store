@@ -16,7 +16,7 @@
     ],
     "rating": 4.8,
     "reviews": 327,
-    "cover": "leadership.svg",
+    "cover": "leadership.png",
     "tags": [
       "قيادة",
       "إدارة",
@@ -67,7 +67,7 @@
     ],
     "rating": 4.9,
     "reviews": 218,
-    "cover": "business.svg",
+    "cover": "business.png",
     "tags": [
       "ريادة",
       "أعمال",
@@ -117,7 +117,7 @@
     ],
     "rating": 4.7,
     "reviews": 452,
-    "cover": "productivity.svg",
+    "cover": "productivity.png",
     "tags": [
       "تركيز",
       "وقت",
@@ -167,7 +167,7 @@
     ],
     "rating": 4.6,
     "reviews": 189,
-    "cover": "selfdev.svg",
+    "cover": "selfdev.png",
     "tags": [
       "عقلية",
       "تطوير",
@@ -218,7 +218,7 @@
     ],
     "rating": 4.8,
     "reviews": 274,
-    "cover": "tech.svg",
+    "cover": "tech.png",
     "tags": [
       "تقنية",
       "برمجة",
@@ -268,7 +268,7 @@
     ],
     "rating": 4.9,
     "reviews": 531,
-    "cover": "health.svg",
+    "cover": "health.png",
     "tags": [
       "صحة",
       "طاقة",
@@ -318,7 +318,7 @@
     ],
     "rating": 4.7,
     "reviews": 163,
-    "cover": "negotiation.svg",
+    "cover": "negotiation.png",
     "tags": [
       "تفاوض",
       "إقناع",
@@ -369,7 +369,7 @@
     ],
     "rating": 4.8,
     "reviews": 205,
-    "cover": "investing.svg",
+    "cover": "investing.png",
     "tags": [
       "استثمار",
       "مال",
@@ -419,7 +419,7 @@
     ],
     "rating": 4.6,
     "reviews": 142,
-    "cover": "content.svg",
+    "cover": "content.png",
     "tags": [
       "تسويق",
       "كتابة",
@@ -469,7 +469,7 @@
     ],
     "rating": 4.7,
     "reviews": 198,
-    "cover": "languages.svg",
+    "cover": "languages.png",
     "tags": [
       "لغات",
       "تعليم",

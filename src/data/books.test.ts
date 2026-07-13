@@ -17,7 +17,7 @@ describe('books data', () => {
       expect(b.price).toBeGreaterThan(0);
       expect(b.slug).toMatch(/^[a-z0-9-]+$/);
       expect(b.formats.length).toBeGreaterThan(0);
-      expect(b.cover).toMatch(/\.svg$/);
+      expect(b.cover).toMatch(/\.png$/);
     }
   });
 
