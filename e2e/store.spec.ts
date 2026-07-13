@@ -42,10 +42,10 @@ test('store loads, shows hero and navigable shop with 10 books', async ({
   }
   await page.getByRole('tab', { name: 'الكل' }).click();
 
-  // An add-to-cart button exists with Snipcart attributes
-  const addBtn = page.locator('.snipcart-add-item').first();
-  await expect(addBtn).toHaveAttribute('data-item-id');
-  await expect(addBtn).toHaveAttribute('data-item-price');
+  // كل كتاب له زر شراء يفتح رابطًا خارجيًا (Gumroad أو صفحة الكتاب)
+  const buyBtn = page.locator('.book-card a.btn--primary').first();
+  await expect(buyBtn).toHaveAttribute('href');
+  await expect(buyBtn).toHaveAttribute('target', '_blank');
 });
 
 test('book detail shows email-order form and PDF download', async ({ page }) => {
