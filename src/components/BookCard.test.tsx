@@ -3,13 +3,16 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import BookCard from '../components/BookCard';
 import { books } from '../data/books';
+import { LanguageProvider } from '../i18n/LanguageContext';
 
 function renderCard(slug: string) {
   const book = books.find((b) => b.slug === slug)!;
   return render(
-    <MemoryRouter>
-      <BookCard book={book} />
-    </MemoryRouter>,
+    <LanguageProvider>
+      <MemoryRouter>
+        <BookCard book={book} />
+      </MemoryRouter>
+    </LanguageProvider>,
   );
 }
 

@@ -25,7 +25,29 @@
     ],
     "featured": true,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_1",
-    "downloadUrl": "/downloads/lead-influencer.pdf"
+    "downloadUrl": "/downloads/lead-influencer.pdf",
+    "titleAr": "القائد المؤثر",
+    "titleEn": "The Influential Leader",
+    "authorAr": "د. خالد المنصور",
+    "authorEn": "Dr. Khalid Al-Mansour",
+    "categoryAr": "القيادة",
+    "categoryEn": "Leadership",
+    "descriptionAr": "دليل عملي لتطوير قيادة تُلهم فريقك وتبني ثقافة أداء عالية.",
+    "descriptionEn": "A practical guide to developing leadership that inspires your team and builds a high-performance culture.",
+    "longDescriptionAr": "في هذا الكتاب الإلكتروني، يقدّم د. خالد المنصور إطاراً عملياً مبنيًا على أكثر من 15 عاماً من خبرة في قيادة الفرق. ستتعلم كيف تبني ثقة حقيقية، تفوّض بذكاء، وتتحول من مدير يُتْبَع بالإجبار إلى قائد يُلهم بالرؤية. يحتوي الكتاب على تمارين تطبيقية في نهاية كل فصل، ونماذج جاهزة يمكنك استخدامها فوراً مع فريقك.",
+    "longDescriptionEn": "In this ebook, Dr. Khalid Al-Mansour presents a practical framework built on 15+ years of team-leadership experience. You will learn how to build real trust, delegate smartly, and transform from a manager who is followed by force into a leader who inspires through vision. Each chapter ends with hands-on exercises and ready-to-use templates for your team.",
+    "tagsAr": [
+      "قيادة",
+      "إدارة",
+      "فرق",
+      "تطوير"
+    ],
+    "tagsEn": [
+      "Leadership",
+      "Management",
+      "Teams",
+      "Growth"
+    ]
   },
   {
     "id": "build-empire",
@@ -54,7 +76,29 @@
     ],
     "featured": false,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_2",
-    "downloadUrl": "/downloads/build-empire.pdf"
+    "downloadUrl": "/downloads/build-empire.pdf",
+    "titleAr": "بناء إمبراطورية",
+    "titleEn": "Build Your Empire",
+    "authorAr": "سارة الأحمد",
+    "authorEn": "Sara Al-Ahmed",
+    "categoryAr": "الأعمال",
+    "categoryEn": "Business",
+    "descriptionAr": "خريطة طريق كاملة لإطلاق مشروعك الناشئ ونموه حتى الربحية.",
+    "descriptionEn": "A complete roadmap to launch your startup and grow it to profitability.",
+    "longDescriptionAr": "من فكرة على منديل ورقي إلى شركة مربحة — \"بناء إمبراطورية\" يأخذك خطوة بخطوة عبر كل مرحلة: التحقق من الفكرة، بناء أول نموذج، الحصول على أول عميل، ثم التوسع المنضبط. سارة الأحمد تشارك أخطاءها الحقيقية ودروسها القاسية حتى لا تكررها، مع أدوات مالية بسيطة لإدارة سيولتك النقدية.",
+    "longDescriptionEn": "From a napkin idea to a profitable company — \"Build Your Empire\" walks you step by step through every stage: validating the idea, building the first prototype, landing your first customer, then disciplined scaling. Sara Al-Ahmed shares her real mistakes and hard lessons so you avoid them, with simple financial tools to manage your cash flow.",
+    "tagsAr": [
+      "ريادة",
+      "أعمال",
+      "نمو",
+      "استثمار"
+    ],
+    "tagsEn": [
+      "Entrepreneurship",
+      "Business",
+      "Growth",
+      "Investing"
+    ]
   },
   {
     "id": "deep-productivity",
@@ -82,7 +126,29 @@
     ],
     "featured": true,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_3",
-    "downloadUrl": "/downloads/deep-productivity.pdf"
+    "downloadUrl": "/downloads/deep-productivity.pdf",
+    "titleAr": "الإنتاجية العميقة",
+    "titleEn": "Deep Productivity",
+    "authorAr": "م. يوسف العتيبي",
+    "authorEn": "Eng. Yousef Al-Otaibi",
+    "categoryAr": "الإنتاجية",
+    "categoryEn": "Productivity",
+    "descriptionAr": "أسلوب عمل يركّز على العمق بدل الانشغال الزائف، ويضاعف إنجازك.",
+    "descriptionEn": "A work style focused on depth over fake busyness that doubles your output.",
+    "longDescriptionAr": "الانشغال ليس إنجازاً. في \"الإنتاجية العميقة\" يكشف م. يوسف العتيبي نظاماً مدته 30 يوماً لاستعادة تركيزك: كيف تتخلص من تشتت الإشعارات، تبني طقوساً للعمل العميق، وتدير طاقتك لا وقتك فقط. الكتاب مليء بجداول ومتتبِّعات قابلة للطباعة لتثبيت العادة.",
+    "longDescriptionEn": "Busyness is not accomplishment. In \"Deep Productivity\" Eng. Yousef Al-Otaibi reveals a 30-day system to reclaim your focus: how to ditch notification noise, build deep-work rituals, and manage your energy not just your time. Packed with printable schedules and trackers to lock in the habit.",
+    "tagsAr": [
+      "تركيز",
+      "وقت",
+      "عادات",
+      "عمل"
+    ],
+    "tagsEn": [
+      "Focus",
+      "Time",
+      "Habits",
+      "Work"
+    ]
   },
   {
     "id": "design-your-mindset",
@@ -110,7 +176,29 @@
     ],
     "featured": false,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_4",
-    "downloadUrl": "/downloads/design-your-mindset.pdf"
+    "downloadUrl": "/downloads/design-your-mindset.pdf",
+    "titleAr": "صمّم عقليتك",
+    "titleEn": "Design Your Mindset",
+    "authorAr": "نورة القحطاني",
+    "authorEn": "Noura Al-Qahtani",
+    "categoryAr": "التطوير الذاتي",
+    "categoryEn": "Self-Development",
+    "descriptionAr": "أعد برمجة معتقداتك المحدِّدة وبنِ عقلية نمو لا تتوقف عن التعلّم.",
+    "descriptionEn": "Reprogram your limiting beliefs and build a growth mindset that never stops learning.",
+    "longDescriptionAr": "كل نجاح يسبقه تحوّل داخلي. \"صمّم عقليتك\" يأخذك في رحلة لتفكيك المعتقدات التي تُبطئك، وبناء هوية جديدة قائمة على النمو والمسؤولية. نورة القحطاني تدمج علم النفس التطبيقي بقصص واقعية وقوة التأمل الموجَّه، لتقدّم لك منهجاً يغيّر طريقة تفكيرك في الفشل والنجاح.",
+    "longDescriptionEn": "Every success is preceded by an inner shift. \"Design Your Mindset\" takes you on a journey to dismantle the beliefs that slow you down and build a new identity grounded in growth and responsibility. Noura Al-Qahtani blends applied psychology with real stories and guided meditation to deliver a method that changes how you think about failure and success.",
+    "tagsAr": [
+      "عقلية",
+      "تطوير",
+      "ثقة",
+      "نمو"
+    ],
+    "tagsEn": [
+      "Mindset",
+      "Growth",
+      "Confidence",
+      "Learning"
+    ]
   },
   {
     "id": "tech-for-everyone",
@@ -139,7 +227,29 @@
     ],
     "featured": false,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_5",
-    "downloadUrl": "/downloads/tech-for-everyone.pdf"
+    "downloadUrl": "/downloads/tech-for-everyone.pdf",
+    "titleAr": "التقنية للجميع",
+    "titleEn": "Tech for Everyone",
+    "authorAr": "م. عبدالله الشمري",
+    "authorEn": "Eng. Abdullah Al-Shammari",
+    "categoryAr": "التقنية",
+    "categoryEn": "Technology",
+    "descriptionAr": "افهم أساسيات البرمجة والذكاء الاصطناعي دون خلفية تقنية.",
+    "descriptionEn": "Understand the basics of programming and AI without a technical background.",
+    "longDescriptionAr": "لا تحتاج إلى شهادة هندسة لتفهم العالم الرقمي من حولك. \"التقنية للجميع\" يشرح بلغة بسيطة كيف تعمل الإنترنت، ما هو الذكاء الاصطناعي فعلاً، وكيف تستفيد من الأدوات الحديثة في عملك وحياتك اليومية. م. عبدالله الشمري يحوّل المفاهيم المعقدة إلى قصص وق analogies تجعلها سهلة الهضم.",
+    "longDescriptionEn": "You do not need an engineering degree to understand the digital world around you. \"Tech for Everyone\" explains in plain language how the internet works, what AI actually is, and how to benefit from modern tools in your work and daily life. Eng. Abdullah Al-Shammari turns complex concepts into stories and analogies that are easy to digest.",
+    "tagsAr": [
+      "تقنية",
+      "برمجة",
+      "ذكاء اصطناعي",
+      "تعلم"
+    ],
+    "tagsEn": [
+      "Technology",
+      "Coding",
+      "AI",
+      "Learning"
+    ]
   },
   {
     "id": "health-without-limits",
@@ -167,7 +277,29 @@
     ],
     "featured": true,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_6",
-    "downloadUrl": "/downloads/health-without-limits.pdf"
+    "downloadUrl": "/downloads/health-without-limits.pdf",
+    "titleAr": "صحة بلا حدود",
+    "titleEn": "Health Without Limits",
+    "authorAr": "د. ريم الدوسري",
+    "authorEn": "Dr. Reem Al-Dosari",
+    "categoryAr": "الصحة",
+    "categoryEn": "Health",
+    "descriptionAr": "نظام حياة متكامل للطاقة والتركيز والعافية المستدامة.",
+    "descriptionEn": "An integrated lifestyle system for energy, focus, and sustainable wellbeing.",
+    "longDescriptionAr": "الصحة ليست حمية مؤقتة بل أسلوب حياة. \"صحة بلا حدود\" يقدّم منهجاً مبنياً على الأدلة العلمية لرفع طاقتك اليومية، تحسين نومك، وتنظيم تغذيتك دون حرمان. د. ريم الدوسري تبسّط العلم وتقدّم خطوات صغيرة مستدامة تتناسب مع جدول حياتك المزدحم.",
+    "longDescriptionEn": "Health is not a temporary diet but a way of life. \"Health Without Limits\" offers an evidence-based method to raise your daily energy, improve your sleep, and organize your nutrition without deprivation. Dr. Reem Al-Dosari simplifies the science and provides small, sustainable steps that fit your busy schedule.",
+    "tagsAr": [
+      "صحة",
+      "طاقة",
+      "نوم",
+      "تغذية"
+    ],
+    "tagsEn": [
+      "Health",
+      "Energy",
+      "Sleep",
+      "Nutrition"
+    ]
   },
   {
     "id": "art-of-negotiation",
@@ -195,7 +327,29 @@
     ],
     "featured": false,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_7",
-    "downloadUrl": "/downloads/art-of-negotiation.pdf"
+    "downloadUrl": "/downloads/art-of-negotiation.pdf",
+    "titleAr": "فن التفاوض",
+    "titleEn": "The Art of Negotiation",
+    "authorAr": "م. فهد القرني",
+    "authorEn": "Eng. Fahad Al-Qarni",
+    "categoryAr": "المهارات",
+    "categoryEn": "Skills",
+    "descriptionAr": "تعلّم فن الإقناع والاتفاق بثقة في العمل والحياة اليومية.",
+    "descriptionEn": "Learn the art of persuasion and agreement with confidence at work and in daily life.",
+    "longDescriptionAr": "التفاوض ليس معركة بل حوار يحقق مكسباً للطرفين. في \"فن التفاوض\" يقدّم م. فهد القرني أدوات عملية لقراءة الطرف الآخر، تجهيز موقفك، والتعامل مع الرفض دون توتر. الكتاب مبني على مواقف حقيقية من المفاوضات التجارية والشخصية مع نصائح للتواصل غير اللفظي.",
+    "longDescriptionEn": "Negotiation is not a battle but a dialogue that creates a win for both sides. In \"The Art of Negotiation\" Eng. Fahad Al-Qarni provides practical tools to read the other party, prepare your position, and handle rejection without stress. Built on real commercial and personal negotiation scenarios with non-verbal communication tips.",
+    "tagsAr": [
+      "تفاوض",
+      "إقناع",
+      "اتفاق",
+      "مهارات"
+    ],
+    "tagsEn": [
+      "Negotiation",
+      "Persuasion",
+      "Agreement",
+      "Skills"
+    ]
   },
   {
     "id": "smart-investing",
@@ -224,7 +378,29 @@
     ],
     "featured": true,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_8",
-    "downloadUrl": "/downloads/smart-investing.pdf"
+    "downloadUrl": "/downloads/smart-investing.pdf",
+    "titleAr": "الاستثمار الذكي",
+    "titleEn": "Smart Investing",
+    "authorAr": "د. منصور الحربي",
+    "authorEn": "Dr. Mansour Al-Harbi",
+    "categoryAr": "المال",
+    "categoryEn": "Money",
+    "descriptionAr": "أساسيات بناء ثروة طويلة الأمد بخطوات مدروسة ومنضبطة.",
+    "descriptionEn": "Fundamentals of building long-term wealth with disciplined, thoughtful steps.",
+    "longDescriptionAr": "لا تحتاج لأن تكون خبيراً مالياً لتبني ثروتك. \"الاستثمار الذكي\" يبسّط مفاهيم العائد والخطر والتنويع، ويرشدك لبناء خطة استثمارية تبدأ من اليوم ولأي مبلغ. د. منصور الحربي يبتعد عن التعقيد ويقدّم قواعد واضحة تحميك من الأخطاء الشائعة التي تبتلع مدخرات المبتدئين.",
+    "longDescriptionEn": "You do not need to be a finance expert to build wealth. \"Smart Investing\" simplifies return, risk, and diversification, and guides you to build an investment plan starting today at any amount. Dr. Mansour Al-Harbi steps away from complexity and delivers clear rules that protect you from the common mistakes that eat beginners' savings.",
+    "tagsAr": [
+      "استثمار",
+      "مال",
+      "ثروة",
+      "تخطيط"
+    ],
+    "tagsEn": [
+      "Investing",
+      "Money",
+      "Wealth",
+      "Planning"
+    ]
   },
   {
     "id": "content-writing",
@@ -252,7 +428,29 @@
     ],
     "featured": false,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_9",
-    "downloadUrl": "/downloads/content-writing.pdf"
+    "downloadUrl": "/downloads/content-writing.pdf",
+    "titleAr": "صناعة المحتوى",
+    "titleEn": "Content Craft",
+    "authorAr": "ليلى العنزي",
+    "authorEn": "Layla Al-Anazi",
+    "categoryAr": "التسويق",
+    "categoryEn": "Marketing",
+    "descriptionAr": "اكتب محتوى يبيع ويبني جمهوراً وفيّاً حول علامتك.",
+    "descriptionEn": "Write content that sells and builds a loyal audience around your brand.",
+    "longDescriptionAr": "المحتوى هو عملتك في العصر الرقمي. \"صناعة المحتوى\" يعلّمك كيف تحدد صوت علامتك، تكتب عناوين تجذب النقر، وقصصاً تبيع دون إلحاح. ليلى العنزي تشارك إطارها الكامل للتخطيط والتحرير والنشر عبر المنصات المختلفة بأقل جهد وأعلى أثر.",
+    "longDescriptionEn": "Content is your currency in the digital age. \"Content Craft\" teaches you how to define your brand voice, write headlines that earn clicks, and tell stories that sell without pressure. Layla Al-Anazi shares her full framework for planning, editing, and publishing across platforms with the least effort and the highest impact.",
+    "tagsAr": [
+      "تسويق",
+      "كتابة",
+      "محتوى",
+      "جمهور"
+    ],
+    "tagsEn": [
+      "Marketing",
+      "Writing",
+      "Content",
+      "Audience"
+    ]
   },
   {
     "id": "learn-languages",
@@ -280,6 +478,28 @@
     ],
     "featured": false,
     "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_10",
-    "downloadUrl": "/downloads/learn-languages.pdf"
+    "downloadUrl": "/downloads/learn-languages.pdf",
+    "titleAr": "تعلّم اللغات",
+    "titleEn": "Learn Languages",
+    "authorAr": "أ. سلطان المطيري",
+    "authorEn": "Mr. Sultan Al-Mutairi",
+    "categoryAr": "التعليم",
+    "categoryEn": "Education",
+    "descriptionAr": "منهج عملي لإتقان أي لغة في وقت قياسي وبدون معلّم.",
+    "descriptionEn": "A practical method to master any language in record time without a teacher.",
+    "longDescriptionAr": "تعلم لغة جديدة أصعب بكثير من حفظ كلمات. \"تعلّم اللغات\" يقدّم نظاماً مبنياً على التعرّض اليومي والمحادثة المبكرة، ويشرح كيف تستغل التطبيقات والمصادر المجانية بفعالية. أ. سلطان المطيري يفكك أساطير \"صعوبة اللغات\" ويضعك على مسار الإتقان في أشهر لا سنين.",
+    "longDescriptionEn": "Learning a new language is far more than memorizing words. \"Learn Languages\" presents a system built on daily exposure and early conversation, and explains how to use free apps and resources effectively. Mr. Sultan Al-Mutairi dismantles the myth of 'language difficulty' and puts you on a path to fluency in months, not years.",
+    "tagsAr": [
+      "لغات",
+      "تعليم",
+      "مهارة",
+      "سرعة"
+    ],
+    "tagsEn": [
+      "Languages",
+      "Education",
+      "Skill",
+      "Speed"
+    ]
   }
 ]

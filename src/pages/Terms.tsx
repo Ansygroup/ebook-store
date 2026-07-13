@@ -1,31 +1,34 @@
 import { Link } from 'react-router-dom';
+import { useLang } from '../i18n/LanguageContext';
 
 export default function Terms() {
+  const { lang } = useLang();
   return (
     <div className="container" style={{ padding: '3rem 1rem', maxWidth: 820 }}>
-      <h1>الشروط والأحكام</h1>
-      <p className="muted">آخر تحديث: 2026</p>
-
-      <h2>١. استخدام المنتجات</h2>
-      <p>
-        جميع الكتب الإلكترونية مرخّصة للاستخدام الشخصي غير التجاري. يمنع إعادة بيعها أو
-        مشاركتها أو نسخها دون إذن خطي مسبق.
+      <h1>{lang === 'ar' ? 'الشروط والأحكام' : 'Terms & conditions'}</h1>
+      <p style={{ opacity: 0.7, marginBottom: '1.5rem' }}>
+        {lang === 'ar' ? 'آخر تحديث: ٢٠٢٦' : 'Last updated: 2026'}
       </p>
-
-      <h2>٢. المدفوعات والاسترداد</h2>
+      <h2>{lang === 'ar' ? 'الترخيص' : 'License'}</h2>
       <p>
-        تتم المدفوعات عبر بوابة دفع خارجية. بسبب الطبيعة الرقمية للمنتجات، لا نقبل
-        الاسترداد بعد تنزيل الكتاب، ما لم يكن الملف تالفًا.
+        {lang === 'ar'
+          ? 'بشراء كتاب، تحصل على ترخيص استخدام شخصي غير حصري. إعادة البيع أو التوزيع غير مسموحة.'
+          : 'On purchase you receive a personal, non-exclusive license. Resale or redistribution is not permitted.'}
       </p>
-
-      <h2>٣. المسؤولية</h2>
-      <p>المحتوى لأغراض تعليمية ولا يشكّل استشارة مهنية ملزمة.</p>
-
-      <h2>٤. التغييرات</h2>
-      <p>نحتفظ بحق تعديل هذه الشروط، وينشر التحديث على هذه الصفحة.</p>
-
+      <h2>{lang === 'ar' ? 'الاسترداد' : 'Refunds'}</h2>
+      <p>
+        {lang === 'ar'
+          ? 'استرداد كامل خلال ٧ أيام من الشراء في حال وجود مشكلة تقنية في الملف.'
+          : 'Full refund within 7 days of purchase if a technical file issue occurs.'}
+      </p>
+      <h2>{lang === 'ar' ? 'المسؤولية' : 'Liability'}</h2>
+      <p>
+        {lang === 'ar'
+          ? 'المحتوى مقدم "كما هو" لأغراض تعليمية. النتائج تختلف حسب جهد القارئ وتطبيقه.'
+          : 'Content is provided "as is" for educational purposes. Results vary by reader effort and application.'}
+      </p>
       <p style={{ marginTop: '2rem' }}>
-        <Link to="/" className="btn btn--ghost">العودة للرئيسية</Link>
+        <Link to="/" className="btn btn--ghost">{lang === 'ar' ? 'العودة للرئيسية' : 'Back home'}</Link>
       </p>
     </div>
   );

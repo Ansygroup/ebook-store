@@ -708,6 +708,26 @@ img {
   opacity: 0 !important;
   pointer-events: none;
 }
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 38px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: #e7e8ff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.lang-switch:hover {
+  border-color: var(--primary, #6d5efc);
+  background: rgba(109, 94, 252, 0.14);
+}
 .book-detail__email-input {
   flex: 1 1 200px;
   padding: 10px 14px;

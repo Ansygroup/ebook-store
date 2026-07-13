@@ -1,20 +1,23 @@
 import { useMemo, useState } from 'react';
 import BookCard from '../components/BookCard';
 import { books, categories } from '../data/books';
+import { useLang } from '../i18n/LanguageContext';
 
-type SortKey = 'popular' | 'price-asc' | 'price-desc';
+type SortKey = 'popular' | 'price-asc' | 'price-desc' | 'rating';
 
 export default function Shop() {
-  const [activeCat, setActiveCat] = useState<string>('الكل');
+  const { t, lang } = useLang();
+  const [activeCat, setActiveCat] = useState<string>('all');
   const [sort, setSort] = useState<SortKey>('popular');
 
   const filtered = useMemo(() => {
     let list = books.filter(
-      (b) => activeCat === 'الكل' || b.category === activeCat,
+      (b) => activeCat === 'all' || b.categoryAr === activeCat,
     );
     if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price);
     if (sort === 'popular') list = [...list].sort((a, b) => b.reviews - a.reviews);
+    if (sort === 'rating') list = [...list].sort((a, b) => b.rating - a.rating);
     return list;
   }, [activeCat, sort]);
 
@@ -22,16 +25,18 @@ export default function Shop() {
     <section className="section shop">
       <div className="container">
         <div className="section__head">
-          <span className="section__eyebrow">المتجر</span>
-          <h1 className="section__title">كل الكتب الإلكترونية</h1>
+          <span className="section__eyebrow">{t('nav.shop')}</span>
+          <h1 className="section__title">
+            {lang === 'ar' ? 'كل الكتب الإلكترونية' : 'All ebooks'}
+          </h1>
           <p className="section__sub">
-            {filtered.length} كتاب متاح للتحميل الفوري.
+            {filtered.length} {t('shop.count')} {lang === 'ar' ? 'متاح للتحميل الفوري.' : 'available for instant download.'}
           </p>
         </div>
 
         <div className="shop__controls" data-testid="shop-controls">
-          <div className="shop__cats" role="tablist" aria-label="التصنيفات">
-            {['الكل', ...categories].map((c) => (
+          <div className="shop__cats" role="tablist" aria-label="Categories">
+            {['all', ...categories].map((c) => (
               <button
                 key={c}
                 role="tab"
@@ -39,20 +44,23 @@ export default function Shop() {
                 className={`chip ${activeCat === c ? 'is-active' : ''}`}
                 onClick={() => setActiveCat(c)}
               >
-                {c}
+                {c === 'all'
+                  ? t('shop.all')
+                  : (lang === 'ar' ? c : (books.find((b) => b.categoryAr === c)?.categoryEn ?? c))}
               </button>
             ))}
           </div>
 
           <label className="shop__sort">
-            ترتيب:
+            {t('shop.sort')}:
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
             >
-              <option value="popular">الأكثر تقييماً</option>
-              <option value="price-asc">السعر: من الأقل</option>
-              <option value="price-desc">السعر: من الأعلى</option>
+              <option value="popular">{lang === 'ar' ? 'الأكثر تقييماً' : t('shop.sortFeatured')}</option>
+              <option value="price-asc">{t('shop.sortPriceAsc')}</option>
+              <option value="price-desc">{t('shop.sortPriceDesc')}</option>
+              <option value="rating">{t('shop.sortRating')}</option>
             </select>
           </label>
         </div>
@@ -64,7 +72,9 @@ export default function Shop() {
         </div>
 
         {filtered.length === 0 && (
-          <p className="shop__empty">لا توجد كتب في هذا التصنيف حالياً.</p>
+          <p className="shop__empty">
+            {lang === 'ar' ? 'لا توجد كتب في هذا التصنيف حالياً.' : 'No books in this category yet.'}
+          </p>
         )}
       </div>
     </section>

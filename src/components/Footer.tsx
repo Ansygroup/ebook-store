@@ -1,37 +1,40 @@
 import { Link } from 'react-router-dom';
+import { useLang } from '../i18n/LanguageContext';
 
 export default function Footer() {
+  const { t, lang } = useLang();
   return (
     <footer className="footer" id="contact">
       <div className="container footer__inner">
         <div className="footer__col footer__col--brand">
           <div className="brand brand--light">
             <span className="brand__mark">د</span>
-            <span className="brand__name">دار المعرفة</span>
+            <span className="brand__name">{t('seo.siteName')}</span>
           </div>
           <p>
-            متجر رقمي متخصص في الكتب الإلكترونية العربية عالية الجودة. نُشرِف على
-            كل كتاب لنقدّم لك محتوى يستحق وقتك ومالك.
+            {lang === 'ar'
+              ? 'متجر رقمي متخصص في الكتب الإلكترونية العربية عالية الجودة. نُشرِف على كل كتاب لنقدّم لك محتوى يستحق وقتك ومالك.'
+              : 'A digital store specializing in high-quality Arabic ebooks. We curate every title so you get content worth your time and money.'}
           </p>
         </div>
 
         <div className="footer__col">
-          <h4>روابط سريعة</h4>
-          <Link to="/">الرئيسية</Link>
-          <Link to="/shop">المتجر</Link>
-          <a href="/#faq">الأسئلة الشائعة</a>
+          <h4>{lang === 'ar' ? 'روابط سريعة' : 'Quick links'}</h4>
+          <Link to="/">{t('nav.home')}</Link>
+          <Link to="/shop">{t('nav.shop')}</Link>
+          <a href="/#faq">{t('faq.title')}</a>
         </div>
 
         <div className="footer__col">
-          <h4>القانونية</h4>
-          <Link to="/privacy">سياسة الخصوصية</Link>
-          <Link to="/terms">الشروط والأحكام</Link>
-          <a href="mailto:support@dar-ma3rifa.example">البريد الإلكتروني</a>
+          <h4>{lang === 'ar' ? 'القانونية' : 'Legal'}</h4>
+          <Link to="/privacy">{t('footer.privacy')}</Link>
+          <Link to="/terms">{t('footer.terms')}</Link>
+          <a href="mailto:support@dar-ma3rifa.example">{lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</a>
         </div>
       </div>
       <div className="footer__bottom container">
-        <span>© {new Date().getFullYear()} دار المعرفة — جميع الحقوق محفوظة.</span>
-        <span>الدفع آمن عبر Snipcart · التسليم فوري</span>
+        <span>© {new Date().getFullYear()} {t('seo.siteName')} — {lang === 'ar' ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}</span>
+        <span>{lang === 'ar' ? 'الدفع آمن عبر Snipcart · التسليم فوري' : 'Secure checkout via Snipcart · Instant delivery'}</span>
       </div>
     </footer>
   );

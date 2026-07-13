@@ -4,14 +4,21 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import Shop from '../pages/Shop';
 import { books, categories } from '../data/books';
+import { LanguageProvider } from '../i18n/LanguageContext';
+
+function renderShop() {
+  return render(
+    <LanguageProvider>
+      <MemoryRouter>
+        <Shop />
+      </MemoryRouter>
+    </LanguageProvider>,
+  );
+}
 
 describe('Shop page', () => {
   it('renders every book in the catalogue', () => {
-    render(
-      <MemoryRouter>
-        <Shop />
-      </MemoryRouter>,
-    );
+    renderShop();
     expect(screen.getByTestId('book-grid').querySelectorAll('.book-card').length).toBe(
       books.length,
     );
@@ -19,13 +26,9 @@ describe('Shop page', () => {
 
   it('filters books by category', async () => {
     const user = userEvent.setup();
-    render(
-      <MemoryRouter>
-        <Shop />
-      </MemoryRouter>,
-    );
+    renderShop();
     const target = categories[0];
-    const expectedCount = books.filter((b) => b.category === target).length;
+    const expectedCount = books.filter((b) => b.categoryAr === target).length;
 
     await user.click(screen.getByRole('tab', { name: target }));
 
@@ -35,28 +38,19 @@ describe('Shop page', () => {
 
   it('sorts by ascending price', async () => {
     const user = userEvent.setup();
-    render(
-      <MemoryRouter>
-        <Shop />
-      </MemoryRouter>,
-    );
+    renderShop();
     await user.selectOptions(screen.getByRole('combobox'), 'price-asc');
 
     const prices = Array.from(
       screen.getByTestId('book-grid').querySelectorAll('.book-card__price'),
     ).map((el) => parseFloat(el.textContent!.replace('$', '')));
-
     const sorted = [...prices].sort((a, b) => a - b);
     expect(prices).toEqual(sorted);
   });
 
   it('marks the active category chip', async () => {
     const user = userEvent.setup();
-    render(
-      <MemoryRouter>
-        <Shop />
-      </MemoryRouter>,
-    );
+    renderShop();
     const chip = screen.getByRole('tab', { name: 'الكل' });
     expect(chip.className).toContain('is-active');
 

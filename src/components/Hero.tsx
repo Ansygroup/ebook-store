@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { featuredBooks, formatPrice } from '../data/books';
+import { featuredBooks, formatPrice, pick } from '../data/books';
+import { useLang } from '../i18n/LanguageContext';
 
 const container = {
   hidden: {},
@@ -15,6 +16,7 @@ const item = {
 };
 
 export default function Hero() {
+  const { lang } = useLang();
   return (
     <section className="hero">
       <div className="hero__glow" aria-hidden="true" />
@@ -26,36 +28,39 @@ export default function Hero() {
           animate="show"
         >
           <motion.span className="hero__badge" variants={item}>
-            ✦ أكثر من 6 كتب رقمية مُتقَنة
+            {lang === 'ar' ? '✦ أكثر من 10 كتب رقمية مُتقنة' : '✦ 10+ expertly crafted ebooks'}
           </motion.span>
           <motion.h1 className="hero__title" variants={item}>
-            اكتشف كتباً تُغيّر
-            <span className="hero__title-accent"> مسار حياتك المهنية</span>
+            {lang === 'ar' ? 'اكتشف كتباً تُغيّر' : 'Discover books that change'}
+            <span className="hero__title-accent">
+              {lang === 'ar' ? ' مسار حياتك المهنية' : ' your career trajectory'}
+            </span>
           </motion.h1>
           <motion.p className="hero__subtitle" variants={item}>
-            متجر دار المعرفة يقدّم أفضل الكتب الإلكترونية في القيادة والأعمال
-            والإنتاجية — حمّلها فوراً بعد الشراء وابدأ رحلتك اليوم.
+            {lang === 'ar'
+              ? 'متجر دار المعرفة يقدّم أفضل الكتب الإلكترونية في القيادة والأعمال والإنتاجية — حمّلها فوراً بعد الشراء وابدأ رحلتك اليوم.'
+              : 'Dar Al-Maarifa offers the best ebooks on leadership, business & productivity — download instantly after purchase and start your journey today.'}
           </motion.p>
           <motion.div className="hero__actions" variants={item}>
             <Link to="/shop" className="btn btn--primary btn--lg">
-              تسوّق الآن
+              {lang === 'ar' ? 'تسوّق الآن' : 'Shop now'}
             </Link>
             <a href="#featured" className="btn btn--ghost btn--lg">
-              الكتب المميزة
+              {lang === 'ar' ? 'الكتب المميزة' : 'Featured books'}
             </a>
           </motion.div>
           <motion.div className="hero__stats" variants={item}>
             <div className="stat">
-              <strong>6+</strong>
-              <span>كتاب رقمي</span>
+              <strong>10+</strong>
+              <span>{lang === 'ar' ? 'كتاب رقمي' : 'ebooks'}</span>
             </div>
             <div className="stat">
               <strong>4.8</strong>
-              <span>متوسط التقييم</span>
+              <span>{lang === 'ar' ? 'متوسط التقييم' : 'avg. rating'}</span>
             </div>
             <div className="stat">
               <strong>2000+</strong>
-              <span>قارئ راضٍ</span>
+              <span>{lang === 'ar' ? 'قارئ راضٍ' : 'happy readers'}</span>
             </div>
           </motion.div>
         </motion.div>
@@ -79,9 +84,9 @@ export default function Hero() {
                 delay: i * 0.4,
               }}
             >
-              <img src={`/covers/${book.cover}`} alt={book.title} loading="lazy" />
+              <img src={`/covers/${book.cover}`} alt={pick<string>(book, 'title', lang)} loading="lazy" />
               <div className="hero__book-meta">
-                <span>{book.title}</span>
+                <span>{pick<string>(book, 'title', lang)}</span>
                 <strong>{formatPrice(book.price)}</strong>
               </div>
             </motion.div>

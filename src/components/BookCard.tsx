@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Book } from '../types';
-import { formatPrice } from '../data/books';
+import { formatPrice, pick } from '../data/books';
+import { useLang } from '../i18n/LanguageContext';
 
 interface Props {
   book: Book;
@@ -11,7 +12,12 @@ interface Props {
 const isReal = (u?: string) => !!u && !u.includes('REPLACE_WITH_YOUR_LINK');
 
 export default function BookCard({ book, index = 0 }: Props) {
+  const { lang } = useLang();
   const buyHref = isReal(book.gumroadUrl) ? book.gumroadUrl : undefined;
+  const title = pick<string>(book, 'title', lang);
+  const author = pick<string>(book, 'author', lang);
+  const category = pick<string>(book, 'category', lang);
+  const desc = pick<string>(book, 'description', lang);
   return (
     <motion.article
       className="book-card"
@@ -22,18 +28,20 @@ export default function BookCard({ book, index = 0 }: Props) {
       whileHover={{ y: -8 }}
     >
       <Link to={`/book/${book.slug}`} className="book-card__cover">
-        <img src={`/covers/${book.cover}`} alt={book.title} loading="lazy" />
-        {book.featured && <span className="book-card__flag">مميز</span>}
+        <img src={`/covers/${book.cover}`} alt={title} loading="lazy" />
+        {book.featured && (
+          <span className="book-card__flag">{lang === 'ar' ? 'مميز' : 'Featured'}</span>
+        )}
       </Link>
 
       <div className="book-card__body">
-        <span className="book-card__cat">{book.category}</span>
+        <span className="book-card__cat">{category}</span>
         <h3 className="book-card__title">
-          <Link to={`/book/${book.slug}`}>{book.title}</Link>
+          <Link to={`/book/${book.slug}`}>{title}</Link>
         </h3>
-        <p className="book-card__author">{book.author}</p>
+        <p className="book-card__author">{author}</p>
 
-        <div className="book-card__rating" aria-label={`التقييم ${book.rating} من 5`}>
+        <div className="book-card__rating" aria-label={`${lang === 'ar' ? 'التقييم' : 'Rating'} ${book.rating} / 5`}>
           {'★'.repeat(Math.round(book.rating))}
           <span className="book-card__rating-value">
             {book.rating.toFixed(1)} ({book.reviews})
@@ -49,21 +57,21 @@ export default function BookCard({ book, index = 0 }: Props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              اشترِ الآن
+              {lang === 'ar' ? 'اشترِ الآن' : 'Buy now'}
             </a>
           ) : (
             <button
               className="snipcart-add-item btn btn--primary btn--sm"
               data-item-id={book.id}
-              data-item-name={book.title}
+              data-item-name={title}
               data-item-price={book.price}
               data-item-url={typeof window !== 'undefined' ? `${window.location.origin}/book/${book.slug}` : `https://dar-ma3rifa.example/book/${book.slug}`}
-              data-item-description={book.description}
+              data-item-description={desc}
               data-item-image={`/covers/${book.cover}`}
               data-item-file-guid={`${book.id}-download`}
               data-item-metadata='{"format":"PDF+EPUB"}'
             >
-              أضف للسلة
+              {lang === 'ar' ? 'أضف للسلة' : 'Add to cart'}
             </button>
           )}
         </div>

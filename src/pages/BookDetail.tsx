@@ -1,11 +1,13 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { getBookBySlug, formatPrice, books } from '../data/books';
+import { getBookBySlug, formatPrice, books, pick } from '../data/books';
+import { useLang } from '../i18n/LanguageContext';
 import BookCard from '../components/BookCard';
 
 export default function BookDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const { t, lang } = useLang();
   const book = slug ? getBookBySlug(slug) : undefined;
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<{ ok: boolean; msg: string } | null>(null);
@@ -23,9 +25,13 @@ export default function BookDetail() {
         body: JSON.stringify({ email, slug: book.slug, honeypot: '' }),
       });
       const j = await r.json();
-      setStatus(j.ok ? { ok: true, msg: '✅ تم إرسال رابط التحميل إلى بريدك' } : { ok: false, msg: '❌ ' + (j.error || 'تعذر الطلب') });
+      setStatus(
+        j.ok
+          ? { ok: true, msg: t('book.orderSent') }
+          : { ok: false, msg: '❌ ' + (j.error || (lang === 'ar' ? 'تعذر الطلب' : 'Order failed')) },
+      );
     } catch {
-      setStatus({ ok: false, msg: '❌ خطأ في الاتصال' });
+      setStatus({ ok: false, msg: '❌ ' + (lang === 'ar' ? 'خطأ في الاتصال' : 'Connection error') });
     } finally {
       setBusy(false);
     }
@@ -34,9 +40,9 @@ export default function BookDetail() {
   if (!book) {
     return (
       <section className="section container">
-        <h1 className="section__title">الكتاب غير موجود</h1>
+        <h1 className="section__title">{t('book.notFound')}</h1>
         <Link to="/shop" className="btn btn--primary">
-          العودة للمتجر
+          {lang === 'ar' ? 'العودة للمتجر' : 'Back to shop'}
         </Link>
       </section>
     );
@@ -45,9 +51,8 @@ export default function BookDetail() {
   const related = books
     .filter((b) => b.id !== book.id)
     .sort((a, b) => {
-      // نفس التصنيف أولاً
-      if (a.category === book.category && b.category !== book.category) return -1;
-      if (a.category !== book.category && b.category === book.category) return 1;
+      if (a.categoryAr === book.categoryAr && b.categoryAr !== book.categoryAr) return -1;
+      if (a.categoryAr !== book.categoryAr && b.categoryAr === book.categoryAr) return 1;
       return b.rating - a.rating;
     })
     .slice(0, 3);
@@ -56,11 +61,18 @@ export default function BookDetail() {
     ? book.gumroadUrl
     : undefined;
 
+  const title = pick<string>(book, 'title', lang);
+  const author = pick<string>(book, 'author', lang);
+  const category = pick<string>(book, 'category', lang);
+  const desc = pick<string>(book, 'description', lang);
+  const longDesc = pick<string>(book, 'longDescription', lang);
+  const tags = pick<string[]>(book, 'tags', lang);
+
   return (
     <section className="section book-detail">
       <div className="container">
         <Link to="/shop" className="book-detail__back">
-          → العودة للمتجر
+          {lang === 'ar' ? '→ العودة للمتجر' : '← Back to shop'}
         </Link>
 
         <div className="book-detail__grid">
@@ -70,7 +82,7 @@ export default function BookDetail() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <img src={`/covers/${book.cover}`} alt={book.title} />
+            <img src={`/covers/${book.cover}`} alt={title} />
           </motion.div>
 
           <motion.div
@@ -79,36 +91,36 @@ export default function BookDetail() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <span className="book-card__cat">{book.category}</span>
-            <h1 className="book-detail__title">{book.title}</h1>
-            <p className="book-detail__author">{book.author}</p>
+            <span className="book-card__cat">{category}</span>
+            <h1 className="book-detail__title">{title}</h1>
+            <p className="book-detail__author">{author}</p>
 
             <div className="book-card__rating">
               {'★'.repeat(Math.round(book.rating))}
               <span className="book-card__rating-value">
-                {book.rating.toFixed(1)} ({book.reviews} تقييم)
+                {book.rating.toFixed(1)} ({book.reviews} {lang === 'ar' ? 'تقييم' : 'reviews'})
               </span>
             </div>
 
             <div className="book-detail__meta">
-              <span>📄 {book.pages} صفحة</span>
+              <span>📄 {book.pages} {t('book.pages')}</span>
               <span>🌐 {book.language}</span>
               <span>📦 {book.formats.join(' · ')}</span>
             </div>
 
-            <p className="book-detail__desc">{book.longDescription}</p>
+            <p className="book-detail__desc">{longDesc}</p>
 
             <div className="book-detail__tags">
-              {book.tags.map((t) => (
-                <span key={t} className="chip">
-                  #{t}
+              {tags.map((tg) => (
+                <span key={tg} className="chip">
+                  #{tg}
                 </span>
               ))}
             </div>
 
             <div className="book-detail__buy">
               <div className="book-detail__price">
-                <span>السعر</span>
+                <span>{t('book.price')}</span>
                 <strong>{formatPrice(book.price)}</strong>
               </div>
               {buyHref ? (
@@ -118,27 +130,27 @@ export default function BookDetail() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  اشترِ الآن من Gumroad
+                  {t('book.buyGumroad')}
                 </a>
               ) : (
                 <button
                   className="snipcart-add-item btn btn--primary btn--lg"
                   data-item-id={book.id}
-                  data-item-name={book.title}
+                  data-item-name={title}
                   data-item-price={book.price}
                   data-item-url={typeof window !== 'undefined' ? `${window.location.origin}/book/${book.slug}` : `https://dar-ma3rifa.example/book/${book.slug}`}
-                  data-item-description={book.description}
+                  data-item-description={desc}
                   data-item-image={`/covers/${book.cover}`}
                   data-item-file-guid={`${book.id}-download`}
                   data-item-metadata='{"format":"PDF+EPUB"}'
                 >
-                  اشترِ الآن وأضف للسلة
+                  {t('book.buy')}
                 </button>
               )}
 
               {book.downloadUrl && (
                 <a className="btn btn--ghost btn--lg" href={book.downloadUrl} download>
-                  ⬇ تحميل نموذج PDF
+                  {t('book.download')}
                 </a>
               )}
 
@@ -155,13 +167,13 @@ export default function BookDetail() {
                 <input
                   type="email"
                   required
-                  placeholder="بريدك لتأكيد الطلب"
+                  placeholder={t('book.emailPlaceholder')}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="book-detail__email-input"
                 />
                 <button type="submit" className="btn btn--ghost btn--sm" disabled={busy || !email}>
-                  {busy ? '...' : 'أطلب عبر الإيميل'}
+                  {busy ? '...' : t('book.orderEmail')}
                 </button>
               </form>
               {status && (
@@ -171,7 +183,9 @@ export default function BookDetail() {
               )}
             </div>
             <p className="book-detail__note">
-              ✔ تسليم فوري · ✔ روابط تحميل دائمة · ✔ ضمان استرداد 7 أيام
+              {lang === 'ar'
+                ? '✔ تسليم فوري · ✔ روابط تحميل دائمة · ✔ ضمان استرداد 7 أيام'
+                : '✔ Instant delivery · ✔ Permanent download links · ✔ 7-day refund guarantee'}
             </p>
           </motion.div>
         </div>
@@ -180,7 +194,7 @@ export default function BookDetail() {
       {related.length > 0 && (
         <div className="container">
           <div className="section__head section__head--left">
-            <h2 className="section__title">كتب ذات صلة</h2>
+            <h2 className="section__title">{t('book.related')}</h2>
           </div>
           <div className="book-grid">
             {related.map((b, i) => (

@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import HtmlLang from './components/HtmlLang';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import BookDetail from './pages/BookDetail';
@@ -11,6 +12,7 @@ import NotFound from './pages/NotFound';
 export default function App() {
   return (
     <>
+      <HtmlLang />
       <Navbar />
       <main>
         <Routes>

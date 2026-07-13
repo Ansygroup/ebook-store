@@ -3,14 +3,17 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import BookDetail from '../pages/BookDetail';
 import { books } from '../data/books';
+import { LanguageProvider } from '../i18n/LanguageContext';
 
 function renderDetail(slug: string) {
   return render(
-    <MemoryRouter initialEntries={[`/book/${slug}`]}>
-      <Routes>
-        <Route path="/book/:slug" element={<BookDetail />} />
-      </Routes>
-    </MemoryRouter>,
+    <LanguageProvider>
+      <MemoryRouter initialEntries={[`/book/${slug}`]}>
+        <Routes>
+          <Route path="/book/:slug" element={<BookDetail />} />
+        </Routes>
+      </MemoryRouter>
+    </LanguageProvider>,
   );
 }
 
@@ -19,10 +22,11 @@ describe('BookDetail page', () => {
     const book = books[0];
     renderDetail(book.slug);
     const h1 = screen.getByRole('heading', { level: 1 });
-    expect(h1.textContent).toBe(book.title);
-    expect(screen.getByText(book.author)).toBeInTheDocument();
+    // العنوان المعروض هو العربي (الافتراضي)
+    expect(h1.textContent).toBe(book.titleAr);
+    expect(screen.getByText(book.authorAr)).toBeInTheDocument();
     expect(
-      screen.getByText((content) => content.includes(`${book.pages} صفحة`)),
+      screen.getByText((content) => content.includes(`${book.pages}`)),
     ).toBeInTheDocument();
   });
 

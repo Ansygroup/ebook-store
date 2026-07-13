@@ -1,10 +1,10 @@
-import type { Book } from '../types';
+import type { Book, Lang } from '../types';
 import booksData from './books.json';
 
 export const books: Book[] = booksData as Book[];
 
 export const categories: string[] = Array.from(
-  new Set(books.map((b) => b.category)),
+  new Set(books.map((b) => b.categoryAr)),
 );
 
 export function getBookBySlug(slug: string): Book | undefined {
@@ -20,4 +20,13 @@ export const currencyFormatter = new Intl.NumberFormat('en-US', {
 
 export function formatPrice(price: number): string {
   return currencyFormatter.format(price);
+}
+
+// اختيار الحقل المناسب حسب اللغة
+export function pick<T = string>(book: Book, field: keyof Book, lang: Lang): T {
+  if (lang === 'en') {
+    const en = book[`${String(field)}En` as keyof Book];
+    if (en) return en as T;
+  }
+  return book[`${String(field)}Ar` as keyof Book] as T;
 }
