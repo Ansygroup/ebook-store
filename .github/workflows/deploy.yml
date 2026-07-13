@@ -35,6 +35,9 @@ jobs:
         run: npm run build
         env:
           VITE_SNIPCART_API_KEY: ${{ secrets.VITE_SNIPCART_API_KEY }}
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          GMAIL_ACCOUNT: ${{ secrets.GMAIL_ACCOUNT }}
+          SELLER_EMAIL: ${{ secrets.SELLER_EMAIL }}
 
       - name: Deploy to Vercel (production)
         uses: amondnet/vercel-action@v25
@@ -44,3 +47,5 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           vercel-args: "--prod"
           working-directory: ./
+        env:
+          VERCEL_PROTECTION_DISABLED: 1
