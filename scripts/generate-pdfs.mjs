@@ -44,6 +44,6 @@ function makePdf(meta) {
 }
 
 books.forEach((b) => {
-  writeFileSync(resolve(root, `public/downloads/${b.id}.pdf`), makePdf(b));
+  writeFileSync(resolve(root, `public/downloads/${b.slug}.pdf`), makePdf(b));
 });
 console.log(`✅ ولّدت ${books.length} ملف PDF تجريبي في public/downloads/`);
