@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
  * generate-promo.mjs — يولّد 10 صور ترويجية للإنستغرام (1080x1080) لكل كتاب.
- * نمط موحّد: خلفية متدرجة + غلاف الكتاب + عنوان + سعر + CTA.
- * تُستخدم لاحقًا مع cron IG (f3d80ba9beeb) أو نشر يدوي.
+ * يستخدم sharp (npm) — متوافق مع CI بدون تثبيت system.
+ * النمط: خلفية متدرجة + غلاف الكتاب + عنوان + سعر + CTA.
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { execSync } from 'node:child_process';
+import sharp from 'sharp';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
@@ -28,59 +28,41 @@ const palettes = {
   'اللغات': ['#0891b2', '#22d3ee'],
 };
 
-function escapeXml(s) {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;').replace(/'/g, '&apos;');
-}
-
-books.forEach((b) => {
-  const [c1, c2] = palettes[b.categoryAr] || ['#6d5efc', '#a78bfa'];
-  const title = escapeXml(b.title);
-  const price = `$${b.price}`;
-  const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+function svgFor(book, c1, c2) {
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return Buffer.from(`<svg width="1080" height="1080" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0b0d17"/>
-      <stop offset="100%" stop-color="#1a1f3a"/>
+      <stop offset="0%" stop-color="#0b0d17"/><stop offset="100%" stop-color="#1a1f3a"/>
     </linearGradient>
     <radialGradient id="glow" cx="50%" cy="35%" r="60%">
-      <stop offset="0%" stop-color="${c1}" stop-opacity="0.45"/>
-      <stop offset="100%" stop-color="${c1}" stop-opacity="0"/>
+      <stop offset="0%" stop-color="${c1}" stop-opacity="0.45"/><stop offset="100%" stop-color="${c1}" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1080" height="1080" fill="url(#bg)"/>
   <rect width="1080" height="1080" fill="url(#glow)"/>
-
-  <!-- book cover -->
-  <image href="/covers/${b.cover}" x="390" y="120" width="300" height="450" preserveAspectRatio="xMidYMid slice"/>
+  <image href="/covers/${book.cover}" x="390" y="120" width="300" height="450" preserveAspectRatio="xMidYMid slice"/>
   <rect x="390" y="120" width="300" height="450" fill="none" stroke="${c1}" stroke-width="3" rx="8"/>
-
-  <!-- title -->
-  <text x="540" y="660" font-family="Tahoma" font-size="56" fill="#ffffff" text-anchor="middle" font-weight="bold">${title}</text>
-
-  <!-- author -->
-  <text x="540" y="720" font-family="Tahoma" font-size="30" fill="#9aa0c7" text-anchor="middle">${escapeXml(b.author)}</text>
-
-  <!-- price badge -->
+  <text x="540" y="660" font-family="Tahoma" font-size="56" fill="#ffffff" text-anchor="middle" font-weight="bold">${esc(book.title)}</text>
+  <text x="540" y="720" font-family="Tahoma" font-size="30" fill="#9aa0c7" text-anchor="middle">${esc(book.author)}</text>
   <rect x="440" y="770" width="200" height="64" rx="32" fill="${c2}" opacity="0.18"/>
-  <text x="540" y="813" font-family="Tahoma" font-size="34" fill="${c2}" text-anchor="middle" font-weight="bold">${price} • PDF+EPUB</text>
-
-  <!-- CTA -->
+  <text x="540" y="813" font-family="Tahoma" font-size="34" fill="${c2}" text-anchor="middle" font-weight="bold">$${book.price} • PDF+EPUB</text>
   <text x="540" y="930" font-family="Tahoma" font-size="28" fill="#c4c8e8" text-anchor="middle">📚 دار المعرفة — رابط في البايو</text>
   <text x="540" y="975" font-family="Tahoma" font-size="22" fill="#5b608f" text-anchor="middle">ebook-store.vercel.app</text>
-</svg>`;
+</svg>`);
+}
 
-  const svgPath = `${outDir}/${b.slug}.tmp.svg`;
-  writeFileSync(svgPath, svg);
-  const pngPath = `${outDir}/${b.slug}.png`;
+let ok = 0;
+for (const b of books) {
+  const [c1, c2] = palettes[b.categoryAr] || ['#6d5efc', '#a78bfa'];
+  const svg = svgFor(b, c1, c2);
+  const pngPath = resolve(outDir, `${b.slug}.png`);
   try {
-    execSync(`magick -density 150 -background none "${svgPath}" -resize 1080x1080 "${pngPath}"`);
+    await sharp(svg, { density: 150 }).resize(1080, 1080).png().toFile(pngPath);
+    ok++;
     console.log(`✅ ${b.slug}.png`);
   } catch (e) {
     console.error(`❌ ${b.slug}:`, e.message);
   }
-  try { execSync(`rm -f "${svgPath}"`); } catch {}
-});
-
-console.log(`\n📸 ${books.length} صور ترويجية جاهزة في public/promo/`);
+}
+console.log(`\n📸 ${ok}/${books.length} صور ترويجية جاهزة في public/promo/`);
