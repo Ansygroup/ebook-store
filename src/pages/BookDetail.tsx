@@ -20,7 +20,7 @@ export default function BookDetail() {
       const r = await fetch('/api/confirm-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, slug: book.slug }),
+        body: JSON.stringify({ email, slug: book.slug, honeypot: '' }),
       });
       const j = await r.json();
       setStatus(j.ok ? { ok: true, msg: '✅ تم إرسال رابط التحميل إلى بريدك' } : { ok: false, msg: '❌ ' + (j.error || 'تعذر الطلب') });
@@ -143,6 +143,15 @@ export default function BookDetail() {
               )}
 
               <form className="book-detail__email" onSubmit={orderByEmail}>
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hp-field"
+                  style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+                  onChange={() => {}}
+                />
                 <input
                   type="email"
                   required

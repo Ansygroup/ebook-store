@@ -5,19 +5,51 @@ const SITE = 'https://ebook-store-ansygroups-projects.vercel.app';
 const GMAIL_ACCOUNT = process.env.GMAIL_ACCOUNT || 'ca_BmQnzbsU5u3T';
 const SELLER_EMAIL = process.env.SELLER_EMAIL || 'sales@ebook-store.dev';
 
+// ── simple in-memory rate limit: 5 requests / 10 min per email ──
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_PER_WINDOW = 5;
+const hits = new Map<string, number[]>();
+function rateLimited(key: string): boolean {
+  const now = Date.now();
+  const arr = (hits.get(key) || []).filter((t) => now - t < WINDOW_MS);
+  if (arr.length >= MAX_PER_WINDOW) {
+    hits.set(key, arr);
+    return true;
+  }
+  arr.push(now);
+  hits.set(key, arr);
+  return false;
+}
+
 export default async function handler(req: any, res: any) {
   if (req.method !== 'POST') {
     res.status(405).json({ ok: false, error: 'Method not allowed' });
     return;
   }
+
+  const origin = (req.headers?.origin || req.headers?.referer || '') as string;
+  if (origin && !origin.startsWith(SITE) && !origin.includes('localhost')) {
+    res.status(403).json({ ok: false, error: 'Forbidden' });
+    return;
+  }
+
   const apiKey = process.env.COMPOSIO_API_KEY;
   if (!apiKey) {
     res.status(500).json({ ok: false, error: 'COMPOSIO_API_KEY not configured' });
     return;
   }
-  const { email } = req.body || {};
-  if (!email || !/^[^@\s]+@[^@\s]+.[^@\s]+$/.test(email)) {
+
+  const { email, honeypot } = req.body || {};
+  if (honeypot) {
+    res.status(200).json({ ok: true, messageId: 'blocked' });
+    return;
+  }
+  if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     res.status(400).json({ ok: false, error: 'Valid email required' });
+    return;
+  }
+  if (rateLimited(email)) {
+    res.status(429).json({ ok: false, error: 'Too many requests, try later' });
     return;
   }
 

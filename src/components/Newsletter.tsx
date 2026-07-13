@@ -15,7 +15,7 @@ export default function Newsletter() {
       const r = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, honeypot: '' }),
       });
       const j = await r.json();
       setStatus(
@@ -48,6 +48,15 @@ export default function Newsletter() {
             </p>
           </div>
           <form className="newsletter__form" onSubmit={subscribe}>
+            <input
+              type="text"
+              name="website"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+              onChange={() => {}}
+            />
             <input
               type="email"
               required

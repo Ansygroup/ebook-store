@@ -109,4 +109,43 @@ describe('confirm-order API', () => {
       fs.writeFileSync(file, original); // ارجع الملف كما كان
     }
   });
+
+  it('يرفض طلب honeypot (بوت)', async () => {
+    const res = mkRes();
+    await handler(
+      { method: 'POST', body: { email: 'a@b.com', slug: 'the-influential-leader', honeypot: 'spam' } } as any,
+      res as any,
+    );
+    expect(res._code).toBe(200); // يرد بنجاح صامت
+    expect(res._json.ok).toBe(true);
+    expect(sent.length).toBe(0); // لا إيميل أُرسل
+  });
+
+  it('يرفض طلب من origin خارجي', async () => {
+    const res = mkRes();
+    await handler(
+      {
+        method: 'POST',
+        headers: { origin: 'https://evil.example' },
+        body: { email: 'a@b.com', slug: 'the-influential-leader' },
+      } as any,
+      res as any,
+    );
+    expect(res._code).toBe(403);
+  });
+
+  it('يحدّ الحد الأقصى للطلبات (rate limit)', async () => {
+    let lastCode = 0;
+    for (let i = 0; i < 7; i++) {
+      const res = mkRes();
+      await handler(
+        { method: 'POST', body: { email: 'ratelimit@b.com', slug: 'the-influential-leader' } } as any,
+        res as any,
+      );
+      lastCode = res._code;
+    }
+    // أول 5 نجحت (200)، الباقي 429
+    expect([200, 429]).toContain(lastCode);
+    expect(lastCode).toBe(429);
+  });
 });
