@@ -23,10 +23,10 @@ export default function Footer() {
         </div>
 
         <div className="footer__col">
-          <h4>الدعم</h4>
+          <h4>القانونية</h4>
+          <Link to="/privacy">سياسة الخصوصية</Link>
+          <Link to="/terms">الشروط والأحكام</Link>
           <a href="mailto:support@dar-ma3rifa.example">البريد الإلكتروني</a>
-          <a href="/#faq">سياسة الاسترداد</a>
-          <a href="/#faq">طريقة التسليم</a>
         </div>
       </div>
       <div className="footer__bottom container">

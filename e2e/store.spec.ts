@@ -109,3 +109,19 @@ test('email-order form calls /api/confirm-order', async ({ page }) => {
     expect(body.slug).toBe('the-influential-leader');
   }
 });
+
+test('404, privacy and terms pages render', async ({ page }) => {
+  // 404 page renders (dev SPA returns 200, so assert content not status)
+  await page.goto('/this-page-does-not-exist');
+  await expect(page.getByText('404')).toBeVisible();
+
+  // Privacy + Terms render
+  await page.goto('/privacy');
+  await expect(
+    page.getByRole('heading', { name: /سياسة الخصوصية/ }),
+  ).toBeVisible();
+  await page.goto('/terms');
+  await expect(
+    page.getByRole('heading', { name: /الشروط والأحكام/ }),
+  ).toBeVisible();
+});
