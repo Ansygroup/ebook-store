@@ -88,10 +88,10 @@ describe('confirm-order API', () => {
   });
 
   it('يستخدم رابط Gumroad الحقيقي إن وُجد', async () => {
-    // نعدّل books.json مؤقتًا لإضافة gumroadUrl لكتاب حقيقي
+    // نعدّل public/books.json مؤقتًا (الـ API يقرأ منه فعليًا)
     const fs = await import('node:fs');
     const path = await import('node:path');
-    const file = path.join(process.cwd(), 'src/data/books.json');
+    const file = path.join(process.cwd(), 'public/books.json');
     const original = fs.readFileSync(file, 'utf8');
     const arr = JSON.parse(original);
     const target = arr.find((b: any) => b.slug === REAL_BOOK_WITH_GUMROAD);
