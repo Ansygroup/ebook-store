@@ -2,15 +2,24 @@ node_modules
 dist
 dist-ssr
 *.local
+# Secrets / keys (never commit real credentials)
 .env
 .env.*
 !.env.example
-playwright-report
-test-results
+*.token
+*.key
+**/vercel_token
+**/composio_key
+gumroad-links.json
+scripts/set-gh-secrets.py
+
 coverage
 .DS_Store
+# Generated assets (built during CI)
 public/downloads/*
 !public/downloads/README.md
+public/promo/*
+!public/promo/README.md
 
 .vercel
 scripts/set-gh-secrets.py
