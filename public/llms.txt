@@ -3,16 +3,16 @@
 > Arabic RTL e-book store with 10 expertly crafted titles in leadership, business, productivity, and self-development. Bilingual (AR/EN).
 
 ## Books
-- [The Influential Leader]( https://ansygroup.github.io/ebook-store/book/the-influential-leader) — A practical guide to developing leadership that inspires your team and builds a high-performance culture. ($19.99)
-- [Build Your Empire]( https://ansygroup.github.io/ebook-store/book/build-your-empire) — A complete roadmap to launch your startup and grow it to profitability. ($24.99)
-- [Deep Productivity]( https://ansygroup.github.io/ebook-store/book/deep-productivity) — A work style focused on depth over fake busyness that doubles your output. ($14.99)
-- [Design Your Mindset]( https://ansygroup.github.io/ebook-store/book/design-your-mindset) — Reprogram your limiting beliefs and build a growth mindset that never stops learning. ($12.99)
-- [Tech for Everyone]( https://ansygroup.github.io/ebook-store/book/tech-for-everyone) — Understand the basics of programming and AI without a technical background. ($17.99)
-- [Health Without Limits]( https://ansygroup.github.io/ebook-store/book/health-without-limits) — An integrated lifestyle system for energy, focus, and sustainable wellbeing. ($9.99)
-- [The Art of Negotiation]( https://ansygroup.github.io/ebook-store/book/art-of-negotiation) — Learn the art of persuasion and agreement with confidence at work and in daily life. ($15.99)
-- [Smart Investing]( https://ansygroup.github.io/ebook-store/book/smart-investing) — Fundamentals of building long-term wealth with disciplined, thoughtful steps. ($21.99)
-- [Content Craft]( https://ansygroup.github.io/ebook-store/book/content-writing) — Write content that sells and builds a loyal audience around your brand. ($13.99)
-- [Learn Languages]( https://ansygroup.github.io/ebook-store/book/learn-languages) — A practical method to master any language in record time without a teacher. ($11.99)
+- [The Influential Leader](https://ansygroup.github.io/ebook-store/book/the-influential-leader) — A practical guide to developing leadership that inspires your team and builds a high-performance culture. ($19.99)
+- [Build Your Empire](https://ansygroup.github.io/ebook-store/book/build-your-empire) — A complete roadmap to launch your startup and grow it to profitability. ($24.99)
+- [Deep Productivity](https://ansygroup.github.io/ebook-store/book/deep-productivity) — A work style focused on depth over fake busyness that doubles your output. ($14.99)
+- [Design Your Mindset](https://ansygroup.github.io/ebook-store/book/design-your-mindset) — Reprogram your limiting beliefs and build a growth mindset that never stops learning. ($12.99)
+- [Tech for Everyone](https://ansygroup.github.io/ebook-store/book/tech-for-everyone) — Understand the basics of programming and AI without a technical background. ($17.99)
+- [Health Without Limits](https://ansygroup.github.io/ebook-store/book/health-without-limits) — An integrated lifestyle system for energy, focus, and sustainable wellbeing. ($9.99)
+- [The Art of Negotiation](https://ansygroup.github.io/ebook-store/book/art-of-negotiation) — Learn the art of persuasion and agreement with confidence at work and in daily life. ($15.99)
+- [Smart Investing](https://ansygroup.github.io/ebook-store/book/smart-investing) — Fundamentals of building long-term wealth with disciplined, thoughtful steps. ($21.99)
+- [Content Craft](https://ansygroup.github.io/ebook-store/book/content-writing) — Write content that sells and builds a loyal audience around your brand. ($13.99)
+- [Learn Languages](https://ansygroup.github.io/ebook-store/book/learn-languages) — A practical method to master any language in record time without a teacher. ($11.99)
 
 ## Pages
 - [Home](https://ansygroup.github.io/ebook-store/)

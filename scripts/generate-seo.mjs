@@ -53,7 +53,7 @@ const llms = `# Dar Al-Maarifa E-Book Store
 > Arabic RTL e-book store with 10 expertly crafted titles in leadership, business, productivity, and self-development. Bilingual (AR/EN).
 
 ## Books
-${books.map((b) => `- [${b.titleEn || b.title}]( ${SITE}/book/${b.slug}) — ${b.descriptionEn || b.description} ($${b.price})`).join('\n')}
+${books.map((b) => `- [${b.titleEn || b.title}](${SITE}/book/${b.slug}) — ${b.descriptionEn || b.description} ($${b.price})`).join('\n')}
 
 ## Pages
 - [Home](${SITE}/)
