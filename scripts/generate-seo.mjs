@@ -6,7 +6,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const SITE = 'https://ebook-store-cxm4obhkq-ansygroups-projects.vercel.app';
+const SITE = 'https://ebook-store-ansygroups-projects.vercel.app';
 const books = JSON.parse(
   (await import('node:fs')).readFileSync('src/data/books.json', 'utf8'),
 );
