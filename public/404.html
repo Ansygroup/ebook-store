@@ -2,40 +2,126 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 — الصفحة غير موجودة | دار المعرفة</title>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body {
-        font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-        background: #0b0d17;
-        color: #fff;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 1rem;
-        padding: 2rem;
+    <meta name="theme-color" content="#0b0d17" />
+    <meta
+      name="description"
+      content="دار المعرفة — متجر احترافي للكتب الإلكترونية. اكتشف أفضل الكتب في القيادة والأعمال والإنتاجية وحمّلها فورًا."
+    />
+    <link rel="canonical" href="https://ansygroup.github.io/ebook-store/" />
+    <!-- hreflang: same content, two language versions (GEO/SEO) -->
+    <link rel="alternate" hreflang="ar" href="https://ansygroup.github.io/ebook-store/?lang=ar" />
+    <link rel="alternate" hreflang="en" href="https://ansygroup.github.io/ebook-store/?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://ansygroup.github.io/ebook-store/" />
+    <title>دار المعرفة · متجر الكتب الإلكترونية</title>
+
+    <!-- JSON-LD: speaks both languages for LLMs (GEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BookStore",
+      "name": "Dar Al-Maarifa",
+      "name:ar": "دار المعرفة",
+      "url": "https://ansygroup.github.io/ebook-store/",
+      "description": "The ebook store — leadership, business & productivity ebooks from $9.99. Instant PDF download.",
+      "description:ar": "متجر الكتب الإلكترونية — كتب القيادة والأعمال والإنتاجية من 9.99$. تحميل PDF فوري.",
+      "inLanguage": ["ar", "en"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ansygroup.github.io/ebook-store/shop"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "E-Book Catalog",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "The Influential Leader", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "19.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "Build Your Empire", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "24.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "Deep Productivity", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "14.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "Design Your Mindset", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "12.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "Tech for Everyone", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "17.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "Health Without Limits", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "9.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "The Art of Negotiation", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "15.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "Smart Investing", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "21.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "Content Craft", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "13.99", "priceCurrency": "USD" },
+          { "@type": "Offer", "itemOffered": { "@type": "Book", "name": "Learn Languages", "bookFormat": "EBook", "inLanguage": "ar" }, "price": "11.99", "priceCurrency": "USD" }
+        ]
       }
-      h1 { font-size: 5rem; color: #6d5efc; margin: 0; }
-      p { color: #9b98b8; font-size: 1.2rem; }
-      a {
-        margin-top: 1rem;
-        background: linear-gradient(90deg, #6d5efc, #00e0ff);
-        color: #0b0d17;
-        padding: 0.75rem 1.75rem;
-        border-radius: 999px;
-        text-decoration: none;
-        font-weight: 700;
-      }
-    </style>
-    <meta name="robots" content="noindex" />
+    }
+    </script>
+
+    <!-- JSON-LD: FAQ (AEO / AI Overview) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "ما هو متجر دار المعرفة؟", "acceptedAnswer": { "@type": "Answer", "text": "متجر عربي للكتب الإلكترونية يضم 10 كتب احترافية في القيادة والأعمال والإنتاجية والتطوير الذاتي، متاحة بالعربية والإنجليزية مع تحميل PDF فوري." } },
+        { "@type": "Question", "name": "كم سعر الكتب الإلكترونية؟", "acceptedAnswer": { "@type": "Answer", "text": "الأسعار تبدأ من 9.99$ وتصل إلى 24.99$ حسب الكتاب، مع دفع آمن عبر Gumroad." } },
+        { "@type": "Question", "name": "هل الكتب متاحة باللغة العربية والإنجليزية؟", "acceptedAnswer": { "@type": "Answer", "text": "نعم، كل الكتب تدعم العربية والإنجليزية، والمتجر يبدّل بين اللغتين بنقرة واحدة." } },
+        { "@type": "Question", "name": "كيف أحصل على الكتاب بعد الشراء؟", "acceptedAnswer": { "@type": "Answer", "text": "بعد الدفع عبر Gumroad يصلك رابط التحميل فورًا، كما يصلك تأكيد على بريدك مع رابط PDF." } },
+        { "@type": "Question", "name": "هل التحميل فوري؟", "acceptedAnswer": { "@type": "Answer", "text": "نعم، جميع الكتب بصيغة PDF جاهزة للتحميل الفوري بعد إتمام الطلب." } }
+      ]
+    }
+    </script>
+
+    <!-- Open Graph (فيسبوك/واتساب/لينكدإن) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:site_name" content="دار المعرفة" />
+    <meta property="og:title" content="دار المعرفة · متجر الكتب الإلكترونية" />
+    <meta
+      property="og:description"
+      content="دار المعرفة — متجر احترافي للكتب الإلكترونية. اكتشف أفضل الكتب في القيادة والأعمال والإنتاجية وحمّلها فورًا."
+    />
+    <meta
+      property="og:image"
+      content="https://ansygroup.github.io/ebook-store/og-cover.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:url"
+      content="https://ansygroup.github.io/ebook-store/"
+    />
+
+    <!-- Content Security Policy (يسمح لـ API على Vercel + Snipcart) -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' https://cdn.snipcart.com; connect-src 'self' https://api.snipcart.com https://ebook-store-ansygroups-projects.vercel.app"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="دار المعرفة · متجر الكتب الإلكترونية" />
+    <meta
+      name="twitter:description"
+      content="دار المعرفة — متجر احترافي للكتب الإلكترونية. اكتشف أفضل الكتب في القيادة والأعمال والإنتاجية وحمّلها فورًا."
+    />
+    <meta
+      name="twitter:image"
+      content="https://ansygroup.github.io/ebook-store/og-cover.png"
+    />
+
+    <!-- Snipcart (السلة والدفع) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css"
+    />
+    <script
+      async
+      src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"
+    ></script>
+    <div
+      hidden
+      id="snipcart"
+      data-api-key="%VITE_SNIPCART_API_KEY%"
+      data-config-modal-style="side"
+      data-config-currency="USD"
+    ></div>
   </head>
   <body>
-    <h1>404</h1>
-    <p>عذرًا، الصفحة التي تبحث عنها غير موجودة.</p>
-    <a href="/">العودة للرئيسية</a>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
