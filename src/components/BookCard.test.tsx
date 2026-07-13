@@ -24,14 +24,13 @@ describe('BookCard', () => {
     expect(screen.getByText('$19.99')).toBeInTheDocument();
   });
 
-  it('add-to-cart button carries correct Snipcart data attributes', () => {
+  it('buy button links to Gumroad (or book page fallback)', () => {
     const { container } = renderCard('build-your-empire');
-    const btn = container.querySelector('.snipcart-add-item') as HTMLElement;
+    const btn = container.querySelector('a.btn--primary') as HTMLElement;
     expect(btn).toBeTruthy();
-    expect(btn.getAttribute('data-item-id')).toBe('build-empire');
-    expect(btn.getAttribute('data-item-name')).toBe('بناء إمبراطورية');
-    expect(btn.getAttribute('data-item-price')).toBe('24.99');
-    expect(btn.getAttribute('data-item-file-guid')).toBe('build-empire-download');
+    // placeholder gumroadUrl → falls back to book page
+    expect(btn.getAttribute('href')).toContain('/book/build-your-empire');
+    expect(btn.getAttribute('target')).toBe('_blank');
   });
 
   it('links to the book detail page', () => {

@@ -15,7 +15,6 @@ export default function BookCard({ book, index = 0 }: Props) {
   const title = pick<string>(book, 'title', lang);
   const author = pick<string>(book, 'author', lang);
   const category = pick<string>(book, 'category', lang);
-  const desc = pick<string>(book, 'description', lang);
   return (
     <motion.article
       className="book-card"
@@ -48,30 +47,14 @@ export default function BookCard({ book, index = 0 }: Props) {
 
         <div className="book-card__footer">
           <span className="book-card__price">{formatPrice(book.price)}</span>
-          {buyHref ? (
-            <a
-              className="btn btn--primary btn--sm"
-              href={buyHref}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {lang === 'ar' ? 'اشترِ الآن' : 'Buy now'}
-            </a>
-          ) : (
-            <button
-              className="snipcart-add-item btn btn--primary btn--sm"
-              data-item-id={book.id}
-              data-item-name={title}
-              data-item-price={book.price}
-              data-item-url={typeof window !== 'undefined' ? `${window.location.origin}/book/${book.slug}` : `https://dar-ma3rifa.example/book/${book.slug}`}
-              data-item-description={desc}
-              data-item-image={`/covers/${book.cover}`}
-              data-item-file-guid={`${book.id}-download`}
-              data-item-metadata='{"format":"PDF+EPUB"}'
-            >
-              {lang === 'ar' ? 'أضف للسلة' : 'Add to cart'}
-            </button>
-          )}
+          <a
+            className="btn btn--primary btn--sm"
+            href={buyHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {lang === 'ar' ? 'اشترِ الآن' : 'Buy now'}
+          </a>
         </div>
       </div>
     </motion.article>

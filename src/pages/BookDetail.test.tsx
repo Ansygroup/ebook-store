@@ -30,13 +30,14 @@ describe('BookDetail page', () => {
     ).toBeInTheDocument();
   });
 
-  it('shows the buy button with the correct Snipcart payload', () => {
+  it('shows the buy button linking to Gumroad (or book page fallback)', () => {
     const book = books[1];
     const { container } = renderDetail(book.slug);
-    const btn = container.querySelector('.snipcart-add-item') as HTMLElement;
-    expect(btn.getAttribute('data-item-id')).toBe(book.id);
-    expect(btn.getAttribute('data-item-price')).toBe(String(book.price));
-    expect(btn.getAttribute('data-item-file-guid')).toBe(`${book.id}-download`);
+    const btn = container.querySelector('a.btn--primary') as HTMLElement;
+    expect(btn).toBeTruthy();
+    // placeholder gumroadUrl → falls back to book page
+    expect(btn.getAttribute('href')).toContain(`/book/${book.slug}`);
+    expect(btn.getAttribute('target')).toBe('_blank');
   });
 
   it('handles an unknown slug with a not-found message', () => {

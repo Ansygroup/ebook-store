@@ -31,10 +31,13 @@ export function pick<T = string>(book: Book, field: keyof Book, lang: Lang): T {
   return book[`${String(field)}Ar` as keyof Book] as T;
 }
 
-// رابط Gumroad الحقيقي (بدون placeholders) — يفتح overlay مباشرة
-export function gumroadHref(book: Book): string | undefined {
+// رابط الشراء: Gumroad لو موجود، وإلا صفحة الكتاب (fallback)
+export function gumroadHref(book: Book): string {
   const u = book.gumroadUrl;
-  if (!u || u.includes('REPLACE_WITH_YOUR_LINK')) return undefined;
-  // أضف ?wanted=true عشان يفتح overlay الشراء مباشرة
-  return u.includes('?') ? `${u}&wanted=true` : `${u}?wanted=true`;
+  if (u && !u.includes('REPLACE_WITH_YOUR_LINK')) {
+    // أضف ?wanted=true عشان يفتح overlay الشراء مباشرة
+    return u.includes('?') ? `${u}&wanted=true` : `${u}?wanted=true`;
+  }
+  // placeholder بعد — افتح صفحة الكتاب (فيه تحميل PDF مجاني + نموذج طلب)
+  return `/book/${book.slug}`;
 }
