@@ -16,4 +16,5 @@ export interface Book {
   tags: string[];
   featured: boolean;
   gumroadUrl?: string;
+  downloadUrl?: string;
 }

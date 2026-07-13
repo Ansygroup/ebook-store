@@ -14,6 +14,7 @@
     "test:e2e:install": "playwright install chromium",
     "lint": "tsc --noEmit",
     "covers": "node scripts/generate-covers.mjs",
+    "pdfs": "node scripts/generate-pdfs.mjs",
     "check-env": "node scripts/setup-env.mjs",
     "deploy": "bash deploy.sh",
     "ig:promote": "node scripts/ig_promote.mjs",

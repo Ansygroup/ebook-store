@@ -24,7 +24,8 @@
       "تطوير"
     ],
     "featured": true,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_1"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_1",
+    "downloadUrl": "/downloads/lead-influencer.pdf"
   },
   {
     "id": "build-empire",
@@ -52,7 +53,8 @@
       "استثمار"
     ],
     "featured": false,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_2"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_2",
+    "downloadUrl": "/downloads/build-empire.pdf"
   },
   {
     "id": "deep-productivity",
@@ -79,7 +81,8 @@
       "عمل"
     ],
     "featured": true,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_3"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_3",
+    "downloadUrl": "/downloads/deep-productivity.pdf"
   },
   {
     "id": "design-your-mindset",
@@ -106,7 +109,8 @@
       "نمو"
     ],
     "featured": false,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_4"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_4",
+    "downloadUrl": "/downloads/design-your-mindset.pdf"
   },
   {
     "id": "tech-for-everyone",
@@ -134,7 +138,8 @@
       "تعلم"
     ],
     "featured": false,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_5"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_5",
+    "downloadUrl": "/downloads/tech-for-everyone.pdf"
   },
   {
     "id": "health-without-limits",
@@ -161,7 +166,8 @@
       "تغذية"
     ],
     "featured": true,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_6"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_6",
+    "downloadUrl": "/downloads/health-without-limits.pdf"
   },
   {
     "id": "art-of-negotiation",
@@ -188,7 +194,8 @@
       "مهارات"
     ],
     "featured": false,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_7"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_7",
+    "downloadUrl": "/downloads/art-of-negotiation.pdf"
   },
   {
     "id": "smart-investing",
@@ -216,7 +223,8 @@
       "تخطيط"
     ],
     "featured": true,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_8"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_8",
+    "downloadUrl": "/downloads/smart-investing.pdf"
   },
   {
     "id": "content-writing",
@@ -243,7 +251,8 @@
       "جمهور"
     ],
     "featured": false,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_9"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_9",
+    "downloadUrl": "/downloads/content-writing.pdf"
   },
   {
     "id": "learn-languages",
@@ -270,6 +279,7 @@
       "سرعة"
     ],
     "featured": false,
-    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_10"
+    "gumroadUrl": "https://gumroad.com/l/REPLACE_WITH_YOUR_LINK_10",
+    "downloadUrl": "/downloads/learn-languages.pdf"
   }
 ]

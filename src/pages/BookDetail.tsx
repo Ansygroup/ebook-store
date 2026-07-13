@@ -130,6 +130,12 @@ export default function BookDetail() {
                 </button>
               )}
 
+              {book.downloadUrl && (
+                <a className="btn btn--ghost btn--lg" href={book.downloadUrl} download>
+                  ⬇ تحميل نموذج PDF
+                </a>
+              )}
+
               <form className="book-detail__email" onSubmit={orderByEmail}>
                 <input
                   type="email"
