@@ -15,10 +15,10 @@ scripts/set-gh-secrets.py
 
 coverage
 .DS_Store
-# Generated assets (built during CI) — but promo MUST be published by Pages
+# Generated assets (built during CI)
 public/downloads/*
 !public/downloads/README.md
-# public/promo is generated then copied to dist by Vite — keep it tracked-ready
+# public/promo is generated during build then published by Pages — DO NOT ignore
 
 # dist is the build output — never ignore it (Pages artifact needs everything)
 !dist/
