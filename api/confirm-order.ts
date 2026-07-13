@@ -9,7 +9,7 @@ interface Book {
   description: string;
 }
 
-const SITE = 'https://ebook-store-mg5ynw9qq-ansygroups-projects.vercel.app';
+const SITE = 'https://ebook-store-cxm4obhkq-ansygroups-projects.vercel.app';
 const GMAIL_ACCOUNT = process.env.GMAIL_ACCOUNT || 'ca_BmQnzbsU5u3T';
 const SELLER_EMAIL = process.env.SELLER_EMAIL || 'sales@ebook-store.dev';
 
