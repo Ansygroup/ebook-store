@@ -62,7 +62,6 @@ export default function BookDetail() {
   const title = pick<string>(book, 'title', lang);
   const author = pick<string>(book, 'author', lang);
   const category = pick<string>(book, 'category', lang);
-  const desc = pick<string>(book, 'description', lang);
   const longDesc = pick<string>(book, 'longDescription', lang);
   const tags = pick<string[]>(book, 'tags', lang);
 
