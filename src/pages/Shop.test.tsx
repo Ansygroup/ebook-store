@@ -28,7 +28,7 @@ describe('Shop page', () => {
     const user = userEvent.setup();
     renderShop();
     const target = categories[0];
-    const expectedCount = books.filter((b) => b.categoryAr === target).length;
+    const expectedCount = books.filter((b) => b.categoryEn === target).length;
 
     await user.click(screen.getByRole('tab', { name: target }));
 
@@ -51,7 +51,7 @@ describe('Shop page', () => {
   it('marks the active category chip', async () => {
     const user = userEvent.setup();
     renderShop();
-    const chip = screen.getByRole('tab', { name: 'الكل' });
+    const chip = screen.getByRole('tab', { name: 'All' });
     expect(chip.className).toContain('is-active');
 
     await user.click(screen.getByRole('tab', { name: categories[0] }));

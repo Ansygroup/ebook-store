@@ -26,7 +26,7 @@ export const STRINGS = {
     'faq.title': 'الأسئلة الشائعة',
     'footer.privacy': 'سياسة الخصوصية',
     'footer.terms': 'الشروط والأحكام',
-    'lang.toggle': 'English',
+    'lang.toggle': 'العربية',
     'seo.siteName': 'دار المعرفة',
     'seo.tagline': 'متجر الكتب الإلكترونية',
     'home.featuredEyebrow': 'الأكثر طلباً',

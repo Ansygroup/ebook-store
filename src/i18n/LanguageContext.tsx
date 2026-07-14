@@ -12,7 +12,7 @@ const LanguageContext = createContext<Ctx | null>(null);
 const STORAGE_KEY = 'site-lang';
 
 function readInitial(): Lang {
-  if (typeof window === 'undefined') return 'ar';
+  if (typeof window === 'undefined') return 'en';
   try {
     const fromUrl = new URLSearchParams(window.location.search).get('lang');
     if (fromUrl === 'ar' || fromUrl === 'en') return fromUrl;
@@ -21,7 +21,7 @@ function readInitial(): Lang {
   } catch {
     /* no-op: localStorage unavailable */
   }
-  return 'ar';
+  return 'en';
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {

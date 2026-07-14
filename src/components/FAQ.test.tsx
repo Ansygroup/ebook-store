@@ -16,14 +16,14 @@ describe('FAQ accordion', () => {
       </LanguageProvider>,
     );
 
-    const firstQuestion = screen.getByText('كيف أستلم الكتاب بعد الشراء؟');
+    const firstQuestion = screen.getByText('How do I receive the book after purchase?');
     const button = firstQuestion.closest('button')!;
     expect(button).toHaveAttribute('aria-expanded', 'false');
 
     await user.click(button);
     expect(button).toHaveAttribute('aria-expanded', 'true');
     expect(
-      screen.getByText(/فور تأكيد الدفع، يظهر رابط التحميل/, { exact: false }),
+      screen.getByText(/Once payment is confirmed, the download link appears/, { exact: false }),
     ).toBeInTheDocument();
 
     await user.click(button);

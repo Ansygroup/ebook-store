@@ -19,8 +19,8 @@ function renderCard(slug: string) {
 describe('BookCard', () => {
   it('renders the book title, author and price', () => {
     renderCard('the-influential-leader');
-    expect(screen.getByText('القائد المؤثر')).toBeInTheDocument();
-    expect(screen.getByText('د. خالد المنصور')).toBeInTheDocument();
+    expect(screen.getByText('The Influential Leader')).toBeInTheDocument();
+    expect(screen.getByText('Dr. Khalid Al-Mansour')).toBeInTheDocument();
     expect(screen.getByText('$19.99')).toBeInTheDocument();
   });
 
@@ -35,7 +35,7 @@ describe('BookCard', () => {
 
   it('links to the book detail page', () => {
     renderCard('deep-productivity');
-    const links = screen.getAllByRole('link', { name: /الإنتاجية العميقة/ });
+    const links = screen.getAllByRole('link', { name: /Deep Productivity/ });
     expect(links.length).toBeGreaterThan(0);
     expect(links[0].getAttribute('href')).toBe('/book/deep-productivity');
   });

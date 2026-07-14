@@ -12,8 +12,8 @@ const faqs = [
   {
     qAr: 'هل الدفع آمن؟',
     qEn: 'Is payment secure?',
-    aAr: 'نعم. نستخدم Snipcart كبوابة دفع معتمدة تدعم بطاقات Visa/Mastercard وApple Pay. بيانات بطاقتك لا تمرّ عبر خوادمنا إطلاقاً.',
-    aEn: 'Yes. We use Snipcart, a trusted payment gateway supporting Visa/Mastercard and Apple Pay. Your card data never touches our servers.',
+    aAr: 'نعم. نستخدم Gumroad كبوابة دفع معتمدة تدعم بطاقات Visa/Mastercard وApple Pay. بيانات بطاقتك لا تمرّ عبر خوادمنا إطلاقاً.',
+    aEn: 'Yes. We use Gumroad, a trusted payment gateway supporting Visa/Mastercard and Apple Pay. Your card data never touches our servers.',
   },
   {
     qAr: 'هل يمكنني استرداد قيمة الكتاب؟',

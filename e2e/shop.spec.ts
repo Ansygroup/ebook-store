@@ -1,51 +1,46 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('متجر الكتب — RTL UI', () => {
-  test('الصفحة الرئيسية تحمّ الصفحة العربية RTL', async ({ page }) => {
+test.describe('Global Ebook Store — EN/LTR UI', () => {
+  test('home loads in English LTR by default', async ({ page }) => {
     await page.goto('/');
-    await expect(page).toHaveTitle(/دار المعرفة/);
-    // اتجاه RTL
+    await expect(page).toHaveTitle(/Global Ebook Store/);
     const dir = await page.getAttribute('html', 'dir');
-    expect(dir).toBe('rtl');
+    expect(dir).toBe('ltr');
     const lang = await page.getAttribute('html', 'lang');
-    expect(lang).toBe('ar');
+    expect(lang).toBe('en');
   });
 
-  test('صفحة المتجر تعرض 10 كتب مع أزرار شراء', async ({ page }) => {
+  test('shop page shows 10 books with buy buttons', async ({ page }) => {
     await page.goto('/shop');
     await page.waitForSelector('.book-card');
     const cards = await page.locator('.book-card').count();
     expect(cards).toBe(10);
-    // كل كتاب له زر شراء يفتح رابطًا خارجيًا
     const buyBtns = await page.locator('.book-card a.btn--primary').count();
     expect(buyBtns).toBe(10);
   });
 
-  test('صفحة تفاصيل الكتاب تعرض الغلاف والسعر', async ({ page }) => {
+  test('book detail shows cover and price', async ({ page }) => {
     await page.goto('/book/the-influential-leader');
     await page.waitForSelector('h1');
     const title = await page.textContent('h1');
-    expect(title).toContain('القائد المؤثر');
-    // صورة الغلاف محمّلة
+    expect(title).toContain('The Influential Leader');
     const img = page.locator('.book-detail__cover img, img').first();
     await expect(img).toBeVisible();
   });
 
-  test('التبديل للإنجليزية يعمل', async ({ page }) => {
+  test('switching to Arabic works', async ({ page }) => {
     await page.goto('/');
-    // زر تبديل اللغة (يحتوي نص EN/AR)
-    const toggle = page.locator('button:has-text("EN"), a:has-text("EN")').first();
+    const toggle = page.locator('button:has-text("العربية"), a:has-text("العربية")').first();
     if (await toggle.count()) {
       await toggle.click();
-      await expect(page).toHaveURL(/lang=en/);
+      await expect(page).toHaveURL(/lang=ar/);
     }
   });
 
-  test('نموذج النشرة (newsletter) يحتوي على honeypot مخفي', async ({ page }) => {
+  test('newsletter form has hidden honeypot', async ({ page }) => {
     await page.goto('/');
     const honey = page.locator('input.honeypot').first();
     if (await honey.count()) {
-      // الحقل مخفي بصريًا (بوتات فقط تملأه)
       const hidden = await honey.isHidden();
       expect(hidden).toBe(true);
     }

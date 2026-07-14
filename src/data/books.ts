@@ -4,7 +4,7 @@ import booksData from './books.json';
 export const books: Book[] = booksData as Book[];
 
 export const categories: string[] = Array.from(
-  new Set(books.map((b) => b.categoryAr)),
+  new Set(books.map((b) => b.categoryEn)),
 );
 
 export function getBookBySlug(slug: string): Book | undefined {

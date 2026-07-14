@@ -22,9 +22,9 @@ describe('BookDetail page', () => {
     const book = books[0];
     renderDetail(book.slug);
     const h1 = screen.getByRole('heading', { level: 1 });
-    // العنوان المعروض هو العربي (الافتراضي)
-    expect(h1.textContent).toBe(book.titleAr);
-    expect(screen.getByText(book.authorAr)).toBeInTheDocument();
+    // Displayed title is English (default)
+    expect(h1.textContent).toBe(book.titleEn);
+    expect(screen.getByText(book.authorEn)).toBeInTheDocument();
     expect(
       screen.getByText((content) => content.includes(`${book.pages}`)),
     ).toBeInTheDocument();
@@ -42,6 +42,6 @@ describe('BookDetail page', () => {
 
   it('handles an unknown slug with a not-found message', () => {
     renderDetail('nope');
-    expect(screen.getByText('الكتاب غير موجود')).toBeInTheDocument();
+    expect(screen.getByText('Book not found')).toBeInTheDocument();
   });
 });

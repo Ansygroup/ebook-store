@@ -12,7 +12,7 @@ export default function Shop() {
 
   const filtered = useMemo(() => {
     let list = books.filter(
-      (b) => activeCat === 'all' || b.categoryAr === activeCat,
+      (b) => activeCat === 'all' || b.categoryEn === activeCat,
     );
     if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price);
@@ -46,7 +46,7 @@ export default function Shop() {
               >
                 {c === 'all'
                   ? t('shop.all')
-                  : (lang === 'ar' ? c : (books.find((b) => b.categoryAr === c)?.categoryEn ?? c))}
+                  : c}
               </button>
             ))}
           </div>

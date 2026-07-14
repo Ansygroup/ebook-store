@@ -19,16 +19,16 @@ describe('Home page', () => {
   it('renders the hero headline and CTA', () => {
     renderHome();
     expect(
-      screen.getByRole('heading', { level: 1, name: /مسار حياتك المهنية/ }),
+      screen.getByRole('heading', { level: 1, name: /career trajectory/ }),
     ).toBeInTheDocument();
-    const ctas = screen.getAllByRole('link', { name: /تسوّق الآن/ });
+    const ctas = screen.getAllByRole('link', { name: /Shop now/ });
     expect(ctas.length).toBeGreaterThan(0);
   });
 
   it('shows all featured books in the grid', () => {
     renderHome();
     for (const b of featuredBooks) {
-      expect(screen.getAllByText(b.titleAr).length).toBeGreaterThan(0);
+      expect(screen.getAllByText(b.titleEn).length).toBeGreaterThan(0);
     }
   });
 
