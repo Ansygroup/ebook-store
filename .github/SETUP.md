@@ -1,25 +1,24 @@
-# أسرار GitHub المطلوبة للنشر المستمر (Settings → Secrets → Actions):
+# Required GitHub Secrets (Settings → Secrets → Actions):
 #
-#   VERCEL_TOKEN          من vercel.com/account/tokens
-#   VERCEL_ORG_ID         من .vercel/project.json  (orgId)
-#   VERCEL_PROJECT_ID     من .vercel/project.json  (projectId)
-#   VITE_SNIPCART_API_KEY مفتاح Snipcart العام (snipcart.com → Account → API Keys)
-#   COMPOSIO_API_KEY      من app.composio.dev (مفتاح API) — يشغّل تأكيد الطلبات عبر Gmail
-#   GMAIL_ACCOUNT         connected account لـ Gmail على Composio (افتراضي: ca_BmQnzbsU5u3T)
-#   SELLER_EMAIL          بريدك للتأكيدات (افتراضي: sales@ebook-store.dev)
+#   VERCEL_TOKEN          from vercel.com/account/tokens
+#   VERCEL_ORG_ID         from .vercel/project.json  (orgId)
+#   VERCEL_PROJECT_ID     from .vercel/project.json  (projectId)
+#   COMPOSIO_API_KEY      from app.composio.dev (API key) — powers order confirmation via Gmail
+#   GMAIL_ACCOUNT         connected Gmail account on Composio (default: ca_BmQnzbsU5u3T)
+#   SELLER_EMAIL          your confirmation email (default: sales@ebook-store.dev)
 #
-# بعد إضافتها وربط الريبو بـ GitHub، كل `git push` على main/master
-# يبني + يشغّل الفحوصات + ينشر على Vercel تلقائياً.
-# (VERCEL_PROTECTION_DISABLED=1 في CI يوقف حماية preview تلقائياً)
+# After adding them and linking the repo to GitHub, every `git push` to main/master
+# builds + runs tests + deploys to Vercel automatically.
+# (VERCEL_PROTECTION_DISABLED=1 in CI disables preview protection automatically)
 #
-# للنشر اليدوي المحلي بدون GitHub:
-#   export VERCEL_TOKEN="vcp_..." VITE_SNIPCART_API_KEY="pk_..."
+# For local manual deploy without GitHub:
+#   export VERCEL_TOKEN="vcp_..."
 #   npm run deploy
 #
-# ============ Composio (تأكيد الطلبات + تسويق IG) ============
-# تأكيد الطلبات: /api/confirm-order يستدعي Gmail عبر Composio proxy (يثبت شغّال).
-# تسويق IG: npm run ig:promote (يحتاج حساب IG مربوط — الحالي ca_d461BvmxN65- منتهٍ)
-# ⚠️ قيود Composio: لا delete / لا schedule → النشر الدوري عبر cron خارجي.
+# ============ Composio (order confirmation + IG marketing) ============
+# Order confirmation: /api/confirm-order calls Gmail via Composio proxy (proven working).
+# IG marketing: npm run ig:promote (needs a linked IG account — current ca_d461BvmxN65- is expired)
+# ⚠️ Composio limits: no delete / no schedule → periodic posting via external cron.
 #
-# لإيقاف Vercel Auth Protection يدويًا (لو CI ما شاله):
-#   Vercel Dashboard → Project → Settings → Deployment Protection → أوقف Vercel Authentication
+# To disable Vercel Auth Protection manually (if CI didn't remove it):
+#   Vercel Dashboard → Project → Settings → Deployment Protection → turn off Vercel Authentication

@@ -1,5 +1,5 @@
 # Dar Al-Maarifa E-Book Store
-> Arabic RTL e-book store with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Bilingual (AR/EN). Instant PDF download. Prices from $9.99.
+> Global e-book store (English-first, bilingual AR/EN) with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Instant PDF download. Prices from $9.99.
 
 ## Books
 - [The Influential Leader](https://ansygroup.github.io/ebook-store/book/the-influential-leader) — A practical guide to developing leadership that inspires your team and builds a high-performance culture. ($19.99). Keywords: leadership books, how to be a leader, team management, high performance culture, Arabic leadership guide.

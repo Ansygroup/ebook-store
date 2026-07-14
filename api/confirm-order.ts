@@ -98,16 +98,16 @@ export default async function handler(req: any, res: any) {
     book.gumroadUrl && !book.gumroadUrl.includes('REPLACE')
       ? book.gumroadUrl
       : `${SITE}/book/${book.slug}`;
-  const subject = `✅ طلبك: ${book.title}`;
+  const subject = `✅ Your order: ${book.title}`;
   const body = [
-    'مرحبًا،',
+    'Hello,',
     '',
-    `شكرًا لطلبك "${book.title}" بـ ${book.price} USD.`,
-    `رابط التحميل: ${downloadUrl}`,
+    `Thank you for ordering "${book.title}" at ${book.price} USD.`,
+    `Download link: ${downloadUrl}`,
     '',
-    `رقم الطلب: ${orderId}`,
-    `أي استفسار: ${SELLER_EMAIL}`,
-    '— فريق متجر الكتب',
+    `Order ID: ${orderId}`,
+    `Questions? ${SELLER_EMAIL}`,
+    '— The Dar Al-Maarifa Team',
   ].join('\n');
 
   const raw = Buffer.from(

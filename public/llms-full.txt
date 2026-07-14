@@ -1,5 +1,5 @@
 # Dar Al-Maarifa E-Book Store — Full Content Map
-> Arabic RTL e-book store with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Bilingual (AR/EN). Instant PDF download.
+> Global e-book store (English-first, bilingual AR/EN) with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Instant PDF download.
 
 ## Books (full detail)
 - [The Influential Leader](https://ansygroup.github.io/ebook-store/book/the-influential-leader) — Author: Dr. Khalid Al-Mansour. A practical guide to developing leadership that inspires your team and builds a high-performance culture. 240 pages. Rating 4.8/5. $19.99. Tags: قيادة, إدارة, فرق, تطوير. Keywords: .

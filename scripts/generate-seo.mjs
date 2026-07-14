@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * generate-seo.mjs — يولّد sitemap.xml (مع hreflang) + robots.txt + llms.txt.
- * يُستدعى أثناء build عبر npm run build.
- * يستخدم Pages URL (النشر الفعلي الحي) بدل Vercel المحطوم.
+ * generate-seo.mjs — generates sitemap.xml (with hreflang) + robots.txt + llms.txt.
+ * Called during build via npm run build.
+ * Uses the Pages URL (the live production deploy) instead of the broken Vercel.
  */
 import { writeFileSync, readFileSync } from 'node:fs';
 
@@ -50,7 +50,7 @@ console.log('✅ robots.txt');
 // llms.txt — فهرس قابل للقراءة الآلية (absolute URLs)
 // llms-full.txt — فهرس محتوى كامل (dynamic من books.json)
 const llmsFull = `# Dar Al-Maarifa E-Book Store — Full Content Map
-> Arabic RTL e-book store with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Bilingual (AR/EN). Instant PDF download.
+> Global e-book store (English-first, bilingual AR/EN) with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Instant PDF download.
 
 ## Books (full detail)
 ${books.map((b) => {
@@ -88,7 +88,7 @@ console.log('✅ llms-full.txt (dynamic, Gumroad-correct)');
 
 // llms.txt — فهرس قابل للقراءة الآلية (absolute URLs, keywords-rich)
 const llms = `# Dar Al-Maarifa E-Book Store
-> Arabic RTL e-book store with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Bilingual (AR/EN). Instant PDF download. Prices from $9.99.
+> Global e-book store (English-first, bilingual AR/EN) with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Instant PDF download. Prices from $9.99.
 
 ## Books
 ${books.map((b) => {

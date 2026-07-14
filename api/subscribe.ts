@@ -65,16 +65,16 @@ export default async function handler(req: any, res: any) {
     return;
   }
 
-  const subject = '📚 مرحبًا بك في دار المعرفة';
+  const subject = '📚 Welcome to Dar Al-Maarifa';
   const body = [
-    'مرحبًا،',
+    'Hello,',
     '',
-    'شكرًا لانضمامك إلى نشرة دار المعرفة.',
-    'سنرسل لك أحدث الكتب وكوبونات خصم حصرية.',
+    'Thank you for joining the Dar Al-Maarifa newsletter.',
+    'We will send you our latest books and exclusive discount coupons.',
     '',
-    `تصفّح المتجر: ${SITE}/shop`,
+    `Browse the store: ${SITE}/shop`,
     '',
-    '— فريق دار المعرفة',
+    '— The Dar Al-Maarifa Team',
   ].join('\n');
 
   const raw = Buffer.from(
