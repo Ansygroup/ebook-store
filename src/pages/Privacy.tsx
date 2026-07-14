@@ -12,8 +12,8 @@ export default function Privacy() {
       <h2>{lang === 'ar' ? 'البيانات التي نجمعها' : 'Data we collect'}</h2>
       <p>
         {lang === 'ar'
-          ? 'نجمع بريدك الإلكتروني فقط عند اشتراكك في النشرة أو طلب كتاب. لا نجمع بيانات بطاقتك — الدفع يتم عبر بوابة Snipcart.'
-          : 'We collect only your email when you subscribe to the newsletter or order a book. We never collect your card data — payment goes through the Snipcart gateway.'}
+          ? 'نجمع بريدك الإلكتروني فقط عند اشتراكك في النشرة أو طلب كتاب. لا نجمع بيانات بطاقتك — الدفع يتم عبر بوابة Gumroad.'
+          : 'We collect only your email when you subscribe to the newsletter or order a book. We never collect your card data — payment goes through the Gumroad gateway.'}
       </p>
       <h2>{lang === 'ar' ? 'كيف نستخدم بريدك' : 'How we use your email'}</h2>
       <p>

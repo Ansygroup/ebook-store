@@ -9,7 +9,7 @@ export default function LanguageSwitcher() {
       aria-label="Toggle language"
       title={lang === 'ar' ? 'Switch to English' : 'التبديل للعربية'}
     >
-      {lang === 'ar' ? 'EN' : 'ع'}
+      {lang === 'ar' ? 'EN' : 'العربية'}
     </button>
   );
 }

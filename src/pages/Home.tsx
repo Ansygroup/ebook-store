@@ -8,9 +8,9 @@ import { featuredBooks, formatPrice } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 
 const steps = [
-  { n: '١', tAr: 'تصفّح واختر', tEn: 'Browse & pick', dAr: 'استكشف الكتب حسب التصنيف واقرأ الوصف والتقييمات.', dEn: 'Explore books by category and read the description and reviews.' },
-  { n: '٢', tAr: 'ادفع بأمان', tEn: 'Pay securely', dAr: 'أكمل الطلب عبر بوابة Snipcart المعتمدة في ثوانٍ.', dEn: 'Complete the order via the trusted Snipcart gateway in seconds.' },
-  { n: '٣', tAr: 'حمّل فوراً', tEn: 'Download instantly', dAr: 'تحصل على رابط التحميل مباشرة على جهازك.', dEn: 'Get the download link straight to your device.' },
+  { n: '1', tAr: 'تصفّح واختر', tEn: 'Browse & pick', dAr: 'استكشف الكتب حسب التصنيف واقرأ الوصف والتقييمات.', dEn: 'Explore books by category and read the description and reviews.' },
+  { n: '2', tAr: 'ادفع بأمان', tEn: 'Pay securely', dAr: 'أكمل الطلب عبر بوابة Gumroad المعتمدة في ثوانٍ.', dEn: 'Complete the order via the trusted Gumroad gateway in seconds.' },
+  { n: '3', tAr: 'حمّل فوراً', tEn: 'Download instantly', dAr: 'تحصل على رابط التحميل مباشرة على جهازك.', dEn: 'Get the download link straight to your device.' },
 ];
 
 const testimonials = [

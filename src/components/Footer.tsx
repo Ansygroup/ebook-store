@@ -34,7 +34,7 @@ export default function Footer() {
       </div>
       <div className="footer__bottom container">
         <span>© {new Date().getFullYear()} {t('seo.siteName')} — {lang === 'ar' ? 'جميع الحقوق محفوظة.' : 'All rights reserved.'}</span>
-        <span>{lang === 'ar' ? 'الدفع آمن عبر Snipcart · التسليم فوري' : 'Secure checkout via Snipcart · Instant delivery'}</span>
+        <span>{lang === 'ar' ? 'الدفع آمن عبر Gumroad · التسليم فوري' : 'Secure checkout via Gumroad · Instant delivery'}</span>
       </div>
     </footer>
   );

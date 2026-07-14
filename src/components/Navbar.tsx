@@ -14,7 +14,7 @@ export default function Navbar() {
     >
       <div className="container navbar__inner">
         <Link to="/" className="brand">
-          <span className="brand__mark">د</span>
+          <span className="brand__mark">D</span>
           <span className="brand__name">{t('seo.siteName')}</span>
         </Link>
 
