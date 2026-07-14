@@ -4,7 +4,7 @@
 
 ---
 
-## 1️⃣ Vercel token (يفك تجميد الموقع الأصلي)
+## 1️⃣ Vercel token (يفك تجميد الموقع الأصلي + الـ API functions)
 1. ادخل https://vercel.com/account/tokens
 2. احذف **كل** الـ tokens
 3. أنشئ **token جديد** (تأكد إنه من فريق `ansygroups-projects` — مو personal)
@@ -14,6 +14,10 @@ cd /d/ebook-store && VERCEL_TOKEN=XXXX node scripts/apply-vercel-token.mjs
 ```
 هذا يحدّث الملف + سر GitHub + يشغّل deploy تجريبي. الموقع يرجع يتحدّث على:
 `https://ebook-store-ansygroups-projects.vercel.app`
+
+⚠️ **مهم**: بعد تدوير التوكن، لازم تعيد deploy عشان الـ API functions (confirm-order/subscribe)
+تنتشر — الكود الحالي فيه إصلاحات الـ referer guard. بدون redeploy، الـ API يرفض الطلبات
+الصحيحة (`Forbidden`) لأن الـ function مجمّد على نسخة قديمة.
 
 ---
 
