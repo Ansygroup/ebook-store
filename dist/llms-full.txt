@@ -1,0 +1,32 @@
+# Dar Al-Maarifa E-Book Store — Full Content Map
+
+> Arabic RTL e-book store with 10 expertly crafted titles in leadership, business, productivity, and self-development. Bilingual (AR/EN). Each title is available in PDF + EPUB.
+
+## Books (full detail)
+- [The Influential Leader](https://ansygroup.github.io/ebook-store/book/the-influential-leader) — Author: Dr. Khalid Al-Mansour. A practical guide to developing leadership that inspires your team and builds a high-performance culture. 240 pages. Rating 4.8 (327 reviews). $19.99. Formats: PDF, EPUB.
+- [Build Your Empire](https://ansygroup.github.io/ebook-store/book/build-your-empire) — A complete roadmap to launch your startup and grow it to profitability. $24.99. Formats: PDF, EPUB.
+- [Deep Productivity](https://ansygroup.github.io/ebook-store/book/deep-productivity) — A work style focused on depth over fake busyness that doubles your output. $14.99. Formats: PDF, EPUB.
+- [Design Your Mindset](https://ansygroup.github.io/ebook-store/book/design-your-mindset) — Reprogram your limiting beliefs and build a growth mindset that never stops learning. $12.99. Formats: PDF, EPUB.
+- [Tech for Everyone](https://ansygroup.github.io/ebook-store/book/tech-for-everyone) — Understand the basics of programming and AI without a technical background. $17.99. Formats: PDF, EPUB.
+- [Health Without Limits](https://ansygroup.github.io/ebook-store/book/health-without-limits) — An integrated lifestyle system for energy, focus, and sustainable wellbeing. $9.99. Formats: PDF, EPUB.
+- [The Art of Negotiation](https://ansygroup.github.io/ebook-store/book/art-of-negotiation) — Learn the art of persuasion and agreement with confidence at work and in daily life. $15.99. Formats: PDF, EPUB.
+- [Smart Investing](https://ansygroup.github.io/ebook-store/book/smart-investing) — Fundamentals of building long-term wealth with disciplined, thoughtful steps. $21.99. Formats: PDF, EPUB.
+- [Content Craft](https://ansygroup.github.io/ebook-store/book/content-writing) — Write content that sells and builds a loyal audience around your brand. $13.99. Formats: PDF, EPUB.
+- [Learn Languages](https://ansygroup.github.io/ebook-store/book/learn-languages) — A practical method to master any language in record time without a teacher. $11.99. Formats: PDF, EPUB.
+
+## Pages
+- [Home](https://ansygroup.github.io/ebook-store/)
+- [Shop](https://ansygroup.github.io/ebook-store/shop)
+
+## Purchase flow
+- Checkout is handled via Snipcart (external) or Gumroad (fallback). Each book page has an "Add to cart" / "Buy" action.
+- Newsletter signup available on the home page.
+
+## Assets
+- Covers: https://ansygroup.github.io/ebook-store/covers/<slug>.png
+- Promo images: https://ansygroup.github.io/ebook-store/promo/<slug>.png
+- Sample PDFs: https://ansygroup.github.io/ebook-store/downloads/<slug>.pdf
+
+## Sitemaps / feeds
+- Sitemap: https://ansygroup.github.io/ebook-store/sitemap.xml
+- llms.txt: https://ansygroup.github.io/ebook-store/llms.txt
