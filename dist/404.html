@@ -88,7 +88,7 @@
     <!-- Content Security Policy (يسمح لـ API على Vercel + Snipcart) -->
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' https://cdn.snipcart.com; connect-src 'self' https://api.snipcart.com https://ebook-store-ansygroups-projects.vercel.app"
+      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://ebook-store-ansygroups-projects.vercel.app"
     />
 
     <!-- Twitter Card -->
@@ -103,22 +103,22 @@
       content="https://ansygroup.github.io/ebook-store/og-cover.png"
     />
 
+    <script type="module" crossorigin src="/assets/index-BE5s36RJ.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D13bcwMR.css">
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- SPA GitHub Pages fallback: rewrite 404 path to SPA route (200 via history API) -->
-    <script type="text/javascript">
-      (function (l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function (s) {
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
+    <div id="root"></div>
+  
+  <script>
+    // GitHub Pages SPA fallback: rewrite /404.html?/path → /path (history API)
+    (function () {
+      var seg = window.location.pathname.match(/\/404\.html$/);
+      if (seg) {
+        var real = window.location.pathname.replace(/\/404\.html$/, '') + window.location.search;
+        window.history.replaceState(null, null, real || '/');
+      }
+    })();
+  </script>
+
   </body>
 </html>
