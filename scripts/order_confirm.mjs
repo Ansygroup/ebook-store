@@ -7,7 +7,7 @@
  *
  * الاستخدام:
  *   export COMPOSIO_API_KEY="ak_..."          # من ~/.hermes/composio_key
- *   export GMAIL_ACCOUNT="ca_BmQnzbsU5u3T"  # connected account ACTIVE
+ *   export GMAIL_ACCOUNT="ca_XXX"            # connected Gmail account (من Composio)
  *   export SELLER_EMAIL="you@example.com"
  *   node scripts/order_confirm.mjs --to buyer@x.com --book the-influential-leader --order ORD-123
  */

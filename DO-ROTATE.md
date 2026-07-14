@@ -45,6 +45,11 @@ echo "XXXX" > ~/.hermes/composio_key
 cd /d/ebook-store && python scripts/set-gh-secrets.py
 ```
 
+⚠️ **حسابات Composio (من الذاكرة — متغيرة عن ما بالكود):**
+- `ca_ru-ZbwXlFsGQ` = **Gumroad ACTIVE** (للبيع/تأكيد الطلب)
+- `ca_d461BvmxN65-` = **IG STALE** (مات — اربط IG جديد في الخطوة 5)
+- `ca_BmQnzbsU5u3T` = **GMAIL placeholder** (موجود كـ fallback في `api/confirm-order.ts` + `scripts/order_confirm.mjs` — استبدله بـ `GMAIL_ACCOUNT` env حقيقي)
+
 ---
 
 ## 4️⃣ Gumroad روابط المنتجات
