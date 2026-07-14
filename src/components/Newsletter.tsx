@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLang } from '../i18n/LanguageContext';
-import { NEWSLETTER_URL } from '../data/books';
+import { NEWSLETTER_URL, SELLER_EMAIL } from '../data/books';
 
 export default function Newsletter() {
   const { t, lang } = useLang();
@@ -33,7 +33,10 @@ export default function Newsletter() {
         window.open(NEWSLETTER_URL, '_blank', 'noopener');
         setStatus({ ok: true, msg: '✅ ' + (lang === 'ar' ? 'تم توجيهك للاشتراك' : 'Redirected to signup') });
       } else {
-        setStatus({ ok: false, msg: '⚠️ ' + (lang === 'ar' ? 'خدمة النشرة غير متاحة حالياً — حاول لاحقاً' : 'Newsletter service temporarily unavailable — try again later') });
+        // last-resort: open a pre-filled email (no backend needed)
+        const subj = encodeURIComponent('Newsletter signup: ' + email);
+        window.location.href = `mailto:${SELLER_EMAIL}?subject=${subj}`;
+        setStatus({ ok: true, msg: '📧 ' + (lang === 'ar' ? 'تم فتح بريدك لإرسال اشتراكك' : 'Opened your mail app to send your signup') });
       }
     } finally {
       setBusy(false);

@@ -17,6 +17,9 @@ export const featuredBooks = books.filter((b) => b.featured);
 // is unavailable (e.g. before the Cloudflare Worker is deployed). Empty = API only.
 export const NEWSLETTER_URL = '';
 
+// Where newsletter signups land via mailto: fallback (no backend needed).
+export const SELLER_EMAIL = 'sales@ebook-store.dev';
+
 export const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
