@@ -1,64 +1,50 @@
-# 📢 Meta Ads Funnel ($5/يوم)
+# 📢 Meta Ads Funnel ($5/day)
 
-الهدف: Traffic رخيص → Lead magnet (كتاب مجاني) → Newsletter → Sell.
-الـ API (`/api/subscribe`) يجمع الإيميلات. الـ PDF المجاني = `health-without-limits.pdf`.
+Goal: cheap traffic → Lead magnet (free book) → Newsletter → Sell.
+The API (`/api/subscribe`) collects emails. Free PDF = `health-without-limits.pdf`.
 
----
-
-## 🎯 الهيكل (3 مستويات)
-
-### المستوى 1 — Awareness (IG/FB Post → Shop)
-- **الميزانية:** $3/يوم
-- **الجمهور:** عرب (25-45) مهمومين بـ القيادة/التطوير الذاتي/الصحة
-- **الإبداع:** صورة `promo/health-without-limits.png` + Hook:
-  > "طاقتك = عملتك. حمل كتاب 'صحة بلا حدود' مجانًا ←"
-- **الرابط:** https://ansygroup.github.io/ebook-store/shop
-
-### المستوى 2 — Lead Magnet (Landing → Free PDF)
-- **الميزانية:** $2/يوم
-- **الإبداع:** Carousel (3 كتب) + CTA: "احصل على كتاب مجاني"
-- **الرابط:** https://ansygroup.github.io/ebook-store/downloads/health-without-limits.pdf
-- **الهدف:** Email signup (عبر الـ newsletter على الصفحة الرئيسية)
-
-### المستوى 3 — Retargeting (Cart/Viewers → Buy)
-- **الميزانية:** $1/يوم
-- **الجمهور:** زوار الموقع (Pixel) خلال 30 يوم
-- **الإبداع:** عرض خصم `DAR20` (20% off) + countdown
-- **الرابط:** https://ansygroup.github.io/ebook-store/shop
+> Store: https://ansygroup.github.io/ebook-store
 
 ---
 
-## 📌 إعداد Meta Pixel
-1. أنشئ Pixel في Business Manager
-2. أضف الكود في `index.html` قبل `</head>`:
-```html
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window,document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', 'YOUR_PIXEL_ID');
-  fbq('track', 'PageView');
-</script>
-```
-3. أضف `fbq('track','Lead')` في `Newsletter.tsx` عند نجاح الاشتراك.
+## 🎯 Funnel structure (3 levels)
+
+### Level 1 — TOFU (awareness) · $2/day
+- **Objective:** Traffic / Engagement
+- **Audience:** Broad — interests: self-improvement, entrepreneurship, productivity, books, Kindle. Age 22–45, worldwide English.
+- **Creative:** Best IG hooks (reuse captions A). Carousel of 5 covers.
+- **CTA:** "Get a free book" → landing page (homepage with newsletter form).
+
+### Level 2 — MOFU (consideration) · $2/day
+- **Objective:** Leads (or Traffic to `/shop`)
+- **Audience:** Retarget — website visitors (last 30 days) + video viewers (50%+).
+- **Creative:** "Which book do you need?" carousel. Testimonial-style copy.
+- **CTA:** "Browse all 10 books" → `/shop`.
+
+### Level 3 — BOFU (conversion) · $1/day
+- **Objective:** Conversions (Purchase via Pixel)
+- **Audience:** Retarget — added-to-cart / viewed a book page / newsletter subscribers.
+- **Creative:** Single best-seller (Build Your Empire / Smart Investing). Price + urgency.
+- **CTA:** "Get instant access" → specific book page.
 
 ---
 
-## 📊 Metrics مستهدفة
-| المقياس | المستهدف |
-|---|---|
-| CPM | < $4 |
-| CPC | < $0.30 |
-| Lead cost | < $0.80 |
-| Conv (lead→buy) | > 8% |
-| ROAS | > 3x |
+## 📊 Meta Pixel setup
+The Pixel is already installed in `index.html` (safe no-op until you add a real ID):
 
-## 💡 ملاحظات
-- ابدأ بـ $5/يوم → زد لـ $15 لو ROAS > 3x
-- أوقف أي إبداع CTR < 1%
-- A/B test 2 hooks أسبوعيًا
+1. Create a Pixel at business.facebook.com → Events Manager.
+2. Replace `YOUR_PIXEL_ID` in `index.html` with the real ID.
+3. Events already wired:
+   - `PageView` — automatic on every page.
+   - `Lead` — fires on newsletter subscribe (`Newsletter.tsx`).
+4. Add `Purchase` on the Gumroad thank-you page (Gumroad → Settings → Analytics → Facebook Pixel).
+
+---
+
+## 💰 Budget math ($5/day = ~$150/month)
+- Target CPC: $0.10–0.30 (broad English) → ~500–1,500 clicks/month.
+- Lead magnet opt-in rate ~20% → 100–300 emails/month.
+- Email→sale ~2–4% → a handful of sales; the email list compounds.
+
+## Scaling rule
+Only scale a level once it's profitable. Kill any ad set with CPC > $0.50 after 3 days. Double budget on winners weekly (max +50%/day to avoid resetting learning).

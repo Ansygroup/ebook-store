@@ -1,196 +1,225 @@
-# 📱 كابشنز Instagram جاهزة (30 منشور)
+# 📱 Instagram Captions — Ready to Post (30)
 
-كل كابشن = Hook + Body + CTA + Hashtags. الصور جاهزة في `public/promo/<slug>.png`.
-النشر: شغّل `node scripts/ig-prepare.mjs` (يجهّز المنشور في `ig-queue/`) — أو انسخ يدويًا.
+Each caption = Hook + Body + CTA + Hashtags. Promo images are ready in `public/promo/<slug>.png`.
+To post: run `node scripts/ig-prepare.mjs` (stages the post in `ig-queue/`) — or copy/paste manually.
 
----
-
-## 📕 Leadership (القائد المؤثر — $19.99)
-1.
-🔥 القيادة مو منصب… قيادة حقيقية = تلهم فريقك يشتغل بـ رؤية مش بسلطة.
-كتاب "القائد المؤثر" فيه إطار عملي + تمارين بعد كل فصل.
-💡 حمله فورًا (PDF فوري).
-👇 رابط الكتاب في البايو.
-#قيادة #ادارة_فرق #تطوير_ذاتي #نجاح
-
-2.
-❌ مدير يطلب منك تقرير كل ساعة ≠ قائد.
-✅ القائد يفوّض بذكاء ويبني ثقة.
-15 سنة خبرة في كتاب واحد.
-#leadership #management #teamwork
-
-3.
-سر الـ high-performance culture؟ مو الضغط… الثقة.
-"القائد المؤثر" يعليمك كيف تبنيها.
-#قيادة_اعمال #رؤية
+> Store: https://ansygroup.github.io/ebook-store · Instant download after purchase.
 
 ---
 
-## 🏢 Business / Startup (بناء إمبراطورية — $24.99)
-4.
-💡 فكرة = 1%. التنفيذ = 99%.
-"بناء إمبراطورية" = خارطة طريق من الصفر للربحية.
-#ريادة_اعمال #ستارتاب #نجاح_مالي
+## 1. The Influential Leader — $19.99 (Leadership)
 
-5.
-من موظف لصاحب مشروع في 12 شهر — القصة الحقيقية بدأت بكتاب.
-ابدأ بـ "بناء إمبراطورية".
-#startup #entrepreneur #مشروعك_الخاص
+**A) The hook**
+> Managing people ≠ leading them.
 
-6.
-الربحية مو صدفة… نظام.
-تعلمه في كتاب واحد.
-#business #wealth #مال
+Most managers give orders. Leaders create influence — the kind people follow without being told to. "The Influential Leader" by Dr. Khalid Al-Mansour breaks down the exact habits that turn a title into real authority.
 
----
+📥 Download instantly → link in bio
+#Leadership #Management #Influence #CareerGrowth #Ebooks
 
-## ⚡ Productivity (الإنتاجية العميقة — $14.99)
-7.
-⏰ انشغال ≠ إنجاز.
-"الإنتاجية العميقة" تعليمك تشتغل بعمق وتضاعف مخرجاتك.
-#انتاجية #focus #timeManagement
+**B) The pain point**
+> Your team does the bare minimum. Here's why.
 
-8.
-قلل الـ busywork… زد الـ deep work.
-كتاب بـ 12 تكتيك عملي.
-#productivity #deepwork #إنجاز
+People don't quit jobs — they quit leaders they don't respect. This book shows you how to earn trust, delegate without micromanaging, and build a team that ships.
 
-9.
-وجبتك المفتوحة = قاتل التركيز.
-اقفلها بـ "الإنتاجية العميقة".
-#focus #تركيز
+📥 $19.99 · instant PDF/EPUB → link in bio
+#LeadershipDevelopment #TeamBuilding #Manager #SelfImprovement #Books
+
+**C) The result**
+> From "boss" to the leader people actually want to work for.
+
+3 chapters in and you'll run your first meeting differently. Guaranteed.
+
+📥 Get it now → link in bio
+#Leadership #ProductivityTips #WorkCulture #ReadMore #Ebook
 
 ---
 
-## 🧠 Mindset (صمّم عقليتك — $12.99)
-10.
-🧠 عقليتك = سقف نجاحك.
-"صمّم عقليتك" يعيد برمجة معتقداتك المحدودة.
-#عقلية_النمو #تطوير_الذاتي #نجاح
+## 2. Build Your Empire — $24.99 (Business)
 
-11.
-الفشل مو نهاية… معلومة.
-اقرأ كيف تبني growth mindset لا يتوقف.
-#mindset #selfimprovement #تطوير
+**A)** > You don't need a rich uncle to start a business.
+Build Your Empire by Sara Al-Ahmed is the playbook for going from idea → revenue with no funding, no MBA, no excuses.
+📥 $24.99 → link in bio
+#Entrepreneur #StartUp #BusinessGrowth #SideHustle #Ebooks
 
-12.
-خوفك من الفشل؟ كتاب "صمّم عقليتك" يعالجه.
-#psychology #success
+**B)** > 90% of businesses fail. This is what the 10% do differently.
+Cash flow, positioning, and the one metric that actually predicts survival.
+📥 instant download → link in bio
+#SmallBusiness #Founder #BusinessBooks #Startup #Success
 
----
-
-## 💻 Tech (التقنية للجميع — $17.99)
-13.
-💻 برمجة + ذكاء اصطناعي بدون خلفية تقنية؟
-"التقنية للجميع" يفهمك إياهم ببساطة.
-#برمجة #ذكاء_اصطناعي #tech
-
-14.
-الـ AI بيسيّر شغلك… لو فهمت أساسياته.
-كتاب واحد يكفي.
-#AI #coding #تعليم
-
-15.
-مو لازم تكون مهندس عشان تفهم التقنية.
-"التقنية للجميع" لكل أحد.
-#technology #learntech
+**C)** > Your first $10k month is a system, not luck.
+This book hands you the system.
+📥 Get it → link in bio
+#Entrepreneurship #MakeMoney #BusinessMindset #Hustle #Ebook
 
 ---
 
-## 💪 Health (صحة بلا حدود — $9.99)
-16.
-⚡ طاقتك = عملتك.
-"صحة بلا حدود" = نظام متكامل للطاقة والتركيز.
-#صحة #طاقة #wellness
+## 3. Deep Productivity — $14.99 (Productivity)
 
-17.
-قلة النوم تقتل تركيزك.
-نظام صحي بـ $9.99 بس.
-#health #nutrition #lifestyle
+**A)** > Busy ≠ productive.
+Deep Productivity by Eng. Yousef Al-Otaibi teaches you to do 3 hours of real work that beats 10 hours of distraction.
+📥 $14.99 → link in bio
+#Productivity #DeepWork #Focus #TimeManagement #Ebooks
 
-18.
-استثمر بصحتك قبل فلوسك.
-ابدأ بـ "صحة بلا حدود".
-#fitness #صحة_وقاية
+**B)** > You check your phone 96 times a day. Let's fix that.
+Reclaim your attention with proven focus systems.
+📥 instant PDF → link in bio
+#ProductivityTips #FocusMode #Discipline #SelfImprovement #Books
 
----
-
-## 🤝 Negotiation (فن التفاوض — $15.99)
-19.
-🤝 التفاوض مو صراع… اتفاق.
-"فن التفاوض" يعليمك الإقناع بثقة.
-#تفاوض #تواصل #success
-
-20.
-الـ deal الجيد = الكل يربح.
-اقرأ "فن التفاوض".
-#negotiation #persuasion #business
-
-21.
-تواصلك = سعرك.
-حسّنه بكتاب واحد.
-#communication #مهارات
+**C)** > Do less. Finish more.
+The counterintuitive method top performers use.
+📥 Get it now → link in bio
+#GetThingsDone #WorkSmart #Habits #Motivation #Ebook
 
 ---
 
-## 📈 Investing (الاستثمار الذكي — $21.99)
-22.
-📈 الثروة مو حظ… انضباط.
-"الاستثمار الذكي" = أساسيات البناء طويل الأمد.
-#استثمار #مال #wealth
+## 4. Design Your Mindset — $12.99 (Self-Development)
 
-23.
-ابدأ بـ $50 شهريًا… كبر محفظتك.
-اقرأ "الاستثمار الذكي".
-#investing #finance #توفير
+**A)** > Your thoughts built your current life. Change the blueprint.
+Design Your Mindset by Noura Al-Qahtani — a practical guide to rewiring how you think.
+📥 $12.99 → link in bio
+#Mindset #SelfDevelopment #GrowthMindset #Motivation #Ebooks
 
-24.
-السوق يتأرجح… استراتيجيتك ثابتة.
-كتاب واحد يثبتها.
-#stockmarket #personal finance
+**B)** > The story you tell yourself is either a cage or a launchpad.
+Learn to catch and rewrite limiting beliefs.
+📥 instant download → link in bio
+#PersonalGrowth #Mindfulness #SelfHelp #Positivity #Books
 
----
-
-## ✍️ Content (صناعة المحتوى — $13.99)
-25.
-✍️ محتوى يبيع ≠ محتوى يمل.
-"صناعة المحتوى" يعليمك تكتب وتبني جمهور.
-#تسويق_محتوى #copywriting #brand
-
-26.
-الجمهور الوفي = الأصول الحقيقية.
-اقرأ "صناعة المحتوى".
-#contentmarketing #audience
-
-27.
-اكتب أول سطر يخطف الانتباه.
-كتاب "صناعة المحتوى" يعليمك.
-#writing #content
+**C)** > Small mental shifts. Massive life changes.
+Start today.
+📥 Get it → link in bio
+#Mindset #SelfImprovement #Inspiration #ReadMore #Ebook
 
 ---
 
-## 🌍 Languages (تعلّم اللغات — $11.99)
-28.
-🌍 لغة جديدة = دماغ جديد.
-"تعلّم اللغات" = طريقة عملية بدون معلّم.
-#تعلم_اللغات #لغات #polyglot
+## 5. Tech for Everyone — $17.99 (Technology)
 
-29.
-تتقن لغة في وقت قياسي؟
-الطريقة في "تعلّم اللغات".
-#languagelearning #memory
+**A)** > You don't need to be a coder to master technology.
+Tech for Everyone by Eng. Abdullah Al-Shammari makes AI, automation, and modern tools finally make sense.
+📥 $17.99 → link in bio
+#Technology #AI #DigitalSkills #FutureOfWork #Ebooks
 
-30.
-بدون كورس باهظ… تتعلم بنفسك.
-ابدأ بـ "تعلّم اللغات".
-#selfstudy #لغات_اجنبية
+**B)** > AI won't take your job. Someone who understands AI will.
+Get literate in the tools reshaping every industry.
+📥 instant PDF → link in bio
+#ArtificialIntelligence #TechSkills #Automation #Learning #Books
+
+**C)** > Tech, explained like a human — not a manual.
+Finally.
+📥 Get it now → link in bio
+#TechForEveryone #DigitalLiteracy #Innovation #SelfTaught #Ebook
 
 ---
 
-## 🎯 Carousel Ideas (3 منشورات تفاعلية)
-- **"5 أخطاء قيادية يرتكبها المديرون الجدد"** + صورة leadership.png
-- **"قارن: انشغال vs إنجاز"** (جدول) + productivity.png
-- **"Before/After: عقليتك بعد الكتاب"** + mindset.png
+## 6. Health Without Limits — $9.99 (Health)
 
-## 📊 Hub & Spoke (SEO / Pinterest)
-لكل كتاب: Pin على Pinterest → رابط الكتاب. 10 Pins شهرية = traffic رخيص.
+**A)** > Energy is a skill. Here's how to build it.
+Health Without Limits by Dr. Reem Al-Dosari — sustainable habits for real, lasting vitality.
+📥 $9.99 → link in bio
+#Health #Wellness #Energy #HealthyHabits #Ebooks
+
+**B)** > You don't need a gym. You need a system.
+Simple, science-backed routines that fit a busy life.
+📥 instant download → link in bio
+#Fitness #Wellbeing #HealthyLifestyle #SelfCare #Books
+
+**C)** > Feel 10 years younger — starting this week.
+The habits that compound.
+📥 Get it → link in bio
+#HealthTips #Vitality #Longevity #Motivation #Ebook
+
+---
+
+## 7. The Art of Negotiation — $15.99 (Skills)
+
+**A)** > You don't get what you deserve. You get what you negotiate.
+The Art of Negotiation by Eng. Fahad Al-Qarni — win deals without burning bridges.
+📥 $15.99 → link in bio
+#Negotiation #Skills #Communication #Business #Ebooks
+
+**B)** > The person who speaks first often loses. Here's why.
+Master leverage, silence, and the psychology of the deal.
+📥 instant PDF → link in bio
+#SoftSkills #Persuasion #Sales #SelfImprovement #Books
+
+**C)** > From asking for a raise to closing a contract — same skill.
+Learn it once. Use it forever.
+📥 Get it now → link in bio
+#NegotiationSkills #CareerGrowth #Confidence #ReadMore #Ebook
+
+---
+
+## 8. Smart Investing — $21.99 (Money)
+
+**A)** > Saving makes you safe. Investing makes you free.
+Smart Investing by Dr. Mansour Al-Harbi — a beginner-to-confident guide to growing wealth.
+📥 $21.99 → link in bio
+#Investing #Money #FinancialFreedom #Wealth #Ebooks
+
+**B)** > Compound interest is the 8th wonder of the world. Are you using it?
+Start with any amount, the right way.
+📥 instant download → link in bio
+#PersonalFinance #Investment #MoneyTips #FinancialLiteracy #Books
+
+**C)** > The best time to invest was 10 years ago. The second best is today.
+Begin now.
+📥 Get it → link in bio
+#WealthBuilding #Finance #Stocks #Motivation #Ebook
+
+---
+
+## 9. Content Craft — $13.99 (Marketing)
+
+**A)** > Great content isn't luck. It's a craft.
+Content Craft by Layla Al-Anazi — write posts, emails, and copy that actually convert.
+📥 $13.99 → link in bio
+#ContentMarketing #Copywriting #Marketing #Writing #Ebooks
+
+**B)** > Nobody reads boring. Here's how to hook them in 3 seconds.
+The frameworks behind viral content.
+📥 instant PDF → link in bio
+#DigitalMarketing #Content #SocialMedia #Branding #Books
+
+**C)** > Turn words into customers.
+This book shows you the exact process.
+📥 Get it now → link in bio
+#Copywriting #ContentCreator #MarketingTips #ReadMore #Ebook
+
+---
+
+## 10. Learn Languages — $11.99 (Education)
+
+**A)** > You can learn a language faster than you think.
+Learn Languages by Mr. Sultan Al-Mutairi — the methods polyglots actually use.
+📥 $11.99 → link in bio
+#LanguageLearning #Education #Learning #SelfStudy #Ebooks
+
+**B)** > Forget grammar drills. Learn the way your brain is built to.
+Practical, immersion-based techniques.
+📥 instant download → link in bio
+#Languages #StudyTips #Polyglot #Learning #Books
+
+**C)** > 15 minutes a day → a new language this year.
+The system that makes it stick.
+📥 Get it → link in bio
+#LearnLanguages #Education #Motivation #SelfImprovement #Ebook
+
+---
+
+## Carousel posts (3)
+
+**Carousel 1 — "5 books to level up your career"**
+Slides: The Influential Leader → Deep Productivity → The Art of Negotiation → Smart Investing → Design Your Mindset. Last slide CTA: "Start your library → link in bio."
+
+**Carousel 2 — "Which book do you need right now?"**
+Slide per pain point: Struggling to lead? / Always busy but behind? / Bad with money? / Stuck in a fixed mindset? Each maps to a book. CTA on the last slide.
+
+**Carousel 3 — "10 ebooks. Under $25 each. Instant download."**
+Grid of all 10 covers → price highlight → "Global store, instant PDF/EPUB → link in bio."
+
+---
+
+### Posting cadence
+- 1 post/day, rotate hooks A→B→C per book.
+- Carousels on weekends (higher reach).
+- Always: promo image + link in bio + 5 relevant hashtags (mix broad + niche).

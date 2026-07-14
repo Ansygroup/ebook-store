@@ -1,95 +1,87 @@
-# 📧 سلسلة الإيميل الترحيبية (Lead Magnet)
+# 📧 Welcome Email Sequence (Lead Magnet)
 
-الـ newsletter شغّالة (`/api/subscribe` → تأكيد Gmail).
-هذي السلسلة (5 رسائل) — الصقها في أداة الإرسال (Gumroad/Mailchimp) أو شغّلها عبر Composio بعد الربط.
+The newsletter is live (`/api/subscribe` → Gmail confirmation).
+This 5-email sequence — paste it into your sender (Gumroad / Mailchimp) or run via Composio once connected.
+Lead magnet = a free book (`health-without-limits.pdf`).
 
----
-
-## ① تأكيد الاشتراك (فورًا — automated)
-**الموضوع:** ✅ مرحبًا بك في دار المعرفة — كتابك المجاني مرفق
-
-مرحبًا،
-
-شكرًا لانضمامك إلى نشرة دار المعرفة.
-سنرسل لك أفضل ملخصات الكتب العربية كل أسبوع + كوبون خصم حصري.
-
-🎁 **هديتك:** كتاب "صحة بلا حدود" (PDF) — حمله مجانًا:
-https://ansygroup.github.io/ebook-store/downloads/health-without-limits.pdf
-
-إلى نجاحك،
-— فريق دار المعرفة
+> Store: https://ansygroup.github.io/ebook-store
 
 ---
 
-## ② بعد يوم (قيمة + CTA)
-**الموضوع:** ⚡ كيف تضاعف إنتاجيتك بـ "عمق" واحد
+## Email 1 — Instant (deliver the free book)
+**Subject:** Your free book is here 📚 (+ a small welcome gift)
 
-مرحبًا،
+Hi,
 
-سؤال سريع: كم ساعة "انشغال" بلا إنجاز فعلي؟
+Thanks for joining Dar Al-Maarifa — the global ebook store for people who invest in themselves.
 
-في "الإنتاجية العميقة" (١٤.٩٩$)، بنعطيك ١٢ تكتيك عملي:
-- قاعدة ٩٠ دقيقة للتركيز العميق
-- كيف تقفل الإشعارات دون أن تفوتك شي
-- نظام أسبوعي يضاعف مخرجاتك
+Here's your free copy of **Health Without Limits** as promised:
+👉 [Download it here](https://ansygroup.github.io/ebook-store/book/health-without-limits)
 
-اقرأ المعاينة المجانية:
-https://ansygroup.github.io/ebook-store/book/deep-productivity
+Over the next few days I'll send you the ideas from our best books — no fluff, just what works.
 
-— فريق دار المعرفة
+Talk soon,
+The Dar Al-Maarifa team
 
 ---
 
-## ③ بعد ٣ أيام (قصة + social proof)
-**الموضوع:** 💡 من موظف لصاحب مشروع في ١٢ شهر
+## Email 2 — Day 2 (value, no pitch)
+**Subject:** The 3-hour rule that beats a 10-hour day
 
-مرحبًا，
+Most people confuse *busy* with *productive*.
 
-أكثر قصة نحب نحكيها: قارئ اشترى "بناء إمبراطورية" ($٢٤.٩٩) —
-بعد ٦ شهور كان فاتح شركته الخاصة.
+In **Deep Productivity**, Eng. Yousef Al-Otaibi argues that 3 hours of focused, distraction-free work beats 10 hours of scattered effort. One idea to try today: block your first 90 minutes — no phone, no email, one task.
 
-الكتاب فيه خارطة طريق من الصفر للربحية.
-اقرأ المعاينة:
-https://ansygroup.github.io/ebook-store/book/build-your-empire
+Try it tomorrow morning and reply to tell me how it went.
 
-💬 +١٢,٠٠٠ قارئ ثقوا فينا. انت الدور الجاي.
-
-— فريق دار المعرفة
+👉 [Deep Productivity — $14.99](https://ansygroup.github.io/ebook-store/book/deep-productivity)
 
 ---
 
-## ④ بعد ٥ أيام (عرض محدود)
-**الموضوع:** 🎟️ كوبون خصم ٢٠٪ — ينتهي الأحد
+## Email 3 — Day 4 (story + social proof)
+**Subject:** "I stopped managing and started leading"
 
-مرحبًا，
+A reader wrote in after reading **The Influential Leader**:
 
-كوبون حصري لك: **DAR20**
-خصم ٢٠٪ على أي كتاب (أو الأربعة الكل).
+> "I always gave orders. This book taught me to build influence instead. My team ships faster now — and I micromanage less."
 
-🛒 المتجر: https://ansygroup.github.io/ebook-store/shop
-⏰ ينتهي الأحد ١٢:٠٠ ليلًا
+That's the difference between a title and real authority. Dr. Khalid Al-Mansour breaks down the exact habits inside.
 
-— فريق دار المعرفة
+👉 [The Influential Leader — $19.99](https://ansygroup.github.io/ebook-store/book/the-influential-leader)
 
 ---
 
-## ⑤ بعد أسبوع (إعادة تفعيل)
-**الموضوع:** 📚 أي كتاب نبدأ فيه معًا؟
+## Email 4 — Day 6 (the offer)
+**Subject:** Pick your next skill (10 books, under $25 each)
 
-مرحبًا，
+You've got the free book. Ready for the next step?
 
-وش أكثر شي تبي تطور فيه هالشهر؟
-- قيادة الفريق؟ → القائد المؤثر
-- عقلية النمو؟ → صمّم عقليتك
-- فلوسك؟ → الاستثمار الذكي
+Here's the full library — leadership, business, money, productivity, negotiation, and more. Every book is instant download (PDF/EPUB), under $25.
 
-رد على هالإيميل بكلمة وحدة — بنرسل لك المعاينة المجانية.
+👉 [Browse all 10 books](https://ansygroup.github.io/ebook-store/shop)
 
-— فريق دار المعرفة
+Not sure where to start? Reply with your #1 goal and I'll recommend one.
 
 ---
 
-## 📊 Metrics للمراقبة
-- Open rate مستهدف: >٤٠٪
-- Click rate مستهدف: >٨٪
-- أفضل وقت إرسال: ٩ صباحًا (GMT+3)
+## Email 5 — Day 8 (urgency + close)
+**Subject:** Last thing (before I stop emailing about this)
+
+Quick recap of what our readers grab first:
+
+- 🚀 Want to grow a business? → **Build Your Empire** ($24.99)
+- 💰 Want financial freedom? → **Smart Investing** ($21.99)
+- 🎯 Want to get more done? → **Deep Productivity** ($14.99)
+
+Instant download. Read tonight. Start applying tomorrow.
+
+👉 [Start your library](https://ansygroup.github.io/ebook-store/shop)
+
+Thanks for reading — whatever you pick, keep investing in yourself.
+
+---
+
+### Notes
+- Swap the lead magnet slug if you change the free book.
+- Keep subject lines under 50 chars for mobile.
+- One CTA per email — never split attention.

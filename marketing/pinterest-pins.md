@@ -1,74 +1,37 @@
-# 📌 Pinterest Pins جاهزة (10 كتب)
+# 📌 Pinterest Pins — Ready (10 books)
 
-كل Pin = Title + Description + Link + Board مقترح. الصور جاهزة في `public/promo/<slug>.png`.
-Pinterest = traffic رخيص جدًا للكتب (lifestyle/self-improvement crowd).
+Each Pin = Title + Description + Link + suggested Board. Images ready in `public/promo/<slug>.png`.
+Pinterest = cheap, long-tail traffic for books (self-improvement / lifestyle audience).
 
----
-
-## 📕 Leadership — the-influential-leader ($19.99)
-**Title:** كيف تكون قائدًا يُلهم فريقك | القائد المؤثر
-**Desc:** دليل عملي لتطوير قيادة حقيقية تبني ثقة وأداء عالي. حمل PDF فورًا.
-**Link:** https://ansygroup.github.io/ebook-store/book/the-influential-leader
-**Board:** Leadership & Management
-
-## 🏢 Business — build-your-empire ($24.99)
-**Title:** خارطة طريق لبناء إمبراطورية ناجحة | بناء إمبراطورية
-**Desc:** من الصفر للربحية — كل ما تحتاجه لإطلاق مشروعك. كتاب واحد.
-**Link:** https://ansygroup.github.io/ebook-store/book/build-your-empire
-**Board:** Entrepreneurship
-
-## ⚡ Productivity — deep-productivity ($14.99)
-**Title:** كيف تضاعف إنتاجيتك بعمق الشغل | الإنتاجية العميقة
-**Desc:** قلّل الانشغال، زد الإنجاز. 12 تكتيك عملي.
-**Link:** https://ansygroup.github.io/ebook-store/book/deep-productivity
-**Board:** Productivity Tips
-
-## 🧠 Mindset — design-your-mindset ($12.99)
-**Title:** صمّم عقليتك للنجاح | صمّم عقليتك
-**Desc:** أعد برمجة معتقداتك المحدودة وابنِ عقلية نمو لا تتوقف.
-**Link:** https://ansygroup.github.io/ebook-store/book/design-your-mindset
-**Board:** Self Improvement
-
-## 💻 Tech — tech-for-everyone ($17.99)
-**Title:** التقنية للجميع — افهم البرمجة والذكاء الاصطناعي | التقنية للجميع
-**Desc:** بدون خلفية تقنية — افهم أساسيات التقنية والـ AI.
-**Link:** https://ansygroup.github.io/ebook-store/book/tech-for-everyone
-**Board:** Tech for Non-Techies
-
-## 💪 Health — health-without-limits ($9.99)
-**Title:** صحة بلا حدود — نظام طاقة وتركيز | صحة بلا حدود
-**Desc:** أرخص كتاب عندنا (9.99$) — نظام متكامل للطاقة والتركيز.
-**Link:** https://ansygroup.github.io/ebook-store/book/health-without-limits
-**Board:** Health & Wellness
-
-## 🤝 Negotiation — art-of-negotiation ($15.99)
-**Title:** فن التفاوض — اكسب اتفاقات بثقة | فن التفاوض
-**Desc:** تعلم الإقناع وصنع الاتفاقات في العمل والحياة.
-**Link:** https://ansygroup.github.io/ebook-store/book/art-of-negotiation
-**Board:** Communication Skills
-
-## 📈 Investing — smart-investing ($21.99)
-**Title:** الاستثمار الذكي — ابنِ ثروة طويلة الأمد | الاستثمار الذكي
-**Desc:** أساسيات بناء الثروة بانضباط. ابدأ بـ 50$ شهريًا.
-**Link:** https://ansygroup.github.io/ebook-store/book/smart-investing
-**Board:** Personal Finance
-
-## ✍️ Content — content-writing ($13.99)
-**Title:** صناعة المحتوى — اكتب وتبيع | صناعة المحتوى
-**Desc:** محتوى يبيع ويبني جمهورًا وفيا حول علامتك.
-**Link:** https://ansygroup.github.io/ebook-store/book/content-writing
-**Board:** Content Marketing
-
-## 🌍 Languages — learn-languages ($11.99)
-**Title:** تعلّم اللغات بسرعة | تعلّم اللغات
-**Desc:** طريقة عملية لإتقان أي لغة بوقت قياسي بدون معلّم.
-**Link:** https://ansygroup.github.io/ebook-store/book/learn-languages
-**Board:** Language Learning
+> Store: https://ansygroup.github.io/ebook-store
 
 ---
 
-## 📊 جدول النشر
-- **10 Pins/شهر** (كتاب واحد كل 3 أيام)
-- أوقات الذروة: 8 صباحًا + 8 مساءً (GMT+3)
-- كل Pin يعاد بعد 60 يومًا (إعادة تدوير)
-- استهدف الكboards الكبيرة (100k+ followers) عبر Tailwind أو مانوال
+| # | Pin Title | Description | Link | Board |
+|---|-----------|-------------|------|-------|
+| 1 | 5 Habits of Truly Influential Leaders | Stop managing, start leading. The exact habits that turn a title into real authority. Instant download 📥 | /book/the-influential-leader | Leadership & Career |
+| 2 | How to Build a Business With No Funding | The playbook for going from idea to revenue — no MBA, no investors. | /book/build-your-empire | Entrepreneurship |
+| 3 | The 3-Hour Rule That Beats a 10-Hour Day | Do less, finish more. Focus systems used by top performers. | /book/deep-productivity | Productivity Tips |
+| 4 | Rewire Your Mindset in 30 Days | Catch and rewrite the limiting beliefs holding you back. | /book/design-your-mindset | Mindset & Growth |
+| 5 | Understand AI Without Being a Coder | Tech, explained like a human. Get literate in the tools reshaping work. | /book/tech-for-everyone | Tech & AI |
+| 6 | Build Unlimited Energy (No Gym Needed) | Science-backed habits for lasting vitality that fit a busy life. | /book/health-without-limits | Health & Wellness |
+| 7 | Win Any Negotiation Without Burning Bridges | Leverage, silence, and the psychology of the deal. | /book/art-of-negotiation | Skills & Communication |
+| 8 | Investing for Beginners: Start With Any Amount | Turn saving into wealth the right way. Compound interest, explained. | /book/smart-investing | Money & Finance |
+| 9 | Write Content That Actually Converts | The frameworks behind hooks, emails, and viral posts. | /book/content-writing | Marketing & Writing |
+| 10 | Learn Any Language 3x Faster | Forget grammar drills — the methods polyglots actually use. | /book/learn-languages | Language Learning |
+
+---
+
+## Board strategy
+Create these 10 boards (one per niche above). Pin the matching book Pin + 5–10 related re-pins per board so it doesn't look like pure self-promotion.
+
+## Pin design tips
+- Vertical 1000×1500px (2:3) — Pinterest favors tall pins.
+- Big readable title text overlaid on the promo image.
+- Add price + "Instant PDF/EPUB" as a badge.
+- Always link to the specific book page, not the homepage.
+
+## Cadence
+- 3–5 pins/day (mix new + re-pins). Pinterest rewards consistency over volume.
+- Best times: evenings + weekends.
+- Refresh top pins monthly with a new image variant.
