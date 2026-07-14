@@ -22,7 +22,7 @@ export function formatPrice(price: number): string {
   return currencyFormatter.format(price);
 }
 
-// اختيار الحقل المناسب حسب اللغة
+// pick the right field by language
 export function pick<T = string>(book: Book, field: keyof Book, lang: Lang): T {
   if (lang === 'en') {
     const en = book[`${String(field)}En` as keyof Book];
@@ -31,13 +31,13 @@ export function pick<T = string>(book: Book, field: keyof Book, lang: Lang): T {
   return book[`${String(field)}Ar` as keyof Book] as T;
 }
 
-// رابط الشراء: Gumroad لو موجود، وإلا صفحة الكتاب (fallback)
+// purchase link: Gumroad if present, else the book page (fallback)
 export function gumroadHref(book: Book): string {
   const u = book.gumroadUrl;
   if (u && !u.includes('REPLACE_WITH_YOUR_LINK')) {
-    // أضف ?wanted=true عشان يفتح overlay الشراء مباشرة
+    // add ?wanted=true so the Gumroad buy overlay opens directly
     return u.includes('?') ? `${u}&wanted=true` : `${u}?wanted=true`;
   }
-  // placeholder بعد — افتح صفحة الكتاب (فيه تحميل PDF مجاني + نموذج طلب)
+  // placeholder still present — open the book page (free PDF + order form there)
   return `/book/${book.slug}`;
 }
