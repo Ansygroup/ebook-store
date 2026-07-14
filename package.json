@@ -24,6 +24,7 @@
     "gumroad:fill": "node scripts/fill-gumroad.mjs",
     "email:stage": "python scripts/_stage_emails.py",
     "email:send": "node scripts/send-sequence.mjs",
+    "launch": "node scripts/launch.mjs",
     "order:confirm": "node scripts/order_confirm.mjs"
   },
   "dependencies": {

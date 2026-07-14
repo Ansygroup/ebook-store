@@ -1,0 +1,37 @@
+name: Marketing Automation
+
+on:
+  schedule:
+    - cron: '0 9 * * *'   # daily 09:00 UTC — post one IG + weekly email batch
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ig-post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      # Posts the next staged IG caption+image from ig-queue/ via Composio (if IG linked)
+      - run: node scripts/ig_promote.mjs
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          IG_ACCOUNT: ${{ secrets.IG_ACCOUNT }}
+
+  email-batch:
+    runs-on: ubuntu-latest
+    if: github.event.schedule == '0 9 * * 1'   # Mondays only
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - run: SEND=1 node scripts/send-sequence.mjs
+        env:
+          COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
+          GMAIL_ACCOUNT: ${{ secrets.GMAIL_ACCOUNT }}
+          SELLER_EMAIL: ${{ secrets.SELLER_EMAIL }}
