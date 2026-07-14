@@ -121,30 +121,14 @@ export default function BookDetail() {
                 <span>{t('book.price')}</span>
                 <strong>{formatPrice(book.price)}</strong>
               </div>
-              {buyHref ? (
-                <a
-                  className="btn btn--primary btn--lg"
-                  href={buyHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {t('book.buyGumroad')}
-                </a>
-              ) : (
-                <button
-                  className="snipcart-add-item btn btn--primary btn--lg"
-                  data-item-id={book.id}
-                  data-item-name={title}
-                  data-item-price={book.price}
-                  data-item-url={typeof window !== 'undefined' ? `${window.location.origin}/book/${book.slug}` : `https://dar-ma3rifa.example/book/${book.slug}`}
-                  data-item-description={desc}
-                  data-item-image={`/covers/${book.cover}`}
-                  data-item-file-guid={`${book.id}-download`}
-                  data-item-metadata='{"format":"PDF+EPUB"}'
-                >
-                  {t('book.buy')}
-                </button>
-              )}
+              <a
+                className="btn btn--primary btn--lg"
+                href={buyHref}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t('book.buyGumroad')}
+              </a>
 
               {book.downloadUrl && (
                 <a className="btn btn--ghost btn--lg" href={book.downloadUrl} download>
