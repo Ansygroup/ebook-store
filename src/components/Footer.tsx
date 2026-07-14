@@ -8,13 +8,13 @@ export default function Footer() {
       <div className="container footer__inner">
         <div className="footer__col footer__col--brand">
           <div className="brand brand--light">
-            <span className="brand__mark">د</span>
+            <span className="brand__mark">D</span>
             <span className="brand__name">{t('seo.siteName')}</span>
           </div>
           <p>
             {lang === 'ar'
               ? 'متجر رقمي متخصص في الكتب الإلكترونية العربية عالية الجودة. نُشرِف على كل كتاب لنقدّم لك محتوى يستحق وقتك ومالك.'
-              : 'A digital store specializing in high-quality Arabic ebooks. We curate every title so you get content worth your time and money.'}
+              : 'A global digital store for high-quality ebooks on leadership, business, and personal growth — bilingual (Arabic + English), with instant PDF download.'}
           </p>
         </div>
 
