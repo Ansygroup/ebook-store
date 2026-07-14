@@ -19,11 +19,13 @@ export default function Newsletter() {
         body: JSON.stringify({ email, honeypot: '' }),
       });
       const j = await r.json();
-      setStatus(
-        j.ok
-          ? { ok: true, msg: t('newsletter.ok') }
-          : { ok: false, msg: '❌ ' + (lang === 'ar' ? 'تعذر الاشتراك' : 'Subscription failed') },
-      );
+      if (j.ok) {
+        // Meta Pixel: track lead (if Pixel loaded)
+        try { (window as any).fbq?.('track', 'Lead'); } catch {}
+        setStatus({ ok: true, msg: t('newsletter.ok') });
+      } else {
+        setStatus({ ok: false, msg: '❌ ' + (lang === 'ar' ? 'تعذر الاشتراك' : 'Subscription failed') });
+      }
     } catch {
       setStatus({ ok: false, msg: '❌ ' + (lang === 'ar' ? 'خطأ في الاتصال' : 'Connection error') });
     } finally {
