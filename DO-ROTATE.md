@@ -1,31 +1,31 @@
-# 🔐 خطوات التدوير (سويها بنفسك — الأتمتة ما تقدر)
+# 🔐 Manual Rotation Steps (do these yourself — automation can't)
 
-كل التدوير يتطلب لوحات خارجية (ما يمر عبر API). هذا الدليل بصيغة **أوامر جاهزة** — لصق بعد كل خطوة.
+Every rotation touches external dashboards (not reachable via API). This guide is in **ready-to-paste command** form — follow each step.
 
 ---
 
-## 1️⃣ Vercel token (يفك تجميد الموقع الأصلي + الـ API functions)
-1. ادخل https://vercel.com/account/tokens
-2. احذف **كل** الـ tokens
-3. أنشئ **token جديد** (تأكد إنه من فريق `ansygroups-projects` — مو personal)
-4. الصق هذا الأمر (استبدل `XXXX` بالـ token):
+## 1️⃣ Vercel token (unfreezes the primary site + API functions)
+1. Go to https://vercel.com/account/tokens
+2. Delete **all** existing tokens
+3. Create a **new token** (make sure it belongs to team `ansygroups-projects` — not personal)
+4. Paste this command (replace `XXXX` with the token):
 ```bash
 cd /d/ebook-store && VERCEL_TOKEN=XXXX node scripts/apply-vercel-token.mjs
 ```
-هذا يحدّث الملف + سر GitHub + يشغّل deploy تجريبي. الموقع يرجع يتحدّث على:
+This updates the file + GitHub secret + runs a test deploy. The site returns to:
 `https://ebook-store-ansygroups-projects.vercel.app`
 
-⚠️ **مهم**: بعد تدوير التوكن، لازم تعيد deploy عشان الـ API functions (confirm-order/subscribe)
-تنتشر — الكود الحالي فيه إصلاحات الـ referer guard. بدون redeploy، الـ API يرفض الطلبات
-الصحيحة (`Forbidden`) لأن الـ function مجمّد على نسخة قديمة.
+⚠️ **Important**: after rotating the token you must redeploy so the API functions
+(confirm-order/subscribe) ship — the current code has referer-guard fixes. Without a
+redeploy, the API rejects valid requests (`Forbidden`) because the function is frozen on an old build.
 
 ---
 
 ## 2️⃣ GitHub OAuth token (`gho_`)
-1. ادخل https://github.com/settings/tokens
-2. احذف الـ token المكشوف
-3. أنشئ **PAT جديد** (scope: `repo`, `workflow`)
-4. حدّث git credential:
+1. Go to https://github.com/settings/tokens
+2. Delete the leaked token
+3. Create a **new PAT** (scope: `repo`, `workflow`)
+4. Update git credential:
 ```bash
 printf "protocol=https\nhost=github.com\nusername=Ansygroup\npassword=XXXX\n" | git credential approve
 ```
@@ -33,55 +33,55 @@ printf "protocol=https\nhost=github.com\nusername=Ansygroup\npassword=XXXX\n" | 
 ---
 
 ## 3️⃣ Composio API key
-1. ادخل https://app.composio.dev → Settings → API Keys
-2. احذف الـ key المكشوف
-3. أنشئ **key جديد**
-4. حدّث الملف:
+1. Go to https://app.composio.dev → Settings → API Keys
+2. Delete the leaked key
+3. Create a **new key**
+4. Update the file:
 ```bash
 echo "XXXX" > ~/.hermes/composio_key
 ```
-5. حدّث سر GitHub (عبر السكربت بعد تحديث الملف):
+5. Update the GitHub secret (via the script after updating the file):
 ```bash
 cd /d/ebook-store && python scripts/set-gh-secrets.py
 ```
 
-⚠️ **حسابات Composio (من الذاكرة — متغيرة عن ما بالكود):**
-- `ca_ru-ZbwXlFsGQ` = **Gumroad ACTIVE** (للبيع/تأكيد الطلب)
-- `ca_d461BvmxN65-` = **IG STALE** (مات — اربط IG جديد في الخطوة 5)
-- `ca_BmQnzbsU5u3T` = **GMAIL placeholder** (موجود كـ fallback في `api/confirm-order.ts` + `scripts/order_confirm.mjs` — استبدله بـ `GMAIL_ACCOUNT` env حقيقي)
+⚠️ **Composio accounts (from memory — may differ from code):**
+- `ca_ru-ZbwXlFsGQ` = **Gumroad ACTIVE** (sell / order confirmation)
+- `ca_d461BvmxN65-` = **IG STALE** (dead — link a new IG in step 5)
+- `ca_BmQnzbsU5u3T` = **GMAIL placeholder** (used as fallback in `api/confirm-order.ts` + `scripts/order_confirm.mjs` — replace with a real `GMAIL_ACCOUNT` env)
 
 ---
 
-## 4️⃣ Gumroad روابط المنتجات
-1. ادخل https://app.gumroad.com/products → New product لكل كتاب
-2. انسخ رابط كل منتج (مثل `https://gutwroad.com/l/abc123`)
-3. أنشئ `gumroad-links.json`:
+## 4️⃣ Gumroad product links
+1. Go to https://app.gumroad.com/products → New product for each book
+2. Copy each product link (e.g. `https://gumroad.com/l/abc123`)
+3. Create `gumroad-links.json`:
 ```json
 {
   "the-influential-leader": "https://gumroad.com/l/XXX",
   "build-your-empire": "https://gumroad.com/l/XXX"
 }
 ```
-4. شغّل:
+4. Run:
 ```bash
 cd /d/ebook-store && node scripts/fill-gumroad.mjs && git add -A && git commit -m "feat: real Gumroad links" && git push
 ```
 
 ---
 
-## 5️⃣ ربط Instagram (يفعّل النشر التلقائي)
-1. ادخل https://app.composio.dev → Connected Accounts → Add → Instagram
-2. اربط حساب @dar_alma3rifa
-3. جرّب النشر:
+## 5️⃣ Connect Instagram (enables auto-posting)
+1. Go to https://app.composio.dev → Connected Accounts → Add → Instagram
+2. Link the @dar_alma3rifa account
+3. Test posting:
 ```bash
 cd /d/ebook-store && node scripts/ig-prepare.mjs
 ```
-المنشور جاهز في `ig-queue/` — أو أضف خطوة نشر Composio للـ cron `f3d80ba9beeb`.
+The post is staged in `ig-queue/` — or add a Composio post step to cron `f3d80ba9beeb`.
 
 ---
 
-## ✅ بعد التدوير
-- الموقع الأصلي (Vercel) يرجع يتحدّث
-- كل المفاتيح المكشوفة تتبدّل
-- Gumroad يبيع فعليًا
-- IG ينشر تلقائيًا
+## ✅ After rotation
+- The primary (Vercel) site talks again
+- All leaked keys are swapped
+- Gumroad actually sells
+- IG posts automatically

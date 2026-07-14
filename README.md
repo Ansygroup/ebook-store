@@ -1,65 +1,66 @@
-# دار المعرفة — متجر الكتب الإلكترونية (E-Book Store)
+# Dar Al-Maarifa — Global E-Book Store
 
-متجر عربي RTL جاهز للإنتاج لبيع الكتب الإلكترونية، مبني بـ:
-**React + TypeScript + Vite + Framer Motion + Gumroad (دفع) + API خادمي (Vercel functions)**
-مع **فحوصات آلية** (Unit بـ Vitest + E2E بـ Playwright).
+A production-ready, **English-first (LTR)** e-book store with full Arabic i18n support, built with:
+**React + TypeScript + Vite + Framer Motion + Gumroad (payments) + serverless API (Vercel functions)**
+with **automated tests** (Vitest unit + Playwright e2e).
 
-## الميزات
-- تصميم عربي احترافي RTL (داكن، تدرّجات، ظلال) + نسخة إنجليزية عبر i18n.
-- أنيميشن موشن حي عبر Framer Motion (Hero، بطاقات، FAQ).
-- متجر كامل: صفحة رئيسية + متجر بفلترة/تصنيفات/ترتيب + صفحة تفاصيل لكل كتاب.
-- **زر شراء Gumroad** (overlay) — أو fallback لصفحة الكتاب إن الرابط placeholder.
-- **10 كتب** بأغلفة PNG 1200×1800 + promo 1080×1080 + PDFs نموذجية.
-- **API خادمي**: تأكيد طلب عبر Gmail + نشرة بريدية، محمي بـ (rate-limit IP+email + honeypot + referer guard).
-- **SEO/AEO**: sitemap + robots + llms.txt + JSON-LD (BookStore + FAQPage + OfferCatalog).
-- فحوصات: `vitest` (30 unit) + `playwright` (10 e2e).
+## Features
+- Professional **English-first LTR** design (dark theme, gradients, shadows) + Arabic via i18n toggle (`?lang=ar`).
+- Live motion animation via Framer Motion (hero, cards, FAQ).
+- Full store: home page + shop with category filter / sort + detail page per book.
+- **Gumroad buy button** (overlay) — or fallback to the book page when the link is a placeholder.
+- **10 books** with 1200×1800 PNG covers + 1080×1080 promo + sample PDFs.
+- **Serverless API**: Gmail order confirmation + newsletter, protected by (IP+email rate-limit + honeypot + referer guard).
+- **SEO/AEO**: sitemap + robots + llms.txt + JSON-LD (WebSite + Book + FAQPage + OfferCatalog).
+- Tests: `vitest` (30 unit) + `playwright` (10 e2e).
 
-## التشغيل المحلي
+## Run locally
 ```bash
 npm install
 npm run dev          # http://localhost:5173
 ```
 
-## ربط الدفع الحقيقي (Gumroad)
-1. أنشئ المنتجات على https://gumroad.com/products واحصل على روابط الشراء.
-2. انسخ `gumroad-links.example.json` → `gumroad-links.json` واملأ الروابط.
-3. شغّل: `node scripts/fill-gumroad.mjs` (يحدّث `src/data/books.json`).
+## Connect real payments (Gumroad)
+1. Create products at https://gumroad.com/products and grab the buy links.
+2. Copy `gumroad-links.example.json` → `gumroad-links.json` and fill in the links.
+3. Run: `node scripts/fill-gumroad.mjs` (updates `src/data/books.json`).
 4. `git add -A && git commit && git push`.
 
-> حتى بدون روابط حقيقية، زر الشراء يفتح صفحة الكتاب (فيه نموذج طلب بالإيميل + تحميل PDF).
+> Even without real links, the buy button opens the book page (it has an email-order form + PDF download).
 
-## الفحوصات
+## Tests
 ```bash
-npm test               # وحدة (Vitest)
-npm run test:e2e       # E2E (Playwright — متصفح حقيقي)
-npm run check-env      # يتحقق من جاهزية الإعداد
+npm test               # unit (Vitest)
+npm run test:e2e       # e2e (Playwright — real browser)
+npm run check-env      # checks setup readiness
 ```
 
-## النشر (GitHub Pages = القناة الحية)
+## Deploy (GitHub Pages = live channel)
 ```bash
-git push origin master   # Pages ينشر dist/ تلقائيًا عبر pages.yml
+git push origin master   # Pages deploys dist/ automatically via pages.yml
 ```
-- **Vercel** (اختياري): ينشر الـ API functions — `vercel deploy --prod` (يتطلب `VERCEL_TOKEN`).
-- الـ API (`/api/confirm-order`, `/api/subscribe`) يشير لـ Vercel عبر `VITE_API_BASE`.
+- **Vercel** (optional): deploys the API functions — `vercel deploy --prod` (requires `VERCEL_TOKEN`).
+- The API (`/api/confirm-order`, `/api/subscribe`) points to Vercel via `VITE_API_BASE`.
 
-## البناء للإنتاج
+## Build for production
 ```bash
-npm run build          # يولّد كل الأصول (covers/promo/pdfs/seo) → dist/
-npm run preview        # معاينة
+npm run build          # generates all assets (covers/promo/pdfs/seo) → dist/
+npm run preview        # preview
 ```
 
-## التدوير اليدوي (مفاتيح/حسابات)
-انظر `DO-ROTATE.md` — خطوات جاهزة لتدوير: Vercel token، GitHub OAuth، Composio (Gmail/IG)، روابط Gumroad.
+## Manual rotation (keys / accounts)
+See `DO-ROTATE.md` — ready steps to rotate: Vercel token, GitHub OAuth, Composio (Gmail/IG), Gumroad links.
 
-## التسويق (Instagram)
-- `scripts/ig-prepare.mjs` يحضّر منشور يومي (صورة promo + كابشن) في `ig-queue/` (cron 09:00).
-- `IG_GUIDE.md` يشرح النشر اليدوي من `ig-queue/`.
+## Marketing (Instagram)
+- `scripts/ig-prepare.mjs` stages a daily post (promo image + caption) into `ig-queue/` (cron 09:00).
+- `IG_GUIDE.md` explains manual posting from `ig-queue/`.
+- `marketing/` holds ready English content: 30 IG captions, 5-email sequence, Pinterest pins, Meta Ads funnel.
 
-## البنية
+## Structure
 ```
-src/                  الكود المصدري (React + API client)
+src/                  source (React + API client)
 api/                  Vercel functions (confirm-order, subscribe)
-scripts/              توليد الأصول (covers/promo/pdfs/seo) + ig-prepare + fill-gumroad
-public/               الأصول الثابتة (covers/promo/downloads + llms.txt/sitemap/robots)
-e2e/ tests/           فحوصات Playwright + Vitest
+scripts/              asset generation (covers/promo/pdfs/seo) + ig-prepare + fill-gumroad
+public/               static assets (covers/promo/downloads + llms.txt/sitemap/robots)
+e2e/ tests/           Playwright + Vitest specs
 ```

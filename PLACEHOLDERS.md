@@ -1,53 +1,53 @@
-# 📋 الـ Placeholders المطلوبة (إعبيها يدويًا)
+# 📋 Required Placeholders (fill in manually)
 
-كل هذي **مقصودة** — الموقع يشتغل بدونها (fallbacks) بس ما يبيع/ينشر فعليًا.
+All of these are **intentional** — the site works without them (via fallbacks) but won't actually sell/post.
 
 ---
 
-## 🔴 حرجة (تمنع البيع/التأكيد)
-| الملف | الحقل | القيمة الحالية | البديل |
+## 🔴 Critical (block selling / confirmation)
+| File | Field | Current value | Replace with |
 |---|---|---|---|
-| `src/data/books.json` (×10) | `gumroadUrl` | `REPLACE_WITH_YOUR_LINK_XXX` | رابط Gumroad حقيقي |
-| `src/data/books.json` (×10) | `downloadUrl` | `/downloads/<slug>.pdf` | ✅ صحيح (PDFs placeholder) |
-| `public/downloads/*.pdf` | الملف نفسه | ~900B stub | PDF الكتاب الحقيقي |
+| `src/data/books.json` (×10) | `gumroadUrl` | `REPLACE_WITH_YOUR_LINK_XXX` | real Gumroad link |
+| `src/data/books.json` (×10) | `downloadUrl` | `/downloads/<slug>.pdf` | ✅ correct (placeholder PDFs) |
+| `public/downloads/*.pdf` | the file itself | ~900B stub | the real book PDF |
 | `index.html` | `YOUR_PIXEL_ID` | `YOUR_PIXEL_ID` | Meta Pixel ID |
-| `scripts/apply-vercel-token.mjs` ← env | `VERCEL_TOKEN` | (مشوه) | token جديد من vercel.com |
-| `~/.hermes/composio_key` | Composio API key | (مشوه) | key جديد |
-| `~/.hermes/vercel_token` | Vercel token | (مشوه) | token جديد |
+| `scripts/apply-vercel-token.mjs` ← env | `VERCEL_TOKEN` | (redacted) | fresh token from vercel.com |
+| `~/.hermes/composio_key` | Composio API key | (redacted) | new key |
+| `~/.hermes/vercel_token` | Vercel token | (redacted) | new token |
 
 ---
 
-## 🟡 حسابات Composio (من الذاكرة — متغيرة)
-| المعرّف | الحالة | الاستخدام |
+## 🟡 Composio accounts (from memory — may drift)
+| ID | Status | Use |
 |---|---|---|
-| `ca_ru-ZbwXlFsGQ` | **Gumroad ACTIVE** | تأكيد الطلب/الإيميل |
-| `ca_d461BvmxN65-` | **IG STALE** | النشر التلقائي (اربط IG جديد) |
-| `ca_BmQnzbsU5u3T` | Gmail placeholder | fallback في `api/*.ts` — استبدله بـ `GMAIL_ACCOUNT` env |
+| `ca_ru-ZbwXlFsGQ` | **Gumroad ACTIVE** | order/email confirmation |
+| `ca_d461BvmxN65-` | **IG STALE** | auto-posting (link a new IG) |
+| `ca_BmQnzbsU5u3T` | Gmail placeholder | fallback in `api/*.ts` — replace with real `GMAIL_ACCOUNT` env |
 
 ---
 
-## 🟢 جاهز (ما يحتاج تعديل)
-- ✅ GitHub Pages منشور + كل الأصول حية
-- ✅ Vercel API functions (محتاجة token صالح بس)
+## 🟢 Ready (no change needed)
+- ✅ GitHub Pages live + all assets served
+- ✅ Vercel API functions (just need a valid token)
 - ✅ SEO/AEO (llms.txt, sitemap, JSON-LD)
-- ✅ 30 IG captions + 5-email + 10 Pinterest + Meta funnel
-- ✅ Meta Pixel (يشتغل فورًا بـ ID حقيقي)
-- ✅ cron IG يومي (`f3d80ba9beeb`)
+- ✅ 30 IG captions + 5-email + 10 Pinterest + Meta funnel (all English)
+- ✅ Meta Pixel (fires instantly with a real ID)
+- ✅ daily IG cron (`f3d80ba9beeb`)
 
 ---
 
-## 🚀 الخطوات السريعة
+## 🚀 Quick steps
 ```bash
 # 1) Gumroad links
-node scripts/gumroad_sync.mjs --links   # شوف وين الناقص
-# عبّي gumroad-links.json ثم:
+node scripts/gumroad_sync.mjs --links   # see what's missing
+# fill gumroad-links.json then:
 node scripts/fill-gumroad.mjs && git add -A && git commit -m "feat: real Gumroad" && git push
 
-# 2) Vercel token (يفك الـ API)
+# 2) Vercel token (unfreezes the API)
 VERCEL_TOKEN=XXX node scripts/apply-vercel-token.mjs
 
-# 3) Pixel ID (في index.html سطر ~139)
-# استبدل YOUR_PIXEL_ID
+# 3) Pixel ID (index.html around line 139)
+# replace YOUR_PIXEL_ID
 
-# 4) PDFs حقيقية → public/downloads/<slug>.pdf
+# 4) Real PDFs → public/downloads/<slug>.pdf
 ```
