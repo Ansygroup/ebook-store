@@ -8,7 +8,7 @@
  *   2) الصق روابطك الحقيقية من gumroad.com
  *   3) node scripts/fill-gumroad.mjs
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -17,7 +17,7 @@ const root = resolve(__dirname, '..');
 const booksPath = resolve(root, 'src/data/books.json');
 const linksPath = resolve(root, 'gumroad-links.json');
 
-if (!require('node:fs').existsSync(linksPath)) {
+if (!existsSync(linksPath)) {
   console.error('❌ gumroad-links.json غير موجود. انسخ gumroad-links.example.json إليه.');
   process.exit(1);
 }
