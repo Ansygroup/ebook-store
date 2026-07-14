@@ -31,7 +31,7 @@ export default function BookDetail() {
           : { ok: false, msg: '❌ ' + (j.error || (lang === 'ar' ? 'تعذر الطلب' : 'Order failed')) },
       );
     } catch {
-      setStatus({ ok: false, msg: '❌ ' + (lang === 'ar' ? 'خطأ في الاتصال' : 'Connection error') });
+      setStatus({ ok: false, msg: '⚠️ ' + (lang === 'ar' ? 'خدمة الطلب غير متاحة حالياً — حاول لاحقاً' : 'Order service temporarily unavailable — try again later') });
     } finally {
       setBusy(false);
     }

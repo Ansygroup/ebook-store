@@ -27,7 +27,7 @@ export default function Newsletter() {
         setStatus({ ok: false, msg: '❌ ' + (lang === 'ar' ? 'تعذر الاشتراك' : 'Subscription failed') });
       }
     } catch {
-      setStatus({ ok: false, msg: '❌ ' + (lang === 'ar' ? 'خطأ في الاتصال' : 'Connection error') });
+      setStatus({ ok: false, msg: '⚠️ ' + (lang === 'ar' ? 'خدمة النشرة غير متاحة حالياً — حاول لاحقاً' : 'Newsletter service temporarily unavailable — try again later') });
     } finally {
       setBusy(false);
     }
