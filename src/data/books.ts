@@ -13,6 +13,10 @@ export function getBookBySlug(slug: string): Book | undefined {
 
 export const featuredBooks = books.filter((b) => b.featured);
 
+// External newsletter signup (optional). Used as a fallback when the API backend
+// is unavailable (e.g. before the Cloudflare Worker is deployed). Empty = API only.
+export const NEWSLETTER_URL = '';
+
 export const currencyFormatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',

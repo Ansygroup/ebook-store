@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLang } from '../i18n/LanguageContext';
+import { NEWSLETTER_URL } from '../data/books';
 
 export default function Newsletter() {
   const { t, lang } = useLang();
@@ -27,7 +28,13 @@ export default function Newsletter() {
         setStatus({ ok: false, msg: '❌ ' + (lang === 'ar' ? 'تعذر الاشتراك' : 'Subscription failed') });
       }
     } catch {
-      setStatus({ ok: false, msg: '⚠️ ' + (lang === 'ar' ? 'خدمة النشرة غير متاحة حالياً — حاول لاحقاً' : 'Newsletter service temporarily unavailable — try again later') });
+      if (NEWSLETTER_URL) {
+        // graceful fallback: open external signup instead of dead API
+        window.open(NEWSLETTER_URL, '_blank', 'noopener');
+        setStatus({ ok: true, msg: '✅ ' + (lang === 'ar' ? 'تم توجيهك للاشتراك' : 'Redirected to signup') });
+      } else {
+        setStatus({ ok: false, msg: '⚠️ ' + (lang === 'ar' ? 'خدمة النشرة غير متاحة حالياً — حاول لاحقاً' : 'Newsletter service temporarily unavailable — try again later') });
+      }
     } finally {
       setBusy(false);
     }
