@@ -43,8 +43,14 @@ export default async function handler(req: any, res: any) {
   }
 
   // ── referer/origin guard (reject off-site callers) ──
+  // يقبل Pages (مع/بدون trailing slash) + localhost + نطاق github.io عام
   const origin = (req.headers?.origin || req.headers?.referer || '') as string;
-  if (origin && !origin.startsWith(SITE) && !origin.includes('localhost')) {
+  const allowed =
+    origin.startsWith(SITE) ||
+    origin.startsWith(SITE + '/') ||
+    origin.includes('localhost') ||
+    /\.github\.io\//.test(origin);
+  if (origin && !allowed) {
     res.status(403).json({ ok: false, error: 'Forbidden' });
     return;
   }
