@@ -1,22 +1,22 @@
 # Dar Al-Maarifa E-Book Store
-
-> Arabic RTL e-book store with 10 expertly crafted titles in leadership, business, productivity, and self-development. Bilingual (AR/EN).
+> Arabic RTL e-book store with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Bilingual (AR/EN). Instant PDF download. Prices from $9.99.
 
 ## Books
-- [The Influential Leader](https://ansygroup.github.io/ebook-store/book/the-influential-leader) — A practical guide to developing leadership that inspires your team and builds a high-performance culture. ($19.99)
-- [Build Your Empire](https://ansygroup.github.io/ebook-store/book/build-your-empire) — A complete roadmap to launch your startup and grow it to profitability. ($24.99)
-- [Deep Productivity](https://ansygroup.github.io/ebook-store/book/deep-productivity) — A work style focused on depth over fake busyness that doubles your output. ($14.99)
-- [Design Your Mindset](https://ansygroup.github.io/ebook-store/book/design-your-mindset) — Reprogram your limiting beliefs and build a growth mindset that never stops learning. ($12.99)
-- [Tech for Everyone](https://ansygroup.github.io/ebook-store/book/tech-for-everyone) — Understand the basics of programming and AI without a technical background. ($17.99)
-- [Health Without Limits](https://ansygroup.github.io/ebook-store/book/health-without-limits) — An integrated lifestyle system for energy, focus, and sustainable wellbeing. ($9.99)
-- [The Art of Negotiation](https://ansygroup.github.io/ebook-store/book/art-of-negotiation) — Learn the art of persuasion and agreement with confidence at work and in daily life. ($15.99)
-- [Smart Investing](https://ansygroup.github.io/ebook-store/book/smart-investing) — Fundamentals of building long-term wealth with disciplined, thoughtful steps. ($21.99)
-- [Content Craft](https://ansygroup.github.io/ebook-store/book/content-writing) — Write content that sells and builds a loyal audience around your brand. ($13.99)
-- [Learn Languages](https://ansygroup.github.io/ebook-store/book/learn-languages) — A practical method to master any language in record time without a teacher. ($11.99)
+- [The Influential Leader](https://ansygroup.github.io/ebook-store/book/the-influential-leader) — A practical guide to developing leadership that inspires your team and builds a high-performance culture. ($19.99). Keywords: leadership books, how to be a leader, team management, high performance culture, Arabic leadership guide.
+- [Build Your Empire](https://ansygroup.github.io/ebook-store/book/build-your-empire) — A complete roadmap to launch your startup and grow it to profitability. ($24.99). Keywords: startup guide, build a business, entrepreneurship, grow startup profit, business roadmap.
+- [Deep Productivity](https://ansygroup.github.io/ebook-store/book/deep-productivity) — A work style focused on depth over fake busyness that doubles your output. ($14.99). Keywords: productivity books, deep work, focus techniques, time management, get more done.
+- [Design Your Mindset](https://ansygroup.github.io/ebook-store/book/design-your-mindset) — Reprogram your limiting beliefs and build a growth mindset that never stops learning. ($12.99). Keywords: growth mindset, self improvement, overcome limiting beliefs, psychology success, mindset book.
+- [Tech for Everyone](https://ansygroup.github.io/ebook-store/book/tech-for-everyone) — Understand the basics of programming and AI without a technical background. ($17.99). Keywords: learn programming, AI for beginners, tech basics, understand coding, non-technical guide.
+- [Health Without Limits](https://ansygroup.github.io/ebook-store/book/health-without-limits) — An integrated lifestyle system for energy, focus, and sustainable wellbeing. ($9.99). Keywords: health and wellness, energy system, healthy lifestyle, nutrition fitness, sustainable wellbeing.
+- [The Art of Negotiation](https://ansygroup.github.io/ebook-store/book/art-of-negotiation) — Learn the art of persuasion and agreement with confidence at work and in daily life. ($15.99). Keywords: negotiation skills, persuasion, deal making, communication skills, win agreements.
+- [Smart Investing](https://ansygroup.github.io/ebook-store/book/smart-investing) — Fundamentals of building long-term wealth with disciplined, thoughtful steps. ($21.99). Keywords: investing for beginners, personal finance, build wealth, stock market basics, long term investing.
+- [Content Craft](https://ansygroup.github.io/ebook-store/book/content-writing) — Write content that sells and builds a loyal audience around your brand. ($13.99). Keywords: content marketing, copywriting, write to sell, build audience, content strategy.
+- [Learn Languages](https://ansygroup.github.io/ebook-store/book/learn-languages) — A practical method to master any language in record time without a teacher. ($11.99). Keywords: learn languages fast, language learning method, polyglot, memory techniques, self study languages.
 
 ## Pages
 - [Home](https://ansygroup.github.io/ebook-store/)
 - [Shop](https://ansygroup.github.io/ebook-store/shop)
+- [FAQ](https://ansygroup.github.io/ebook-store/faq)
 
 ## Assets
 - Covers: https://ansygroup.github.io/ebook-store/covers/<slug>.png

@@ -85,11 +85,34 @@
       content="https://ansygroup.github.io/ebook-store/"
     />
 
-    <!-- Content Security Policy (يسمح لـ API على Vercel + Snipcart) -->
+    <!-- Content Security Policy (يسمح لـ API على Vercel) -->
     <meta
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://ebook-store-ansygroups-projects.vercel.app"
     />
+
+    <!-- SEO keywords (AR + EN) -->
+    <meta
+      name="keywords"
+      content="كتب إلكترونية, تحميل كتب PDF, قيادة, تطوير ذاتي, إنتاجية, استثمار, كتب عربية, ebooks, leadership books, self improvement, productivity, Arabic books"
+    />
+    <meta name="author" content="Dar Al-Maarifa" />
+
+    <!-- JSON-LD: WebSite (search box / brand) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Dar Al-Maarifa",
+      "name:ar": "دار المعرفة",
+      "url": "https://ansygroup.github.io/ebook-store/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ansygroup.github.io/ebook-store/shop",
+        "query-input": "required name=search_term"
+      }
+    }
+    </script>
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -103,7 +126,7 @@
       content="https://ansygroup.github.io/ebook-store/og-cover.png"
     />
 
-    <script type="module" crossorigin src="/ebook-store/assets/index-HGTIftM3.js"></script>
+    <script type="module" crossorigin src="/ebook-store/assets/index-tjKQ0Fnm.js"></script>
     <link rel="stylesheet" crossorigin href="/ebook-store/assets/index-D13bcwMR.css">
   </head>
   <body>
