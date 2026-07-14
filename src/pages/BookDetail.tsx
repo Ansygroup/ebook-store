@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { getBookBySlug, formatPrice, books, pick, gumroadHref } from '../data/books';
+import { getBookBySlug, formatPrice, books, pick, gumroadHref, SELLER_EMAIL } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 import BookCard from '../components/BookCard';
 
@@ -31,7 +31,11 @@ export default function BookDetail() {
           : { ok: false, msg: '❌ ' + (j.error || (lang === 'ar' ? 'تعذر الطلب' : 'Order failed')) },
       );
     } catch {
-      setStatus({ ok: false, msg: '⚠️ ' + (lang === 'ar' ? 'خدمة الطلب غير متاحة حالياً — حاول لاحقاً' : 'Order service temporarily unavailable — try again later') });
+      // last-resort: open a pre-filled email (no backend needed)
+      const subj = encodeURIComponent(`Order: ${title} (${book.slug})`);
+      const body = encodeURIComponent(`Email: ${email}\nBook: ${title}\nSlug: ${book.slug}`);
+      window.location.href = `mailto:${SELLER_EMAIL}?subject=${subj}&body=${body}`;
+      setStatus({ ok: true, msg: '📧 ' + (lang === 'ar' ? 'تم فتح بريدك لإرسال طلبك' : 'Opened your mail app to send your order') });
     } finally {
       setBusy(false);
     }
