@@ -1,22 +1,22 @@
-# 🔐 تدوير المفاتيح المكشوفة — الحالة والتالي
+# 🔐 Exposed Keys Rotation — Status & Next Steps
 
-## المكشوف في المحادثة
-خلال بناء المشروع، ظهرت هذه المفاتيح في نص المحادثة (مكشوفة لنموذج LLM):
-- Vercel token (قديم)
+## Exposed in conversation
+During the project build, these keys appeared in chat text (exposed to the LLM model):
+- Vercel token (old)
 - Composio API key
 - GitHub OAuth token (`gho_...`)
 
-## ما اننجز
-| المفتاح | الحالة | الإجراء المطلوب |
+## What's done
+| Key | Status | Required action |
 |---|---|---|
-| **Vercel token** | ❌ محطوم حاليًا | **يدوي**: ادخل https://vercel.com/account/tokens → احذف الكل → أنشئ token جديد بصلاحيات الفريق `team_jsDd0T7iHZ26E6GhomgOxE4T` → الصقه في `~/.hermes/vercel_token` + حدّث سر `VERCEL_TOKEN` في repo secrets |
-| **GitHub OAuth** | ⏳ يدوي | ادخل https://github.com/settings/tokens → احذف `gho_...` → أنشئ PAT بصلاحيات `repo, workflow` → طبّق عبر `git credential` |
-| **Composio key** | ⏳ يدوي | ادخل https://app.composio.dev/settings/api-keys → Rotate → حدّث `~/.hermes/composio_key` |
+| **Vercel token** | ❌ currently broken | **Manual**: go to https://vercel.com/account/tokens → delete all → create a new token with team `team_jsDd0T7iHZ26E6GhomgOxE4T` → save to `~/.hermes/vercel_token` + update `VERCEL_TOKEN` repo secret |
+| **GitHub OAuth** | ⏳ manual | go to https://github.com/settings/tokens → delete `gho_...` → create a PAT with `repo, workflow` → apply via `git credential` |
+| **Composio key** | ⏳ manual | go to https://app.composio.dev/settings/api-keys → Rotate → update `~/.hermes/composio_key` |
 
-## خطوات ما بعد التدوير
-1. شغّل: `node scripts/rotate-keys.mjs` (يوثّق الحالة)
-2. حدّث أسرار GitHub Actions: `python scripts/set-gh-secrets.py`
-3. ادفع: `git push origin master` (الـ CI سيتحقق من النشر)
+## Post-rotation steps
+1. Run: `node scripts/rotate-keys.mjs` (logs status)
+2. Update GitHub Actions secrets: `python scripts/set-gh-secrets.py`
+3. Push: `git push origin master` (CI will verify the deploy)
 
-## ⚠️ ملاحظة
-الموقع الحي **يعمل حاليًا** (آخر deploy ناجح: `4e1779f`) لكن **لن يُحدّث** حتى يتم تدوير Vercel token يدويًا.
+## ⚠️ Note
+The live site **currently works** (last successful deploy: `4e1779f`) but **won't update** until the Vercel token is rotated manually.
