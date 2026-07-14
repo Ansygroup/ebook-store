@@ -51,8 +51,8 @@ export default function BookDetail() {
   const related = books
     .filter((b) => b.id !== book.id)
     .sort((a, b) => {
-      if (a.categoryAr === book.categoryAr && b.categoryAr !== book.categoryAr) return -1;
-      if (a.categoryAr !== book.categoryAr && b.categoryAr === book.categoryAr) return 1;
+      if (a.categoryEn === book.categoryEn && b.categoryEn !== book.categoryEn) return -1;
+      if (a.categoryEn !== book.categoryEn && b.categoryEn === book.categoryEn) return 1;
       return b.rating - a.rating;
     })
     .slice(0, 3);
