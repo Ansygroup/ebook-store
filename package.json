@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "متجر احترافي لبيع الكتب الإلكترونية مع Snipcart وفحوصات آلية",
+  "description": "Global English-first (LTR) e-book store with Arabic i18n, Gumroad checkout, and automated marketing assets.",
   "scripts": {
     "dev": "vite",
     "build": "node scripts/sync-books.mjs && node scripts/generate-pdfs.mjs && node scripts/generate-covers.mjs && node scripts/generate-og.mjs && node scripts/generate-promo.mjs && node scripts/generate-seo.mjs && vite build && node scripts/copy-404.mjs",
@@ -21,6 +21,9 @@
     "deploy": "bash deploy.sh",
     "ig:promote": "node scripts/ig_promote.mjs",
     "gumroad:sync": "node scripts/gumroad_sync.mjs",
+    "gumroad:fill": "node scripts/fill-gumroad.mjs",
+    "email:stage": "python scripts/_stage_emails.py",
+    "email:send": "node scripts/send-sequence.mjs",
     "order:confirm": "node scripts/order_confirm.mjs"
   },
   "dependencies": {
