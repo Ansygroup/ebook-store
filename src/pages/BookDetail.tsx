@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getBookBySlug, formatPrice, books, pick, gumroadHref, SELLER_EMAIL } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 import BookCard from '../components/BookCard';
@@ -69,6 +69,22 @@ export default function BookDetail() {
   const category = pick<string>(book, 'category', lang);
   const longDesc = pick<string>(book, 'longDescription', lang);
   const tags = pick<string[]>(book, 'tags', lang);
+
+  const SITE = 'https://ansygroup.github.io/ebook-store';
+  const ogImage = `${SITE}/og/${book.slug}.png`;
+
+  // inject per-book Open Graph tags so shared links show the right cover
+  useEffect(() => {
+    const set = (prop: string, content: string) => {
+      let m = document.head.querySelector(`meta[property="${prop}"]`);
+      if (!m) { m = document.createElement('meta'); m.setAttribute('property', prop); document.head.appendChild(m); }
+      m.setAttribute('content', content);
+    };
+    set('og:title', title);
+    set('og:description', longDesc);
+    set('og:image', ogImage);
+    set('twitter:image', ogImage);
+  }, [title, longDesc, ogImage]);
 
   return (
     <section className="section book-detail">

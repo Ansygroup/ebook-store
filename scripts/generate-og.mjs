@@ -1,17 +1,21 @@
 #!/usr/bin/env node
 /**
- * generate-og.mjs — يولّد og-cover.png (1200×630) بهوية المتجر البصرية.
- * SVG → PNG عبر sharp (لو متاح) أو يترك SVG كـ fallback.
+ * generate-og.mjs — generates Open Graph cover images (1200×630) in the store's
+ * visual identity. One global cover (EN-first) + one per book (for rich shares).
+ * SVG → PNG via sharp (if available) or leaves SVG as a fallback.
  */
 import { writeFileSync, mkdirSync } from 'node:fs';
-import { execSync } from 'node:child_process';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 mkdirSync(resolve(root, 'public'), { recursive: true });
+mkdirSync(resolve(root, 'public/og'), { recursive: true });
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+const books = JSON.parse(readFileSync('src/data/books.json', 'utf8'));
+
+function cover({ title, subtitle, badge, out }) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0b0d17"/>
@@ -28,36 +32,57 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" v
   </defs>
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect width="1200" height="630" fill="url(#glow)"/>
-  <!-- book stack -->
-  <g transform="translate(880 315)">
+  <g transform="translate(900 315)">
     <rect x="-70" y="-150" width="140" height="200" rx="10" fill="#1c1a30" stroke="url(#accent)" stroke-width="2" transform="rotate(-8)"/>
     <rect x="-55" y="-120" width="140" height="200" rx="10" fill="#232042" stroke="url(#accent)" stroke-width="2" transform="rotate(4)"/>
     <rect x="-40" y="-90" width="140" height="200" rx="10" fill="#2a2650" stroke="url(#accent)" stroke-width="2.5"/>
     <circle cx="30" cy="10" r="22" fill="url(#accent)" opacity="0.9"/>
   </g>
-  <!-- text -->
-  <text x="90" y="250" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="72" font-weight="800" fill="#ffffff" direction="rtl">دار المعرفة</text>
-  <text x="90" y="330" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="38" font-weight="600" fill="#00e0ff" direction="rtl">متجر الكتب الإلكترونية</text>
-  <text x="90" y="400" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="28" fill="#9b98b8" direction="rtl">كتب القيادة والأعمال والتطوير الذاتي</text>
-  <rect x="90" y="440" width="220" height="60" rx="30" fill="url(#accent)"/>
-  <text x="200" y="479" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="26" font-weight="700" fill="#0b0d17" text-anchor="middle" direction="rtl">تصفّح الآن</text>
+  <text x="90" y="200" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="34" font-weight="700" fill="#00e0ff">${badge}</text>
+  <text x="90" y="290" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="68" font-weight="800" fill="#ffffff">${escapeXml(title)}</text>
+  <text x="90" y="360" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="30" fill="#9b98b8">${escapeXml(subtitle)}</text>
+  <rect x="90" y="430" width="260" height="62" rx="31" fill="url(#accent)"/>
+  <text x="220" y="470" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="26" font-weight="700" fill="#0b0d17" text-anchor="middle">Dar Al-Maarifa</text>
 </svg>`;
+  writeFileSync(out + '.svg', svg);
+  toPng(svg, out + '.png');
+}
 
-const svgPath = resolve(root, 'public/og-cover.svg');
-writeFileSync(svgPath, svg);
-console.log('✅ og-cover.svg');
+function escapeXml(s = '') {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 
-// حاول تحويل PNG: sharp → ImageMagick → SVG fallback
-const pngPath = resolve(root, 'public/og-cover.png');
-try {
-  const sharp = (await import('sharp')).default;
-  await sharp(Buffer.from(svg)).png().toFile(pngPath);
-  console.log('✅ og-cover.png (1200×630 via sharp)');
-} catch {
+// real import (ESM) — books already loaded at top
+import { readFileSync } from 'node:fs';
+
+async function toPng(svg, pngPath) {
   try {
-    execSync(`magick -density 150 -background none "${svgPath}" -resize 1200x630 "${pngPath}"`, { stdio: 'ignore' });
-    console.log('✅ og-cover.png (1200×630 via ImageMagick)');
+    const sharp = (await import('sharp')).default;
+    await sharp(Buffer.from(svg)).png().toFile(pngPath);
+    console.log('✅ ' + pngPath.split('/').pop() + ' (sharp)');
   } catch {
-    console.log('⚠️ لا sharp ولا ImageMagick — og-cover.svg جاهز (حوّله يدويًا لـ PNG)');
+    console.log('⚠️ no sharp — ' + pngPath.split('/').pop().replace('.png', '.svg') + ' kept as fallback');
   }
 }
+
+const allBooks = books;
+
+// global cover (EN-first)
+cover({
+  title: 'Dar Al-Maarifa',
+  subtitle: 'Global e-book store — leadership, business & self-growth',
+  badge: 'E-BOOK STORE',
+  out: resolve(root, 'public/og-cover'),
+});
+
+// per-book covers
+for (const b of allBooks) {
+  cover({
+    title: b.titleEn || b.title,
+    subtitle: `${b.authorEn || b.author} · $${b.price}`,
+    badge: (b.categoryEn || b.category || 'BOOK').toUpperCase(),
+    out: resolve(root, `public/og/${b.slug}`),
+  });
+}
+
+console.log(`✅ generated ${allBooks.length + 1} OG covers`);
