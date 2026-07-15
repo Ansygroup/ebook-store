@@ -42,6 +42,7 @@ const routes = [
   'shop',
   'blog',
   'pricing',
+  'faq',
   'privacy',
   'terms',
   ...books.map((b) => `book/${b.slug}`),

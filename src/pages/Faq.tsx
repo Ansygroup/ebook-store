@@ -7,7 +7,6 @@ export default function Faq() {
   const q = (s: string) => (lang === 'ar' ? (faqs.find((f) => f.qEn === s)?.qAr ?? s) : s);
   const a = (s: string) => (lang === 'ar' ? (faqs.find((f) => f.qEn === s)?.aAr ?? s) : (faqs.find((f) => f.qEn === s)?.aEn ?? s));
 
-  const SITE = 'https://ansygroup.github.io/ebook-store';
   const schemaQa = faqs.map((f) => ({
     '@type': 'Question',
     name: f.qEn,
