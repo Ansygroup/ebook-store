@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import BookCard from '../components/BookCard';
-import { books, categories } from '../data/books';
+import { books, categories, pick } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 
 type SortKey = 'popular' | 'price-asc' | 'price-desc' | 'rating';
@@ -9,17 +9,30 @@ export default function Shop() {
   const { t, lang } = useLang();
   const [activeCat, setActiveCat] = useState<string>('all');
   const [sort, setSort] = useState<SortKey>('popular');
+  const [query, setQuery] = useState<string>('');
 
   const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
     let list = books.filter(
       (b) => activeCat === 'all' || b.categoryEn === activeCat,
     );
+    if (q) {
+      list = list.filter((b) => {
+        const title = pick<string>(b, 'title', lang).toLowerCase();
+        const author = pick<string>(b, 'author', lang).toLowerCase();
+        const tags = pick<string[]>(b, 'tags', lang).join(' ').toLowerCase();
+        const cat = pick<string>(b, 'category', lang).toLowerCase();
+        return (
+          title.includes(q) || author.includes(q) || tags.includes(q) || cat.includes(q)
+        );
+      });
+    }
     if (sort === 'price-asc') list = [...list].sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') list = [...list].sort((a, b) => b.price - a.price);
     if (sort === 'popular') list = [...list].sort((a, b) => b.reviews - a.reviews);
     if (sort === 'rating') list = [...list].sort((a, b) => b.rating - a.rating);
     return list;
-  }, [activeCat, sort]);
+  }, [activeCat, sort, query, lang]);
 
   return (
     <section className="section shop">
@@ -35,6 +48,17 @@ export default function Shop() {
         </div>
 
         <div className="shop__controls" data-testid="shop-controls">
+          <div className="shop__search">
+            <input
+              type="search"
+              className="shop__search-input"
+              placeholder={lang === 'ar' ? 'ابحث بالعنوان أو الكاتب أو التصنيف…' : 'Search title, author, or category…'}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              aria-label={lang === 'ar' ? 'ابحث' : 'Search'}
+            />
+          </div>
+
           <div className="shop__cats" role="tablist" aria-label="Categories">
             {['all', ...categories].map((c) => (
               <button
