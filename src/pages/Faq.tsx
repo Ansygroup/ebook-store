@@ -1,6 +1,7 @@
 import { useLang } from '../i18n/LanguageContext';
 import { faqs } from '../data/faq';
 import JsonLd from '../components/JsonLd';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function Faq() {
   const { lang, t } = useLang();
@@ -23,6 +24,12 @@ export default function Faq() {
         }}
       />
       <div className="container">
+        <Breadcrumbs
+          items={[
+            { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: '/' },
+            { name: lang === 'ar' ? 'الأسئلة الشائعة' : 'FAQ', path: '/faq' },
+          ]}
+        />
         <div className="section__head">
           <span className="section__eyebrow">{t('nav.faq')}</span>
           <h1 className="section__title">{lang === 'ar' ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'}</h1>

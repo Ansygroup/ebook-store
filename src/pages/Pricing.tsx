@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useLang } from '../i18n/LanguageContext';
 import { books } from '../data/books';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function Pricing() {
   const { t, lang } = useLang();
@@ -28,6 +29,12 @@ export default function Pricing() {
   ];
   return (
     <section className="section container pricing">
+      <Breadcrumbs
+        items={[
+          { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: '/' },
+          { name: lang === 'ar' ? 'الأسعار' : 'Pricing', path: '/pricing' },
+        ]}
+      />
       <div className="section__head">
         <span className="section__eyebrow">{lang === 'ar' ? 'الأسعار' : 'Pricing'}</span>
         <h1 className="section__title">{lang === 'ar' ? 'ابدأ اليوم' : 'Start today'}</h1>

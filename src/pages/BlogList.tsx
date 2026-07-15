@@ -1,12 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useLang } from '../i18n/LanguageContext';
 import { posts, pick } from '../data/posts';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function BlogList() {
   const { lang, t } = useLang();
   const sorted = [...posts].sort((a, b) => b.date.localeCompare(a.date));
   return (
     <section className="section container">
+      <Breadcrumbs
+        items={[
+          { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: '/' },
+          { name: lang === 'ar' ? 'المدونة' : 'Blog', path: '/blog' },
+        ]}
+      />
       <h1 className="section__title">{lang === 'ar' ? 'المدونة' : 'Blog'}</h1>
       <p className="section__sub">{t('blog.sub')}</p>
       <div className="blog-grid">

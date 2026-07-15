@@ -4,6 +4,7 @@ import { getPostBySlug, pick } from '../data/posts';
 import { getBookBySlug, pick as pickBook } from '../data/books';
 import NotFound from './NotFound';
 import JsonLd from '../components/JsonLd';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 // Tiny markdown renderer: ## h2, ### h3, > blockquote, - li, **bold**, blank-line paragraphs.
 function md(src: string): string {
@@ -61,6 +62,13 @@ export default function BlogPost() {
           publisher: { '@type': 'Organization', name: 'Dar Al-Maarifa' },
           keywords: post.tags.join(', '),
         }}
+      />
+      <Breadcrumbs
+        items={[
+          { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: '/' },
+          { name: lang === 'ar' ? 'المدونة' : 'Blog', path: '/blog' },
+          { name: title, path: `/blog/${post.slug}` },
+        ]}
       />
       <Link to="/blog" className="blog-post__back">← {lang === 'ar' ? 'المدونة' : 'Blog'}</Link>
       {post.cover && <img src={`/${post.cover}`} alt={title} className="blog-post__cover" />}

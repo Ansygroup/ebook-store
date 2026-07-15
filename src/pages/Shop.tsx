@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import BookCard from '../components/BookCard';
 import { books, categories, pick } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 type SortKey = 'popular' | 'price-asc' | 'price-desc' | 'rating';
 
@@ -36,6 +37,12 @@ export default function Shop() {
 
   return (
     <section className="section shop">
+      <Breadcrumbs
+        items={[
+          { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: '/' },
+          { name: lang === 'ar' ? 'المتجر' : 'Shop', path: '/shop' },
+        ]}
+      />
       <div className="container">
         <div className="section__head">
           <span className="section__eyebrow">{t('nav.shop')}</span>

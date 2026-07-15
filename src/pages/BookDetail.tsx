@@ -5,6 +5,7 @@ import { getBookBySlug, formatPrice, books, pick, gumroadHref, SELLER_EMAIL } fr
 import { useLang } from '../i18n/LanguageContext';
 import BookCard from '../components/BookCard';
 import JsonLd from '../components/JsonLd';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { posts, pick as pickPost } from '../data/posts';
 
 export default function BookDetail() {
@@ -115,6 +116,13 @@ export default function BookDetail() {
             availability: 'https://schema.org/InStock',
           },
         }}
+      />
+      <Breadcrumbs
+        items={[
+          { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: '/' },
+          { name: lang === 'ar' ? 'المتجر' : 'Shop', path: '/shop' },
+          { name: title, path: `/book/${book.slug}` },
+        ]}
       />
       <div className="container">
         <Link to="/shop" className="book-detail__back">
