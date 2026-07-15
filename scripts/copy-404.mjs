@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 /**
- * copy-404.mjs — يجعل GitHub Pages يعمل كـ SPA.
- * ينسخ dist/index.html → dist/404.html ويضيف سكربت يحوّل مسار 404 إلى
- * مسار SPA حقيقي عبر History API (بدون إعادة تحميل).
- * يشغّل بعد vite build.
+ * copy-404.mjs — makes GitHub Pages serve SPA routes with HTTP 200 (not 404).
+ *
+ * GitHub Pages serves /folder/index.html at /folder/ with status 200. We generate
+ * a real directory + index.html for every client route so crawlers see 200 (SEO-safe),
+ * and ALSO keep dist/404.html as the ultimate fallback for unknown paths.
+ * Runs after `vite build`.
  */
-import { readFileSync, writeFileSync, copyFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -15,10 +17,9 @@ const dist = resolve(root, 'dist');
 
 const index = readFileSync(resolve(dist, 'index.html'), 'utf8');
 
-// أدخل سكربت SPA fallback قبل </body> (يحوّل /404.html?/<path> → /<path>)
+// SPA fallback script for the 404.html catch-all (client-side rewrite)
 const spaScript = `
   <script>
-    // GitHub Pages SPA fallback: rewrite /404.html?/path → /path (history API)
     (function () {
       var seg = window.location.pathname.match(/\\/404\\.html$/);
       if (seg) {
@@ -28,7 +29,36 @@ const spaScript = `
     })();
   </script>
 `;
-const html = index.replace('</body>', spaScript + '\n  </body>');
+const fallbackHtml = index.replace('</body>', spaScript + '\n  </body>');
+writeFileSync(resolve(dist, '404.html'), fallbackHtml);
 
-writeFileSync(resolve(dist, '404.html'), html);
-console.log('✅ dist/404.html (SPA fallback) generated from dist/index.html');
+// Pre-render every client route as a real directory so Pages returns 200 (SEO-safe).
+// Routes mirror src/App.tsx. Books/posts are read from source so the build stays in sync.
+const books = JSON.parse(readFileSync(resolve(root, 'src/data/books.json'), 'utf8'));
+const posts = JSON.parse(readFileSync(resolve(root, 'src/data/posts.json'), 'utf8'));
+
+const routes = [
+  '',
+  'shop',
+  'blog',
+  'pricing',
+  'privacy',
+  'terms',
+  ...books.map((b) => `book/${b.slug}`),
+  ...posts.map((p) => `blog/${p.slug}`),
+];
+
+for (const r of routes) {
+  const dir = resolve(dist, r);
+  mkdirSync(dir, { recursive: true });
+  // strip the leading "/" only for non-root; root already handled by dist/index.html
+  const target = r === '' ? resolve(dist, 'index.html') : resolve(dir, 'index.html');
+  if (r === '') {
+    // dist/index.html already exists from vite — leave it
+    continue;
+  }
+  writeFileSync(target, index);
+}
+
+// copy assets referenced relatively — vite uses absolute /assets/* so they resolve fine.
+console.log(`✅ SPA routes pre-rendered (${routes.length} dirs, HTTP 200 on GitHub Pages) + dist/404.html fallback`);

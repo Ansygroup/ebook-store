@@ -6,7 +6,7 @@
   "description": "Global English-first (LTR) e-book store with Arabic i18n, Gumroad checkout, and automated marketing assets.",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/sync-books.mjs && node scripts/generate-pdfs.mjs && node scripts/generate-covers.mjs && node scripts/generate-og.mjs && node scripts/generate-promo.mjs && node scripts/generate-seo.mjs && vite build && node scripts/copy-404.mjs",
+    "build": "node scripts/sync-books.mjs && node scripts/generate-pdfs.mjs && node scripts/generate-covers.mjs && node scripts/generate-og.mjs && node scripts/generate-promo.mjs && node scripts/generate-seo.mjs && node scripts/generate-feed.mjs && vite build && node scripts/copy-404.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
