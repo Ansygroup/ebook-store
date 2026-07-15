@@ -37,10 +37,11 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_API_BASE: https://ebook-store-ansygroups-projects.vercel.app
+          VITE_API_BASE: ${{ secrets.VITE_API_BASE || 'https://ebook-store-api.your-subdomain.workers.dev' }}
+          VITE_SELLER_EMAIL: ${{ secrets.SELLER_EMAIL }}
+          VITE_NEWSLETTER_URL: ${{ secrets.NEWSLETTER_URL }}
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
           GMAIL_ACCOUNT: ${{ secrets.GMAIL_ACCOUNT }}
-          SELLER_EMAIL: ${{ secrets.SELLER_EMAIL }}
 
       - name: Deploy to Vercel (production)
         continue-on-error: true
@@ -51,3 +52,10 @@ jobs:
           vercel deploy --prebuilt --prod --token "$VERCEL_TOKEN"
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Ping search engines (sitemap)
+        if: success()
+        run: |
+          SITEMAP="https://ansygroup.github.io/ebook-store/sitemap.xml"
+          curl -s -o /dev/null -w "Google: %{http_code}\n" "https://www.google.com/ping?sitemap=$SITEMAP"
+          curl -s -o /dev/null -w "Bing:   %{http_code}\n" "https://www.bing.com/ping?sitemap=$SITEMAP"

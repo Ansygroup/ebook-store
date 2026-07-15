@@ -35,3 +35,25 @@ jobs:
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
           GMAIL_ACCOUNT: ${{ secrets.GMAIL_ACCOUNT }}
           SELLER_EMAIL: ${{ secrets.SELLER_EMAIL }}
+
+  site-watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Health-check the live store
+        run: |
+          URL="https://ansygroup.github.io/ebook-store/"
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" -m 20 "$URL")
+          PDF=$(curl -s -o /dev/null -w "%{http_code}" -m 20 "$URL/downloads/the-influential-leader.pdf")
+          echo "home=$CODE pdf=$PDF"
+          if [ "$CODE" != "200" ]; then echo "::error::Site down ($CODE)"; exit 1; fi
+          if [ "$PDF" != "200" ]; then echo "::warning::PDF sample missing ($PDF)"; fi
+      - name: Notify via issue if down
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner, repo: context.repo.repo,
+              title: '🚨 Store health-check FAILED',
+              body: 'The live site returned a non-200 status. Check GitHub Pages + Actions.'
+            })
