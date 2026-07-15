@@ -8,7 +8,7 @@ import { writeFileSync, readFileSync } from 'node:fs';
 
 const SITE = 'https://ansygroup.github.io/ebook-store';
 const books = JSON.parse(readFileSync('src/data/books.json', 'utf8'));
-const posts = JSON.parse(readFileSync('public/posts.json', 'utf8'));
+const posts = JSON.parse(readFileSync('src/data/posts.json', 'utf8'));
 
 const pages = ['', '/shop', '/blog', ...books.map((b) => `/book/${b.slug}`), ...posts.map((p) => `/blog/${p.slug}`)];
 

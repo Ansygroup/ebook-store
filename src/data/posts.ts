@@ -1,3 +1,5 @@
+import postsData from './posts.json';
+
 export interface Post {
   slug: string;
   titleEn: string;
@@ -11,17 +13,18 @@ export interface Post {
   cover?: string;
 }
 
-import postsData from './posts.json';
 export const posts: Post[] = postsData as Post[];
 
 export function getPostBySlug(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug);
 }
 
-export function pick<T = string>(post: Post, field: keyof Post, lang: 'en' | 'ar'): T {
+type BaseField = 'title' | 'excerpt' | 'body';
+
+export function pick<T = string>(post: Post, field: BaseField, lang: 'en' | 'ar'): T {
   if (lang === 'en') {
-    const v = post[`${String(field)}En` as keyof Post];
+    const v = (post as any)[`${field}En`];
     if (v) return v as T;
   }
-  return post[`${String(field)}Ar` as keyof Post] as T;
+  return (post as any)[`${field}Ar`] as T;
 }
