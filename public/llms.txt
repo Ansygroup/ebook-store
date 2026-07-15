@@ -26,6 +26,9 @@
 - [Negotiate Without Losing Trust: 4 Moves](https://ansygroup.github.io/ebook-store/blog/negotiate-without-losing-trust) — A good deal is one both sides want to repeat. Four moves that get you the price and keep the relationship.
 - [A Deep Productivity System That Survives Real Life](https://ansygroup.github.io/ebook-store/blog/deep-productivity-system) — Most systems break on the first busy week. Build one that bends instead of snapping.
 - [Invest Like an Owner, Not a Gambler](https://ansygroup.github.io/ebook-store/blog/invest-like-a-owner) — The market rewards patience and punishes noise. A calm framework for long-term wealth.
+- [Tech for Non-Techies: Speak the Language](https://ansygroup.github.io/ebook-store/blog/tech-for-non-techies) — You don't need to code to lead in tech. Learn the 10 terms that unlock every conversation.
+- [Health Is a System, Not a Willpower Contest](https://ansygroup.github.io/ebook-store/blog/health-is-a-system) — You won't out-discipline a bad environment. Redesign the system and the body follows.
+- [Languages in 90 Days: A Realistic Plan](https://ansygroup.github.io/ebook-store/blog/languages-in-90-days) — Fluency is a myth for beginners; usable is the goal. A 90-day path to speaking.
 
 ## Assets
 - Covers: https://ansygroup.github.io/ebook-store/covers/<slug>.png

@@ -60,4 +60,13 @@
   <url><loc>https://ansygroup.github.io/ebook-store/blog/invest-like-a-owner/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https:/ansygroup.github.io/ebook-store/blog/invest-like-a-owner/" />
     <changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ansygroup.github.io/ebook-store/blog/tech-for-non-techies/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https:/ansygroup.github.io/ebook-store/blog/tech-for-non-techies/" />
+    <changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ansygroup.github.io/ebook-store/blog/health-is-a-system/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https:/ansygroup.github.io/ebook-store/blog/health-is-a-system/" />
+    <changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ansygroup.github.io/ebook-store/blog/languages-in-90-days/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https:/ansygroup.github.io/ebook-store/blog/languages-in-90-days/" />
+    <changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>

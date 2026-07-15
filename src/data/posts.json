@@ -63,5 +63,44 @@
     "tags": ["Investing", "Finance", "Wealth"],
     "cover": "blog/invest-owner.svg",
     "relatedBook": "smart-investing"
+  },
+  {
+    "slug": "tech-for-non-techies",
+    "titleEn": "Tech for Non-Techies: Speak the Language",
+    "titleAr": "التقنية لغير التقنيين: تحدّث بلغة العصر",
+    "excerptEn": "You don't need to code to lead in tech. Learn the 10 terms that unlock every conversation.",
+    "excerptAr": "لا تحتاج لبرمجة لتقود في التقنية. تعلّم 10 مصطلحات تفتح كل محادثة.",
+    "bodyEn": "## The 10 words that unlock tech\n\nYou don't need to write code to be fluent in tech. You need to understand the map.\n\n### 1. API\n\nThe waiters between softwares — they take a request and bring data back.\n\n### 2. Database\n\nWhere everything is stored. Think library, not spreadsheet.\n\n### 3. Cloud\n\nSomeone else's computer, rented by the hour.\n\n### 4. Deploy\n\nShipping the code to real users.\n\n### 5. Latency\n\nThe delay you feel. Lower is better.\n\n### 6-10. Stack, cache, bug, CI/CD, open-source\n\nEach is a lever. Learn the lever, not the wiring.\n\n> Fluency is knowing what to ask, not how to build.",
+    "bodyAr": "## 10 كلمات تفتح التقنية\n\nلا تحتاج لكتابة كود لتكون طليقًا في التقنية. تحتاج لفهم الخريطة.\n\n### 1. API\n\nالنُّWaiters بين البرمجيات — يأخذون طلبًا ويأتون ببيانات.\n\n### 2. قاعدة البيانات\n\nحيث يُخزَّن كل شيء. مكتبة لا جدول.\n\n### 3. السحابة\n\nحاسوب غيرك، مؤجَّر بالساعة.\n\n### 4. النشر\n\nشحن الكود للمستخدمين الحقيقيين.\n\n### 5. زمن الاستجابة\n\nالتأخير الذي تحسّه. الأقل أفضل.\n\n### 6-10. الحزمة، الذاكرة المؤقتة، الخطأ، التكامل المستمر، المصدر المفتوح\n\nكل منها رافعة. تعلّم الرافعة لا الأسلاك.\n\n> الطلاقة هي معرفة ماذا تسأل لا كيف تبني.",
+    "date": "2026-07-17",
+    "tags": ["Tech", "Career", "Digital"],
+    "cover": "blog/tech-non-techies.svg",
+    "relatedBook": "tech-for-everyone"
+  },
+  {
+    "slug": "health-is-a-system",
+    "titleEn": "Health Is a System, Not a Willpower Contest",
+    "titleAr": "الصحة نظام لا مسابقة إرادة",
+    "excerptEn": "You won't out-discipline a bad environment. Redesign the system and the body follows.",
+    "excerptAr": "لن تغلب بإرادتك بيئة سيئة. أعد تصميم النظام ويتبعك الجسد.",
+    "bodyEn": "## Design out the friction\n\nMost health plans fail on week two because they rely on daily heroics. Systems don't.\n\n### The 3 defaults\n\n1. **Sleep anchor** — fixed bedtime, same every night. Energy compounder #1.\n2. **One plate rule** — half vegetables, no second helping in the kitchen.\n3. **Movement snacks** — 3 minutes every hour beats one gym marathon.\n\n### The environment hack\n\nDon't buy the snack, don't debate it. Remove the choice, remove the failure.\n\n> A healthy default beats a strong intention every single day.",
+    "bodyAr": "## صمّم بعيدًا عن الاحتكاك\n\nمعظم خطط الصحة تفشل في الأسبوع الثاني لأنها تعتمد على بطولات يومية. الأنظمة لا.\n\n### الافتراضيات الثلاث\n\n1. **مرساة النوم** — موعد ثابت كل ليلة. مضاعِف الطاقة الأول.\n2. **قاعدة الصحن الواحد** — نصف خضار، لا إعادة في المطبخ.\n3. **وجبات حركة** — 3 دقائق كل ساعة تغلب ماراثونًا واحدًا.\n\n### خدعة البيئة\n\nلا تشترِ الوجبة، لا تناقشها. أزل الخيار تزول الفشل.\n\n> افتراض صحي يغلب نية قوية كل يوم.",
+    "date": "2026-07-18",
+    "tags": ["Health", "Habits", "Wellbeing"],
+    "cover": "blog/health-system.svg",
+    "relatedBook": "health-without-limits"
+  },
+  {
+    "slug": "languages-in-90-days",
+    "titleEn": "Languages in 90 Days: A Realistic Plan",
+    "titleAr": "لغات في 90 يومًا: خطة واقعية",
+    "excerptEn": "Fluency is a myth for beginners; usable is the goal. A 90-day path to speaking.",
+    "excerptAr": "الطلاقة وهم للمبتدئين؛ الممكن هو الهدف. مسار 90 يومًا للتحدّث.",
+    "bodyEn": "## Usable, not perfect\n\nChase conversations, not certificates. Here's the 90-day shape.\n\n### Days 1-30: Sounds + 500 words\n\nOwn the pronunciation early. Words without sound are silent.\n\n### Days 31-60: Sentence patterns\n\nLearn 20 frames ('I want to __', 'Where is __'). Fill the blank live.\n\n### Days 61-90: Talk to humans\n\nLanguage exchanges, apps, neighbors. Embarrassment is tuition.\n\n### The daily 20\n\nTwenty minutes daily beats a Sunday binge. Consistency is the cheat code.\n\n> You don't learn a language. You live one, a little, every day.",
+    "bodyAr": "## ممكن لا مثالي\n\nاطرق المحادثات لا الشهادات. هذا شكل الـ 90 يومًا.\n\n### الأيام 1-30: الأصوات + 500 كلمة\n\nتملّك النطق مبكرًا. الكلمات بلا صوت صامتة.\n\n### الأيام 31-60: قوالب الجمل\n\nتعلّم 20 إطارًا ('أريد __'، 'أين __'). املأ الفراغ حيًا.\n\n### الأيام 61-90: تحدّث مع بشر\n\nتبادل لغوي، تطبيقات، جيران. الإحراج أقساط.\n\n### الـ 20 اليومية\n\n20 دقيقة يوميًا تغلب نهم الأحد. الانتظام هو الكود الخفي.\n\n> لا تتعلّم لغة. تعيش واحدة، قليلًا، كل يوم.",
+    "date": "2026-07-19",
+    "tags": ["Languages", "Learning", "Travel"],
+    "cover": "blog/languages-90.svg",
+    "relatedBook": "learn-languages"
   }
 ]
