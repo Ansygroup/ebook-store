@@ -2,7 +2,7 @@ import JsonLd from './JsonLd';
 
 interface Crumb {
   name: string;
-  url: string; // absolute URL
+  path: string; // relative path like '/shop'
 }
 
 const SITE = 'https://ansygroup.github.io/ebook-store';
