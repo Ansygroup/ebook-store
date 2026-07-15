@@ -4,6 +4,7 @@ export const STRINGS = {
   ar: {
     'nav.home': 'الرئيسية',
     'nav.shop': 'المتجر',
+    'nav.blog': 'المدونة',
     'hero.title': 'اكتشف كتباً تُغيّر مسار حياتك المهنية',
     'hero.sub': 'أفضل الكتب العربية في القيادة والأعمال والتطوير الذاتي — حمّلها فورًا.',
     'hero.cta': 'تصفّح المتجر',
@@ -32,6 +33,7 @@ export const STRINGS = {
     'home.featuredEyebrow': 'الأكثر طلباً',
     'home.featuredTitle': 'كتبنا المميزة',
     'home.featuredSub': 'مجموعة مختارة بعناية لتنقلك خطوة جديدة نحو أهدافك.',
+    'blog.sub': 'أفكار وعادات في القيادة والأعمال والتطوير الذاتي.',
     'home.viewAll': 'عرض كل الكتب',
     'home.howEyebrow': 'كيف يعمل',
     'home.howTitle': 'ثلاث خطوات وكتابك بين يديك',
@@ -52,6 +54,7 @@ export const STRINGS = {
   en: {
     'nav.home': 'Home',
     'nav.shop': 'Shop',
+    'nav.blog': 'Blog',
     'hero.title': 'Discover books that change your career trajectory',
     'hero.sub': 'Top Arabic books on leadership, business & self-development — download instantly.',
     'hero.cta': 'Browse the shop',
@@ -80,6 +83,7 @@ export const STRINGS = {
     'home.featuredEyebrow': 'Most wanted',
     'home.featuredTitle': 'Our featured books',
     'home.featuredSub': 'A hand-picked collection to take your next step toward your goals.',
+    'blog.sub': 'Ideas and habits on leadership, business & self-development.',
     'home.viewAll': 'View all books',
     'home.howEyebrow': 'How it works',
     'home.howTitle': 'Three steps and the book is in your hands',

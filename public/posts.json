@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "leadership-in-the-ai-era",
+    "titleEn": "Leadership in the AI Era: 5 Habits That Still Matter",
+    "titleAr": "القيادة في عصر الذكاء الاصطناعي: 5 عادات ما زالت مهمة",
+    "excerptEn": "AI changes the tools, not the fundamentals. Here are five habits every leader needs when machines do the busywork.",
+    "excerptAr": "الذكاء الاصطناعي يغيّر الأدوات لا الأساسيات. خمس عادات يحتاجها كل قائد عندما تقوم الآلة بالعمل الروتيني.",
+    "bodyEn": "## Why leadership still matters\n\nAI can write the report, summarize the meeting, and draft the plan. What it cannot do is own the outcome, build trust, or take the blame when things go wrong.\n\n### 1. Decide with incomplete information\n\nWaiting for perfect data is a luxury you rarely have. Train your team to act on 70% and adjust.\n\n### 2. Protect focus\n\nTools multiply output but also noise. The leader's job is to kill the noise.\n\n### 3. Give credit, take blame\n\nPublic praise, private correction, personal ownership of failure. This never goes out of style.\n\n### 4. Teach as you go\n\nA leader who hoards context creates a bottleneck. Share the 'why' with every 'what'.\n\n### 5. Stay calm under ambiguity\n\nMarkets shift, models break, plans slip. Your calm is the team's anchor.\n\n> The machine optimizes the task. You optimize the mission.",
+    "bodyAr": "## لماذا القيادة ما زالت مهمة\n\nالذكاء الاصطناعي يكتب التقرير ويُلخّص الاجتماع ويصيغ الخطة. لكنه لا يملك النتيجة ولا يبني الثقة ولا يتحمّل اللوم عند الفشل.\n\n### 1. قرّر بمعلومات ناقصة\n\nانتظار البيانات الكاملة ترف نادر. درّب فريقك على العمل بـ 70% والتصحيح لاحقًا.\n\n### 2. احمِ التركيز\n\nالأدوات تضاعف المخرجات والضوضاء معًا. مهمة القائد قتل الضوضاء.\n\n### 3. أعطِ الفضل وتحمّل اللوم\n\nمدح علني، تصحيح خاص، ملكية شخصية للفشل. هذا لا يخرج عن الموضة.\n\n### 4. علّم وأنت تعمل\n\nالقائد الذي يخبئ السياق يصنع عنق زجاجة. شارك 'السبب' مع كل 'ماذا'.\n\n### 5. اهدأ وسط الغموض\n\nالأسواق تتغيّر والخطط تنزلق. هدوؤك هو مرساة فريقك.\n\n> الآلة تُحسّن المهمة. أنت تُحسّن الرسالة.",
+    "date": "2026-07-10",
+    "tags": ["Leadership", "AI", "Management"],
+    "cover": "blog/leadership-ai.svg"
+  },
+  {
+    "slug": "write-content-that-sells",
+    "titleEn": "Write Content That Sells (Without Sounding Salesy)",
+    "titleAr": "اكتب محتوى يبيع (دون أن تبدو كإعلان)",
+    "excerptEn": "The best content teaches first and sells second. A practical framework for turning readers into buyers.",
+    "excerptAr": "أفضل محتوى يعلّم أولًا ويبيع ثانيًا. إطار عملي لتحويل القراء إلى مشترين.",
+    "bodyEn": "## Teach, then sell\n\nReaders trust people who help before they ask. Lead with a useful idea; the pitch comes after.\n\n### The 3-part post\n\n1. **Hook** — name a specific problem the reader feels.\n2. **Value** — give one actionable insight they can use today.\n3. **Bridge** — show how your product takes them further.\n\n### Voice rules\n\n- Short sentences.\n- One idea per paragraph.\n- No jargon unless you explain it.\n\n> Sell the outcome, not the feature.",
+    "bodyAr": "## علّم ثم بِع\n\nالقراء يثقون بمن يساعد قبل أن يطلب. ابدأ بفكرة مفيدة؛ العرض يأتي بعدها.\n\n### المقال من ثلاثة أجزاء\n\n1. **الخطاف** — سمِّ مشكلة محددة يحسّ بها القارئ.\n2. **القيمة** — أعطِ رؤية واحدة قابلة للتنفيذ اليوم.\n3. **الجسر** — أظهر كيف يوصلك منتجك أبعد.\n\n### قواعد الصوت\n\n- جمل قصيرة.\n- فكرة واحدة لكل فقرة.\n- لا لمصطلحات دون شرح.\n\n> بِع النتيجة لا الميزة.",
+    "date": "2026-07-12",
+    "tags": ["Marketing", "Writing", "Content"],
+    "cover": "blog/content-sells.svg"
+  }
+]

@@ -785,6 +785,131 @@ img {
   color: var(--muted);
 }
 
+/* ---------- Blog ---------- */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 28px;
+  margin-top: 32px;
+}
+.blog-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s, border-color 0.18s;
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary, #6d5efc);
+}
+.blog-card__cover {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  background: var(--bg-soft);
+}
+.blog-card__body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.blog-card__date {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+.blog-card__title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+.blog-card__excerpt {
+  color: var(--muted);
+  font-size: 0.92rem;
+  flex: 1;
+}
+.blog-card__more {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.blog-post {
+  max-width: 760px;
+}
+.blog-post__back {
+  color: var(--muted);
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 18px;
+}
+.blog-post__cover {
+  width: 100%;
+  border-radius: var(--radius);
+  margin: 12px 0 20px;
+}
+.blog-post__date {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.blog-post__title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 6px 0 10px;
+}
+.blog-post__excerpt {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 24px;
+}
+.blog-post__body h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 28px 0 12px;
+}
+.blog-post__body h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 20px 0 10px;
+}
+.blog-post__body p {
+  margin: 12px 0;
+  line-height: 1.7;
+}
+.blog-post__body ul {
+  margin: 12px 0;
+  padding-inline-start: 22px;
+}
+.blog-post__body li {
+  margin: 6px 0;
+}
+.blog-post__body blockquote {
+  border-inline-start: 3px solid var(--accent);
+  margin: 18px 0;
+  padding: 8px 18px;
+  color: var(--muted);
+  font-style: italic;
+}
+.blog-post__tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 30px 0 18px;
+}
+.tag {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+.blog-post__cta {
+  margin-top: 16px;
+}
+
 /* ---------- Footer ---------- */
 .footer {
   background: var(--bg-soft);
