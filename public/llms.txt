@@ -15,10 +15,10 @@
 
 ## Pages
 - [Home](https://ansygroup.github.io/ebook-store/)
-- [Shop](https://ansygroup.github.io/ebook-store/shop)
-- [Blog](https://ansygroup.github.io/ebook-store/blog)
-- [Pricing](https://ansygroup.github.io/ebook-store/pricing)
-- [FAQ](https://ansygroup.github.io/ebook-store/faq)
+- [Shop](https://ansygroup.github.io/ebook-store/shop/)
+- [Blog](https://ansygroup.github.io/ebook-store/blog/)
+- [Pricing](https://ansygroup.github.io/ebook-store/pricing/)
+- [FAQ](https://ansygroup.github.io/ebook-store/#faq)
 
 ## Blog
 - [Leadership in the AI Era: 5 Habits That Still Matter](https://ansygroup.github.io/ebook-store/blog/leadership-in-the-ai-era) — AI changes the tools, not the fundamentals. Here are five habits every leader needs when machines do the busywork.

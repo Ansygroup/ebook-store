@@ -60,18 +60,30 @@ jobs:
   site-watch:
     runs-on: ubuntu-latest
     steps:
-      - name: Health-check the live store
+      - name: Health-check + perf probe the live store
         run: |
           BASE="https://ansygroup.github.io/ebook-store"
-          HOME=$(curl -s -o /dev/null -w "%{http_code}" -m 20 "$BASE/")
-          SHOP=$(curl -s -o /dev/null -w "%{http_code}" -m 20 "$BASE/shop")
-          BLOG=$(curl -s -o /dev/null -w "%{http_code}" -m 20 "$BASE/blog")
-          PDF=$(curl -s -o /dev/null -w "%{http_code}" -m 20 "$BASE/downloads/the-influential-leader.pdf")
-          echo "home=$HOME shop=$SHOP blog=$BLOG pdf=$PDF"
-          if [ "$HOME" != "200" ]; then echo "::error::Home down ($HOME)"; exit 1; fi
-          if [ "$SHOP" != "200" ]; then echo "::warning::Shop issue ($SHOP)"; fi
-          if [ "$BLOG" != "200" ]; then echo "::warning::Blog issue ($BLOG)"; fi
+          check() { # url -> prints status (200/301 ok)
+            curl -s -o /dev/null -w "%{http_code}" -m 20 "$1"
+          }
+          rt() { # url -> prints total connect+transfer time in ms
+            curl -s -o /dev/null -w "%{time_total}" -m 20 "$1" | awk '{printf "%d", $1*1000}'
+          }
+          HOME=$(check "$BASE/");        HOME_RT=$(rt "$BASE/")
+          SHOP=$(check "$BASE/shop/");   SHOP_RT=$(rt "$BASE/shop/")
+          BLOG=$(check "$BASE/blog/");   BLOG_RT=$(rt "$BASE/blog/")
+          BOOK=$(check "$BASE/book/the-influential-leader/")
+          PDF=$(check "$BASE/downloads/the-influential-leader.pdf")
+          JS=$(check "$BASE/$(curl -s "$BASE/" | grep -o '/assets/[^"]*\.js' | head -1)")
+          echo "home=$HOME(${HOME_RT}ms) shop=$SHOP(${SHOP_RT}ms) blog=$BLOG(${BLOG_RT}ms) book=$BOOK pdf=$PDF js=$JS"
+          ok() { [ "$1" = "200" ] || [ "$1" = "301" ]; }
+          if ! ok "$HOME"; then echo "::error::Home down ($HOME)"; exit 1; fi
+          if ! ok "$SHOP"; then echo "::warning::Shop issue ($SHOP)"; fi
+          if ! ok "$BLOG"; then echo "::warning::Blog issue ($BLOG)"; fi
+          if [ "$BOOK" != "200" ]; then echo "::warning::Book page ($BOOK)"; fi
           if [ "$PDF" != "200" ]; then echo "::warning::PDF sample missing ($PDF)"; fi
+          if ! ok "$JS"; then echo "::warning::JS bundle ($JS)"; fi
+          if [ "$HOME_RT" -gt 3000 ]; then echo "::warning::Home slow (${HOME_RT}ms)"; fi
       - name: Notify via issue if down
         if: failure()
         uses: actions/github-script@v7

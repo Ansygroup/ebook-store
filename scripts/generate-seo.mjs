@@ -13,7 +13,8 @@ const posts = JSON.parse(readFileSync('src/data/posts.json', 'utf8'));
 const pages = ['', '/shop', '/blog', '/pricing', ...books.map((b) => `/book/${b.slug}`), ...posts.map((p) => `/blog/${p.slug}`)];
 
 const hreflang = (p) => {
-  const base = `${SITE}${p}`;
+  // Pages serves /route/ (trailing slash) — keep sitemap URLs consistent to avoid 301s
+  const base = `${SITE}${p}/`.replace('//', '/');
   if (p === '') {
     // الصفحة الرئيسية: نسختان لغويتان
     return `
@@ -29,7 +30,7 @@ const hreflang = (p) => {
 const urls = pages
   .map((p) => {
     const pri = p === '' ? '1.0' : p.startsWith('/book/') ? '0.8' : p.startsWith('/blog') ? '0.7' : p === '/pricing' ? '0.6' : '0.9';
-    return `  <url><loc>${SITE}${p}</loc>${hreflang(p)}
+    return `  <url><loc>${SITE}${p}/</loc>${hreflang(p)}
     <changefreq>weekly</changefreq><priority>${pri}</priority></url>`;
   })
   .join('\n');
@@ -99,10 +100,10 @@ ${books.map((b) => {
 
 ## Pages
 - [Home](${SITE}/)
-- [Shop](${SITE}/shop)
-- [Blog](${SITE}/blog)
-- [Pricing](${SITE}/pricing)
-- [FAQ](${SITE}/faq)
+- [Shop](${SITE}/shop/)
+- [Blog](${SITE}/blog/)
+- [Pricing](${SITE}/pricing/)
+- [FAQ](${SITE}/#faq)
 
 ## Blog
 ${posts.map((p) => `- [${p.titleEn || p.title}](${SITE}/blog/${p.slug}) — ${p.excerptEn || ''}`).join('\n')}
