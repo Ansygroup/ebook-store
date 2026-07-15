@@ -909,6 +909,75 @@ img {
 .blog-post__cta {
   margin-top: 16px;
 }
+.blog-post__related-book {
+  margin-top: 44px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.related-book {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  transition: border-color 0.18s, transform 0.18s;
+}
+.related-book:hover {
+  border-color: var(--primary, #6d5efc);
+  transform: translateY(-2px);
+}
+.related-book__cover {
+  width: 64px;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.related-book__title {
+  display: block;
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1.05rem;
+}
+.related-book__cta {
+  display: block;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+.blog-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.18s, transform 0.18s;
+}
+.blog-card:hover {
+  border-color: var(--primary, #6d5efc);
+  transform: translateY(-3px);
+}
+.blog-card__cover {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+.blog-card__body {
+  padding: 18px 18px 22px;
+}
+.blog-card__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.blog-card__excerpt {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
 
 /* ---------- Pricing ---------- */
 .pricing__grid {

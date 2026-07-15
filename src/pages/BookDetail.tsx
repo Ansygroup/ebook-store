@@ -5,6 +5,7 @@ import { getBookBySlug, formatPrice, books, pick, gumroadHref, SELLER_EMAIL } fr
 import { useLang } from '../i18n/LanguageContext';
 import BookCard from '../components/BookCard';
 import JsonLd from '../components/JsonLd';
+import { posts, pick as pickPost } from '../data/posts';
 
 export default function BookDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -60,6 +61,10 @@ export default function BookDetail() {
       if (a.categoryEn !== book.categoryEn && b.categoryEn === book.categoryEn) return 1;
       return b.rating - a.rating;
     })
+    .slice(0, 3);
+
+  const relatedPosts = posts
+    .filter((p) => p.relatedBook === book.slug)
     .slice(0, 3);
 
   const buyHref = gumroadHref(book);
@@ -225,6 +230,29 @@ export default function BookDetail() {
             {related.map((b, i) => (
               <BookCard key={b.id} book={b} index={i} />
             ))}
+          </div>
+        </div>
+      )}
+
+      {relatedPosts.length > 0 && (
+        <div className="container">
+          <div className="section__head section__head--left">
+            <h2 className="section__title">{lang === 'ar' ? 'مقالات ذات صلة' : 'Related articles'}</h2>
+          </div>
+          <div className="blog-grid">
+            {relatedPosts.map((p) => {
+              const pt = pickPost<string>(p, 'title', lang);
+              const pe = pickPost<string>(p, 'excerpt', lang);
+              return (
+                <Link key={p.slug} to={`/blog/${p.slug}`} className="blog-card">
+                  {p.cover && <img src={`/${p.cover}`} alt={pt} className="blog-card__cover" />}
+                  <div className="blog-card__body">
+                    <h3 className="blog-card__title">{pt}</h3>
+                    <p className="blog-card__excerpt">{pe}</p>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}

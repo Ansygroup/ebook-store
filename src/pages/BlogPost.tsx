@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useLang } from '../i18n/LanguageContext';
 import { getPostBySlug, pick } from '../data/posts';
+import { getBookBySlug, pick as pickBook } from '../data/books';
 import NotFound from './NotFound';
 import JsonLd from '../components/JsonLd';
 
@@ -42,6 +43,9 @@ export default function BlogPost() {
 
   const SITE = 'https://ansygroup.github.io/ebook-store';
 
+  const relatedBook = post.relatedBook ? getBookBySlug(post.relatedBook) : undefined;
+  const bookTitle = relatedBook ? pickBook<string>(relatedBook, 'title', lang) : '';
+
   return (
     <article className="section container blog-post">
       <JsonLd
@@ -70,6 +74,18 @@ export default function BlogPost() {
       <p className="blog-post__cta">
         <Link to="/shop" className="btn btn--primary">{t('nav.shop')}</Link>
       </p>
+      {relatedBook && (
+        <div className="blog-post__related-book">
+          <h2 className="section__title">{lang === 'ar' ? 'كتاب ذو صلة' : 'Related book'}</h2>
+          <Link to={`/book/${relatedBook.slug}`} className="related-book">
+            <img src={`/covers/${relatedBook.cover}`} alt={bookTitle} className="related-book__cover" />
+            <div>
+              <span className="related-book__title">{bookTitle}</span>
+              <span className="related-book__cta">{lang === 'ar' ? 'اقرأ المزيد ←' : 'Read more →'}</span>
+            </div>
+          </Link>
+        </div>
+      )}
     </article>
   );
 }

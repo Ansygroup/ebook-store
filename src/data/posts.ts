@@ -8,9 +8,10 @@ export interface Post {
   excerptAr: string;
   bodyEn: string;   // markdown
   bodyAr: string;
-  date: string;     // ISO
+  date: string;
   tags: string[];
   cover?: string;
+  relatedBook?: string; // slug of a related book in src/data/books.json
 }
 
 export const posts: Post[] = postsData as Post[];
