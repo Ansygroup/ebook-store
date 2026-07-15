@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useLang } from '../i18n/LanguageContext';
 import { getPostBySlug, pick } from '../data/posts';
 import NotFound from './NotFound';
+import JsonLd from '../components/JsonLd';
 
 // Tiny markdown renderer: ## h2, ### h3, > blockquote, - li, **bold**, blank-line paragraphs.
 function md(src: string): string {
@@ -39,8 +40,24 @@ export default function BlogPost() {
   const body = pick<string>(post, 'body', lang);
   const excerpt = pick<string>(post, 'excerpt', lang);
 
+  const SITE = 'https://ansygroup.github.io/ebook-store';
+
   return (
     <article className="section container blog-post">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: title,
+          description: excerpt,
+          datePublished: post.date,
+          inLanguage: lang,
+          mainEntityOfPage: `${SITE}/blog/${post.slug}`,
+          author: { '@type': 'Organization', name: 'Dar Al-Maarifa' },
+          publisher: { '@type': 'Organization', name: 'Dar Al-Maarifa' },
+          keywords: post.tags.join(', '),
+        }}
+      />
       <Link to="/blog" className="blog-post__back">← {lang === 'ar' ? 'المدونة' : 'Blog'}</Link>
       {post.cover && <img src={`/${post.cover}`} alt={title} className="blog-post__cover" />}
       <time className="blog-post__date">{post.date}</time>

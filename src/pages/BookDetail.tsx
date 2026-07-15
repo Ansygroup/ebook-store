@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { getBookBySlug, formatPrice, books, pick, gumroadHref, SELLER_EMAIL } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 import BookCard from '../components/BookCard';
+import JsonLd from '../components/JsonLd';
 
 export default function BookDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -71,6 +72,29 @@ export default function BookDetail() {
 
   return (
     <section className="section book-detail">
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Book',
+          name: title,
+          author: { '@type': 'Person', name: author },
+          description: longDesc,
+          inLanguage: book.language || 'en',
+          bookFormat: 'https://schema.org/EBook',
+          numberOfPages: book.pages,
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: book.rating,
+            reviewCount: book.reviews,
+          },
+          offers: {
+            '@type': 'Offer',
+            price: book.price,
+            priceCurrency: 'USD',
+            availability: 'https://schema.org/InStock',
+          },
+        }}
+      />
       <div className="container">
         <Link to="/shop" className="book-detail__back">
           {lang === 'ar' ? '→ العودة للمتجر' : '← Back to shop'}

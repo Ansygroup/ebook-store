@@ -4,6 +4,7 @@ import Hero from '../components/Hero';
 import BookCard from '../components/BookCard';
 import FAQ from '../components/FAQ';
 import Newsletter from '../components/Newsletter';
+import JsonLd from '../components/JsonLd';
 import { featuredBooks, formatPrice } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 
@@ -21,8 +22,23 @@ const testimonials = [
 
 export default function Home() {
   const { t, lang } = useLang();
+  const avgRating = (testimonials.reduce((s, x) => s + x.rating, 0) / testimonials.length).toFixed(1);
   return (
     <>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          name: 'Dar Al-Maarifa',
+          url: 'https://ansygroup.github.io/ebook-store',
+          description: 'Global e-book store with expertly crafted titles in leadership, business & self-development.',
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: avgRating,
+            reviewCount: testimonials.length,
+          },
+        }}
+      />
       <Hero />
 
       <section className="section" id="featured">
