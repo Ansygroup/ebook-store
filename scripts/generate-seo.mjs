@@ -10,7 +10,7 @@ const SITE = 'https://ansygroup.github.io/ebook-store';
 const books = JSON.parse(readFileSync('src/data/books.json', 'utf8'));
 const posts = JSON.parse(readFileSync('src/data/posts.json', 'utf8'));
 
-const pages = ['', '/shop', '/blog', '/pricing', ...books.map((b) => `/book/${b.slug}`), ...posts.map((p) => `/blog/${p.slug}`)];
+const pages = ['', '/shop', '/blog', '/pricing', '/faq', ...books.map((b) => `/book/${b.slug}`), ...posts.map((p) => `/blog/${p.slug}`)];
 
 const hreflang = (p) => {
   // Pages serves /route/ (trailing slash) — keep sitemap URLs consistent to avoid 301s
@@ -29,7 +29,7 @@ const hreflang = (p) => {
 
 const urls = pages
   .map((p) => {
-    const pri = p === '' ? '1.0' : p.startsWith('/book/') ? '0.8' : p.startsWith('/blog') ? '0.7' : p === '/pricing' ? '0.6' : '0.9';
+    const pri = p === '' ? '1.0' : p.startsWith('/book/') ? '0.8' : p.startsWith('/blog') ? '0.7' : p === '/pricing' ? '0.6' : p === '/faq' ? '0.6' : '0.9';
     return `  <url><loc>${SITE}${p}/</loc>${hreflang(p)}
     <changefreq>weekly</changefreq><priority>${pri}</priority></url>`;
   })

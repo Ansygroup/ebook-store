@@ -31,9 +31,9 @@ export default function Navbar() {
           <Link to="/pricing" className="nav__link">
             {t('nav.pricing')}
           </Link>
-          <a href="/#faq" className="nav__link">
-            {t('faq.title')}
-          </a>
+          <Link to="/faq" className="nav__link">
+            {t('nav.faq')}
+          </Link>
         </nav>
 
         <div className="navbar__actions">
