@@ -28,6 +28,9 @@ export default function Navbar() {
           <Link to="/blog" className="nav__link">
             {t('nav.blog')}
           </Link>
+          <Link to="/pricing" className="nav__link">
+            {t('nav.pricing')}
+          </Link>
           <a href="/#faq" className="nav__link">
             {t('faq.title')}
           </a>

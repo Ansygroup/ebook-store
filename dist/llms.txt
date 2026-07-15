@@ -17,6 +17,7 @@
 - [Home](https://ansygroup.github.io/ebook-store/)
 - [Shop](https://ansygroup.github.io/ebook-store/shop)
 - [Blog](https://ansygroup.github.io/ebook-store/blog)
+- [Pricing](https://ansygroup.github.io/ebook-store/pricing)
 - [FAQ](https://ansygroup.github.io/ebook-store/faq)
 
 ## Blog

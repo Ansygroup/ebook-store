@@ -12,6 +12,9 @@
   <url><loc>https://ansygroup.github.io/ebook-store/blog</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ansygroup.github.io/ebook-store/blog" />
     <changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ansygroup.github.io/ebook-store/pricing</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ansygroup.github.io/ebook-store/pricing" />
+    <changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ansygroup.github.io/ebook-store/book/the-influential-leader</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ansygroup.github.io/ebook-store/book/the-influential-leader" />
     <changefreq>weekly</changefreq><priority>0.8</priority></url>

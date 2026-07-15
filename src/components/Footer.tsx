@@ -20,8 +20,9 @@ export default function Footer() {
 
         <div className="footer__col">
           <h4>{lang === 'ar' ? 'روابط سريعة' : 'Quick links'}</h4>
-          <Link to="/">{t('nav.home')}</Link>
           <Link to="/shop">{t('nav.shop')}</Link>
+          <Link to="/blog">{t('nav.blog')}</Link>
+          <Link to="/pricing">{t('nav.pricing')}</Link>
           <a href="/#faq">{t('faq.title')}</a>
         </div>
 

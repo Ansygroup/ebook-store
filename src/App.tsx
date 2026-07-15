@@ -7,6 +7,7 @@ import Shop from './pages/Shop';
 import BookDetail from './pages/BookDetail';
 import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
+import Pricing from './pages/Pricing';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/book/:slug" element={<BookDetail />} />
           <Route path="/blog" element={<BlogList />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
