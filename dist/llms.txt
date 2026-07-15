@@ -23,6 +23,9 @@
 ## Blog
 - [Leadership in the AI Era: 5 Habits That Still Matter](https://ansygroup.github.io/ebook-store/blog/leadership-in-the-ai-era) — AI changes the tools, not the fundamentals. Here are five habits every leader needs when machines do the busywork.
 - [Write Content That Sells (Without Sounding Salesy)](https://ansygroup.github.io/ebook-store/blog/write-content-that-sells) — The best content teaches first and sells second. A practical framework for turning readers into buyers.
+- [Negotiate Without Losing Trust: 4 Moves](https://ansygroup.github.io/ebook-store/blog/negotiate-without-losing-trust) — A good deal is one both sides want to repeat. Four moves that get you the price and keep the relationship.
+- [A Deep Productivity System That Survives Real Life](https://ansygroup.github.io/ebook-store/blog/deep-productivity-system) — Most systems break on the first busy week. Build one that bends instead of snapping.
+- [Invest Like an Owner, Not a Gambler](https://ansygroup.github.io/ebook-store/blog/invest-like-a-owner) — The market rewards patience and punishes noise. A calm framework for long-term wealth.
 
 ## Assets
 - Covers: https://ansygroup.github.io/ebook-store/covers/<slug>.png

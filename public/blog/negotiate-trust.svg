@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#ef4444"/><stop offset="1" stop-color="#f59e0b"/></linearGradient></defs>
+  <rect width="800" height="400" fill="#0b0d17"/>
+  <rect width="800" height="400" fill="url(#g)" opacity="0.12"/>
+  <text x="48" y="180" fill="#fff" font-family="Segoe UI, Arial" font-size="46" font-weight="800">Trust &amp; Negotiation</text>
+  <text x="48" y="232" fill="#f59e0b" font-family="Segoe UI, Arial" font-size="26">Win the price, keep the relationship</text>
+</svg>
