@@ -25,9 +25,10 @@ jobs:
       - run: npm run build
         env:
           VITE_API_BASE: https://ebook-store-ansygroups-projects.vercel.app
+          VITE_SELLER_EMAIL: ${{ secrets.SELLER_EMAIL }}
+          VITE_NEWSLETTER_URL: ${{ secrets.NEWSLETTER_URL }}
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
           GMAIL_ACCOUNT: ${{ secrets.GMAIL_ACCOUNT }}
-          SELLER_EMAIL: ${{ secrets.SELLER_EMAIL }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
