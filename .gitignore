@@ -5,7 +5,9 @@ dist-ssr
 # Secrets / keys (never commit real credentials)
 .env
 .env.*
-!.env.example
+.dev.vars
+wrangler.toml
+worker/.dev.vars
 *.token
 *.key
 **/vercel_token
