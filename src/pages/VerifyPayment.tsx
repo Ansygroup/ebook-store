@@ -3,7 +3,7 @@ import { useLang } from '../i18n/LanguageContext';
 import { couponByCode } from '../data/coupons';
 
 export default function VerifyPayment() {
-  const { t, lang } = useLang();
+  const { lang } = useLang();
   const [params] = useSearchParams();
   const paid = params.get('paid') === '1';
   const coupon = params.get('coupon');
