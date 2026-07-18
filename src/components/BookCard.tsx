@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import type { Book } from '../types';
-import { formatPrice, pick, gumroadHref } from '../data/books';
+import { formatPrice, pick, buyHref } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 
 export default function BookCard({ book, index = 0 }: Props) {
   const { lang } = useLang();
-  const buyHref = gumroadHref(book);
+  const buyHref = buyHref(book);
   const title = pick<string>(book, 'title', lang);
   const author = pick<string>(book, 'author', lang);
   const category = pick<string>(book, 'category', lang);

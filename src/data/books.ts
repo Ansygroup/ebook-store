@@ -42,13 +42,16 @@ export function pick<T = string>(book: Book, field: keyof Book, lang: Lang): T {
   return book[`${String(field)}Ar` as keyof Book] as T;
 }
 
-// purchase link: Gumroad if present, else the book page (fallback)
-export function gumroadHref(book: Book): string {
-  const u = book.gumroadUrl;
-  if (u && !u.includes('REPLACE_WITH_YOUR_LINK')) {
-    // add ?wanted=true so the Gumroad buy overlay opens directly
-    return u.includes('?') ? `${u}&wanted=true` : `${u}?wanted=true`;
+// purchase link: Stripe Payment Link preferred, else Gumroad, else book page (fallback)
+export function buyHref(book: Book): string {
+  const stripe = book.stripeUrl;
+  if (stripe && !stripe.includes('REPLACE')) {
+    return stripe;
   }
-  // placeholder still present — open the book page (free PDF + order form there)
+  const gum = book.gumroadUrl;
+  if (gum && !gum.includes('REPLACE_WITH_YOUR_LINK')) {
+    return gum.includes('?') ? `${gum}&wanted=true` : `${gum}?wanted=true`;
+  }
+  // no checkout link configured — open the book page (free PDF + order form there)
   return `/book/${book.slug}`;
 }

@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { getBookBySlug, formatPrice, books, pick, gumroadHref, SELLER_EMAIL } from '../data/books';
+import { getBookBySlug, formatPrice, books, pick, buyHref, SELLER_EMAIL } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 import BookCard from '../components/BookCard';
 import JsonLd from '../components/JsonLd';
@@ -68,7 +68,7 @@ export default function BookDetail() {
     .filter((p) => p.relatedBook === book.slug)
     .slice(0, 3);
 
-  const buyHref = gumroadHref(book);
+  const buyHref = buyHref(book);
 
   const title = pick<string>(book, 'title', lang);
   const author = pick<string>(book, 'author', lang);

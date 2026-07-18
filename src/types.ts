@@ -28,6 +28,7 @@ export interface Book {
   tagsEn: string[];
   featured: boolean;
   gumroadUrl?: string;
+  stripeUrl?: string; // Stripe Payment Link (preferred checkout)
   downloadUrl?: string;
 }
 
