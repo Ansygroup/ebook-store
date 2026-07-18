@@ -700,6 +700,60 @@ img {
   color: var(--muted);
   font-size: 0.82rem;
 }
+.coupon {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.coupon__input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.9rem;
+}
+.coupon__err {
+  color: #ef4444;
+  font-size: 0.8rem;
+  width: 100%;
+  margin: 0;
+}
+.coupon__hint {
+  color: var(--muted);
+  font-size: 0.78rem;
+  width: 100%;
+  margin: 0;
+}
+.coupon-banner {
+  background: linear-gradient(90deg, var(--brand) 0%, var(--brand-2) 100%);
+  color: #fff;
+  padding: 12px 0;
+}
+.coupon-banner__inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.coupon-banner__tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.coupon-banner__text {
+  flex: 1;
+  font-size: 0.95rem;
+}
+.coupon-banner__text strong {
+  font-family: monospace;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
 .book-detail__price strong {
   font-size: 1.9rem;
   font-weight: 800;

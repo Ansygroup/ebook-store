@@ -6,6 +6,7 @@ import FAQ from '../components/FAQ';
 import Newsletter from '../components/Newsletter';
 import JsonLd from '../components/JsonLd';
 import { featuredBooks, formatPrice } from '../data/books';
+import { coupons } from '../data/coupons';
 import { useLang } from '../i18n/LanguageContext';
 
 const steps = [
@@ -40,6 +41,21 @@ export default function Home() {
         }}
       />
       <Hero />
+
+      <div className="coupon-banner">
+        <div className="container coupon-banner__inner">
+          <span className="coupon-banner__tag">{lang === 'ar' ? 'عرض محدود' : 'Limited offer'}</span>
+          <span className="coupon-banner__text">
+            {lang === 'ar'
+              ? `خصم ${coupons[1].percent}% على أول طلب — الكود: `
+              : `${coupons[1].percent}% off your first order — code: `}
+            <strong>{coupons[1].code}</strong>
+          </span>
+          <Link to="/shop" className="btn btn--ghost btn--sm">
+            {lang === 'ar' ? 'تسوّق' : 'Shop'}
+          </Link>
+        </div>
+      </div>
 
       <section className="section" id="featured">
         <div className="container">

@@ -7,6 +7,7 @@ import BookCard from '../components/BookCard';
 import JsonLd from '../components/JsonLd';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { posts, pick as pickPost } from '../data/posts';
+import { couponByCode, isExpired, coupons } from '../data/coupons';
 
 export default function BookDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -15,6 +16,26 @@ export default function BookDetail() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<{ ok: boolean; msg: string } | null>(null);
   const [busy, setBusy] = useState(false);
+  const [couponInput, setCouponInput] = useState('');
+  const [coupon, setCoupon] = useState<ReturnType<typeof couponByCode> | null>(null);
+  const [couponErr, setCouponErr] = useState('');
+
+  function applyCoupon() {
+    const c = couponByCode(couponInput);
+    if (!c) {
+      setCoupon(null);
+      setCouponErr(lang === 'ar' ? 'كود غير صالح' : 'Invalid code');
+      return;
+    }
+    if (isExpired(c)) {
+      setCoupon(null);
+      setCouponErr(lang === 'ar' ? 'انتهت صلاحية الكود' : 'Code expired');
+      return;
+    }
+    setCoupon(c);
+    setCouponErr('');
+  }
+  const discounted = coupon ? Math.round(book!.price * (1 - coupon.percent / 100) * 100) / 100 : book!.price;
 
   async function orderByEmail(e: React.FormEvent) {
     e.preventDefault();
@@ -175,11 +196,40 @@ export default function BookDetail() {
             <div className="book-detail__buy">
               <div className="book-detail__price">
                 <span>{t('book.price')}</span>
-                <strong>{formatPrice(book.price)}</strong>
+                {coupon ? (
+                  <strong>
+                    <s style={{ opacity: 0.5, fontWeight: 400, marginRight: 8 }}>{formatPrice(book.price)}</s>
+                    {formatPrice(discounted)}
+                    <em style={{ fontSize: '0.7em', color: '#22c55e', marginLeft: 6 }}>{coupon.code}</em>
+                  </strong>
+                ) : (
+                  <strong>{formatPrice(book.price)}</strong>
+                )}
               </div>
+
+              <div className="coupon">
+                <input
+                  className="coupon__input"
+                  placeholder={lang === 'ar' ? 'كود الخصم' : 'Coupon code'}
+                  value={couponInput}
+                  onChange={(e) => setCouponInput(e.target.value)}
+                  onKeyDown={(e) => e.key === 'Enter' && applyCoupon()}
+                />
+                <button className="btn btn--ghost btn--sm" onClick={applyCoupon} type="button">
+                  {lang === 'ar' ? 'تطبيق' : 'Apply'}
+                </button>
+              </div>
+              {couponErr && <p className="coupon__err">{couponErr}</p>}
+              {!coupon && (
+                <p className="coupon__hint">
+                  {lang === 'ar' ? 'جرّب: ' : 'Try: '}
+                  {coupons.map((c) => c.code).join(' · ')}
+                </p>
+              )}
+
               <a
                 className="btn btn--primary btn--lg"
-                href={href}
+                href={coupon ? `${href}${href.includes('?') ? '&' : '?'}coupon=${coupon.code}` : href}
                 target="_blank"
                 rel="noopener noreferrer"
               >
