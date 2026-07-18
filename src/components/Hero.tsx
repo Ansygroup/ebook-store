@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { featuredBooks, formatPrice, pick } from '../data/books';
+import { featuredBooks, formatPrice, books } from '../data/books';
+import { asset } from '../data/assets';
 import { useLang } from '../i18n/LanguageContext';
 
 const container = {
@@ -84,7 +85,7 @@ export default function Hero() {
                 delay: i * 0.4,
               }}
             >
-              <img src={`/covers/${book.cover}`} alt={pick<string>(book, 'title', lang)} loading="lazy" />
+              <img src={asset(`/covers/${book.cover}`)} alt={pick<string>(book, 'title', lang)} loading="lazy" />
               <div className="hero__book-meta">
                 <span>{pick<string>(book, 'title', lang)}</span>
                 <strong>{formatPrice(book.price)}</strong>

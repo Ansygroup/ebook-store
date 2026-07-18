@@ -9,6 +9,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 import { posts, pick as pickPost } from '../data/posts';
 import { couponByCode, isExpired, coupons, trackCoupon } from '../data/coupons';
 import { pushRecent } from '../data/wishlist';
+import { asset } from '../data/assets';
 
 export default function BookDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -169,7 +170,7 @@ export default function BookDetail() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <img src={`/covers/${book.cover}`} alt={title} />
+            <img src={asset(`/covers/${book.cover}`)} alt={title} />
           </motion.div>
 
           <motion.div
@@ -250,7 +251,7 @@ export default function BookDetail() {
               </a>
 
               {book.downloadUrl && (
-                <a className="btn btn--ghost btn--lg" href={book.downloadUrl} download>
+                <a className="btn btn--ghost btn--lg" href={asset(book.downloadUrl)} download>
                   {t('book.download')}
                 </a>
               )}
@@ -303,7 +304,7 @@ export default function BookDetail() {
               {bundle.map((b, i) => (
                 <div className="bundle__item" key={b.id}>
                   {i > 0 && <span className="bundle__plus">+</span>}
-                  <img src={`/covers/${b.cover}`} alt={pick<string>(b, 'title', lang)} className="bundle__cover" />
+                  <img src={asset(`/covers/${b.cover}`)} alt={pick<string>(b, 'title', lang)} className="bundle__cover" />
                   <span className="bundle__name">{pick<string>(b, 'title', lang)}</span>
                   <span className="bundle__price">{formatPrice(b.price)}</span>
                 </div>
@@ -352,7 +353,7 @@ export default function BookDetail() {
               const pe = pickPost<string>(p, 'excerpt', lang);
               return (
                 <Link key={p.slug} to={`/blog/${p.slug}`} className="blog-card">
-                  {p.cover && <img src={`/${p.cover}`} alt={pt} className="blog-card__cover" />}
+                  {p.cover && <img src={asset(`/${p.cover}`)} alt={pt} className="blog-card__cover" />}
                   <div className="blog-card__body">
                     <h3 className="blog-card__title">{pt}</h3>
                     <p className="blog-card__excerpt">{pe}</p>

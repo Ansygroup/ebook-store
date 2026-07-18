@@ -5,6 +5,7 @@ import { getBookBySlug, pick as pickBook } from '../data/books';
 import NotFound from './NotFound';
 import JsonLd from '../components/JsonLd';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { asset } from '../data/assets';
 
 // Tiny markdown renderer: ## h2, ### h3, > blockquote, - li, **bold**, blank-line paragraphs.
 function md(src: string): string {
@@ -71,7 +72,7 @@ export default function BlogPost() {
         ]}
       />
       <Link to="/blog" className="blog-post__back">← {lang === 'ar' ? 'المدونة' : 'Blog'}</Link>
-      {post.cover && <img src={`/${post.cover}`} alt={title} className="blog-post__cover" />}
+      {post.cover && <img src={asset(`/${post.cover}`)} alt={title} className="blog-post__cover" />}
       <time className="blog-post__date">{post.date}</time>
       <h1 className="blog-post__title">{title}</h1>
       <p className="blog-post__excerpt">{excerpt}</p>
@@ -86,7 +87,7 @@ export default function BlogPost() {
         <div className="blog-post__related-book">
           <h2 className="section__title">{lang === 'ar' ? 'كتاب ذو صلة' : 'Related book'}</h2>
           <Link to={`/book/${relatedBook.slug}`} className="related-book">
-            <img src={`/covers/${relatedBook.cover}`} alt={bookTitle} className="related-book__cover" />
+            <img src={asset(`/covers/${relatedBook.cover}`)} alt={bookTitle} className="related-book__cover" />
             <div>
               <span className="related-book__title">{bookTitle}</span>
               <span className="related-book__cta">{lang === 'ar' ? 'اقرأ المزيد ←' : 'Read more →'}</span>

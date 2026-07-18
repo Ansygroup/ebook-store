@@ -5,6 +5,7 @@ import type { Book } from '../types';
 import { formatPrice, pick, buyHref } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
 import { toggleWishlist, isWished } from '../data/wishlist';
+import { asset } from '../data/assets';
 
 interface Props {
   book: Book;
@@ -28,7 +29,7 @@ export default function BookCard({ book, index = 0 }: Props) {
       whileHover={{ y: -8 }}
     >
       <Link to={`/book/${book.slug}`} className="book-card__cover">
-        <img src={`/covers/${book.cover}`} alt={title} loading="lazy" />
+        <img src={asset(`/covers/${book.cover}`)} alt={title} loading="lazy" />
         {book.featured && (
           <span className="book-card__flag">{lang === 'ar' ? 'مميز' : 'Featured'}</span>
         )}

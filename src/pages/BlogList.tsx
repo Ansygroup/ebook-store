@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLang } from '../i18n/LanguageContext';
 import { posts, pick } from '../data/posts';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { asset } from '../data/assets';
 
 export default function BlogList() {
   const { lang, t } = useLang();
@@ -22,7 +23,7 @@ export default function BlogList() {
           const excerpt = pick<string>(p, 'excerpt', lang);
           return (
             <article key={p.slug} className="blog-card">
-              {p.cover && <img src={`/${p.cover}`} alt={title} className="blog-card__cover" loading="lazy" />}
+              {p.cover && <img src={asset(`/${p.cover}`)} alt={title} className="blog-card__cover" loading="lazy" />}
               <div className="blog-card__body">
                 <time className="blog-card__date">{p.date}</time>
                 <h2 className="blog-card__title">
