@@ -8,6 +8,7 @@ import JsonLd from '../components/JsonLd';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { posts, pick as pickPost } from '../data/posts';
 import { couponByCode, isExpired, coupons, trackCoupon } from '../data/coupons';
+import { pushRecent } from '../data/wishlist';
 
 export default function BookDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -118,7 +119,8 @@ export default function BookDetail() {
     set('og:description', longDesc);
     set('og:image', ogImage);
     set('twitter:image', ogImage);
-  }, [title, longDesc, ogImage]);
+    if (slug) pushRecent(slug);
+  }, [title, longDesc, ogImage, slug]);
 
   return (
     <section className="section book-detail">

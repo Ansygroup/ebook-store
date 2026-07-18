@@ -368,6 +368,33 @@ img {
   color: #021018;
   font-size: 0.72rem;
   font-weight: 800;
+}
+.book-card__wish {
+  position: absolute;
+  top: 8px;
+  inset-inline-end: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  color: #ef4444;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: transform 0.15s ease;
+}
+.book-card__wish:hover { transform: scale(1.12); }
+.book-card__wish.is-wished { background: #ef4444; color: #fff; }
+.wishlist__empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+}
+.wishlist__empty p { margin-bottom: 16px; font-size: 1.05rem; }
   padding: 3px 10px;
   border-radius: 999px;
 }

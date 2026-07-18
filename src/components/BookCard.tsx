@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import type { Book } from '../types';
 import { formatPrice, pick, buyHref } from '../data/books';
 import { useLang } from '../i18n/LanguageContext';
+import { toggleWishlist, isWished } from '../data/wishlist';
 
 interface Props {
   book: Book;
@@ -15,6 +17,7 @@ export default function BookCard({ book, index = 0 }: Props) {
   const title = pick<string>(book, 'title', lang);
   const author = pick<string>(book, 'author', lang);
   const category = pick<string>(book, 'category', lang);
+  const [wished, setWished] = useState(() => isWished(book.slug));
   return (
     <motion.article
       className="book-card"
@@ -29,6 +32,19 @@ export default function BookCard({ book, index = 0 }: Props) {
         {book.featured && (
           <span className="book-card__flag">{lang === 'ar' ? 'مميز' : 'Featured'}</span>
         )}
+        <button
+          type="button"
+          className={`book-card__wish ${wished ? 'is-wished' : ''}`}
+          aria-label={lang === 'ar' ? 'حفظ في المفضلة' : 'Save to wishlist'}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setWished((w) => !w);
+            toggleWishlist(book.slug);
+          }}
+        >
+          {wished ? '♥' : '♡'}
+        </button>
       </Link>
 
       <div className="book-card__body">

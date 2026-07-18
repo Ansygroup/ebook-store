@@ -34,6 +34,9 @@ export default function Navbar() {
           <Link to="/faq" className="nav__link">
             {t('nav.faq')}
           </Link>
+          <Link to="/wishlist" className="nav__link">
+            {t('nav.wishlist')}
+          </Link>
         </nav>
 
         <div className="navbar__actions">

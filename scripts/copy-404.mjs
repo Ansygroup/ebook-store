@@ -46,6 +46,7 @@ const routes = [
   'privacy',
   'terms',
   'verify',
+  'wishlist',
   ...books.map((b) => `book/${b.slug}`),
   ...posts.map((p) => `blog/${p.slug}`),
 ];
