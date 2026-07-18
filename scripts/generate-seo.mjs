@@ -14,7 +14,7 @@ const pages = ['', '/shop', '/blog', '/pricing', '/faq', ...books.map((b) => `/b
 
 const hreflang = (p) => {
   // Pages serves /route/ (trailing slash) — keep sitemap URLs consistent to avoid 301s
-  const base = `${SITE}${p}/`.replace('//', '/');
+  const base = `${SITE}${p}/`;
   if (p === '') {
     // الصفحة الرئيسية: نسختان لغويتان
     return `

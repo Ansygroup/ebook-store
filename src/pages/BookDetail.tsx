@@ -119,6 +119,9 @@ export default function BookDetail() {
     set('og:description', longDesc);
     set('og:image', ogImage);
     set('twitter:image', ogImage);
+    // unique canonical per book (index.html ships a static home canonical that we override here)
+    const can = document.head.querySelector('link[rel="canonical"]');
+    if (can) can.setAttribute('href', `https://ansygroup.github.io/ebook-store/book/${slug}/`);
     if (slug) pushRecent(slug);
   }, [title, longDesc, ogImage, slug]);
 
