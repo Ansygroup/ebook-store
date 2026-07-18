@@ -15,6 +15,7 @@ wrangler login
 echo "COMPOSIO_API_KEY=xxx" > .dev.vars
 echo "GMAIL_ACCOUNT=ca_xxx" >> .dev.vars
 echo "SELLER_EMAIL=sales@ebook-store.dev" >> .dev.vars
+echo "STRIPE_WEBHOOK_SECRET=whsec_xxx" >> .dev.vars
 wrangler deploy
 ```
 Then set GitHub secret `VITE_API_BASE` = `https://ebook-store-api.<your>.workers.dev`
@@ -28,6 +29,6 @@ and redeploy Pages so the frontend calls the Worker instead of the mailto fallba
    - Listen to: `checkout.session.completed`
 4. Orders now auto-deliver via Gmail (no manual step).
 
-> Note: signature verification is skipped — protect the endpoint with a secret
-> path segment or Cloudflare Access, or add `stripe.webhooks.constructEvent`
-> using `env.STRIPE_WEBHOOK_SECRET` for production.
+> Note: signature verification is **enabled** when `STRIPE_WEBHOOK_SECRET` is set
+> (HMAC-SHA256 over `t.payload` using Web Crypto). Without it, the endpoint runs
+> unverified (dev only) and logs a warning. Always set the secret in production.

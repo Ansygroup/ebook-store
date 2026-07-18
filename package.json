@@ -17,6 +17,7 @@
     "pdfs": "node scripts/generate-pdfs.mjs",
     "pdfs:real": "python scripts/generate-real-pdfs.py",
     "seo": "node scripts/generate-seo.mjs",
+    "ig": "node scripts/gen-ig.mjs",
     "share": "bash share.sh",
     "check-env": "node scripts/setup-env.mjs",
     "deploy": "bash deploy.sh",

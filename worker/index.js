@@ -83,21 +83,59 @@ export default {
 
     // Stripe webhook: on checkout.session.completed, email the download link.
     // Configure in Stripe Dashboard → Webhooks → point to /api/stripe-webhook
-    // (no signature verify needed if Worker is behind CF Access / secret in URL).
+    // Set signing secret as env STRIPE_WEBHOOK_SECRET. Falls back to unverified
+    // only if the secret is absent (dev). Production MUST set the secret.
     if (url.pathname === '/api/stripe-webhook' && request.method === 'POST') {
+      const sig = request.headers.get('stripe-signature') || '';
+      const payload = await request.text();
       let event;
-      try {
-        event = await request.json();
-      } catch {
-        return json({ ok: false, error: 'Invalid JSON' }, 400, cors);
+      const secret = env.STRIPE_WEBHOOK_SECRET;
+      if (secret) {
+        // Verify HMAC-SHA256 signature (Stripe format: t=...,v1=...)
+        const parts = sig.split(',').reduce((a, p) => {
+          const [k, v] = p.split('=');
+          a[k] = v;
+          return a;
+        }, {});
+        const signedContent = `${parts.t}.${payload}`;
+        const key = await crypto.subtle.importKey(
+          'raw',
+          new TextEncoder().encode(secret),
+          { name: 'HMAC', hash: 'SHA-256' },
+          false,
+          ['sign'],
+        );
+        const mac = await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(signedContent));
+        const hex = [...new Uint8Array(mac)].map((b) => b.toString(16).padStart(2, '0')).join('');
+        if (hex !== parts.v1) {
+          console.error('[stripe-webhook] signature mismatch');
+          return json({ ok: false, error: 'Invalid signature' }, 400, cors);
+        }
+        try {
+          event = JSON.parse(payload);
+        } catch {
+          return json({ ok: false, error: 'Invalid JSON' }, 400, cors);
+        }
+      } else {
+        console.warn('[stripe-webhook] STRIPE_WEBHOOK_SECRET not set — skipping verification (dev)');
+        try {
+          event = JSON.parse(payload);
+        } catch {
+          return json({ ok: false, error: 'Invalid JSON' }, 400, cors);
+        }
       }
+
       if (event.type !== 'checkout.session.completed') {
         return json({ ok: true, received: event.type }, cors); // ack others
       }
       const session = event.data?.object || {};
       const email = session.customer_email || session.customer_details?.email;
       const slug = session.metadata?.slug; // set on the Stripe Payment Link / Checkout Session
-      if (!email || !slug) return json({ ok: false, error: 'email + slug required' }, 422, cors);
+      if (!email || !slug) {
+        console.error('[stripe-webhook] missing email/slug', { email, slug });
+        return json({ ok: false, error: 'email + slug required' }, 422, cors);
+      }
+      console.log('[stripe-webhook] order completed', { slug, email });
 
       const subject = `✅ Your ebook: ${slug}`;
       const body = [
@@ -123,7 +161,11 @@ export default {
       });
       const j = await r.json();
       const d = j.data || j;
-      if (d.id) return json({ ok: true, messageId: d.id }, cors);
+      if (d.id) {
+        console.log('[stripe-webhook] delivery email sent', { slug, messageId: d.id });
+        return json({ ok: true, messageId: d.id }, cors);
+      }
+      console.error('[stripe-webhook] delivery email failed', { slug });
       return json({ ok: false, error: 'delivery email failed' }, 502, cors);
     }
 
