@@ -17,13 +17,14 @@ export default function Newsletter() {
       const r = await fetch(`${import.meta.env.VITE_API_BASE || ''}/api/subscribe`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, honeypot: '' }),
+        body: JSON.stringify({ email, honeypot: '', coupon: 'READ20' }),
       });
       const j = await r.json();
       if (j.ok) {
         // Meta Pixel: track lead (if Pixel loaded)
         try { (window as any).fbq?.('track', 'Lead'); } catch {}
-        setStatus({ ok: true, msg: t('newsletter.ok') });
+        const couponMsg = lang === 'ar' ? ' كود الخصم READ20 في طريقه لإيميلك 🎁' : ' Your READ20 discount code is on its way to your inbox 🎁';
+        setStatus({ ok: true, msg: t('newsletter.ok') + couponMsg });
       } else {
         setStatus({ ok: false, msg: '❌ ' + (lang === 'ar' ? 'تعذر الاشتراك' : 'Subscription failed') });
       }
@@ -73,6 +74,9 @@ export default function Newsletter() {
           </button>
         </form>
         <p className="newsletter__privacy">{t('newsletter.privacy')}</p>
+        <p className="newsletter__coupon-hint">
+          {lang === 'ar' ? '🎁 اشترك وخد خصم ٢٠٪ (كود READ20) على أول طلب' : '🎁 Subscribe & get 20% off (code READ20) your first order'}
+        </p>
         {status && (
           <p className={status.ok ? 'newsletter__status--ok' : 'newsletter__status--err'}>
             {status.msg}

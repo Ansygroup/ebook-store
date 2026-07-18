@@ -575,6 +575,11 @@ img {
   color: #f87171;
   font-weight: 600;
 }
+.newsletter__coupon-hint {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin: 8px 0 0;
+}
 
 /* ---------- Shop ---------- */
 .shop__controls {
