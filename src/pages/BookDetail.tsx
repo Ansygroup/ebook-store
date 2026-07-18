@@ -35,7 +35,7 @@ export default function BookDetail() {
     setCoupon(c);
     setCouponErr('');
   }
-  const discounted = coupon ? Math.round(book!.price * (1 - coupon.percent / 100) * 100) / 100 : book!.price;
+  const discounted = coupon && book ? Math.round(book.price * (1 - coupon.percent / 100) * 100) / 100 : book?.price ?? 0;
 
   async function orderByEmail(e: React.FormEvent) {
     e.preventDefault();
