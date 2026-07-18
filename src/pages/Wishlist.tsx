@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLang } from '../i18n/LanguageContext';
-import { books, pick, formatPrice } from '../data/books';
+import { books } from '../data/books';
 import BookCard from '../components/BookCard';
 import { getWishlist } from '../data/wishlist';
 
 export default function Wishlist() {
-  const { t, lang } = useLang();
+  const { lang } = useLang();
   const [slugs, setSlugs] = useState<string[]>([]);
 
   useEffect(() => {
