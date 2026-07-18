@@ -68,7 +68,7 @@ export default function BookDetail() {
     .filter((p) => p.relatedBook === book.slug)
     .slice(0, 3);
 
-  const buyHref = buyHref(book);
+  const href = buyHref(book);
 
   const title = pick<string>(book, 'title', lang);
   const author = pick<string>(book, 'author', lang);
@@ -179,7 +179,7 @@ export default function BookDetail() {
               </div>
               <a
                 className="btn btn--primary btn--lg"
-                href={buyHref}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
               >

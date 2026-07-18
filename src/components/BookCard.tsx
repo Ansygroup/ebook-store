@@ -49,7 +49,7 @@ export default function BookCard({ book, index = 0 }: Props) {
           <span className="book-card__price">{formatPrice(book.price)}</span>
           <a
             className="btn btn--primary btn--sm"
-            href={buyHref}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
           >
