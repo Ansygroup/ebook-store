@@ -58,7 +58,7 @@ for (const b of books) {
   const link = await post('/payment_links', {
     line_items: JSON.stringify([{ price: price.id, quantity: 1 }]),
     metadata: JSON.stringify({ slug: b.slug }),
-    after_completion: JSON.stringify({ type: 'redirect', redirect: { url: `https://ansygroup.github.io/ebook-store/book/${b.slug}?paid=1` } }),
+    after_completion: JSON.stringify({ type: 'redirect', redirect: { url: `https://ansygroup.github.io/ebook-store/verify?paid=1&coupon=${b.slug}` } }),
   });
   b.stripeUrl = link.url;
   console.log(`✅ ${b.slug}: ${link.url}`);
