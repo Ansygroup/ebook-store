@@ -7,7 +7,7 @@ import BookCard from '../components/BookCard';
 import JsonLd from '../components/JsonLd';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { posts, pick as pickPost } from '../data/posts';
-import { couponByCode, isExpired, coupons } from '../data/coupons';
+import { couponByCode, isExpired, coupons, trackCoupon } from '../data/coupons';
 
 export default function BookDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -34,6 +34,7 @@ export default function BookDetail() {
     }
     setCoupon(c);
     setCouponErr('');
+    trackCoupon('ViewContent', c.code, discounted);
   }
   const discounted = coupon && book ? Math.round(book.price * (1 - coupon.percent / 100) * 100) / 100 : book?.price ?? 0;
 
@@ -232,6 +233,7 @@ export default function BookDetail() {
                 href={coupon ? `${href}${href.includes('?') ? '&' : '?'}coupon=${coupon.code}` : href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => coupon && trackCoupon('InitiateCheckout', coupon.code, discounted)}
               >
                 {t('book.buyGumroad')}
               </a>
