@@ -86,6 +86,13 @@ export default function BookDetail() {
     })
     .slice(0, 3);
 
+  // "Frequently bought together": this book + top 2 related → bundle CTA
+  const bundle = [book, ...related].slice(0, 3);
+  const bundleTotal = bundle.reduce((s, b) => s + b.price, 0);
+  const bundleSave = Math.round(bundleTotal * 0.3 * 100) / 100; // BUNDLE30
+  const bundlePrice = Math.round((bundleTotal - bundleSave) * 100) / 100;
+  const bundleHrefs = bundle.map((b) => buyHref(b)).join('\n');
+
   const relatedPosts = posts
     .filter((p) => p.relatedBook === book.slug)
     .slice(0, 3);
@@ -280,6 +287,42 @@ export default function BookDetail() {
           </motion.div>
         </div>
       </div>
+
+      {related.length > 0 && (
+        <div className="container">
+          <div className="bundle">
+            <div className="bundle__head">
+              <h2 className="section__title">{lang === 'ar' ? 'يُشترى معًا غالبًا' : 'Frequently bought together'}</h2>
+              <p className="bundle__save">{lang === 'ar' ? `وفّر ${formatPrice(bundleSave)} مع كوبون BUNDLE30` : `Save ${formatPrice(bundleSave)} with code BUNDLE30`}</p>
+            </div>
+            <div className="bundle__items">
+              {bundle.map((b, i) => (
+                <div className="bundle__item" key={b.id}>
+                  {i > 0 && <span className="bundle__plus">+</span>}
+                  <img src={`/covers/${b.cover}`} alt={pick<string>(b, 'title', lang)} className="bundle__cover" />
+                  <span className="bundle__name">{pick<string>(b, 'title', lang)}</span>
+                  <span className="bundle__price">{formatPrice(b.price)}</span>
+                </div>
+              ))}
+            </div>
+            <div className="bundle__cta">
+              <span className="bundle__total">
+                <s>{formatPrice(bundleTotal)}</s> <strong>{formatPrice(bundlePrice)}</strong>
+              </span>
+              <a
+                className="btn btn--primary btn--lg"
+                href={`#`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  bundle.forEach((b) => window.open(buyHref(b), '_blank', 'noopener'));
+                }}
+              >
+                {lang === 'ar' ? 'اشترِ الثلاثة' : 'Buy all 3'}
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       {related.length > 0 && (
         <div className="container">
