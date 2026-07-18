@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { featuredBooks, formatPrice, books } from '../data/books';
+import { featuredBooks, formatPrice, pick } from '../data/books';
 import { asset } from '../data/assets';
 import { useLang } from '../i18n/LanguageContext';
 
