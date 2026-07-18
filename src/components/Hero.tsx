@@ -16,9 +16,16 @@ const item = {
 };
 
 export default function Hero() {
+  const heroBook = featuredBooks[0];
+  const bgCover = asset(`/covers/${heroBook.cover}`);
   return (
     <section className="hero">
-      <div className="hero__glow" aria-hidden="true" />
+      <div
+        className="hero__bg"
+        style={{ backgroundImage: `url(${bgCover})` }}
+        aria-hidden="true"
+      />
+      <div className="hero__scrim" aria-hidden="true" />
       <div className="container hero__inner">
         <motion.div
           className="hero__text"
@@ -39,12 +46,12 @@ export default function Hero() {
             start today.
           </motion.p>
           <motion.div className="hero__actions" variants={item}>
-            <Link to="/shop" className="btn btn--primary btn--lg">
-              Shop now
+            <Link to={`/book/${heroBook.slug}`} className="btn btn--lg">
+              ▶ Explore {heroBook.title}
             </Link>
-            <a href="#featured" className="btn btn--ghost btn--lg">
-              Featured books
-            </a>
+            <Link to="/shop" className="btn btn--ghost btn--lg">
+              Browse library
+            </Link>
           </motion.div>
           <motion.div className="hero__stats" variants={item}>
             <div className="stat">
@@ -61,35 +68,8 @@ export default function Hero() {
             </div>
           </motion.div>
         </motion.div>
-
-        <motion.div
-          className="hero__books"
-          initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.9, ease: 'easeOut', delay: 0.3 }}
-        >
-          {featuredBooks.slice(0, 3).map((book, i) => (
-            <motion.div
-              key={book.id}
-              className="hero__book"
-              style={{ ['--i' as string]: i }}
-              animate={{ y: [0, -14, 0] }}
-              transition={{
-                duration: 4 + i,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay: i * 0.4,
-              }}
-            >
-              <img src={asset(`/covers/${book.cover}`)} alt={book.title} loading="lazy" />
-              <div className="hero__book-meta">
-                <span>{book.title}</span>
-                <strong>{formatPrice(book.price)}</strong>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
+      <div className="hero__scroll">Scroll ↓</div>
     </section>
   );
 }

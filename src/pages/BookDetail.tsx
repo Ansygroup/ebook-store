@@ -126,6 +126,11 @@ export default function BookDetail() {
 
   return (
     <section className="section book-detail">
+      <div
+        className="book-detail__hero"
+        style={{ backgroundImage: `linear-gradient(0deg, var(--bg) 5%, transparent 60%), url(${asset(`/covers/${book.cover}`)})` }}
+        aria-hidden="true"
+      />
       <JsonLd
         data={{
           '@context': 'https://schema.org',

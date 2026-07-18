@@ -5,18 +5,25 @@ import { getWishlist } from '../data/wishlist';
 
 export default function Navbar() {
   const [wishCount, setWishCount] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     setWishCount(getWishlist().length);
     const onStorage = () => setWishCount(getWishlist().length);
     window.addEventListener('storage', onStorage);
-    return () => window.removeEventListener('storage', onStorage);
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, []);
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="navbar"
+      className={`navbar ${scrolled ? 'is-scrolled' : ''}`}
     >
       <div className="container navbar__inner">
         <Link to="/" className="brand">
