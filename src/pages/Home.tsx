@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import Hero from '../components/Hero';
 import BookCard from '../components/BookCard';
 import FAQ from '../components/FAQ';
 import Newsletter from '../components/Newsletter';
 import JsonLd from '../components/JsonLd';
-import { featuredBooks, formatPrice } from '../data/books';
+import { featuredBooks, formatPrice, books } from '../data/books';
 import { coupons } from '../data/coupons';
+import { getRecent } from '../data/wishlist';
 import { useLang } from '../i18n/LanguageContext';
 
 const steps = [
@@ -24,6 +26,9 @@ const testimonials = [
 export default function Home() {
   const { t, lang } = useLang();
   const avgRating = (testimonials.reduce((s, x) => s + x.rating, 0) / testimonials.length).toFixed(1);
+  const [recent, setRecent] = useState<string[]>([]);
+  useEffect(() => { setRecent(getRecent()); }, []);
+  const recentBooks = recent.map((s) => books.find((b) => b.slug === s)).filter(Boolean).slice(0, 6);
   return (
     <>
       <JsonLd
@@ -149,6 +154,21 @@ export default function Home() {
       </section>
 
       <Newsletter />
+
+      {recentBooks.length > 0 && (
+        <section className="section">
+          <div className="container">
+            <div className="section__head section__head--left">
+              <h2 className="section__title">{lang === 'ar' ? 'شاهدته مؤخراً' : 'Recently viewed'}</h2>
+            </div>
+            <div className="book-grid">
+              {recentBooks.map((b, i) => (
+                <BookCard key={b!.id} book={b!} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <FAQ />
     </>
