@@ -14,6 +14,7 @@ import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
 import VerifyPayment from './pages/VerifyPayment';
 import Wishlist from './pages/Wishlist';
+import ExitIntent from './components/ExitIntent';
 
 export default function App() {
   return (
@@ -37,6 +38,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <ExitIntent />
     </>
   );
 }
