@@ -352,7 +352,7 @@ export default function BookDetail() {
               const pt = pickPost<string>(p, 'title', lang);
               const pe = pickPost<string>(p, 'excerpt', lang);
               return (
-                <Link key={p.slug} to={`/blog/${p.slug}`} className="blog-card">
+                <Link key={p.slug} to={`/blog/${p.slug}/`} className="blog-card">
                   {p.cover && <img src={asset(`/${p.cover}`)} alt={pt} className="blog-card__cover" />}
                   <div className="blog-card__body">
                     <h3 className="blog-card__title">{pt}</h3>

@@ -27,10 +27,10 @@ export default function BlogList() {
               <div className="blog-card__body">
                 <time className="blog-card__date">{p.date}</time>
                 <h2 className="blog-card__title">
-                  <Link to={`/blog/${p.slug}`}>{title}</Link>
+                  <Link to={`/blog/${p.slug}/`}>{title}</Link>
                 </h2>
                 <p className="blog-card__excerpt">{excerpt}</p>
-                <Link to={`/blog/${p.slug}`} className="blog-card__more">
+                <Link to={`/blog/${p.slug}/`} className="blog-card__more">
                   {lang === 'ar' ? 'اقرأ المزيد ←' : 'Read more →'}
                 </Link>
               </div>
