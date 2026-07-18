@@ -91,7 +91,6 @@ export default function BookDetail() {
   const bundleTotal = bundle.reduce((s, b) => s + b.price, 0);
   const bundleSave = Math.round(bundleTotal * 0.3 * 100) / 100; // BUNDLE30
   const bundlePrice = Math.round((bundleTotal - bundleSave) * 100) / 100;
-  const bundleHrefs = bundle.map((b) => buyHref(b)).join('\n');
 
   const relatedPosts = posts
     .filter((p) => p.relatedBook === book.slug)
