@@ -10,7 +10,7 @@ import { useLang } from '../i18n/LanguageContext';
 
 const steps = [
   { n: '1', tAr: 'تصفّح واختر', tEn: 'Browse & pick', dAr: 'استكشف الكتب حسب التصنيف واقرأ الوصف والتقييمات.', dEn: 'Explore books by category and read the description and reviews.' },
-  { n: '2', tAr: 'ادفع بأمان', tEn: 'Pay securely', dAr: 'أكمل الطلب عبر بوابة Gumroad المعتمدة في ثوانٍ.', dEn: 'Complete the order via the trusted Gumroad gateway in seconds.' },
+  { n: '2', tAr: 'ادفع بأمان', tEn: 'Pay securely', dAr: 'أكمل الطلب عبر بوابة Stripe المعتمدة في ثوانٍ.', dEn: 'Complete the order via the trusted Stripe gateway in seconds.' },
   { n: '3', tAr: 'حمّل فوراً', tEn: 'Download instantly', dAr: 'تحصل على رابط التحميل مباشرة على جهازك.', dEn: 'Get the download link straight to your device.' },
 ];
 

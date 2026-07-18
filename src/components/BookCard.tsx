@@ -11,7 +11,7 @@ interface Props {
 
 export default function BookCard({ book, index = 0 }: Props) {
   const { lang } = useLang();
-  const buyHref = buyHref(book);
+  const href = buyHref(book);
   const title = pick<string>(book, 'title', lang);
   const author = pick<string>(book, 'author', lang);
   const category = pick<string>(book, 'category', lang);

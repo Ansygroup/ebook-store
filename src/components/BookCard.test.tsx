@@ -24,12 +24,12 @@ describe('BookCard', () => {
     expect(screen.getByText('$19.99')).toBeInTheDocument();
   });
 
-  it('buy button links to Gumroad (or book page fallback)', () => {
+  it('buy button links to Stripe checkout', () => {
     const { container } = renderCard('build-your-empire');
     const btn = container.querySelector('a.btn--primary') as HTMLElement;
     expect(btn).toBeTruthy();
-    // placeholder gumroadUrl → falls back to book page
-    expect(btn.getAttribute('href')).toContain('/book/build-your-empire');
+    // stripeUrl is configured → links to Stripe Payment Link
+    expect(btn.getAttribute('href')).toContain('buy.stripe.com');
     expect(btn.getAttribute('target')).toBe('_blank');
   });
 

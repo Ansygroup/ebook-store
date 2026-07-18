@@ -30,13 +30,13 @@ describe('BookDetail page', () => {
     ).toBeInTheDocument();
   });
 
-  it('shows the buy button linking to Gumroad (or book page fallback)', () => {
+  it('shows the buy button linking to Stripe checkout', () => {
     const book = books[1];
     const { container } = renderDetail(book.slug);
     const btn = container.querySelector('a.btn--primary') as HTMLElement;
     expect(btn).toBeTruthy();
-    // placeholder gumroadUrl → falls back to book page
-    expect(btn.getAttribute('href')).toContain(`/book/${book.slug}`);
+    // stripeUrl is configured → links to Stripe Payment Link
+    expect(btn.getAttribute('href')).toContain('buy.stripe.com');
     expect(btn.getAttribute('target')).toBe('_blank');
   });
 

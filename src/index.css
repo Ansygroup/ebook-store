@@ -91,7 +91,7 @@ img {
   font-size: 0.85rem;
 }
 
-/* ---------- Gumroad checkout button ---------- */
+/* ---------- Stripe checkout button ---------- */
 .cart-btn {
   position: relative;
 }
