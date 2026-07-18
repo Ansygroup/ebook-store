@@ -5,8 +5,7 @@ process.env.COMPOSIO_API_KEY = 'ak_test';
 process.env.GMAIL_ACCOUNT = 'ca_x';
 process.env.SELLER_EMAIL = 'seller@x.com';
 
-// نستخدم الكتب الحقيقية (handler يقرأ books.json مباشرة).
-// نضبط gumroadUrl حقيقي لكتاب واحد عبر تعديل الملف مؤقتًا في beforeEach.
+// Uses the real books data (handler reads public/books.json directly).
 const REAL_BOOK_WITH_GUMROAD = 'build-your-empire';
 
 const sent: any[] = [];
@@ -39,7 +38,7 @@ describe('confirm-order API', () => {
     process.env.COMPOSIO_API_KEY = 'ak_test';
   });
 
-  it('يرسل تأكيدًا ويرجع ok عند بيانات صحيحة', async () => {
+  it('sends confirmation and returns ok for valid data', async () => {
     const res = mkRes();
     await handler(
       { method: 'POST', body: { email: 'a@b.com', slug: 'the-influential-leader' } } as any,
@@ -48,17 +47,18 @@ describe('confirm-order API', () => {
     expect(res._code).toBe(200);
     expect(res._json.ok).toBe(true);
     const decoded = Buffer.from(sent[0].body.raw, 'base64url').toString('utf8');
-    expect(decoded).toContain('القائد المؤثر');
+    expect(decoded).toContain('The Influential Leader');
     expect(decoded).toContain('a@b.com');
+    expect(decoded).toContain('— The ANSY Team');
   });
 
-  it('يرفض الطلب بغير POST', async () => {
+  it('rejects non-POST methods', async () => {
     const res = mkRes();
     await handler({ method: 'GET' } as any, res as any);
     expect(res._code).toBe(405);
   });
 
-  it('يرفض الإيميل غير الصالح', async () => {
+  it('rejects invalid email', async () => {
     const res = mkRes();
     await handler(
       { method: 'POST', body: { email: 'not-an-email', slug: 'the-influential-leader' } } as any,
@@ -67,7 +67,7 @@ describe('confirm-order API', () => {
     expect(res._code).toBe(400);
   });
 
-  it('يرجع 404 لكتاب غير موجود', async () => {
+  it('returns 404 for unknown book', async () => {
     const res = mkRes();
     await handler(
       { method: 'POST', body: { email: 'a@b.com', slug: 'nope' } } as any,
@@ -76,7 +76,7 @@ describe('confirm-order API', () => {
     expect(res._code).toBe(404);
   });
 
-  it('يرجع 500 بلا مفتاح Composio', async () => {
+  it('returns 500 without Composio key', async () => {
     process.env.COMPOSIO_API_KEY = '';
     const res = mkRes();
     await handler(
@@ -87,8 +87,7 @@ describe('confirm-order API', () => {
     expect(res._code).toBe(500);
   });
 
-  it('يستخدم رابط Gumroad الحقيقي إن وُجد', async () => {
-    // نعدّل public/books.json مؤقتًا (الـ API يقرأ منه فعليًا)
+  it('uses the real Gumroad link if present', async () => {
     const fs = await import('node:fs');
     const path = await import('node:path');
     const file = path.join(process.cwd(), 'public/books.json');
@@ -106,22 +105,22 @@ describe('confirm-order API', () => {
       const decoded = Buffer.from(sent[0].body.raw, 'base64url').toString('utf8');
       expect(decoded).toContain('https://gumroad.com/l/real-link');
     } finally {
-      fs.writeFileSync(file, original); // ارجع الملف كما كان
+      fs.writeFileSync(file, original); // restore
     }
   });
 
-  it('يرفض طلب honeypot (بوت)', async () => {
+  it('rejects honeypot requests (bot)', async () => {
     const res = mkRes();
     await handler(
       { method: 'POST', body: { email: 'a@b.com', slug: 'the-influential-leader', honeypot: 'spam' } } as any,
       res as any,
     );
-    expect(res._code).toBe(200); // يرد بنجاح صامت
+    expect(res._code).toBe(200); // silent success
     expect(res._json.ok).toBe(true);
-    expect(sent.length).toBe(0); // لا إيميل أُرسل
+    expect(sent.length).toBe(0); // no email sent
   });
 
-  it('يرفض طلب من origin خارجي', async () => {
+  it('rejects requests from external origin', async () => {
     const res = mkRes();
     await handler(
       {
@@ -134,7 +133,7 @@ describe('confirm-order API', () => {
     expect(res._code).toBe(403);
   });
 
-  it('يحدّ الحد الأقصى للطلبات (rate limit)', async () => {
+  it('enforces rate limit', async () => {
     let lastCode = 0;
     for (let i = 0; i < 7; i++) {
       const res = mkRes();
@@ -144,7 +143,7 @@ describe('confirm-order API', () => {
       );
       lastCode = res._code;
     }
-    // أول 5 نجحت (200)، الباقي 429
+    // first 5 succeeded (200), rest 429
     expect([200, 429]).toContain(lastCode);
     expect(lastCode).toBe(429);
   });

@@ -107,7 +107,7 @@ export default async function handler(req: any, res: any) {
     '',
     `Order ID: ${orderId}`,
     `Questions? ${SELLER_EMAIL}`,
-    '— The Dar Al-Maarifa Team',
+    '— The ANSY Team',
   ].join('\n');
 
   const raw = Buffer.from(

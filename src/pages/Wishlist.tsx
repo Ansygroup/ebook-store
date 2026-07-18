@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useLang } from '../i18n/LanguageContext';
 import { books } from '../data/books';
 import BookCard from '../components/BookCard';
 import { getWishlist } from '../data/wishlist';
 
 export default function Wishlist() {
-  const { lang } = useLang();
   const [slugs, setSlugs] = useState<string[]>([]);
 
   useEffect(() => {
@@ -19,13 +17,13 @@ export default function Wishlist() {
     <section className="section">
       <div className="container">
         <div className="section__head section__head--left">
-          <h1 className="section__title">{lang === 'ar' ? 'مفضلتي ♥' : 'My Wishlist ♥'}</h1>
+          <h1 className="section__title">My Wishlist ♥</h1>
         </div>
 
         {wished.length === 0 ? (
           <div className="wishlist__empty">
-            <p>{lang === 'ar' ? 'لا توجد كتب محفوظة بعد.' : 'No saved books yet.'}</p>
-            <Link to="/shop" className="btn btn--primary">{lang === 'ar' ? 'تصفّح المتجر' : 'Browse the shop'}</Link>
+            <p>No saved books yet.</p>
+            <Link to="/shop" className="btn btn--primary">Browse the shop</Link>
           </div>
         ) : (
           <div className="book-grid">

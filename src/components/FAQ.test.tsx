@@ -3,17 +3,14 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import FAQ from '../components/FAQ';
-import { LanguageProvider } from '../i18n/LanguageContext';
 
 describe('FAQ accordion', () => {
   it('expands and collapses an answer on click', async () => {
     const user = userEvent.setup();
     render(
-      <LanguageProvider>
-        <MemoryRouter>
-          <FAQ />
-        </MemoryRouter>
-      </LanguageProvider>,
+      <MemoryRouter>
+        <FAQ />
+      </MemoryRouter>,
     );
 
     const firstQuestion = screen.getByText('How do I receive the book after purchase?');

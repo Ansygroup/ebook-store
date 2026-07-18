@@ -1,10 +1,10 @@
-import type { Book, Lang } from '../types';
+import type { Book } from '../types';
 import booksData from './books.json';
 
 export const books: Book[] = booksData as Book[];
 
 export const categories: string[] = Array.from(
-  new Set(books.map((b) => b.categoryEn)),
+  new Set(books.map((b) => b.category)),
 );
 
 export function getBookBySlug(slug: string): Book | undefined {
@@ -33,24 +33,11 @@ export function formatPrice(price: number): string {
   return currencyFormatter.format(price);
 }
 
-// pick the right field by language
-export function pick<T = string>(book: Book, field: keyof Book, lang: Lang): T {
-  if (lang === 'en') {
-    const en = book[`${String(field)}En` as keyof Book];
-    if (en) return en as T;
-  }
-  return book[`${String(field)}Ar` as keyof Book] as T;
-}
-
-// purchase link: Stripe Payment Link preferred, else Gumroad, else book page (fallback)
 export function buyHref(book: Book): string {
+  // Stripe Payment Link preferred, else book page (fallback)
   const stripe = book.stripeUrl;
-  if (stripe && !stripe.includes('REPLACE')) {
+  if (stripe && !stripe.includes('REPLACE_WITH_YOUR_LINK')) {
     return stripe;
-  }
-  const gum = book.gumroadUrl;
-  if (gum && !gum.includes('REPLACE_WITH_YOUR_LINK')) {
-    return gum.includes('?') ? `${gum}&wanted=true` : `${gum}?wanted=true`;
   }
   // no checkout link configured — open the book page (free PDF + order form there)
   return `/book/${book.slug}`;

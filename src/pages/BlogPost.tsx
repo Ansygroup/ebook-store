@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
-import { useLang } from '../i18n/LanguageContext';
-import { getPostBySlug, pick } from '../data/posts';
-import { getBookBySlug, pick as pickBook } from '../data/books';
+import { getPostBySlug } from '../data/posts';
+import { getBookBySlug } from '../data/books';
 import NotFound from './NotFound';
 import JsonLd from '../components/JsonLd';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -35,18 +34,17 @@ function md(src: string): string {
 
 export default function BlogPost() {
   const { slug } = useParams();
-  const { lang, t } = useLang();
   const post = slug ? getPostBySlug(slug) : undefined;
   if (!post) return <NotFound />;
 
-  const title = pick<string>(post, 'title', lang);
-  const body = pick<string>(post, 'body', lang);
-  const excerpt = pick<string>(post, 'excerpt', lang);
+  const title = post.title;
+  const body = post.body;
+  const excerpt = post.excerpt;
 
   const SITE = 'https://ansygroup.github.io/ebook-store';
 
   const relatedBook = post.relatedBook ? getBookBySlug(post.relatedBook) : undefined;
-  const bookTitle = relatedBook ? pickBook<string>(relatedBook, 'title', lang) : '';
+  const bookTitle = relatedBook ? relatedBook.title : '';
 
   return (
     <article className="section container blog-post">
@@ -57,21 +55,21 @@ export default function BlogPost() {
           headline: title,
           description: excerpt,
           datePublished: post.date,
-          inLanguage: lang,
+          inLanguage: 'en',
           mainEntityOfPage: `${SITE}/blog/${post.slug}`,
-          author: { '@type': 'Organization', name: 'Dar Al-Maarifa' },
-          publisher: { '@type': 'Organization', name: 'Dar Al-Maarifa' },
+          author: { '@type': 'Person', name: 'ANSY' },
+          publisher: { '@type': 'Organization', name: 'ANSY' },
           keywords: post.tags.join(', '),
         }}
       />
       <Breadcrumbs
         items={[
-          { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: '/' },
-          { name: lang === 'ar' ? 'المدونة' : 'Blog', path: '/blog' },
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
           { name: title, path: `/blog/${post.slug}` },
         ]}
       />
-      <Link to="/blog" className="blog-post__back">← {lang === 'ar' ? 'المدونة' : 'Blog'}</Link>
+      <Link to="/blog" className="blog-post__back">← Blog</Link>
       {post.cover && <img src={asset(`/${post.cover}`)} alt={title} className="blog-post__cover" />}
       <time className="blog-post__date">{post.date}</time>
       <h1 className="blog-post__title">{title}</h1>
@@ -81,16 +79,16 @@ export default function BlogPost() {
         {post.tags.map((tag) => <span key={tag} className="tag">#{tag}</span>)}
       </div>
       <p className="blog-post__cta">
-        <Link to="/shop" className="btn btn--primary">{t('nav.shop')}</Link>
+        <Link to="/shop" className="btn btn--primary">Shop all books</Link>
       </p>
       {relatedBook && (
         <div className="blog-post__related-book">
-          <h2 className="section__title">{lang === 'ar' ? 'كتاب ذو صلة' : 'Related book'}</h2>
+          <h2 className="section__title">Related book</h2>
           <Link to={`/book/${relatedBook.slug}`} className="related-book">
             <img src={asset(`/covers/${relatedBook.cover}`)} alt={bookTitle} className="related-book__cover" />
             <div>
               <span className="related-book__title">{bookTitle}</span>
-              <span className="related-book__cta">{lang === 'ar' ? 'اقرأ المزيد ←' : 'Read more →'}</span>
+              <span className="related-book__cta">Read more →</span>
             </div>
           </Link>
         </div>

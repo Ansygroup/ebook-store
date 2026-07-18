@@ -2,16 +2,13 @@ import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { books, featuredBooks } from '../data/books';
-import { LanguageProvider } from '../i18n/LanguageContext';
 import Home from '../pages/Home';
 
 function renderHome() {
   return render(
-    <LanguageProvider>
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
-    </LanguageProvider>,
+    <MemoryRouter>
+      <Home />
+    </MemoryRouter>,
   );
 }
 
@@ -19,7 +16,7 @@ describe('Home page', () => {
   it('renders the hero headline and CTA', () => {
     renderHome();
     expect(
-      screen.getByRole('heading', { level: 1, name: /career trajectory/ }),
+      screen.getByRole('heading', { level: 1, name: /Books that change/i }),
     ).toBeInTheDocument();
     const ctas = screen.getAllByRole('link', { name: /Shop now/ });
     expect(ctas.length).toBeGreaterThan(0);
@@ -28,7 +25,7 @@ describe('Home page', () => {
   it('shows all featured books in the grid', () => {
     renderHome();
     for (const b of featuredBooks) {
-      expect(screen.getAllByText(b.titleEn).length).toBeGreaterThan(0);
+      expect(screen.getAllByText(b.title).length).toBeGreaterThan(0);
     }
   });
 

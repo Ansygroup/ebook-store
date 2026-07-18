@@ -9,15 +9,12 @@ vi.mock('../data/books', async (importOriginal) => {
 });
 
 import Newsletter from './Newsletter';
-import { LanguageProvider } from '../i18n/LanguageContext';
 import * as booksMod from '../data/books';
 
 function renderNL() {
   return render(
     <MemoryRouter>
-      <LanguageProvider>
-        <Newsletter />
-      </LanguageProvider>
+      <Newsletter />
     </MemoryRouter>,
   );
 }

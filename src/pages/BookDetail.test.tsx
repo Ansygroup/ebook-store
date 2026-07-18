@@ -3,17 +3,14 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import BookDetail from '../pages/BookDetail';
 import { books } from '../data/books';
-import { LanguageProvider } from '../i18n/LanguageContext';
 
 function renderDetail(slug: string) {
   return render(
-    <LanguageProvider>
-      <MemoryRouter initialEntries={[`/book/${slug}`]}>
-        <Routes>
-          <Route path="/book/:slug" element={<BookDetail />} />
-        </Routes>
-      </MemoryRouter>
-    </LanguageProvider>,
+    <MemoryRouter initialEntries={[`/book/${slug}`]}>
+      <Routes>
+        <Route path="/book/:slug" element={<BookDetail />} />
+      </Routes>
+    </MemoryRouter>,
   );
 }
 
@@ -22,9 +19,14 @@ describe('BookDetail page', () => {
     const book = books[0];
     renderDetail(book.slug);
     const h1 = screen.getByRole('heading', { level: 1 });
-    // Displayed title is English (default)
-    expect(h1.textContent).toBe(book.titleEn);
-    expect(screen.getByText(book.authorEn)).toBeInTheDocument();
+    // Displayed title is English
+    expect(h1.textContent).toBe(book.title);
+    // Author appears in the book-detail section
+    const authorElements = screen.getAllByText(book.author);
+    const authorInDetail = authorElements.find(el =>
+      el.classList.contains('book-detail__author')
+    );
+    expect(authorInDetail).toBeInTheDocument();
     expect(
       screen.getByText((content) => content.includes(`${book.pages}`)),
     ).toBeInTheDocument();

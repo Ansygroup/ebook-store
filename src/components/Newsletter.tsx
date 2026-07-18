@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { useLang } from '../i18n/LanguageContext';
 import { NEWSLETTER_URL, SELLER_EMAIL } from '../data/books';
 
 export default function Newsletter() {
-  const { t, lang } = useLang();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<{ ok: boolean; msg: string } | null>(null);
   const [busy, setBusy] = useState(false);
@@ -23,21 +21,20 @@ export default function Newsletter() {
       if (j.ok) {
         // Meta Pixel: track lead (if Pixel loaded)
         try { (window as any).fbq?.('track', 'Lead'); } catch {}
-        const couponMsg = lang === 'ar' ? ' كود الخصم READ20 في طريقه لإيميلك 🎁' : ' Your READ20 discount code is on its way to your inbox 🎁';
-        setStatus({ ok: true, msg: t('newsletter.ok') + couponMsg });
+        setStatus({ ok: true, msg: '✅ You are subscribed! Your READ20 discount code is on its way to your inbox 🎁' });
       } else {
-        setStatus({ ok: false, msg: '❌ ' + (lang === 'ar' ? 'تعذر الاشتراك' : 'Subscription failed') });
+        setStatus({ ok: false, msg: '❌ Subscription failed' });
       }
     } catch {
       if (NEWSLETTER_URL) {
         // graceful fallback: open external signup instead of dead API
         window.open(NEWSLETTER_URL, '_blank', 'noopener');
-        setStatus({ ok: true, msg: '✅ ' + (lang === 'ar' ? 'تم توجيهك للاشتراك' : 'Redirected to signup') });
+        setStatus({ ok: true, msg: '✅ Redirected to signup' });
       } else {
         // last-resort: open a pre-filled email (no backend needed)
         const subj = encodeURIComponent('Newsletter signup: ' + email);
         window.location.href = `mailto:${SELLER_EMAIL}?subject=${subj}`;
-        setStatus({ ok: true, msg: '📧 ' + (lang === 'ar' ? 'تم فتح بريدك لإرسال اشتراكك' : 'Opened your mail app to send your signup') });
+        setStatus({ ok: true, msg: '📧 Opened your mail app to send your signup' });
       }
     } finally {
       setBusy(false);
@@ -48,8 +45,8 @@ export default function Newsletter() {
     <section className="newsletter">
       <div className="container newsletter__inner">
         <div className="newsletter__copy">
-          <h2>{t('newsletter.title')}</h2>
-          <p>{t('newsletter.sub')}</p>
+          <h2>A new book &amp; discount coupon every week</h2>
+          <p>Join 12,000+ readers getting the best book notes straight to their inbox.</p>
         </div>
         <form className="newsletter__form" onSubmit={subscribe}>
           <input
@@ -64,18 +61,18 @@ export default function Newsletter() {
           <input
             type="email"
             required
-            placeholder={t('newsletter.emailPlaceholder')}
+            placeholder="Your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="newsletter__input"
           />
           <button type="submit" className="btn btn--primary" disabled={busy || !email}>
-            {busy ? '...' : t('newsletter.cta')}
+            {busy ? '...' : 'Subscribe free'}
           </button>
         </form>
-        <p className="newsletter__privacy">{t('newsletter.privacy')}</p>
+        <p className="newsletter__privacy">We respect your privacy — your email is never shared.</p>
         <p className="newsletter__coupon-hint">
-          {lang === 'ar' ? '🎁 اشترك وخد خصم ٢٠٪ (كود READ20) على أول طلب' : '🎁 Subscribe & get 20% off (code READ20) your first order'}
+          🎁 Subscribe &amp; get 20% off (code READ20) your first order
         </p>
         {status && (
           <p className={status.ok ? 'newsletter__status--ok' : 'newsletter__status--err'}>

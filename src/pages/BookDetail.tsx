@@ -1,19 +1,17 @@
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { getBookBySlug, formatPrice, books, pick, buyHref, SELLER_EMAIL } from '../data/books';
-import { useLang } from '../i18n/LanguageContext';
+import { getBookBySlug, formatPrice, books, buyHref, SELLER_EMAIL } from '../data/books';
 import BookCard from '../components/BookCard';
 import JsonLd from '../components/JsonLd';
 import Breadcrumbs from '../components/Breadcrumbs';
-import { posts, pick as pickPost } from '../data/posts';
+import { posts } from '../data/posts';
 import { couponByCode, isExpired, coupons, trackCoupon } from '../data/coupons';
 import { pushRecent } from '../data/wishlist';
 import { asset } from '../data/assets';
 
 export default function BookDetail() {
   const { slug } = useParams<{ slug: string }>();
-  const { t, lang } = useLang();
   const book = slug ? getBookBySlug(slug) : undefined;
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<{ ok: boolean; msg: string } | null>(null);
@@ -26,12 +24,12 @@ export default function BookDetail() {
     const c = couponByCode(couponInput);
     if (!c) {
       setCoupon(null);
-      setCouponErr(lang === 'ar' ? 'كود غير صالح' : 'Invalid code');
+      setCouponErr('Invalid code');
       return;
     }
     if (isExpired(c)) {
       setCoupon(null);
-      setCouponErr(lang === 'ar' ? 'انتهت صلاحية الكود' : 'Code expired');
+      setCouponErr('Code expired');
       return;
     }
     setCoupon(c);
@@ -54,15 +52,15 @@ export default function BookDetail() {
       const j = await r.json();
       setStatus(
         j.ok
-          ? { ok: true, msg: t('book.orderSent') }
-          : { ok: false, msg: '❌ ' + (j.error || (lang === 'ar' ? 'تعذر الطلب' : 'Order failed')) },
+          ? { ok: true, msg: '✅ Download link sent to your email' }
+          : { ok: false, msg: '❌ ' + (j.error || 'Order failed') },
       );
     } catch {
       // last-resort: open a pre-filled email (no backend needed)
-      const subj = encodeURIComponent(`Order: ${title} (${book.slug})`);
-      const body = encodeURIComponent(`Email: ${email}\nBook: ${title}\nSlug: ${book.slug}`);
+      const subj = encodeURIComponent(`Order: ${book.title} (${book.slug})`);
+      const body = encodeURIComponent(`Email: ${email}\nBook: ${book.title}\nSlug: ${book.slug}`);
       window.location.href = `mailto:${SELLER_EMAIL}?subject=${subj}&body=${body}`;
-      setStatus({ ok: true, msg: '📧 ' + (lang === 'ar' ? 'تم فتح بريدك لإرسال طلبك' : 'Opened your mail app to send your order') });
+      setStatus({ ok: true, msg: '📧 Opened your mail app to send your order' });
     } finally {
       setBusy(false);
     }
@@ -71,9 +69,9 @@ export default function BookDetail() {
   if (!book) {
     return (
       <section className="section container">
-        <h1 className="section__title">{t('book.notFound')}</h1>
+        <h1 className="section__title">Book not found</h1>
         <Link to="/shop" className="btn btn--primary">
-          {lang === 'ar' ? 'العودة للمتجر' : 'Back to shop'}
+          Back to shop
         </Link>
       </section>
     );
@@ -82,8 +80,8 @@ export default function BookDetail() {
   const related = books
     .filter((b) => b.id !== book.id)
     .sort((a, b) => {
-      if (a.categoryEn === book.categoryEn && b.categoryEn !== book.categoryEn) return -1;
-      if (a.categoryEn !== book.categoryEn && b.categoryEn === book.categoryEn) return 1;
+      if (a.category === book.category && b.category !== book.category) return -1;
+      if (a.category !== book.category && b.category === book.category) return 1;
       return b.rating - a.rating;
     })
     .slice(0, 3);
@@ -100,11 +98,11 @@ export default function BookDetail() {
 
   const href = buyHref(book);
 
-  const title = pick<string>(book, 'title', lang);
-  const author = pick<string>(book, 'author', lang);
-  const category = pick<string>(book, 'category', lang);
-  const longDesc = pick<string>(book, 'longDescription', lang);
-  const tags = pick<string[]>(book, 'tags', lang);
+  const title = book.title;
+  const author = book.author;
+  const category = book.category;
+  const longDesc = book.longDescription;
+  const tags = book.tags;
 
   const SITE = 'https://ansygroup.github.io/ebook-store';
   const ogImage = `${SITE}/og/${book.slug}.png`;
@@ -153,14 +151,14 @@ export default function BookDetail() {
       />
       <Breadcrumbs
         items={[
-          { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: '/' },
-          { name: lang === 'ar' ? 'المتجر' : 'Shop', path: '/shop' },
+          { name: 'Home', path: '/' },
+          { name: 'Shop', path: '/shop' },
           { name: title, path: `/book/${book.slug}` },
         ]}
       />
       <div className="container">
         <Link to="/shop" className="book-detail__back">
-          {lang === 'ar' ? '→ العودة للمتجر' : '← Back to shop'}
+          ← Back to shop
         </Link>
 
         <div className="book-detail__grid">
@@ -186,12 +184,12 @@ export default function BookDetail() {
             <div className="book-card__rating">
               {'★'.repeat(Math.round(book.rating))}
               <span className="book-card__rating-value">
-                {book.rating.toFixed(1)} ({book.reviews} {lang === 'ar' ? 'تقييم' : 'reviews'})
+                {book.rating.toFixed(1)} ({book.reviews} reviews)
               </span>
             </div>
 
             <div className="book-detail__meta">
-              <span>📄 {book.pages} {t('book.pages')}</span>
+              <span>📄 {book.pages} pages</span>
               <span>🌐 {book.language}</span>
               <span>📦 {book.formats.join(' · ')}</span>
             </div>
@@ -208,7 +206,7 @@ export default function BookDetail() {
 
             <div className="book-detail__buy">
               <div className="book-detail__price">
-                <span>{t('book.price')}</span>
+                <span>Price</span>
                 {coupon ? (
                   <strong>
                     <s style={{ opacity: 0.5, fontWeight: 400, marginRight: 8 }}>{formatPrice(book.price)}</s>
@@ -223,20 +221,19 @@ export default function BookDetail() {
               <div className="coupon">
                 <input
                   className="coupon__input"
-                  placeholder={lang === 'ar' ? 'كود الخصم' : 'Coupon code'}
+                  placeholder="Coupon code"
                   value={couponInput}
                   onChange={(e) => setCouponInput(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && applyCoupon()}
                 />
                 <button className="btn btn--ghost btn--sm" onClick={applyCoupon} type="button">
-                  {lang === 'ar' ? 'تطبيق' : 'Apply'}
+                  Apply
                 </button>
               </div>
               {couponErr && <p className="coupon__err">{couponErr}</p>}
               {!coupon && (
                 <p className="coupon__hint">
-                  {lang === 'ar' ? 'جرّب: ' : 'Try: '}
-                  {coupons.map((c) => c.code).join(' · ')}
+                  Try: {coupons.map((c) => c.code).join(' · ')}
                 </p>
               )}
 
@@ -247,12 +244,12 @@ export default function BookDetail() {
                 rel="noopener noreferrer"
                 onClick={() => coupon && trackCoupon('InitiateCheckout', coupon.code, discounted)}
               >
-                {t('book.buyGumroad')}
+                Buy now via Stripe
               </a>
 
               {book.downloadUrl && (
                 <a className="btn btn--ghost btn--lg" href={asset(book.downloadUrl)} download>
-                  {t('book.download')}
+                  ⬇ Download sample PDF
                 </a>
               )}
 
@@ -269,13 +266,13 @@ export default function BookDetail() {
                 <input
                   type="email"
                   required
-                  placeholder={t('book.emailPlaceholder')}
+                  placeholder="Your email to confirm order"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="book-detail__email-input"
                 />
                 <button type="submit" className="btn btn--ghost btn--sm" disabled={busy || !email}>
-                  {busy ? '...' : t('book.orderEmail')}
+                  {busy ? '...' : 'Order by email'}
                 </button>
               </form>
               {status && (
@@ -285,9 +282,7 @@ export default function BookDetail() {
               )}
             </div>
             <p className="book-detail__note">
-              {lang === 'ar'
-                ? '✔ تسليم فوري · ✔ روابط تحميل دائمة · ✔ ضمان استرداد 7 أيام'
-                : '✔ Instant delivery · ✔ Permanent download links · ✔ 7-day refund guarantee'}
+              ✔ Instant delivery · ✔ Permanent download links · ✔ 7-day refund guarantee
             </p>
           </motion.div>
         </div>
@@ -297,15 +292,15 @@ export default function BookDetail() {
         <div className="container">
           <div className="bundle">
             <div className="bundle__head">
-              <h2 className="section__title">{lang === 'ar' ? 'يُشترى معًا غالبًا' : 'Frequently bought together'}</h2>
-              <p className="bundle__save">{lang === 'ar' ? `وفّر ${formatPrice(bundleSave)} مع كوبون BUNDLE30` : `Save ${formatPrice(bundleSave)} with code BUNDLE30`}</p>
+              <h2 className="section__title">Frequently bought together</h2>
+              <p className="bundle__save">Save {formatPrice(bundleSave)} with code BUNDLE30</p>
             </div>
             <div className="bundle__items">
               {bundle.map((b, i) => (
                 <div className="bundle__item" key={b.id}>
                   {i > 0 && <span className="bundle__plus">+</span>}
-                  <img src={asset(`/covers/${b.cover}`)} alt={pick<string>(b, 'title', lang)} className="bundle__cover" />
-                  <span className="bundle__name">{pick<string>(b, 'title', lang)}</span>
+                  <img src={asset(`/covers/${b.cover}`)} alt={b.title} className="bundle__cover" />
+                  <span className="bundle__name">{b.title}</span>
                   <span className="bundle__price">{formatPrice(b.price)}</span>
                 </div>
               ))}
@@ -322,7 +317,7 @@ export default function BookDetail() {
                   bundle.forEach((b) => window.open(buyHref(b), '_blank', 'noopener'));
                 }}
               >
-                {lang === 'ar' ? 'اشترِ الثلاثة' : 'Buy all 3'}
+                Buy all 3
               </a>
             </div>
           </div>
@@ -332,7 +327,7 @@ export default function BookDetail() {
       {related.length > 0 && (
         <div className="container">
           <div className="section__head section__head--left">
-            <h2 className="section__title">{t('book.related')}</h2>
+            <h2 className="section__title">Related books</h2>
           </div>
           <div className="book-grid">
             {related.map((b, i) => (
@@ -345,22 +340,18 @@ export default function BookDetail() {
       {relatedPosts.length > 0 && (
         <div className="container">
           <div className="section__head section__head--left">
-            <h2 className="section__title">{lang === 'ar' ? 'مقالات ذات صلة' : 'Related articles'}</h2>
+            <h2 className="section__title">Related articles</h2>
           </div>
           <div className="blog-grid">
-            {relatedPosts.map((p) => {
-              const pt = pickPost<string>(p, 'title', lang);
-              const pe = pickPost<string>(p, 'excerpt', lang);
-              return (
-                <Link key={p.slug} to={`/blog/${p.slug}/`} className="blog-card">
-                  {p.cover && <img src={asset(`/${p.cover}`)} alt={pt} className="blog-card__cover" />}
-                  <div className="blog-card__body">
-                    <h3 className="blog-card__title">{pt}</h3>
-                    <p className="blog-card__excerpt">{pe}</p>
-                  </div>
-                </Link>
-              );
-            })}
+            {relatedPosts.map((p) => (
+              <Link key={p.slug} to={`/blog/${p.slug}/`} className="blog-card">
+                {p.cover && <img src={asset(`/${p.cover}`)} alt={p.title} className="blog-card__cover" />}
+                <div className="blog-card__body">
+                  <h3 className="blog-card__title">{p.title}</h3>
+                  <p className="blog-card__excerpt">{p.excerpt}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       )}

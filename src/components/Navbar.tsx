@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { useLang } from '../i18n/LanguageContext';
-import LanguageSwitcher from './LanguageSwitcher';
 import { getWishlist } from '../data/wishlist';
 
 export default function Navbar() {
-  const { t } = useLang();
   const [wishCount, setWishCount] = useState(0);
   useEffect(() => {
     setWishCount(getWishlist().length);
@@ -23,36 +20,35 @@ export default function Navbar() {
     >
       <div className="container navbar__inner">
         <Link to="/" className="brand">
-          <span className="brand__mark">D</span>
-          <span className="brand__name">{t('seo.siteName')}</span>
+          <span className="brand__mark">A</span>
+          <span className="brand__name">ANSY</span>
         </Link>
 
         <nav className="nav" aria-label="Main navigation">
           <Link to="/" className="nav__link">
-            {t('nav.home')}
+            Home
           </Link>
           <Link to="/shop" className="nav__link">
-            {t('nav.shop')}
+            Shop
           </Link>
           <Link to="/blog" className="nav__link">
-            {t('nav.blog')}
+            Blog
           </Link>
           <Link to="/pricing" className="nav__link">
-            {t('nav.pricing')}
+            Pricing
           </Link>
           <Link to="/faq" className="nav__link">
-            {t('nav.faq')}
+            FAQ
           </Link>
           <Link to="/wishlist" className="nav__link">
-            {t('nav.wishlist')}
+            Wishlist
             {wishCount > 0 && <span className="nav__badge">{wishCount}</span>}
           </Link>
         </nav>
 
         <div className="navbar__actions">
-          <LanguageSwitcher />
           <Link to="/shop" className="btn btn--ghost">
-            {t('nav.shop')}
+            Shop
           </Link>
         </div>
       </div>

@@ -1,18 +1,25 @@
 :root {
-  --bg: #0b0d17;
-  --bg-soft: #11142a;
-  --surface: #161a33;
-  --surface-2: #1d2244;
-  --text: #eef1ff;
-  --muted: #a6abce;
-  --primary: #6d5efc;
-  --primary-2: #9b5cf6;
-  --accent: #22d3ee;
-  --border: rgba(255, 255, 255, 0.08);
-  --radius: 16px;
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --bg: #0a0a0a;
+  --bg-soft: #111111;
+  --surface: #161412;
+  --surface-2: #1f1b15;
+  --text: #f5f0e6;
+  --muted: #a89c84;
+  --gold: #d4af37;
+  --gold-deep: #b8860b;
+  --gold-soft: rgba(212, 175, 55, 0.12);
+  --primary: #d4af37;
+  --primary-2: #b8860b;
+  --accent: #d4af37;
+  --brand: #d4af37;
+  --brand-2: #b8860b;
+  --card: #161412;
+  --border: rgba(212, 175, 55, 0.16);
+  --radius: 14px;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
   --container: 1180px;
-  --font: 'Tajawal', 'Segoe UI', Tahoma, system-ui, sans-serif;
+  --font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
 }
 
 * {
@@ -31,6 +38,12 @@ body {
   color: var(--text);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, .section__title, .hero__title, .book-detail__title,
+  .book-card__title, .pricing__name, .pricing__price, .stat strong {
+  font-family: var(--font-display);
+  letter-spacing: 0.2px;
 }
 
 a {
@@ -64,13 +77,13 @@ img {
   padding: 12px 20px;
   border-radius: 12px;
   transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
-  color: #fff;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  box-shadow: 0 10px 30px rgba(109, 94, 252, 0.35);
+  color: #1a1408;
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
 }
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 38px rgba(109, 94, 252, 0.5);
+  box-shadow: 0 14px 38px rgba(212, 175, 55, 0.45);
 }
 .btn--ghost {
   background: transparent;
@@ -79,8 +92,8 @@ img {
   color: var(--text);
 }
 .btn--ghost:hover {
-  border-color: var(--primary);
-  background: rgba(109, 94, 252, 0.1);
+  border-color: var(--gold);
+  background: rgba(212, 175, 55, 0.1);
 }
 .btn--lg {
   padding: 15px 28px;
@@ -115,7 +128,7 @@ img {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(14px);
-  background: rgba(11, 13, 23, 0.78);
+  background: rgba(10, 10, 10, 0.82);
   border-bottom: 1px solid var(--border);
 }
 .navbar__inner {
@@ -129,8 +142,10 @@ img {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 800;
-  font-size: 1.15rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }
 .brand__mark {
   width: 38px;
@@ -138,10 +153,11 @@ img {
   display: grid;
   place-items: center;
   border-radius: 11px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
-  color: #fff;
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+  color: #1a1408;
   font-size: 1.2rem;
-  box-shadow: 0 8px 22px rgba(109, 94, 252, 0.4);
+  font-weight: 800;
+  box-shadow: 0 8px 22px rgba(212, 175, 55, 0.4);
 }
 .brand--light .brand__mark {
   background: linear-gradient(135deg, var(--accent), var(--primary));
@@ -191,10 +207,10 @@ img {
   height: 600px;
   background: radial-gradient(
       circle at 20% 30%,
-      rgba(109, 94, 252, 0.5),
+      rgba(212, 175, 55, 0.28),
       transparent 55%
     ),
-    radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.35), transparent 50%);
+    radial-gradient(circle at 80% 20%, rgba(184, 134, 11, 0.18), transparent 50%);
   filter: blur(20px);
   z-index: 0;
 }
@@ -211,11 +227,11 @@ img {
   padding: 6px 14px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  color: var(--accent);
+  color: var(--gold);
   font-size: 0.85rem;
   font-weight: 700;
   margin-bottom: 18px;
-  background: rgba(34, 211, 238, 0.08);
+  background: rgba(212, 175, 55, 0.08);
 }
 .hero__title {
   font-size: clamp(2rem, 5vw, 3.4rem);
@@ -224,7 +240,7 @@ img {
   letter-spacing: -0.5px;
 }
 .hero__title-accent {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -248,7 +264,7 @@ img {
 .stat strong {
   display: block;
   font-size: 1.7rem;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -302,7 +318,7 @@ img {
   background: var(--surface-2);
 }
 .hero__book-meta strong {
-  color: var(--accent);
+  color: var(--gold);
 }
 
 /* ---------- Sections ---------- */
@@ -322,7 +338,7 @@ img {
 }
 .section__eyebrow {
   display: inline-block;
-  color: var(--accent);
+  color: var(--gold);
   font-weight: 700;
   letter-spacing: 1px;
   font-size: 0.85rem;
@@ -357,7 +373,7 @@ img {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .book-card:hover {
-  border-color: rgba(109, 94, 252, 0.5);
+  border-color: rgba(212, 175, 55, 0.5);
   box-shadow: var(--shadow);
 }
 .book-card__cover {
@@ -379,8 +395,8 @@ img {
   position: absolute;
   top: 10px;
   inset-inline-start: 10px;
-  background: var(--accent);
-  color: #021018;
+  background: var(--gold);
+  color: #1a1408;
   font-size: 0.72rem;
   font-weight: 800;
 }
@@ -410,9 +426,6 @@ img {
   color: var(--muted);
 }
 .wishlist__empty p { margin-bottom: 16px; font-size: 1.05rem; }
-  padding: 3px 10px;
-  border-radius: 999px;
-}
 .book-card__body {
   padding: 16px;
   display: flex;
@@ -422,7 +435,7 @@ img {
 }
 .book-card__cat {
   font-size: 0.74rem;
-  color: var(--accent);
+  color: var(--gold);
   font-weight: 700;
 }
 .book-card__title {

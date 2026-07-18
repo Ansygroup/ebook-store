@@ -4,15 +4,12 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import Shop from '../pages/Shop';
 import { books, categories } from '../data/books';
-import { LanguageProvider } from '../i18n/LanguageContext';
 
 function renderShop() {
   return render(
-    <LanguageProvider>
-      <MemoryRouter>
-        <Shop />
-      </MemoryRouter>
-    </LanguageProvider>,
+    <MemoryRouter>
+      <Shop />
+    </MemoryRouter>,
   );
 }
 
@@ -28,7 +25,7 @@ describe('Shop page', () => {
     const user = userEvent.setup();
     renderShop();
     const target = categories[0];
-    const expectedCount = books.filter((b) => b.categoryEn === target).length;
+    const expectedCount = books.filter((b) => b.category === target).length;
 
     await user.click(screen.getByRole('tab', { name: target }));
 

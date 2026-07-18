@@ -3,16 +3,13 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import BookCard from '../components/BookCard';
 import { books } from '../data/books';
-import { LanguageProvider } from '../i18n/LanguageContext';
 
 function renderCard(slug: string) {
   const book = books.find((b) => b.slug === slug)!;
   return render(
-    <LanguageProvider>
-      <MemoryRouter>
-        <BookCard book={book} />
-      </MemoryRouter>
-    </LanguageProvider>,
+    <MemoryRouter>
+      <BookCard book={book} />
+    </MemoryRouter>,
   );
 }
 
@@ -20,7 +17,7 @@ describe('BookCard', () => {
   it('renders the book title, author and price', () => {
     renderCard('the-influential-leader');
     expect(screen.getByText('The Influential Leader')).toBeInTheDocument();
-    expect(screen.getByText('Dr. Khalid Al-Mansour')).toBeInTheDocument();
+    expect(screen.getByText('ANSY')).toBeInTheDocument();
     expect(screen.getByText('$19.99')).toBeInTheDocument();
   });
 

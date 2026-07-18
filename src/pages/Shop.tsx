@@ -1,13 +1,11 @@
 import { useMemo, useState } from 'react';
 import BookCard from '../components/BookCard';
-import { books, categories, pick } from '../data/books';
-import { useLang } from '../i18n/LanguageContext';
+import { books, categories } from '../data/books';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 type SortKey = 'popular' | 'price-asc' | 'price-desc' | 'rating';
 
 export default function Shop() {
-  const { t, lang } = useLang();
   const [activeCat, setActiveCat] = useState<string>('all');
   const [sort, setSort] = useState<SortKey>('popular');
   const [query, setQuery] = useState<string>('');
@@ -15,14 +13,14 @@ export default function Shop() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     let list = books.filter(
-      (b) => activeCat === 'all' || b.categoryEn === activeCat,
+      (b) => activeCat === 'all' || b.category === activeCat,
     );
     if (q) {
       list = list.filter((b) => {
-        const title = pick<string>(b, 'title', lang).toLowerCase();
-        const author = pick<string>(b, 'author', lang).toLowerCase();
-        const tags = pick<string[]>(b, 'tags', lang).join(' ').toLowerCase();
-        const cat = pick<string>(b, 'category', lang).toLowerCase();
+        const title = b.title.toLowerCase();
+        const author = b.author.toLowerCase();
+        const tags = b.tags.join(' ').toLowerCase();
+        const cat = b.category.toLowerCase();
         return (
           title.includes(q) || author.includes(q) || tags.includes(q) || cat.includes(q)
         );
@@ -33,24 +31,24 @@ export default function Shop() {
     if (sort === 'popular') list = [...list].sort((a, b) => b.reviews - a.reviews);
     if (sort === 'rating') list = [...list].sort((a, b) => b.rating - a.rating);
     return list;
-  }, [activeCat, sort, query, lang]);
+  }, [activeCat, sort, query]);
 
   return (
     <section className="section shop">
       <Breadcrumbs
         items={[
-          { name: lang === 'ar' ? 'الرئيسية' : 'Home', path: '/' },
-          { name: lang === 'ar' ? 'المتجر' : 'Shop', path: '/shop' },
+          { name: 'Home', path: '/' },
+          { name: 'Shop', path: '/shop' },
         ]}
       />
       <div className="container">
         <div className="section__head">
-          <span className="section__eyebrow">{t('nav.shop')}</span>
+          <span className="section__eyebrow">Shop</span>
           <h1 className="section__title">
-            {lang === 'ar' ? 'كل الكتب الإلكترونية' : 'All ebooks'}
+            All ebooks
           </h1>
           <p className="section__sub">
-            {filtered.length} {t('shop.count')} {lang === 'ar' ? 'متاح للتحميل الفوري.' : 'available for instant download.'}
+            {filtered.length} books available for instant download.
           </p>
         </div>
 
@@ -59,10 +57,10 @@ export default function Shop() {
             <input
               type="search"
               className="shop__search-input"
-              placeholder={lang === 'ar' ? 'ابحث بالعنوان أو الكاتب أو التصنيف…' : 'Search title, author, or category…'}
+              placeholder="Search title, author, or category…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              aria-label={lang === 'ar' ? 'ابحث' : 'Search'}
+              aria-label="Search"
             />
           </div>
 
@@ -76,22 +74,22 @@ export default function Shop() {
                 onClick={() => setActiveCat(c)}
               >
                 {c === 'all'
-                  ? t('shop.all')
+                  ? 'All'
                   : c}
               </button>
             ))}
           </div>
 
           <label className="shop__sort">
-            {t('shop.sort')}:
+            Sort:
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
             >
-              <option value="popular">{lang === 'ar' ? 'الأكثر تقييماً' : t('shop.sortFeatured')}</option>
-              <option value="price-asc">{t('shop.sortPriceAsc')}</option>
-              <option value="price-desc">{t('shop.sortPriceDesc')}</option>
-              <option value="rating">{t('shop.sortRating')}</option>
+              <option value="popular">Featured first</option>
+              <option value="price-asc">Price: low to high</option>
+              <option value="price-desc">Price: high to low</option>
+              <option value="rating">Top rated</option>
             </select>
           </label>
         </div>
@@ -104,7 +102,7 @@ export default function Shop() {
 
         {filtered.length === 0 && (
           <p className="shop__empty">
-            {lang === 'ar' ? 'لا توجد كتب في هذا التصنيف حالياً.' : 'No books in this category yet.'}
+            No books in this category yet.
           </p>
         )}
       </div>

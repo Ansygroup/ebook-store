@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import type { Book } from '../types';
-import { formatPrice, pick, buyHref } from '../data/books';
-import { useLang } from '../i18n/LanguageContext';
+import { formatPrice, buyHref } from '../data/books';
 import { toggleWishlist, isWished } from '../data/wishlist';
 import { asset } from '../data/assets';
 
@@ -13,11 +12,7 @@ interface Props {
 }
 
 export default function BookCard({ book, index = 0 }: Props) {
-  const { lang } = useLang();
   const href = buyHref(book);
-  const title = pick<string>(book, 'title', lang);
-  const author = pick<string>(book, 'author', lang);
-  const category = pick<string>(book, 'category', lang);
   const [wished, setWished] = useState(() => isWished(book.slug));
   return (
     <motion.article
@@ -29,14 +24,12 @@ export default function BookCard({ book, index = 0 }: Props) {
       whileHover={{ y: -8 }}
     >
       <Link to={`/book/${book.slug}`} className="book-card__cover">
-        <img src={asset(`/covers/${book.cover}`)} alt={title} loading="lazy" />
-        {book.featured && (
-          <span className="book-card__flag">{lang === 'ar' ? 'مميز' : 'Featured'}</span>
-        )}
+        <img src={asset(`/covers/${book.cover}`)} alt={book.title} loading="lazy" />
+        {book.featured && <span className="book-card__flag">Featured</span>}
         <button
           type="button"
           className={`book-card__wish ${wished ? 'is-wished' : ''}`}
-          aria-label={lang === 'ar' ? 'حفظ في المفضلة' : 'Save to wishlist'}
+          aria-label="Save to wishlist"
           onClick={(e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -49,13 +42,13 @@ export default function BookCard({ book, index = 0 }: Props) {
       </Link>
 
       <div className="book-card__body">
-        <span className="book-card__cat">{category}</span>
+        <span className="book-card__cat">{book.category}</span>
         <h3 className="book-card__title">
-          <Link to={`/book/${book.slug}`}>{title}</Link>
+          <Link to={`/book/${book.slug}`}>{book.title}</Link>
         </h3>
-        <p className="book-card__author">{author}</p>
+        <p className="book-card__author">{book.author}</p>
 
-        <div className="book-card__rating" aria-label={`${lang === 'ar' ? 'التقييم' : 'Rating'} ${book.rating} / 5`}>
+        <div className="book-card__rating" aria-label={`Rating ${book.rating} / 5`}>
           {'★'.repeat(Math.round(book.rating))}
           <span className="book-card__rating-value">
             {book.rating.toFixed(1)} ({book.reviews})
@@ -70,7 +63,7 @@ export default function BookCard({ book, index = 0 }: Props) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {lang === 'ar' ? 'اشترِ الآن' : 'Buy now'}
+            Buy now
           </a>
         </div>
       </div>
