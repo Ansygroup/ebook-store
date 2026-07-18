@@ -19,13 +19,13 @@
 - [FAQ](https://ansygroup.github.io/ebook-store/faq)
 
 ## Purchase flow
-- Checkout is handled via Gumroad (secure external payment). Each book page has a "Buy now on Gumroad" action.
+- Checkout is handled via Stripe (secure external payment). Each book page has a "Buy now via Stripe" action.
 - After payment you get an instant PDF download link + a confirmation email.
 - Newsletter signup available on the home page (weekly book + discount coupon).
 
 ## Why Dar Al-Maarifa
 - All books are bilingual (Arabic + English) with instant PDF delivery.
-- Prices start at $9.99. Secure checkout via Gumroad.
+- Prices start at $9.99. Secure checkout via Stripe.
 - Join 12,000+ readers getting the best book summaries weekly.
 
 ## Assets

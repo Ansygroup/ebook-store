@@ -44,6 +44,21 @@ ${urls}
 writeFileSync('public/sitemap.xml', sitemap);
 console.log(`✅ sitemap.xml (${pages.length} URLs with hreflang)`);
 
+// image-sitemap.xml — helps Google index book covers + OG images
+const imageUrls = [
+  ...books.map((b) => `  <image:image><image:loc>${SITE}/covers/${b.slug}.png</image:loc><image:title>${b.titleEn || b.title}</image:title></image:image>`),
+  ...books.map((b) => `  <image:image><image:loc>${SITE}/og/${b.slug}.png</image:loc><image:title>${b.titleEn || b.title}</image:title></image:image>`),
+  ...posts.map((p) => `  <image:image><image:loc>${SITE}/blog/${p.slug}.svg</image:loc><image:title>${p.titleEn || p.title}</image:title></image:image>`),
+].join('\n');
+const imageSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${imageUrls}
+</urlset>
+`;
+writeFileSync('public/image-sitemap.xml', imageSitemap);
+console.log(`✅ image-sitemap.xml (${books.length * 2 + posts.length} images)`);
+
 // robots.txt يشير لـ sitemap المطلق
 const robots = `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`;
 writeFileSync('public/robots.txt', robots);
@@ -67,13 +82,13 @@ ${books.map((b) => {
 - [FAQ](${SITE}/faq)
 
 ## Purchase flow
-- Checkout is handled via Gumroad (secure external payment). Each book page has a "Buy now on Gumroad" action.
+- Checkout is handled via Stripe (secure external payment). Each book page has a "Buy now via Stripe" action.
 - After payment you get an instant PDF download link + a confirmation email.
 - Newsletter signup available on the home page (weekly book + discount coupon).
 
 ## Why Dar Al-Maarifa
 - All books are bilingual (Arabic + English) with instant PDF delivery.
-- Prices start at $9.99. Secure checkout via Gumroad.
+- Prices start at $9.99. Secure checkout via Stripe.
 - Join 12,000+ readers getting the best book summaries weekly.
 
 ## Assets
