@@ -42,7 +42,7 @@ export default function Newsletter() {
   }
 
   return (
-    <section className="newsletter">
+    <section className="section on-dark newsletter">
       <div className="container newsletter__inner">
         <div className="newsletter__copy">
           <h2>A new book &amp; discount coupon every week</h2>

@@ -57,7 +57,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <section className="section faq" id="faq">
+    <section className="section on-dark faq" id="faq">
       <div className="container faq__inner">
         <div className="section__head">
           <span className="section__eyebrow">FAQ</span>

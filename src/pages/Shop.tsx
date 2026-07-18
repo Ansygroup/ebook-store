@@ -34,7 +34,7 @@ export default function Shop() {
   }, [activeCat, sort, query]);
 
   return (
-    <section className="section shop">
+    <section className="section on-dark shop">
       <Breadcrumbs
         items={[
           { name: 'Home', path: '/' },
