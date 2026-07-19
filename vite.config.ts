@@ -5,7 +5,8 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ command }) => ({
   // GitHub Pages ينشر في subpath /ebook-store/ → base في الإنتاج فقط.
   // في dev/e2e نخدم من root حتى تعمل المسارات المطلقة (/, /shop, /privacy).
-  base: command === 'build' ? '/ebook-store/' : '/',
+  // على Vercel: اضبط VITE_BASE=./ لينشر من الجذر (relative paths).
+  base: command === 'build' ? (process.env.VITE_BASE || '/ebook-store/') : '/',
   plugins: [react()],
   server: {
     port: 5173,
