@@ -4,8 +4,15 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
-// basename يطابق vite base (GitHub Pages subpath /ebook-store/).
-const BASE = import.meta.env.BASE_URL || '/';
+// basename يُحسب وقت التشغيل من مسار الصفحة الفعلي، فيعمل على:
+//  - GitHub Pages (subpath /ebook-store/)
+//  - Vercel / أي دومين على الجذر (/)
+// بدون الاعتماد على import.meta.env.BASE_URL (اللي بيبقى "./" ويكسر الراوتر).
+const BASE =
+  typeof window !== 'undefined' &&
+  window.location.pathname.startsWith('/ebook-store/')
+    ? '/ebook-store/'
+    : '/';
 
 // Register PWA service worker (offline + installable)
 if ('serviceWorker' in navigator) {

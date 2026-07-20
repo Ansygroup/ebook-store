@@ -1,6 +1,3 @@
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-
 const SITE = 'https://ansygroup.github.io/ebook-store';
 const GMAIL_ACCOUNT = process.env.GMAIL_ACCOUNT || 'ca_BmQnzbsU5u3T';
 const SELLER_EMAIL = process.env.SELLER_EMAIL || 'sales@ebook-store.dev';
