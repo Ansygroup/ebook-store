@@ -1,0 +1,38 @@
+# Dar Al-Maarifa E-Book Store — Full Content Map
+> Global e-book store (English-first, bilingual AR/EN) with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Instant PDF download.
+
+## Books (full detail)
+- [The Influential Leader](https://ansygroup.github.io/ebook-store/book/the-influential-leader) — Author: ANSY. A field manual for leading people who actually want to follow, built from fifteen years of getting it wrong first. 240 pages. Rating 4.8/5. $19.99. Tags: Leadership, Management, Teams, Trust. Keywords: .
+- [Build Your Empire](https://ansygroup.github.io/ebook-store/book/build-your-empire) — Author: ANSY. From a napkin idea to a company that pays you, the exact order I would do it again in if I lost everything tomorrow. 310 pages. Rating 4.9/5. $24.99. Tags: Entrepreneurship, Business, Growth, Cash Flow. Keywords: .
+- [Deep Productivity](https://ansygroup.github.io/ebook-store/book/deep-productivity) — Author: ANSY. A 30-day system to get your attention back when your phone has been training you to lose it. 180 pages. Rating 4.7/5. $14.99. Tags: Focus, Deep Work, Habits, Energy. Keywords: .
+- [Design Your Mindset](https://ansygroup.github.io/ebook-store/book/design-your-mindset) — Author: ANSY. The inner work nobody puts on the agenda, written the way a friend would tell you the truth at 2am. 220 pages. Rating 4.6/5. $12.99. Tags: Mindset, Growth, Confidence, Self-Awareness. Keywords: .
+- [Tech for Everyone](https://ansygroup.github.io/ebook-store/book/tech-for-everyone) — Author: ANSY. The plain-English book I give to relatives who think code is magic and AI is a person. 260 pages. Rating 4.8/5. $17.99. Tags: Technology, Coding, AI, Digital Literacy. Keywords: .
+- [Health Without Limits](https://ansygroup.github.io/ebook-store/book/health-without-limits) — Author: ANSY. The boring, repeatable things that gave me my energy back after a year of burning out. 160 pages. Rating 4.9/5. $9.99. Tags: Health, Energy, Sleep, Nutrition. Keywords: .
+- [The Art of Negotiation](https://ansygroup.github.io/ebook-store/book/art-of-negotiation) — Author: ANSY. How to ask for what you are worth without turning the room into a fight you both lose. 200 pages. Rating 4.7/5. $15.99. Tags: Negotiation, Persuasion, Communication, Confidence. Keywords: .
+- [Smart Investing](https://ansygroup.github.io/ebook-store/book/smart-investing) — Author: ANSY. The calm, boring plan that builds wealth while the loud experts are busy losing theirs. 280 pages. Rating 4.8/5. $21.99. Tags: Investing, Money, Wealth, Planning. Keywords: .
+- [Content Craft](https://ansygroup.github.io/ebook-store/book/content-writing) — Author: ANSY. How to write things people finish reading, and buy from, without sounding like an ad. 170 pages. Rating 4.6/5. $13.99. Tags: Marketing, Writing, Content, Audience. Keywords: .
+- [Learn Languages](https://ansygroup.github.io/ebook-store/book/learn-languages) — Author: ANSY. The method that took me from frozen tourist to arguing about football, in months not years. 190 pages. Rating 4.7/5. $11.99. Tags: Languages, Education, Skill, Fluency. Keywords: .
+
+## Pages
+- [Home](https://ansygroup.github.io/ebook-store/)
+- [Shop](https://ansygroup.github.io/ebook-store/shop)
+- [FAQ](https://ansygroup.github.io/ebook-store/faq)
+
+## Purchase flow
+- Checkout is handled via Stripe (secure external payment). Each book page has a "Buy now via Stripe" action.
+- After payment you get an instant PDF download link + a confirmation email.
+- Newsletter signup available on the home page (weekly book + discount coupon).
+
+## Why Dar Al-Maarifa
+- All books are bilingual (Arabic + English) with instant PDF delivery.
+- Prices start at $9.99. Secure checkout via Stripe.
+- Join 12,000+ readers getting the best book summaries weekly.
+
+## Assets
+- Covers: https://ansygroup.github.io/ebook-store/covers/<slug>.png
+- Promo images: https://ansygroup.github.io/ebook-store/promo/<slug>.png
+- Sample PDFs: https://ansygroup.github.io/ebook-store/downloads/<slug>.pdf
+
+## Sitemaps / feeds
+- Sitemap: https://ansygroup.github.io/ebook-store/sitemap.xml
+- llms.txt: https://ansygroup.github.io/ebook-store/llms.txt

@@ -1,0 +1,36 @@
+# Dar Al-Maarifa E-Book Store
+> Global e-book store (English-first, bilingual AR/EN) with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Instant PDF download. Prices from $9.99.
+
+## Books
+- [The Influential Leader](https://ansygroup.github.io/ebook-store/book/the-influential-leader) — A field manual for leading people who actually want to follow, built from fifteen years of getting it wrong first. ($19.99). Keywords: leadership books, how to be a leader, team management, high performance culture, earn trust at work.
+- [Build Your Empire](https://ansygroup.github.io/ebook-store/book/build-your-empire) — From a napkin idea to a company that pays you, the exact order I would do it again in if I lost everything tomorrow. ($24.99). Keywords: startup guide, build a business, entrepreneurship, grow startup profit, business roadmap.
+- [Deep Productivity](https://ansygroup.github.io/ebook-store/book/deep-productivity) — A 30-day system to get your attention back when your phone has been training you to lose it. ($14.99). Keywords: productivity books, deep work, focus techniques, time management, get more done.
+- [Design Your Mindset](https://ansygroup.github.io/ebook-store/book/design-your-mindset) — The inner work nobody puts on the agenda, written the way a friend would tell you the truth at 2am. ($12.99). Keywords: growth mindset, self improvement, overcome limiting beliefs, psychology success, mindset book.
+- [Tech for Everyone](https://ansygroup.github.io/ebook-store/book/tech-for-everyone) — The plain-English book I give to relatives who think code is magic and AI is a person. ($17.99). Keywords: learn programming, AI for beginners, tech basics, understand coding, non-technical guide.
+- [Health Without Limits](https://ansygroup.github.io/ebook-store/book/health-without-limits) — The boring, repeatable things that gave me my energy back after a year of burning out. ($9.99). Keywords: health and wellness, energy system, healthy lifestyle, nutrition fitness, sustainable wellbeing.
+- [The Art of Negotiation](https://ansygroup.github.io/ebook-store/book/art-of-negotiation) — How to ask for what you are worth without turning the room into a fight you both lose. ($15.99). Keywords: negotiation skills, persuasion, deal making, communication skills, win agreements.
+- [Smart Investing](https://ansygroup.github.io/ebook-store/book/smart-investing) — The calm, boring plan that builds wealth while the loud experts are busy losing theirs. ($21.99). Keywords: investing for beginners, personal finance, build wealth, stock market basics, long term investing.
+- [Content Craft](https://ansygroup.github.io/ebook-store/book/content-writing) — How to write things people finish reading, and buy from, without sounding like an ad. ($13.99). Keywords: content marketing, copywriting, write to sell, build audience, content strategy.
+- [Learn Languages](https://ansygroup.github.io/ebook-store/book/learn-languages) — The method that took me from frozen tourist to arguing about football, in months not years. ($11.99). Keywords: learn languages fast, language learning method, polyglot, memory techniques, self study languages.
+
+## Pages
+- [Home](https://ansygroup.github.io/ebook-store/)
+- [Shop](https://ansygroup.github.io/ebook-store/shop/)
+- [Blog](https://ansygroup.github.io/ebook-store/blog/)
+- [Pricing](https://ansygroup.github.io/ebook-store/pricing/)
+- [FAQ](https://ansygroup.github.io/ebook-store/#faq)
+
+## Blog
+- [Leadership in the AI Era: 5 Habits That Still Matter](https://ansygroup.github.io/ebook-store/blog/leadership-in-the-ai-era) — 
+- [Write Content That Sells (Without Sounding Salesy)](https://ansygroup.github.io/ebook-store/blog/write-content-that-sells) — 
+- [Negotiate Without Losing Trust: 4 Moves](https://ansygroup.github.io/ebook-store/blog/negotiate-without-losing-trust) — 
+- [A Deep Productivity System That Survives Real Life](https://ansygroup.github.io/ebook-store/blog/deep-productivity-system) — 
+- [Invest Like an Owner, Not a Gambler](https://ansygroup.github.io/ebook-store/blog/invest-like-a-owner) — 
+- [Tech for Non-Techies: Speak the Language](https://ansygroup.github.io/ebook-store/blog/tech-for-non-techies) — 
+- [Health Is a System, Not a Willpower Contest](https://ansygroup.github.io/ebook-store/blog/health-is-a-system) — 
+- [Languages in 90 Days: A Realistic Plan](https://ansygroup.github.io/ebook-store/blog/languages-in-90-days) — 
+
+## Assets
+- Covers: https://ansygroup.github.io/ebook-store/covers/<slug>.png
+- Promo images: https://ansygroup.github.io/ebook-store/promo/<slug>.png
+- Sample PDFs: https://ansygroup.github.io/ebook-store/downloads/<slug>.pdf
