@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0d17"/>
+      <stop offset="1" stop-color="#141225"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.6">
+      <stop offset="0" stop-color="#6d5efc" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#6d5efc" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6d5efc"/>
+      <stop offset="1" stop-color="#00e0ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g transform="translate(900 315)">
+    <rect x="-70" y="-150" width="140" height="200" rx="10" fill="#1c1a30" stroke="url(#accent)" stroke-width="2" transform="rotate(-8)"/>
+    <rect x="-55" y="-120" width="140" height="200" rx="10" fill="#232042" stroke="url(#accent)" stroke-width="2" transform="rotate(4)"/>
+    <rect x="-40" y="-90" width="140" height="200" rx="10" fill="#2a2650" stroke="url(#accent)" stroke-width="2.5"/>
+    <circle cx="30" cy="10" r="22" fill="url(#accent)" opacity="0.9"/>
+  </g>
+  <text x="90" y="200" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="34" font-weight="700" fill="#00e0ff">SKILLS</text>
+  <text x="90" y="290" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="68" font-weight="800" fill="#ffffff">The Art of Negotiation</text>
+  <text x="90" y="360" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="30" fill="#9b98b8">ANSY · $15.99</text>
+  <rect x="90" y="430" width="260" height="62" rx="31" fill="url(#accent)"/>
+  <text x="220" y="470" font-family="Segoe UI, Tahoma, Arial, sans-serif" font-size="26" font-weight="700" fill="#0b0d17" text-anchor="middle">Dar Al-Maarifa</text>
+</svg>

@@ -1,0 +1,355 @@
+[
+  {
+    "id": "lead-influencer",
+    "slug": "the-influential-leader",
+    "title": "The Influential Leader",
+    "author": "ANSY",
+    "category": "Leadership",
+    "description": "A field manual for leading people who actually want to follow, built from fifteen years of getting it wrong first.",
+    "longDescription": "I spent the first decade of my career managing by timetable and fear, and watching good people quietly leave. This book is what I wish someone had handed me at 26. It is not a theory of leadership. It is the messy, specific stuff that actually changes how a room feels when you walk in: how to earn trust before you need it, how to delegate without micromanaging, how to admit you were wrong without losing authority. Every chapter ends with one exercise I have used myself, not a worksheet invented to fill the page. If you have ever finished a one-on-one and not known what was really said, this is for you.",
+    "price": 19.99,
+    "pages": 240,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "rating": 4.8,
+    "reviews": 327,
+    "cover": "leadership.png",
+    "tags": [
+      "Leadership",
+      "Management",
+      "Teams",
+      "Trust"
+    ],
+    "featured": true,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/the-influential-leader.pdf",
+    "keywordsEn": [
+      "leadership books",
+      "how to be a leader",
+      "team management",
+      "high performance culture",
+      "earn trust at work"
+    ]
+  },
+  {
+    "id": "build-empire",
+    "slug": "build-your-empire",
+    "title": "Build Your Empire",
+    "author": "ANSY",
+    "category": "Business",
+    "description": "From a napkin idea to a company that pays you, the exact order I would do it again in if I lost everything tomorrow.",
+    "longDescription": "I have started businesses that died in month three and one that paid for my father's surgery. The difference was rarely the idea. It was the sequence. This book walks the order that matters: validate before you build, charge before you scale, and fire the client who costs you sleep. I share the invoices I botched, the partner I should never have trusted, and the cash-flow spreadsheet I run every Sunday night. No fifteen-step frameworks. Just the moves, in the right order, with the mistakes left in so you can see where the road bends.",
+    "price": 24.99,
+    "pages": 310,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB",
+      "MOBI"
+    ],
+    "rating": 4.9,
+    "reviews": 218,
+    "cover": "business.png",
+    "tags": [
+      "Entrepreneurship",
+      "Business",
+      "Growth",
+      "Cash Flow"
+    ],
+    "featured": false,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/build-your-empire.pdf",
+    "keywordsEn": [
+      "startup guide",
+      "build a business",
+      "entrepreneurship",
+      "grow startup profit",
+      "business roadmap"
+    ]
+  },
+  {
+    "id": "deep-productivity",
+    "slug": "deep-productivity",
+    "title": "Deep Productivity",
+    "author": "ANSY",
+    "category": "Productivity",
+    "description": "A 30-day system to get your attention back when your phone has been training you to lose it.",
+    "longDescription": "Busy is not the same as done. I learned that the year I answered 4,000 emails and shipped nothing I was proud of. Deep Productivity is the 30-day reset I built to claw my focus back: kill the notification noise first, build a deep-work ritual second, and protect your energy like it is the only resource that matters. There are printable trackers in here because a habit you cannot see is a habit you will drop. I am not going to tell you to wake at 5am. I am going to show you where the hours actually go, and what to do with the ones left.",
+    "price": 14.99,
+    "pages": 180,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "rating": 4.7,
+    "reviews": 452,
+    "cover": "productivity.png",
+    "tags": [
+      "Focus",
+      "Deep Work",
+      "Habits",
+      "Energy"
+    ],
+    "featured": true,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/deep-productivity.pdf",
+    "keywordsEn": [
+      "productivity books",
+      "deep work",
+      "focus techniques",
+      "time management",
+      "get more done"
+    ]
+  },
+  {
+    "id": "design-your-mindset",
+    "slug": "design-your-mindset",
+    "title": "Design Your Mindset",
+    "author": "ANSY",
+    "category": "Self-Development",
+    "description": "The inner work nobody puts on the agenda, written the way a friend would tell you the truth at 2am.",
+    "longDescription": "Every result I have ever had started as a belief I was carrying, usually one I never chose. Design Your Mindset is the work I do when things fall apart, not the poster quotes. It is about finding the story you tell yourself about money, failure, and whether you are allowed to want more, then rebuilding it on purpose. I mix what psychology actually backs with the unglamorous stuff: sitting with discomfort instead of scrolling past it, and the guided practice I use when my own head turns against me. If you have read ten mindset books and changed nothing, this one is different because it asks you to do the part the others skipped.",
+    "price": 12.99,
+    "pages": 220,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "rating": 4.6,
+    "reviews": 189,
+    "cover": "selfdev.png",
+    "tags": [
+      "Mindset",
+      "Growth",
+      "Confidence",
+      "Self-Awareness"
+    ],
+    "featured": false,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/design-your-mindset.pdf",
+    "keywordsEn": [
+      "growth mindset",
+      "self improvement",
+      "overcome limiting beliefs",
+      "psychology success",
+      "mindset book"
+    ]
+  },
+  {
+    "id": "tech-for-everyone",
+    "slug": "tech-for-everyone",
+    "title": "Tech for Everyone",
+    "author": "ANSY",
+    "category": "Technology",
+    "description": "The plain-English book I give to relatives who think code is magic and AI is a person.",
+    "longDescription": "You do not need a degree to understand the machines running your life. Tech for Everyone is the book I wrote for my mother and my accountant, the people who use ten apps a day and still feel excluded from how any of it works. I explain what the internet actually is, what AI is doing when it writes your email, and where your data goes when you click accept. No jargon, no talking down. Just the stories and the analogies I used to get a 70-year-old to read her first line of code and mean it. If technology has ever made you feel stupid, that was never your fault, and this book will show you why.",
+    "price": 17.99,
+    "pages": 260,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB",
+      "MOBI"
+    ],
+    "rating": 4.8,
+    "reviews": 274,
+    "cover": "tech.png",
+    "tags": [
+      "Technology",
+      "Coding",
+      "AI",
+      "Digital Literacy"
+    ],
+    "featured": false,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/tech-for-everyone.pdf",
+    "keywordsEn": [
+      "learn programming",
+      "AI for beginners",
+      "tech basics",
+      "understand coding",
+      "non-technical guide"
+    ]
+  },
+  {
+    "id": "health-without-limits",
+    "slug": "health-without-limits",
+    "title": "Health Without Limits",
+    "author": "ANSY",
+    "category": "Health",
+    "description": "The boring, repeatable things that gave me my energy back after a year of burning out.",
+    "longDescription": "I am not a doctor and this is not a diet. Health Without Limits is what I learned putting myself back together after a year of running on empty: the small, evidence-based moves for sleep, food, and energy that survive a chaotic schedule. I am suspicious of anything that demands perfection, so every chapter ends with the minimum version, the thing you can actually keep on the worst week. No supplements you cannot pronounce, no six-hour meal prep. Just the levers that moved the needle for me, explained plainly enough that you will finally do them.",
+    "price": 9.99,
+    "pages": 160,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "rating": 4.9,
+    "reviews": 531,
+    "cover": "health.png",
+    "tags": [
+      "Health",
+      "Energy",
+      "Sleep",
+      "Nutrition"
+    ],
+    "featured": true,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/health-without-limits.pdf",
+    "keywordsEn": [
+      "health and wellness",
+      "energy system",
+      "healthy lifestyle",
+      "nutrition fitness",
+      "sustainable wellbeing"
+    ]
+  },
+  {
+    "id": "art-of-negotiation",
+    "slug": "art-of-negotiation",
+    "title": "The Art of Negotiation",
+    "author": "ANSY",
+    "category": "Skills",
+    "description": "How to ask for what you are worth without turning the room into a fight you both lose.",
+    "longDescription": "Negotiation is not a battle, it is a conversation where both people get to leave satisfied, and most of us were never taught how to have it. The Art of Negotiation is built from real deals I have been in, the ones where I froze and the ones where I walked away with more than I expected. You will learn to read the other side, prepare your position before emotions show up, and hear the word no without flinching. I include the body-language tells that gave me away and the phrases that saved the meeting. If asking for money makes your stomach turn, start here.",
+    "price": 15.99,
+    "pages": 200,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "rating": 4.7,
+    "reviews": 163,
+    "cover": "negotiation.png",
+    "tags": [
+      "Negotiation",
+      "Persuasion",
+      "Communication",
+      "Confidence"
+    ],
+    "featured": false,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/art-of-negotiation.pdf",
+    "keywordsEn": [
+      "negotiation skills",
+      "persuasion",
+      "deal making",
+      "communication skills",
+      "win agreements"
+    ]
+  },
+  {
+    "id": "smart-investing",
+    "slug": "smart-investing",
+    "title": "Smart Investing",
+    "author": "ANSY",
+    "category": "Money",
+    "description": "The calm, boring plan that builds wealth while the loud experts are busy losing theirs.",
+    "longDescription": "You do not need to be a finance person to stop leaking money. Smart Investing is the plain version I wish a teacher had given me at 18: what return and risk actually mean, why diversification is the only free lunch, and how to start with the fifty dollars in your pocket this week. I strip out the charts that exist to make someone look smart and give you the few rules that keep beginners from donating their savings to the market. No day-trading hype, no timing the crash. Just the disciplined, slightly dull steps that quietly compound while you sleep.",
+    "price": 21.99,
+    "pages": 280,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB",
+      "MOBI"
+    ],
+    "rating": 4.8,
+    "reviews": 205,
+    "cover": "investing.png",
+    "tags": [
+      "Investing",
+      "Money",
+      "Wealth",
+      "Planning"
+    ],
+    "featured": true,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/smart-investing.pdf",
+    "keywordsEn": [
+      "investing for beginners",
+      "personal finance",
+      "build wealth",
+      "stock market basics",
+      "long term investing"
+    ]
+  },
+  {
+    "id": "content-writing",
+    "slug": "content-writing",
+    "title": "Content Craft",
+    "author": "ANSY",
+    "category": "Marketing",
+    "description": "How to write things people finish reading, and buy from, without sounding like an ad.",
+    "longDescription": "Content is the only currency you can print yourself online, and almost everyone prints counterfeit. Content Craft is the method I use to plan, write, and publish without staring at a blank page for two days. You will find your voice, write headlines a person actually clicks, and tell stories that sell by being useful instead of pushy. I show you the full workflow I run across every platform, the edits that triple a post's reach, and the mistakes that quietly kill reach before anyone sees them. If your writing sounds like a brochure, that ends with this book.",
+    "price": 13.99,
+    "pages": 170,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "rating": 4.6,
+    "reviews": 142,
+    "cover": "content.png",
+    "tags": [
+      "Marketing",
+      "Writing",
+      "Content",
+      "Audience"
+    ],
+    "featured": false,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/content-writing.pdf",
+    "keywordsEn": [
+      "content marketing",
+      "copywriting",
+      "write to sell",
+      "build audience",
+      "content strategy"
+    ]
+  },
+  {
+    "id": "learn-languages",
+    "slug": "learn-languages",
+    "title": "Learn Languages",
+    "author": "ANSY",
+    "category": "Education",
+    "description": "The method that took me from frozen tourist to arguing about football, in months not years.",
+    "longDescription": "Learning a language is nothing like memorizing a word list, and the apps that tell you otherwise are why you quit. Learn Languages is the system I used to actually speak, built on daily exposure and talking badly early instead of waiting to be ready. I break down the free tools worth your time, the daily habit that fits a full schedule, and the myths that convinced you that you are bad at languages when you were only badly taught. No classroom shame, no perfection. Just the path from silence to sentences, and from sentences to the kind of conversation you remember.",
+    "price": 11.99,
+    "pages": 190,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "rating": 4.7,
+    "reviews": 198,
+    "cover": "languages.png",
+    "tags": [
+      "Languages",
+      "Education",
+      "Skill",
+      "Fluency"
+    ],
+    "featured": false,
+    "stripeUrl": "https://buy.stripe.com/eVqdR9fIT1ED12I20g0Jq06",
+    "downloadUrl": "/downloads/learn-languages.pdf",
+    "keywordsEn": [
+      "learn languages fast",
+      "language learning method",
+      "polyglot",
+      "memory techniques",
+      "self study languages"
+    ]
+  }
+]

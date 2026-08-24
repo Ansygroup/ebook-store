@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ansygroup.github.io/ebook-store/sitemap.xml

@@ -1,0 +1,19 @@
+{
+  "name": "Dar Al-Maarifa — Global Ebook Store",
+  "short_name": "Dar Al-Maarifa",
+  "description": "Global e-book store for leadership, business & self-development. Instant PDF download. Bilingual (EN/AR).",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0d17",
+  "theme_color": "#6d5efc",
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
