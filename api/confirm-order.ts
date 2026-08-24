@@ -98,10 +98,19 @@ export default async function handler(req: any, res: any) {
   }
 
   const orderId = `ORD-${Date.now()}`;
+  const fullBookPath = join(process.cwd(), 'private-books', `${book.slug}.pdf`);
+  let attachmentB64 = '';
+  try {
+    attachmentB64 = readFileSync(fullBookPath).toString('base64');
+  } catch {
+    // Real manuscript not uploaded yet — fall back to the store page link.
+  }
   const downloadUrl =
     book.gumroadUrl && !book.gumroadUrl.includes('REPLACE')
       ? book.gumroadUrl
-      : `${SITE_ALT}/downloads/full/${book.slug}.pdf`;
+      : attachmentB64
+        ? `(attached to this email)`
+        : `${SITE_ALT}/book/${book.slug}`;
   const subject = `✅ Your order: ${book.title}`;
   const body = [
     'Hello,',
@@ -112,11 +121,35 @@ export default async function handler(req: any, res: any) {
     `Order ID: ${orderId}`,
     `Questions? ${SELLER_EMAIL}`,
     '— The ANSY Team',
-  ].join('\n');
+  ].join('\r\n');
 
-  const raw = Buffer.from(
-    `From: ${SELLER_EMAIL}\nTo: ${email}\nSubject: ${subject}\n\n${body}`,
-  ).toString('base64url');
+  const boundary = 'ansy-' + orderId;
+  let rawBody: string;
+  if (attachmentB64) {
+    rawBody = [
+      `From: ${SELLER_EMAIL}`,
+      `To: ${email}`,
+      `Subject: ${subject}`,
+      'MIME-Version: 1.0',
+      `Content-Type: multipart/mixed; boundary="${boundary}"`,
+      '',
+      `--${boundary}`,
+      'Content-Type: text/plain; charset="UTF-8"',
+      '',
+      body,
+      '',
+      `--${boundary}`,
+      'Content-Type: application/pdf; name="book.pdf"',
+      'Content-Disposition: attachment; filename="' + book.slug + '.pdf"',
+      'Content-Transfer-Encoding: base64',
+      '',
+      attachmentB64,
+      `--${boundary}--`,
+    ].join('\r\n');
+  } else {
+    rawBody = 'From: ' + SELLER_EMAIL + '\r\nTo: ' + email + '\r\nSubject: ' + subject + '\r\n\r\n' + body;
+  }
+  const raw = Buffer.from(rawBody).toString('base64url');
 
   try {
     const r = await fetch(
