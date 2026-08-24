@@ -4,7 +4,7 @@
  * هذه ملفات تجريبية تستبدلها برفع ملفات الكتب الحقيقية.
  * النص ASCII فقط (العربية تحتاج خط مضمّن — يضاف عند رفع الملفات الحقيقية).
  */
-import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync, existsSync, statSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -44,6 +44,10 @@ function makePdf(meta) {
 }
 
 books.forEach((b) => {
-  writeFileSync(resolve(root, `public/downloads/${b.slug}.pdf`), makePdf(b));
+  const out = resolve(root, `public/downloads/${b.slug}.pdf`);
+  // لا تكسر الكتب الحقيقية:ولّد التجريبي فقط إذا الملف غير موجود أو كان تجريبياً (~<2KB)
+  const stat = existsSync(out) ? statSync(out).size : 0;
+  if (stat > 2048) return;
+  writeFileSync(out, makePdf(b));
 });
 console.log(`✅ ولّدت ${books.length} ملف PDF تجريبي في public/downloads/`);
