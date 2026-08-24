@@ -2,7 +2,7 @@
  * Precache shell + runtime cache for assets/covers/og. Network-first for HTML (fresh),
  * cache-first for static. SPA routes fall back to cached index.html when offline.
  */
-const CACHE = 'dam-v1';
+const CACHE = 'dam-v2';
 const SHELL = [
   '/',
   '/index.html',
