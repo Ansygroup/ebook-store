@@ -1,4 +1,5 @@
 const SITE = 'https://ansygroup.github.io/ebook-store';
+const SITE_ALT = 'https://ebook-store-ten-flax.vercel.app';
 const GMAIL_ACCOUNT = process.env.GMAIL_ACCOUNT || 'ca_BmQnzbsU5u3T';
 const SELLER_EMAIL = process.env.SELLER_EMAIL || 'sales@ebook-store.dev';
 
@@ -35,8 +36,11 @@ export default async function handler(req: any, res: any) {
   const allowed =
     origin.startsWith(SITE) ||
     origin.startsWith(SITE + '/') ||
+    origin.startsWith(SITE_ALT) ||
+    origin.startsWith(SITE_ALT + '/') ||
     origin.includes('localhost') ||
-    /\.github\.io\//.test(origin);
+    /\.github\.io\//.test(origin) ||
+    /\.vercel\.app\//.test(origin);
   if (origin && !allowed) {
     res.status(403).json({ ok: false, error: 'Forbidden' });
     return;
