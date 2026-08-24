@@ -18,7 +18,7 @@ const queueDir = resolve(root, 'ig-queue');
 const stateFile = resolve(root, 'ig-queue/.state.json');
 mkdirSync(queueDir, { recursive: true });
 
-const PAGES = 'https://ansygroup.github.io/ebook-store';
+const PAGES = 'https://ebook-store-ten-flax.vercel.app';
 const today = new Date().toISOString().slice(0, 10);
 
 // which book today?

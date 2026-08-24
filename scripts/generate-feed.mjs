@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const posts = JSON.parse(readFileSync(resolve(root, 'src/data/posts.json'), 'utf8'));
-const SITE = 'https://ansygroup.github.io/ebook-store';
+const SITE = 'https://ebook-store-ten-flax.vercel.app';
 
 const sorted = [...posts].sort((a, b) => b.date.localeCompare(a.date));
 

@@ -5,7 +5,7 @@ interface Crumb {
   path: string; // relative path like '/shop'
 }
 
-const SITE = 'https://ansygroup.github.io/ebook-store';
+const SITE = 'https://ebook-store-ten-flax.vercel.app';
 
 /**
  * Breadcrumbs — renders invisible JSON-LD (BreadcrumbList) for rich results.

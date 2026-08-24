@@ -23,7 +23,7 @@ mkdirSync(out, { recursive: true });
 const books = JSON.parse(readFileSync(resolve(root, 'src/data/books.json'), 'utf8'));
 const posts = JSON.parse(readFileSync(resolve(root, 'src/data/posts.json'), 'utf8'));
 
-const SITE = 'https://ansygroup.github.io/ebook-store';
+const SITE = 'https://ebook-store-ten-flax.vercel.app';
 
 // Brand palette
 const BRAND = { a: '#6d5efc', b: '#22d3ee', ink: '#0f1020', paper: '#ffffff' };

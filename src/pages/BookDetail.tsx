@@ -104,7 +104,7 @@ export default function BookDetail() {
   const longDesc = book.longDescription;
   const tags = book.tags;
 
-  const SITE = 'https://ansygroup.github.io/ebook-store';
+  const SITE = 'https://ebook-store-ten-flax.vercel.app';
   const ogImage = `${SITE}/og/${book.slug}.png`;
 
   // inject per-book Open Graph tags so shared links show the right cover
@@ -120,7 +120,7 @@ export default function BookDetail() {
     set('twitter:image', ogImage);
     // unique canonical per book (index.html ships a static home canonical that we override here)
     const can = document.head.querySelector('link[rel="canonical"]');
-    if (can) can.setAttribute('href', `https://ansygroup.github.io/ebook-store/book/${slug}/`);
+    if (can) can.setAttribute('href', `https://ebook-store-ten-flax.vercel.app/book/${slug}/`);
     if (slug) pushRecent(slug);
   }, [title, longDesc, ogImage, slug]);
 

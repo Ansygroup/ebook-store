@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ansygroup.github.io/ebook-store/sitemap.xml
+Sitemap: https://ebook-store-ten-flax.vercel.app/sitemap.xml

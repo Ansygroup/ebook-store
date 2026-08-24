@@ -48,5 +48,5 @@ run('git add -A');
 run('git commit -q -m "chore: automated launch build" || echo "(nothing to commit)"');
 run('git push origin master');
 
-console.log('\n✅ Done. Store deployed to https://ansygroup.github.io/ebook-store');
+console.log('\n✅ Done. Store deployed to https://ebook-store-ten-flax.vercel.app');
 console.log('   Next manual steps in marketing/LAUNCH.md');

@@ -70,7 +70,7 @@ export default function Home() {
           '@context': 'https://schema.org',
           '@type': 'Organization',
           name: 'ANSY',
-          url: 'https://ansygroup.github.io/ebook-store',
+          url: 'https://ebook-store-ten-flax.vercel.app',
           description: 'Global e-book store with expertly crafted titles in leadership, business & self-development, written by ANSY.',
           aggregateRating: { '@type': 'AggregateRating', ratingValue: avgRating, reviewCount: testimonials.length },
         }}

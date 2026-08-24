@@ -41,7 +41,7 @@ export default function BlogPost() {
   const body = post.body;
   const excerpt = post.excerpt;
 
-  const SITE = 'https://ansygroup.github.io/ebook-store';
+  const SITE = 'https://ebook-store-ten-flax.vercel.app';
 
   const relatedBook = post.relatedBook ? getBookBySlug(post.relatedBook) : undefined;
   const bookTitle = relatedBook ? relatedBook.title : '';

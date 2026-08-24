@@ -6,7 +6,7 @@
  */
 import { writeFileSync, readFileSync } from 'node:fs';
 
-const SITE = 'https://ansygroup.github.io/ebook-store';
+const SITE = 'https://ebook-store-ten-flax.vercel.app';
 const books = JSON.parse(readFileSync('src/data/books.json', 'utf8'));
 const posts = JSON.parse(readFileSync('src/data/posts.json', 'utf8'));
 

@@ -60,7 +60,7 @@ const caption =
   `📚 ${target.title} — ${target.author}\n` +
   `${target.description}\n\n` +
   `💰 $${target.price}\n` +
-  `🛒 اطلبه الآن: https://ansygroup.github.io/ebook-store/book/${target.slug}\n\n` +
+  `🛒 اطلبه الآن: https://ebook-store-ten-flax.vercel.app/book/${target.slug}\n\n` +
   `#كتب_إلكترونية #قراءة #تطوير_الذات #leadership`;
 
 console.log('📤 سيُنشر على IG عبر Composio:');
@@ -98,7 +98,7 @@ async function igProxy(method, endpoint, bodyObj) {
 }
 
 // 1) Create media container
-const absCover = `https://ansygroup.github.io/ebook-store/covers/${target.cover}`;
+const absCover = `https://ebook-store-ten-flax.vercel.app/covers/${target.cover}`;
 const container = await igProxy('POST', '/me/media', {
   image_url: absCover,
   caption,

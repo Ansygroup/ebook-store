@@ -36,7 +36,7 @@ const books = JSON.parse(readFileSync(resolve(root, 'src/data/books.json'), 'utf
 const book = books.find((b) => b.slug === slug);
 if (!book) { console.error('❌ الكتاب غير موجود:', slug); process.exit(1); }
 
-const SITE = 'https://ansygroup.github.io/ebook-store';
+const SITE = 'https://ebook-store-ten-flax.vercel.app';
 const subject = `✅ طلبك: ${book.title}`;
 const body = [
   `مرحبًا،`,
