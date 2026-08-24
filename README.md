@@ -4,7 +4,7 @@ A production-ready, **English-first (LTR)** e-book store with full Arabic i18n s
 **React + TypeScript + Vite + Framer Motion + Stripe (payments) + Cloudflare Worker (serverless API)**
 with **automated tests** (Vitest unit + Playwright e2e).
 
-> Live site: https://ansygroup.github.io/ebook-store/
+> Live site: https://ebook-store-ten-flax.vercel.app/
 > API (Worker): https://ebook-store-api.livepm8.workers.dev
 
 ## Features
