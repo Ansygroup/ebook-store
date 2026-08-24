@@ -101,7 +101,7 @@ export default async function handler(req: any, res: any) {
   const downloadUrl =
     book.gumroadUrl && !book.gumroadUrl.includes('REPLACE')
       ? book.gumroadUrl
-      : `${SITE}/book/${book.slug}`;
+      : `${SITE_ALT}/downloads/full/${book.slug}.pdf`;
   const subject = `✅ Your order: ${book.title}`;
   const body = [
     'Hello,',

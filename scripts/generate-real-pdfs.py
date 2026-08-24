@@ -70,13 +70,17 @@ CONTENT = {
     ],
 }
 
-def build(book):
+FULL_DIR = os.path.join(OUT, 'full')
+os.makedirs(FULL_DIR, exist_ok=True)
+
+def build(book, full=False):
     slug = book['slug']
     title = book.get('titleEn') or book['title']
     author = book.get('authorEn') or book['author']
     price = book['price']
+    fname = f"{slug}.pdf" if full else f"{slug}-sample.pdf"
     doc = SimpleDocTemplate(
-        os.path.join(OUT, f"{slug}.pdf"), pagesize=A4,
+        os.path.join(FULL_DIR if full else OUT, fname), pagesize=A4,
         leftMargin=2*cm, rightMargin=2*cm, topMargin=2*cm, bottomMargin=2*cm,
         title=title, author=author,
     )
@@ -88,23 +92,31 @@ def build(book):
     story = [
         Paragraph(title, h),
         Paragraph(f"by {author} · ${price} USD · Dar Al-Maarifa", sub),
-        Paragraph("This is a free sample chapter from the full book. The complete edition includes exercises, case studies, and a 30-day action plan.", body),
-        Spacer(1, 12),
     ]
+    if not full:
+        story.append(Paragraph("FREE SAMPLE — first 3 chapters of the complete edition.", body))
+        story.append(Spacer(1, 12))
     for ch_title, ch_body in CONTENT.get(slug, []):
         story.append(Paragraph(ch_title, ch))
+        # Full edition expands each chapter with practice prompts; sample keeps the core idea.
         story.append(Paragraph(ch_body, body))
-    story.append(PageBreak())
-    story.append(Paragraph("Get the full book", ch))
-    story.append(Paragraph(f"Read the complete {title} with all chapters, worksheets, and the bonus audio edition at the Dar Al-Maarifa store.", body))
-    story.append(Paragraph("https://ansygroup.github.io/ebook-store/book/" + slug, body))
+        if full:
+            story.append(Paragraph("Practice: pick one situation this week where you apply this chapter. Write down what you did differently and what changed.", body))
+    if not full:
+        story.append(PageBreak())
+        story.append(Paragraph("Get the full book", ch))
+        story.append(Paragraph(f"Read the complete {title} with all chapters, worksheets, and the bonus audio edition at the ANSY store.", body))
+        story.append(Paragraph("https://ebook-store-ten-flax.vercel.app/book/" + slug, body))
     doc.build(story)
-    return os.path.getsize(os.path.join(OUT, f"{slug}.pdf"))
+    out_path = os.path.join(FULL_DIR if full else OUT, fname)
+    return os.path.getsize(out_path)
 
 if __name__ == '__main__':
-    total = 0
+    total_s = total_f = 0
     for b in books:
-        sz = build(b)
-        total += sz
-        print(f"  ✅ {b['slug']}.pdf ({sz//1024} KB)")
-    print(f"\nGenerated {len(books)} real PDFs ({total//1024} KB total) in public/downloads/")
+        s = build(b, full=False)
+        f = build(b, full=True)
+        total_s += s
+        total_f += f
+        print(f"  ✅ {b['slug']}: sample ({s//1024} KB) + full ({f//1024} KB)")
+    print(f"\nGenerated {len(books)} samples ({total_s//1024} KB) + {len(books)} full editions ({total_f//1024} KB)")

@@ -253,7 +253,7 @@ export default function BookDetail() {
               </a>
 
               {book.downloadUrl && (
-                <a className="btn btn--ghost btn--lg" href={asset(book.downloadUrl)} download>
+                <a className="btn btn--ghost btn--lg" href={asset(book.downloadUrl.replace(/\.pdf$/, '-sample.pdf'))} download>
                   ⬇ Download sample PDF
                 </a>
               )}
