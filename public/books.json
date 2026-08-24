@@ -8,7 +8,7 @@
     "description": "A field manual for leading people who actually want to follow, built from fifteen years of getting it wrong first.",
     "longDescription": "I spent the first decade of my career managing by timetable and fear, and watching good people quietly leave. This book is what I wish someone had handed me at 26. It is not a theory of leadership. It is the messy, specific stuff that actually changes how a room feels when you walk in: how to earn trust before you need it, how to delegate without micromanaging, how to admit you were wrong without losing authority. Every chapter ends with one exercise I have used myself, not a worksheet invented to fill the page. If you have ever finished a one-on-one and not known what was really said, this is for you.",
     "price": 19.99,
-    "pages": 240,
+    "pages": 140,
     "language": "English",
     "formats": [
       "PDF",
@@ -43,7 +43,7 @@
     "description": "From a napkin idea to a company that pays you, the exact order I would do it again in if I lost everything tomorrow.",
     "longDescription": "I have started businesses that died in month three and one that paid for my father's surgery. The difference was rarely the idea. It was the sequence. This book walks the order that matters: validate before you build, charge before you scale, and fire the client who costs you sleep. I share the invoices I botched, the partner I should never have trusted, and the cash-flow spreadsheet I run every Sunday night. No fifteen-step frameworks. Just the moves, in the right order, with the mistakes left in so you can see where the road bends.",
     "price": 24.99,
-    "pages": 310,
+    "pages": 135,
     "language": "English",
     "formats": [
       "PDF",
@@ -79,7 +79,7 @@
     "description": "A 30-day system to get your attention back when your phone has been training you to lose it.",
     "longDescription": "Busy is not the same as done. I learned that the year I answered 4,000 emails and shipped nothing I was proud of. Deep Productivity is the 30-day reset I built to claw my focus back: kill the notification noise first, build a deep-work ritual second, and protect your energy like it is the only resource that matters. There are printable trackers in here because a habit you cannot see is a habit you will drop. I am not going to tell you to wake at 5am. I am going to show you where the hours actually go, and what to do with the ones left.",
     "price": 14.99,
-    "pages": 180,
+    "pages": 130,
     "language": "English",
     "formats": [
       "PDF",
@@ -114,7 +114,7 @@
     "description": "The inner work nobody puts on the agenda, written the way a friend would tell you the truth at 2am.",
     "longDescription": "Every result I have ever had started as a belief I was carrying, usually one I never chose. Design Your Mindset is the work I do when things fall apart, not the poster quotes. It is about finding the story you tell yourself about money, failure, and whether you are allowed to want more, then rebuilding it on purpose. I mix what psychology actually backs with the unglamorous stuff: sitting with discomfort instead of scrolling past it, and the guided practice I use when my own head turns against me. If you have read ten mindset books and changed nothing, this one is different because it asks you to do the part the others skipped.",
     "price": 12.99,
-    "pages": 220,
+    "pages": 132,
     "language": "English",
     "formats": [
       "PDF",
@@ -149,7 +149,7 @@
     "description": "The plain-English book I give to relatives who think code is magic and AI is a person.",
     "longDescription": "You do not need a degree to understand the machines running your life. Tech for Everyone is the book I wrote for my mother and my accountant, the people who use ten apps a day and still feel excluded from how any of it works. I explain what the internet actually is, what AI is doing when it writes your email, and where your data goes when you click accept. No jargon, no talking down. Just the stories and the analogies I used to get a 70-year-old to read her first line of code and mean it. If technology has ever made you feel stupid, that was never your fault, and this book will show you why.",
     "price": 17.99,
-    "pages": 260,
+    "pages": 128,
     "language": "English",
     "formats": [
       "PDF",
@@ -185,7 +185,7 @@
     "description": "The boring, repeatable things that gave me my energy back after a year of burning out.",
     "longDescription": "I am not a doctor and this is not a diet. Health Without Limits is what I learned putting myself back together after a year of running on empty: the small, evidence-based moves for sleep, food, and energy that survive a chaotic schedule. I am suspicious of anything that demands perfection, so every chapter ends with the minimum version, the thing you can actually keep on the worst week. No supplements you cannot pronounce, no six-hour meal prep. Just the levers that moved the needle for me, explained plainly enough that you will finally do them.",
     "price": 9.99,
-    "pages": 160,
+    "pages": 126,
     "language": "English",
     "formats": [
       "PDF",
@@ -220,7 +220,7 @@
     "description": "How to ask for what you are worth without turning the room into a fight you both lose.",
     "longDescription": "Negotiation is not a battle, it is a conversation where both people get to leave satisfied, and most of us were never taught how to have it. The Art of Negotiation is built from real deals I have been in, the ones where I froze and the ones where I walked away with more than I expected. You will learn to read the other side, prepare your position before emotions show up, and hear the word no without flinching. I include the body-language tells that gave me away and the phrases that saved the meeting. If asking for money makes your stomach turn, start here.",
     "price": 15.99,
-    "pages": 200,
+    "pages": 134,
     "language": "English",
     "formats": [
       "PDF",
@@ -255,7 +255,7 @@
     "description": "The calm, boring plan that builds wealth while the loud experts are busy losing theirs.",
     "longDescription": "You do not need to be a finance person to stop leaking money. Smart Investing is the plain version I wish a teacher had given me at 18: what return and risk actually mean, why diversification is the only free lunch, and how to start with the fifty dollars in your pocket this week. I strip out the charts that exist to make someone look smart and give you the few rules that keep beginners from donating their savings to the market. No day-trading hype, no timing the crash. Just the disciplined, slightly dull steps that quietly compound while you sleep.",
     "price": 21.99,
-    "pages": 280,
+    "pages": 136,
     "language": "English",
     "formats": [
       "PDF",
@@ -291,7 +291,7 @@
     "description": "How to write things people finish reading, and buy from, without sounding like an ad.",
     "longDescription": "Content is the only currency you can print yourself online, and almost everyone prints counterfeit. Content Craft is the method I use to plan, write, and publish without staring at a blank page for two days. You will find your voice, write headlines a person actually clicks, and tell stories that sell by being useful instead of pushy. I show you the full workflow I run across every platform, the edits that triple a post's reach, and the mistakes that quietly kill reach before anyone sees them. If your writing sounds like a brochure, that ends with this book.",
     "price": 13.99,
-    "pages": 170,
+    "pages": 122,
     "language": "English",
     "formats": [
       "PDF",
@@ -326,7 +326,7 @@
     "description": "The method that took me from frozen tourist to arguing about football, in months not years.",
     "longDescription": "Learning a language is nothing like memorizing a word list, and the apps that tell you otherwise are why you quit. Learn Languages is the system I used to actually speak, built on daily exposure and talking badly early instead of waiting to be ready. I break down the free tools worth your time, the daily habit that fits a full schedule, and the myths that convinced you that you are bad at languages when you were only badly taught. No classroom shame, no perfection. Just the path from silence to sentences, and from sentences to the kind of conversation you remember.",
     "price": 11.99,
-    "pages": 190,
+    "pages": 129,
     "language": "English",
     "formats": [
       "PDF",
@@ -350,6 +350,183 @@
       "polyglot",
       "memory techniques",
       "self study languages"
+    ]
+  },
+  {
+    "id": "freelance-freedom",
+    "slug": "freelance-freedom",
+    "title": "Freelance Freedom",
+    "author": "ANSY",
+    "category": "Business",
+    "price": 16.99,
+    "rating": 4.8,
+    "reviews": 0,
+    "pages": 145,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "featured": true,
+    "cover": "freelance-freedom.png",
+    "description": "Escape the 9-to-5 trap. Find your marketable skill, land clients on Upwork and Fiverr, price with confidence, and build a freelance income that replaces your salary.",
+    "longDescription": "Your skills are worth more than one paycheck. This book walks you through the entire freelance journey: identifying the skill people will pay for, choosing the right platform, pricing without fear, landing your first five clients, writing contracts that protect you, and scaling from side hustle to full-time freedom. Every chapter ends with a concrete action step. No theory without practice.",
+    "excerptEn": "Your skills are worth more than one paycheck.",
+    "keywordsEn": [
+      "freelancing for beginners",
+      "side hustle ideas",
+      "upwork tips",
+      "how to freelance",
+      "work from home income",
+      "fiverr success"
+    ],
+    "downloadUrl": "/downloads/freelance-freedom-sample.pdf",
+    "stripeUrl": "",
+    "tags": [
+      "freelancing",
+      "side hustle",
+      "remote work",
+      "income"
+    ]
+  },
+  {
+    "id": "career-switch-kit",
+    "slug": "career-switch-kit",
+    "title": "Career Switch Kit",
+    "author": "ANSY",
+    "category": "Self-Development",
+    "price": 14.99,
+    "rating": 4.7,
+    "reviews": 0,
+    "pages": 138,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "featured": false,
+    "cover": "career-switch.png",
+    "description": "Change careers without losing everything you built. Audit transferable skills, learn fast, network into the new industry, and survive the salary dip with a clear plan.",
+    "longDescription": "Changing careers feels like jumping off a cliff. It does not have to be. The Career Switch Kit gives you a systematic path: audit what you already know that transfers, close skill gaps efficiently, build proof-of-work in the new field before you quit, rewrite your resume and LinkedIn for the switch, network your way in through warm introductions, interview across fields with confidence, negotiate despite the experience gap, and excel in your first ninety days. Real strategies from real career changers.",
+    "excerptEn": "Your next career is closer than you think.",
+    "keywordsEn": [
+      "career change",
+      "how to change careers",
+      "new career at 30",
+      "transferable skills",
+      "career transition"
+    ],
+    "downloadUrl": "/downloads/career-switch-kit-sample.pdf",
+    "stripeUrl": "",
+    "tags": [
+      "career",
+      "job change",
+      "skills"
+    ]
+  },
+  {
+    "id": "speak-with-confidence",
+    "slug": "speak-with-confidence",
+    "title": "Speak With Confidence",
+    "author": "ANSY",
+    "category": "Skills",
+    "price": 15.99,
+    "rating": 4.8,
+    "reviews": 0,
+    "pages": 142,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "featured": false,
+    "cover": "speak-confidence.png",
+    "description": "From trembling to compelling. Master structure, body language, vocal variety, Q&A handling, and virtual presentations. The complete system for any room, any stage, any camera.",
+    "longDescription": "Public speaking is the most commonly reported fear, and the most learnable skill. Speak With Confidence breaks it into trainable components: managing the physiology of fear, structuring talks that hold attention, opening with hooks that earn the room, using body language and vocal variety intentionally, surviving Q&A with grace, presenting to cameras as well as crowds, telling stories that stick, and building a practice system that compounds. Each chapter includes exercises you can do alone, today.",
+    "excerptEn": "The room remembers the speaker who owns it.",
+    "keywordsEn": [
+      "public speaking tips",
+      "presentation skills",
+      "how to speak confidently",
+      "overcome fear of speaking"
+    ],
+    "downloadUrl": "/downloads/speak-with-confidence-sample.pdf",
+    "stripeUrl": "",
+    "tags": [
+      "public speaking",
+      "presentation",
+      "communication"
+    ]
+  },
+  {
+    "id": "sell-anything-online",
+    "slug": "sell-anything-online",
+    "title": "Sell Anything Online",
+    "author": "ANSY",
+    "category": "Marketing",
+    "price": 18.99,
+    "rating": 4.7,
+    "reviews": 0,
+    "pages": 155,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "featured": false,
+    "cover": "sell-online.png",
+    "description": "E-commerce without the overwhelm. Pick products, choose platforms, shoot photos that sell, write listings that convert, handle shipping, and grow with zero ad budget.",
+    "longDescription": "Someone is buying what you could be selling. Sell Anything Online takes you from nothing to first thousand dollars: sourcing or making products people want, choosing between Etsy, eBay, Shopify, and social commerce based on what you sell, taking product photos with your phone that look professional, pricing for profit after fees, writing titles and descriptions that appear in searches, shipping without losing money, handling customer messages like a pro, marketing without an ad budget, doubling down on what works, and staying legal from day one.",
+    "excerptEn": "Start this weekend. Sell by next week.",
+    "keywordsEn": [
+      "how to sell online",
+      "start ecommerce",
+      "etsy selling tips",
+      "online store beginner",
+      "make money selling"
+    ],
+    "downloadUrl": "/downloads/sell-anything-online-sample.pdf",
+    "stripeUrl": "",
+    "tags": [
+      "ecommerce",
+      "online business",
+      "selling"
+    ]
+  },
+  {
+    "id": "focus-distracted-world",
+    "slug": "focus-in-a-distracted-world",
+    "title": "Focus In A Distracted World",
+    "author": "ANSY",
+    "category": "Productivity",
+    "price": 12.99,
+    "rating": 4.9,
+    "reviews": 0,
+    "pages": 125,
+    "language": "English",
+    "formats": [
+      "PDF",
+      "EPUB"
+    ],
+    "featured": true,
+    "cover": "focus-distracted.png",
+    "description": "Your attention is being harvested for profit. Take it back. Understand the attention economy, detox from phone addiction, master single-tasking, and make focus your default.",
+    "longDescription": "Every app on your phone was designed by teams of engineers to capture and hold your attention. You are not weak; you are outgunned. Focus In A Distracted World levels the playing field: understand exactly how the attention economy works, run a practical phone detox without going off-grid, retrain yourself to single-task in a multi-tasking world, apply digital minimalism without becoming a hermit, build deep work rituals that survive open offices and open phones, manage notifications so they serve you, rediscover boredom as the birthplace of thought, protect presence in relationships, curate an attention diet as carefully as your food, and design a life where focus is the default setting.",
+    "excerptEn": "They designed your distraction. Design your focus.",
+    "keywordsEn": [
+      "digital detox",
+      "phone addiction help",
+      "how to focus better",
+      "deep work",
+      "stop scrolling"
+    ],
+    "downloadUrl": "/downloads/focus-in-a-distracted-world-sample.pdf",
+    "stripeUrl": "",
+    "tags": [
+      "focus",
+      "attention",
+      "digital detox",
+      "productivity"
     ]
   }
 ]

@@ -98,7 +98,7 @@ export default async function handler(req: any, res: any) {
   }
 
   const orderId = `ORD-${Date.now()}`;
-  const fullBookPath = join(process.cwd(), 'private-books', `${book.slug}.pdf`);
+  const fullBookPath = join(process.cwd(), 'api', 'full-books', `${book.slug}.pdf`);
   let attachmentB64 = '';
   try {
     attachmentB64 = readFileSync(fullBookPath).toString('base64');

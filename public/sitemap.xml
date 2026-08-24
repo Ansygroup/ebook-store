@@ -48,6 +48,21 @@
   <url><loc>https://ebook-store-ten-flax.vercel.app/book/learn-languages/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ten-flax.vercel.app/book/learn-languages/" />
     <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ten-flax.vercel.app/book/freelance-freedom/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ten-flax.vercel.app/book/freelance-freedom/" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ten-flax.vercel.app/book/career-switch-kit/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ten-flax.vercel.app/book/career-switch-kit/" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ten-flax.vercel.app/book/speak-with-confidence/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ten-flax.vercel.app/book/speak-with-confidence/" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ten-flax.vercel.app/book/sell-anything-online/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ten-flax.vercel.app/book/sell-anything-online/" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://ebook-store-ten-flax.vercel.app/book/focus-in-a-distracted-world/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ten-flax.vercel.app/book/focus-in-a-distracted-world/" />
+    <changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://ebook-store-ten-flax.vercel.app/blog/leadership-in-the-ai-era/</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ebook-store-ten-flax.vercel.app/blog/leadership-in-the-ai-era/" />
     <changefreq>weekly</changefreq><priority>0.7</priority></url>

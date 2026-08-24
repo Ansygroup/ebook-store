@@ -2,35 +2,40 @@
 > Global e-book store (English-first, bilingual AR/EN) with 10 expertly crafted titles in leadership, business, productivity, self-development, tech, health, finance, negotiation, content & languages. Instant PDF download. Prices from $9.99.
 
 ## Books
-- [The Influential Leader](https://ansygroup.github.io/ebook-store/book/the-influential-leader) — A field manual for leading people who actually want to follow, built from fifteen years of getting it wrong first. ($19.99). Keywords: leadership books, how to be a leader, team management, high performance culture, earn trust at work.
-- [Build Your Empire](https://ansygroup.github.io/ebook-store/book/build-your-empire) — From a napkin idea to a company that pays you, the exact order I would do it again in if I lost everything tomorrow. ($24.99). Keywords: startup guide, build a business, entrepreneurship, grow startup profit, business roadmap.
-- [Deep Productivity](https://ansygroup.github.io/ebook-store/book/deep-productivity) — A 30-day system to get your attention back when your phone has been training you to lose it. ($14.99). Keywords: productivity books, deep work, focus techniques, time management, get more done.
-- [Design Your Mindset](https://ansygroup.github.io/ebook-store/book/design-your-mindset) — The inner work nobody puts on the agenda, written the way a friend would tell you the truth at 2am. ($12.99). Keywords: growth mindset, self improvement, overcome limiting beliefs, psychology success, mindset book.
-- [Tech for Everyone](https://ansygroup.github.io/ebook-store/book/tech-for-everyone) — The plain-English book I give to relatives who think code is magic and AI is a person. ($17.99). Keywords: learn programming, AI for beginners, tech basics, understand coding, non-technical guide.
-- [Health Without Limits](https://ansygroup.github.io/ebook-store/book/health-without-limits) — The boring, repeatable things that gave me my energy back after a year of burning out. ($9.99). Keywords: health and wellness, energy system, healthy lifestyle, nutrition fitness, sustainable wellbeing.
-- [The Art of Negotiation](https://ansygroup.github.io/ebook-store/book/art-of-negotiation) — How to ask for what you are worth without turning the room into a fight you both lose. ($15.99). Keywords: negotiation skills, persuasion, deal making, communication skills, win agreements.
-- [Smart Investing](https://ansygroup.github.io/ebook-store/book/smart-investing) — The calm, boring plan that builds wealth while the loud experts are busy losing theirs. ($21.99). Keywords: investing for beginners, personal finance, build wealth, stock market basics, long term investing.
-- [Content Craft](https://ansygroup.github.io/ebook-store/book/content-writing) — How to write things people finish reading, and buy from, without sounding like an ad. ($13.99). Keywords: content marketing, copywriting, write to sell, build audience, content strategy.
-- [Learn Languages](https://ansygroup.github.io/ebook-store/book/learn-languages) — The method that took me from frozen tourist to arguing about football, in months not years. ($11.99). Keywords: learn languages fast, language learning method, polyglot, memory techniques, self study languages.
+- [The Influential Leader](https://ebook-store-ten-flax.vercel.app/book/the-influential-leader) — A field manual for leading people who actually want to follow, built from fifteen years of getting it wrong first. ($19.99). Keywords: leadership books, how to be a leader, team management, high performance culture, earn trust at work.
+- [Build Your Empire](https://ebook-store-ten-flax.vercel.app/book/build-your-empire) — From a napkin idea to a company that pays you, the exact order I would do it again in if I lost everything tomorrow. ($24.99). Keywords: startup guide, build a business, entrepreneurship, grow startup profit, business roadmap.
+- [Deep Productivity](https://ebook-store-ten-flax.vercel.app/book/deep-productivity) — A 30-day system to get your attention back when your phone has been training you to lose it. ($14.99). Keywords: productivity books, deep work, focus techniques, time management, get more done.
+- [Design Your Mindset](https://ebook-store-ten-flax.vercel.app/book/design-your-mindset) — The inner work nobody puts on the agenda, written the way a friend would tell you the truth at 2am. ($12.99). Keywords: growth mindset, self improvement, overcome limiting beliefs, psychology success, mindset book.
+- [Tech for Everyone](https://ebook-store-ten-flax.vercel.app/book/tech-for-everyone) — The plain-English book I give to relatives who think code is magic and AI is a person. ($17.99). Keywords: learn programming, AI for beginners, tech basics, understand coding, non-technical guide.
+- [Health Without Limits](https://ebook-store-ten-flax.vercel.app/book/health-without-limits) — The boring, repeatable things that gave me my energy back after a year of burning out. ($9.99). Keywords: health and wellness, energy system, healthy lifestyle, nutrition fitness, sustainable wellbeing.
+- [The Art of Negotiation](https://ebook-store-ten-flax.vercel.app/book/art-of-negotiation) — How to ask for what you are worth without turning the room into a fight you both lose. ($15.99). Keywords: negotiation skills, persuasion, deal making, communication skills, win agreements.
+- [Smart Investing](https://ebook-store-ten-flax.vercel.app/book/smart-investing) — The calm, boring plan that builds wealth while the loud experts are busy losing theirs. ($21.99). Keywords: investing for beginners, personal finance, build wealth, stock market basics, long term investing.
+- [Content Craft](https://ebook-store-ten-flax.vercel.app/book/content-writing) — How to write things people finish reading, and buy from, without sounding like an ad. ($13.99). Keywords: content marketing, copywriting, write to sell, build audience, content strategy.
+- [Learn Languages](https://ebook-store-ten-flax.vercel.app/book/learn-languages) — The method that took me from frozen tourist to arguing about football, in months not years. ($11.99). Keywords: learn languages fast, language learning method, polyglot, memory techniques, self study languages.
+- [Freelance Freedom](https://ebook-store-ten-flax.vercel.app/book/freelance-freedom) — Escape the 9-to-5 trap. Find your marketable skill, land clients on Upwork and Fiverr, price with confidence, and build a freelance income that replaces your salary. ($16.99). Keywords: freelancing for beginners, side hustle ideas, upwork tips, how to freelance, work from home income, fiverr success.
+- [Career Switch Kit](https://ebook-store-ten-flax.vercel.app/book/career-switch-kit) — Change careers without losing everything you built. Audit transferable skills, learn fast, network into the new industry, and survive the salary dip with a clear plan. ($14.99). Keywords: career change, how to change careers, new career at 30, transferable skills, career transition.
+- [Speak With Confidence](https://ebook-store-ten-flax.vercel.app/book/speak-with-confidence) — From trembling to compelling. Master structure, body language, vocal variety, Q&A handling, and virtual presentations. The complete system for any room, any stage, any camera. ($15.99). Keywords: public speaking tips, presentation skills, how to speak confidently, overcome fear of speaking.
+- [Sell Anything Online](https://ebook-store-ten-flax.vercel.app/book/sell-anything-online) — E-commerce without the overwhelm. Pick products, choose platforms, shoot photos that sell, write listings that convert, handle shipping, and grow with zero ad budget. ($18.99). Keywords: how to sell online, start ecommerce, etsy selling tips, online store beginner, make money selling.
+- [Focus In A Distracted World](https://ebook-store-ten-flax.vercel.app/book/focus-in-a-distracted-world) — Your attention is being harvested for profit. Take it back. Understand the attention economy, detox from phone addiction, master single-tasking, and make focus your default. ($12.99). Keywords: digital detox, phone addiction help, how to focus better, deep work, stop scrolling.
 
 ## Pages
-- [Home](https://ansygroup.github.io/ebook-store/)
-- [Shop](https://ansygroup.github.io/ebook-store/shop/)
-- [Blog](https://ansygroup.github.io/ebook-store/blog/)
-- [Pricing](https://ansygroup.github.io/ebook-store/pricing/)
-- [FAQ](https://ansygroup.github.io/ebook-store/#faq)
+- [Home](https://ebook-store-ten-flax.vercel.app/)
+- [Shop](https://ebook-store-ten-flax.vercel.app/shop/)
+- [Blog](https://ebook-store-ten-flax.vercel.app/blog/)
+- [Pricing](https://ebook-store-ten-flax.vercel.app/pricing/)
+- [FAQ](https://ebook-store-ten-flax.vercel.app/#faq)
 
 ## Blog
-- [Leadership in the AI Era: 5 Habits That Still Matter](https://ansygroup.github.io/ebook-store/blog/leadership-in-the-ai-era) — 
-- [Write Content That Sells (Without Sounding Salesy)](https://ansygroup.github.io/ebook-store/blog/write-content-that-sells) — 
-- [Negotiate Without Losing Trust: 4 Moves](https://ansygroup.github.io/ebook-store/blog/negotiate-without-losing-trust) — 
-- [A Deep Productivity System That Survives Real Life](https://ansygroup.github.io/ebook-store/blog/deep-productivity-system) — 
-- [Invest Like an Owner, Not a Gambler](https://ansygroup.github.io/ebook-store/blog/invest-like-a-owner) — 
-- [Tech for Non-Techies: Speak the Language](https://ansygroup.github.io/ebook-store/blog/tech-for-non-techies) — 
-- [Health Is a System, Not a Willpower Contest](https://ansygroup.github.io/ebook-store/blog/health-is-a-system) — 
-- [Languages in 90 Days: A Realistic Plan](https://ansygroup.github.io/ebook-store/blog/languages-in-90-days) — 
+- [Leadership in the AI Era: 5 Habits That Still Matter](https://ebook-store-ten-flax.vercel.app/blog/leadership-in-the-ai-era) — 
+- [Write Content That Sells (Without Sounding Salesy)](https://ebook-store-ten-flax.vercel.app/blog/write-content-that-sells) — 
+- [Negotiate Without Losing Trust: 4 Moves](https://ebook-store-ten-flax.vercel.app/blog/negotiate-without-losing-trust) — 
+- [A Deep Productivity System That Survives Real Life](https://ebook-store-ten-flax.vercel.app/blog/deep-productivity-system) — 
+- [Invest Like an Owner, Not a Gambler](https://ebook-store-ten-flax.vercel.app/blog/invest-like-a-owner) — 
+- [Tech for Non-Techies: Speak the Language](https://ebook-store-ten-flax.vercel.app/blog/tech-for-non-techies) — 
+- [Health Is a System, Not a Willpower Contest](https://ebook-store-ten-flax.vercel.app/blog/health-is-a-system) — 
+- [Languages in 90 Days: A Realistic Plan](https://ebook-store-ten-flax.vercel.app/blog/languages-in-90-days) — 
 
 ## Assets
-- Covers: https://ansygroup.github.io/ebook-store/covers/<slug>.png
-- Promo images: https://ansygroup.github.io/ebook-store/promo/<slug>.png
-- Sample PDFs: https://ansygroup.github.io/ebook-store/downloads/<slug>.pdf
+- Covers: https://ebook-store-ten-flax.vercel.app/covers/<slug>.png
+- Promo images: https://ebook-store-ten-flax.vercel.app/promo/<slug>.png
+- Sample PDFs: https://ebook-store-ten-flax.vercel.app/downloads/<slug>.pdf
