@@ -48,10 +48,10 @@ export default function BookCard({ book, index = 0 }: Props) {
         </h3>
         <p className="book-card__author">{book.author}</p>
 
-        <div className="book-card__rating" aria-label={`Rating ${book.rating} / 5`}>
+        <div className="book-card__rating" aria-label={`Rating ${book.rating} out of 5`}>
           {'★'.repeat(Math.round(book.rating))}
           <span className="book-card__rating-value">
-            {book.rating.toFixed(1)} ({book.reviews})
+            {book.rating.toFixed(1)}
           </span>
         </div>
 

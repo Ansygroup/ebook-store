@@ -54,8 +54,8 @@ export default function Navbar() {
         </nav>
 
         <div className="navbar__actions">
-          <Link to="/shop" className="btn btn--ghost">
-            Shop
+          <Link to="/shop" className="btn btn--primary btn--sm">
+            Browse
           </Link>
         </div>
       </div>

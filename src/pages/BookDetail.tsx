@@ -141,11 +141,6 @@ export default function BookDetail() {
           inLanguage: book.language || 'en',
           bookFormat: 'https://schema.org/EBook',
           numberOfPages: book.pages,
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: book.rating,
-            reviewCount: book.reviews,
-          },
           offers: {
             '@type': 'Offer',
             price: book.price,
@@ -189,7 +184,7 @@ export default function BookDetail() {
             <div className="book-card__rating">
               {'★'.repeat(Math.round(book.rating))}
               <span className="book-card__rating-value">
-                {book.rating.toFixed(1)} ({book.reviews} reviews)
+                {book.rating.toFixed(1)} out of 5
               </span>
             </div>
 

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { SELLER_EMAIL } from '../data/books';
 
 export default function Footer() {
   return (
@@ -28,7 +29,7 @@ export default function Footer() {
           <h4>Legal</h4>
           <Link to="/privacy">Privacy policy</Link>
           <Link to="/terms">Terms &amp; conditions</Link>
-          <a href="mailto:support@ansy.example">Email</a>
+          <a href={`mailto:${SELLER_EMAIL}`}>Email</a>
         </div>
       </div>
       <div className="footer__bottom container">

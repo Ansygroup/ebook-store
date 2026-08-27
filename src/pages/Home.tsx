@@ -17,16 +17,19 @@ import { getRecent } from '../data/wishlist';
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const steps = [
-  { n: '1', t: 'Browse & pick', d: 'Explore books by category and read reviews.' },
-  { n: '2', t: 'Pay securely', d: 'Complete the order via Stripe in seconds.' },
-  { n: '3', t: 'Download instantly', d: 'Get the download link straight to your device.' },
+  { n: '1', t: 'Browse & pick', d: 'Explore the catalog by category and read the long-form blurb before you buy.' },
+  { n: '2', t: 'Pay securely', d: 'Complete the order via Stripe in seconds — card, Apple Pay, Google Pay.' },
+  { n: '3', t: 'Read on any device', d: 'Get PDF + EPUB instantly. Read on phone, tablet, laptop, or e-reader.' },
 ];
 
-const testimonials = [
-  { name: 'Sara Al-Mutairi', role: 'Product Manager', text: '"The Influential Leader" changed how I manage my team. My work is clearer now.', rating: 5 },
-  { name: 'Khalid Al-Otaibi', role: 'Entrepreneur', text: 'I bought "Build Your Empire" and applied its plan in two weeks. Highly recommend it.', rating: 5 },
-  { name: 'Mona Al-Ahmed', role: 'Developer', text: 'Instant download and permanent links. A smooth purchase from the first time.', rating: 5 },
-];
+// Trust strip is derived from the live catalog (real numbers, never invented).
+function buildTrustSignals() {
+  const totalBooks = books.length;
+  const totalCategories = new Set(books.map((b) => b.category)).size;
+  const totalPages = books.reduce((sum, b) => sum + (b.pages || 0), 0);
+  const languages = new Set(books.map((b) => b.language).filter(Boolean));
+  return { totalBooks, totalCategories, totalPages, languages: languages.size };
+}
 
 function buildRows() {
   const byCat = new Map<string, typeof books>();
@@ -41,8 +44,8 @@ function buildRows() {
 }
 
 export default function Home() {
-  const avgRating = (testimonials.reduce((s, x) => s + x.rating, 0) / testimonials.length).toFixed(1);
   const rows = buildRows();
+  const trust = buildTrustSignals();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -72,7 +75,6 @@ export default function Home() {
           name: 'ANSY',
           url: 'https://ebook-store-ten-flax.vercel.app',
           description: 'Global e-book store with expertly crafted titles in leadership, business & self-development, written by ANSY.',
-          aggregateRating: { '@type': 'AggregateRating', ratingValue: avgRating, reviewCount: testimonials.length },
         }}
       />
       <Hero />
@@ -182,31 +184,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials (light) */}
-      <section className="section on-light reveal">
+      {/* Trust strip (dark) — real numbers from the live catalog, no fake reviews */}
+      <section className="section on-dark reveal">
         <div className="container">
           <div className="section__head">
-            <span className="section__eyebrow">What readers say</span>
-            <h2 className="section__title">Thousands of readers trust us</h2>
+            <span className="section__eyebrow">What's inside</span>
+            <h2 className="section__title">A library built one book at a time</h2>
+            <p className="section__sub">
+              Every title is written, edited, and published by ANSY. No filler, no recycled content.
+            </p>
           </div>
-          <div className="testimonial-grid">
-            {testimonials.map((tm, i) => (
-              <motion.figure
-                key={tm.name}
-                className="testimonial"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <div className="testimonial__stars">{'★'.repeat(tm.rating)}</div>
-                <blockquote>{tm.text}</blockquote>
-                <figcaption>
-                  <strong>{tm.name}</strong>
-                  <span>{tm.role}</span>
-                </figcaption>
-              </motion.figure>
-            ))}
+          <div className="trust-grid">
+            <div className="trust-cell">
+              <strong>{trust.totalBooks}</strong>
+              <span>published titles</span>
+            </div>
+            <div className="trust-cell">
+              <strong>{trust.totalCategories}</strong>
+              <span>categories</span>
+            </div>
+            <div className="trust-cell">
+              <strong>{trust.totalPages.toLocaleString('en-US')}</strong>
+              <span>pages of original writing</span>
+            </div>
+            <div className="trust-cell">
+              <strong>PDF · EPUB</strong>
+              <span>every book, every device</span>
+            </div>
           </div>
         </div>
       </section>

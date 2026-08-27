@@ -642,39 +642,42 @@ img { max-width: 100%; display: block; }
   color: var(--white);
 }
 
-/* ---------- Testimonials (Apple quotes) ---------- */
-.testimonial-grid {
+/* ---------- Trust strip (real numbers, no fake reviews) ---------- */
+.trust-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
-.testimonial {
-  background: var(--dark-surface-1);
-  border-radius: var(--radius-lg);
-  padding: 32px 28px;
-  margin: 0;
+.trust-cell {
+  padding: 32px 24px;
+  text-align: center;
+  border-inline-end: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 6px;
 }
-.on-light .testimonial {
-  background: var(--white);
-  box-shadow: var(--shadow-card);
-}
-.testimonial__stars { color: #ffb732; font-size: 14px; letter-spacing: 1px; }
-.testimonial blockquote {
-  font-size: 17px;
-  line-height: 1.47;
-  letter-spacing: -0.374px;
-  font-weight: 400;
+.trust-cell:last-child { border-inline-end: none; }
+.trust-cell strong {
+  font-size: clamp(1.6rem, 3vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.28px;
   color: var(--white);
-  flex: 1;
+  line-height: 1.1;
 }
-.on-light .testimonial blockquote { color: var(--near-black); }
-.testimonial figcaption { display: flex; flex-direction: column; gap: 2px; }
-.testimonial figcaption strong { font-size: 14px; font-weight: 600; letter-spacing: -0.224px; color: var(--white); }
-.on-light .testimonial figcaption strong { color: var(--near-black); }
-.testimonial figcaption span { font-size: 12px; letter-spacing: -0.12px; opacity: 0.6; }
+.trust-cell span {
+  font-size: 13px;
+  letter-spacing: -0.12px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 400;
+}
+@media (max-width: 720px) {
+  .trust-grid { grid-template-columns: repeat(2, 1fr); }
+  .trust-cell:nth-child(2) { border-inline-end: none; }
+  .trust-cell:nth-child(1), .trust-cell:nth-child(2) { border-bottom: 1px solid var(--border); }
+}
+
 
 /* ---------- Newsletter ---------- */
 .newsletter__inner {
