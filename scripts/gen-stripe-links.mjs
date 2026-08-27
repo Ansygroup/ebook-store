@@ -1,70 +1,77 @@
 #!/usr/bin/env node
 /**
- * gen-stripe-links.mjs — creates a Stripe Payment Link per book (with metadata.slug)
- * and writes the URL back into src/data/books.json (stripeUrl field).
+ * gen-stripe-links.mjs — create a per-book Stripe Payment Link for the
+ * ANSY ebook store and write it back into public/books.json (stripeUrl field).
  *
  * Prereqs:
- *   - STRIPE_SECRET_KEY in env (sk_live_... or sk_test_...)
- *   - Each book needs a Price. We create a one-time Price per book from book.price (USD).
+ *   - STRIPE_SECRET_KEY in env (live or test)
+ *   - public/books.json present (array of book objects with `price`, `title`, `slug`)
+ *
+ * Idempotent: re-running reuses existing links (Stripe Payment Links are
+ * stable), so it is safe to run on every deploy.
  *
  * Usage:
  *   STRIPE_SECRET_KEY=sk_live_xxx node scripts/gen-stripe-links.mjs
- *
- * Idempotent: if a book already has a stripeUrl that isn't a placeholder, it's skipped
- * (delete the stripeUrl field to regenerate).
  */
-import { readFileSync, writeFileSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { readFileSync, writeFileSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { dirname, join } from 'node:path'
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const root = resolve(__dirname, '..');
-const booksPath = resolve(root, 'src/data/books.json');
-const key = process.env.STRIPE_SECRET_KEY;
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const ROOT = join(__dirname, '..')
+const BOOKS = join(ROOT, 'public', 'books.json')
 
+const key = process.env.STRIPE_SECRET_KEY
 if (!key) {
-  console.error('❌ STRIPE_SECRET_KEY not set. Usage: STRIPE_SECRET_KEY=sk_... node scripts/gen-stripe-links.mjs');
-  process.exit(1);
+  console.error('STRIPE_SECRET_KEY not set. Usage: STRIPE_SECRET_KEY=sk_... node scripts/gen-stripe-links.mjs')
+  process.exit(1)
 }
 
-const books = JSON.parse(readFileSync(booksPath, 'utf8'));
-const api = 'https://api.stripe.com/v1';
-const auth = 'Basic ' + Buffer.from(key + ':').toString('base64');
+const books = JSON.parse(readFileSync(BOOKS, 'utf8'))
 
-async function post(path, body) {
-  const r = await fetch(api + path, {
+async function createPriceLink(book) {
+  // 1. price (per-book, not shared)
+  const priceRes = await fetch('https://api.stripe.com/v1/prices', {
     method: 'POST',
-    headers: { Authorization: auth, 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(body).toString(),
-  });
-  const j = await r.json();
-  if (j.error) throw new Error(j.error.message);
-  return j;
+    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({
+      currency: 'usd',
+      unit_amount: String(Math.round(book.price * 100)),
+      product_data_name: book.title,
+    }),
+  })
+  const price = await priceRes.json()
+  if (price.error) throw new Error(`price: ${price.error.message}`)
+
+  // 2. payment link
+  const linkRes = await fetch('https://api.stripe.com/v1/payment_links', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ line_items: JSON.stringify([{ price: price.id, quantity: 1 }]) }),
+  })
+  const link = await linkRes.json()
+  if (link.error) throw new Error(`link: ${link.error.message}`)
+  return link.url
 }
 
-let updated = 0;
-for (const b of books) {
-  if (b.stripeUrl && !b.stripeUrl.includes('REPLACE')) {
-    console.log(`⏭  ${b.slug}: already has ${b.stripeUrl} — skip`);
-    continue;
+let changed = 0
+for (const book of books) {
+  if (book.stripeUrl && book.stripeUrl.includes('buy.stripe.com')) {
+    console.log(`skip ${book.slug} (has link)`)
+    continue
   }
-  // 1) create a Price for this book
-  const price = await post('/prices', {
-    currency: 'usd',
-    unit_amount: Math.round(b.price * 100),
-    product_data: JSON.stringify({ name: b.titleEn, metadata: { slug: b.slug } }),
-  });
-  // 2) create a Payment Link with metadata.slug (read by the webhook)
-  const link = await post('/payment_links', {
-    line_items: JSON.stringify([{ price: price.id, quantity: 1 }]),
-    metadata: JSON.stringify({ slug: b.slug }),
-    after_completion: JSON.stringify({ type: 'redirect', redirect: { url: `https://ebook-store-ten-flax.vercel.app/verify?paid=1&coupon=${b.slug}` } }),
-  });
-  b.stripeUrl = link.url;
-  console.log(`✅ ${b.slug}: ${link.url}`);
-  updated++;
+  try {
+    book.stripeUrl = await createPriceLink(book)
+    changed++
+    console.log(`created ${book.slug} -> ${book.stripeUrl}`)
+  } catch (e) {
+    console.error(`FAILED ${book.slug}: ${e.message}`)
+  }
 }
 
-writeFileSync(booksPath, JSON.stringify(books, null, 2) + '\n');
-console.log(`\n✅ Updated ${updated} books with Stripe Payment Links in src/data/books.json`);
-console.log('Next: set STRIPE_WEBHOOK_SECRET + deploy worker, then `npm run build && npm run deploy`');
+if (changed) {
+  writeFileSync(BOOKS, JSON.stringify(books, null, 2) + '\n')
+  console.log(`\nWrote ${changed} new link(s) to public/books.json`)
+} else {
+  console.log('\nAll books already have links.')
+}
