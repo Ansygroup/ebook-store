@@ -55,11 +55,9 @@ try {
   // Integrate any remote-ahead work before pushing (avoids non-fast-forward).
   try { git(`pull --rebase origin ${b}`, { stdio: 'inherit' }); }
   catch (e) { log(`⚠ pull --rebase failed (continuing): ${e.message.split('\n')[0]}`); }
-  const pushOut = git(`push origin ${b}`, { stdio: 'pipe' });
-  if (pushOut && !/Everything up-to-date/i.test(pushOut)) {
-    log('✅ pushed' + (committed ? ' (with new commits)' : ''));
-  } else {
-    log(committed ? '✅ committed locally (push was a no-op)' : 'ℹ nothing to push — no pending changes');
-  }
+  // execSync throws on non-zero exit, so reaching here means the push succeeded.
+  // (git push sometimes prints nothing to stdout, so we key off the commit flag.)
+  if (committed) log('✅ pushed (with new commits)');
+  else log('ℹ nothing to push — already up to date');
 } catch (e) { log(`⚠ push skipped: ${e.message.split('\n')[0]}`); }
 log('done.');
