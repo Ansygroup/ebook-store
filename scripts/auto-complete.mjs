@@ -7,6 +7,11 @@
  * Idempotent and prompt-free.
  *
  * Usage: node generic-auto-complete.mjs   (run inside the target repo)
+ *
+ * NOTE: git ops force the `store` credential helper and skip GCM (`manager`),
+ * because on headless/cron runs GCM blocks on a UI prompt for the write scope
+ * and the push hangs forever. We also pull --rebase before push so a remote
+ * that is ahead does not cause a non-fast-forward rejection.
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
@@ -16,6 +21,12 @@ import { execSync } from 'node:child_process';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 const envPath = resolve(root, '.env');
+
+// git wrapper that bypasses GCM and uses only the file-based `store` helper.
+const GIT = 'git -c credential.helper= -c credential.helper=store';
+function git(args, opts = {}) {
+  return execSync(`${GIT} ${args}`, { cwd: root, encoding: 'utf8', ...opts }).trim();
+}
 
 function log(m) { console.log(`[auto ${new Date().toISOString()}] ${m}`); }
 
@@ -32,10 +43,16 @@ if (existsSync(envPath)) {
 
 // Git auto-push
 try {
-  const st = execSync('git status --short', { cwd: root, encoding: 'utf8' }).trim();
-  if (st) { execSync('git add -A', { cwd: root }); execSync('git -c user.email="ansy0@ansygroup.com" -c user.name="ansy0" commit -q -m "chore: auto-complete pending work"', { cwd: root }); }
-  const b = execSync('git branch --show-current', { cwd: root, encoding: 'utf8' }).trim();
-  execSync(`git push origin ${b}`, { cwd: root, stdio: 'inherit' });
+  const st = git('status --short');
+  if (st) {
+    execSync('git add -A', { cwd: root });
+    git('-c user.email="ansy0@ansygroup.com" -c user.name="ansy0" commit -q -m "chore: auto-complete pending work"');
+  }
+  const b = git('branch --show-current');
+  // Integrate any remote-ahead work before pushing (avoids non-fast-forward).
+  try { git(`pull --rebase origin ${b}`, { stdio: 'inherit' }); }
+  catch (e) { log(`⚠ pull --rebase failed (continuing): ${e.message.split('\n')[0]}`); }
+  git(`push origin ${b}`, { stdio: 'inherit' });
   log('✅ pushed');
 } catch (e) { log(`⚠ push skipped: ${e.message.split('\n')[0]}`); }
 log('done.');
