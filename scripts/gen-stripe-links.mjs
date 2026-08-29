@@ -56,8 +56,10 @@ async function createPriceLink(book) {
 
 let changed = 0
 for (const book of books) {
-  if (book.stripeUrl && book.stripeUrl.includes('buy.stripe.com')) {
-    console.log(`skip ${book.slug} (has link)`)
+  // Skip only if it already has a per-book Payment Link (starts with plink_).
+  // A shared legacy link (buy.stripe.com/eVq...) must be replaced with a per-book one.
+  if (book.stripeUrl && book.stripeUrl.includes('plink_')) {
+    console.log(`skip ${book.slug} (has per-book link)`)
     continue
   }
   try {
