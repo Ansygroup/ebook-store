@@ -18,7 +18,7 @@ jobs:
         with: { node-version: 22, cache: npm }
       - run: npm ci
       # Posts the next staged IG caption+image from ig-queue/ via Composio (if IG linked)
-      - run: node scripts/ig_promote.mjs
+      - run: node scripts/ig_promote.mjs --all
         env:
           COMPOSIO_API_KEY: ${{ secrets.COMPOSIO_API_KEY }}
           IG_ACCOUNT: ${{ secrets.IG_ACCOUNT }}
