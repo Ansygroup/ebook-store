@@ -25,7 +25,8 @@ const envPath = resolve(root, '.env');
 // git wrapper that bypasses GCM and uses only the file-based `store` helper.
 const GIT = 'git -c credential.helper= -c credential.helper=store';
 function git(args, opts = {}) {
-  return execSync(`${GIT} ${args}`, { cwd: root, encoding: 'utf8', ...opts }).trim();
+  const out = execSync(`${GIT} ${args}`, { cwd: root, encoding: 'utf8', ...opts });
+  return typeof out === 'string' ? out.trim() : out;
 }
 
 function log(m) { console.log(`[auto ${new Date().toISOString()}] ${m}`); }
