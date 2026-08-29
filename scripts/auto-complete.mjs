@@ -44,6 +44,7 @@ if (existsSync(envPath)) {
 
 // Git auto-push
 try {
+  let committed = false;
   const st = git('status --short');
   if (st) {
     execSync('git add -A', { cwd: root });
@@ -51,7 +52,6 @@ try {
     committed = true;
   }
   const b = git('branch --show-current');
-  let committed = false;
   // Integrate any remote-ahead work before pushing (avoids non-fast-forward).
   try { git(`pull --rebase origin ${b}`, { stdio: 'inherit' }); }
   catch (e) { log(`⚠ pull --rebase failed (continuing): ${e.message.split('\n')[0]}`); }
