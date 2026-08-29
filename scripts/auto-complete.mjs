@@ -48,12 +48,18 @@ try {
   if (st) {
     execSync('git add -A', { cwd: root });
     git('-c user.email="ansy0@ansygroup.com" -c user.name="ansy0" commit -q -m "chore: auto-complete pending work"');
+    committed = true;
   }
   const b = git('branch --show-current');
+  let committed = false;
   // Integrate any remote-ahead work before pushing (avoids non-fast-forward).
   try { git(`pull --rebase origin ${b}`, { stdio: 'inherit' }); }
   catch (e) { log(`⚠ pull --rebase failed (continuing): ${e.message.split('\n')[0]}`); }
-  git(`push origin ${b}`, { stdio: 'inherit' });
-  log('✅ pushed');
+  const pushOut = git(`push origin ${b}`, { stdio: 'pipe' });
+  if (pushOut && !/Everything up-to-date/i.test(pushOut)) {
+    log('✅ pushed' + (committed ? ' (with new commits)' : ''));
+  } else {
+    log(committed ? '✅ committed locally (push was a no-op)' : 'ℹ nothing to push — no pending changes');
+  }
 } catch (e) { log(`⚠ push skipped: ${e.message.split('\n')[0]}`); }
 log('done.');
