@@ -19,6 +19,10 @@ import { execSync } from 'node:child_process';
 
 // Kill any interactive prompt / pager regardless of inherited env.
 process.env.GIT_TERMINAL_PROMPT = '0';
+process.env.GCM_ENABLED = '0';
+process.env.GIT_ASKPASS = 'true';
+process.env.SSH_ASKPASS = 'true';
+process.env.GIT_CONFIG_NOSYSTEM = '1';
 process.env.GIT_PAGER = 'cat';
 process.env.PAGER = 'cat';
 // GCM (Git Credential Manager) on Windows tries to open an interactive prompt
