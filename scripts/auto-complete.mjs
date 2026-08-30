@@ -21,6 +21,11 @@ import { execSync } from 'node:child_process';
 process.env.GIT_TERMINAL_PROMPT = '0';
 process.env.GIT_PAGER = 'cat';
 process.env.PAGER = 'cat';
+// GCM (Git Credential Manager) on Windows tries to open an interactive prompt
+// when stdin isn't a tty — which crashes headless/cron runs. Force it off.
+process.env.GCM_INTERACTIVE = '0';
+process.env.GCM_TERMINAL_PROMPT = '0';
+process.env.GCM_GUI_PROMPT = '0';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
