@@ -2,3 +2,4 @@ scripts/** text eol=lf
 tests/** text eol=lf
 src/data/*.json text eol=lf
 *.mjs text eol=lf
+public/*.json text eol=lf
