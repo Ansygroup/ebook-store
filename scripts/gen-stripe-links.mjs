@@ -37,7 +37,7 @@ async function createPriceLink(book) {
     body: new URLSearchParams({
       currency: 'usd',
       unit_amount: String(Math.round(book.price * 100)),
-      product_data_name: book.title,
+      'product_data[name]': book.title,
     }),
   })
   const price = await priceRes.json()
