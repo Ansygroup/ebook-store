@@ -33,3 +33,7 @@ ig-queue/
 test-results/
 playwright-report/
 agentic-audit.json
+
+# temp build artifacts from generate-covers.mjs (script rm -f on success, so a
+# failed magick run used to leak one into git)
+*.tmp.svg
