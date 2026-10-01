@@ -27,6 +27,21 @@ if (!key) {
   process.exit(1)
 }
 
+// SAFETY GATE: public/books.json is the LIVE store catalog. Test-mode keys
+// produce plink_ links that reject real cards, so writing them here would
+// silently break checkout in production. Refuse unless explicitly opted in.
+const isTest = key.startsWith('sk_test_')
+if (isTest && process.env.ALLOW_TEST_LINKS !== '1') {
+  console.error(
+    'REFUSED: STRIPE_SECRET_KEY is a TEST key (sk_test_...).\n' +
+    'public/books.json is the live catalog - test payment links would break\n' +
+    'real checkout. Re-run with a live sk_live_... key, or set\n' +
+    'ALLOW_TEST_LINKS=1 if you really want test links in books.json.'
+  )
+  process.exit(2)
+}
+if (isTest) console.warn('! ALLOW_TEST_LINKS=1 — writing TEST links into the live catalog')
+
 const books = JSON.parse(readFileSync(BOOKS, 'utf8'))
 
 async function createPriceLink(book) {

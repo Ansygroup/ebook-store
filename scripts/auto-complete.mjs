@@ -66,6 +66,7 @@ for (const candidate of envCandidates) {
   if (key.startsWith("\"") || key.startsWith(String.fromCharCode(96))) key = key.slice(1);
   if (key.endsWith("\"") || key.endsWith(String.fromCharCode(96))) key = key.slice(0, -1);
   if (!key.startsWith("sk_")) continue;
+  if (key.startsWith("sk_test_")) log("test-mode key found (sk_test_) — live catalog untouched; set ALLOW_TEST_LINKS=1 to override");
   if (!existsSync(resolve(root, "scripts/gen-stripe-links.mjs"))) {
     log(`key found in ${basename(candidate)} but scripts/gen-stripe-links.mjs is missing - skipped`);
     continue;
