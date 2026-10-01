@@ -19,7 +19,11 @@ globalThis.fetch = async (url, opts = {}) => {
     return { json: async () => ({ id: `price_${n}` }) };
   }
   if (href.endsWith('/v1/payment_links')) {
-    return { json: async () => ({ id: `plink_${n}`, url: `https://buy.stripe.com/plink_${n}` }) };
+    // Real Payment Link URLs are https://buy.stripe.com/<alphanumeric token>;
+    // the 'plink_' form is only the API *object id* and never appears in the URL.
+    // The old stub returned buy.stripe.com/plink_N, which is exactly the wrong
+    // assumption that made the production idempotency guard fail.
+    return { json: async () => ({ id: `plink_${n}`, url: `https://buy.stripe.com/tok${n}abc${n}xyz` }) };
   }
   return { json: async () => ({ id: `obj_${n}` }) };
 };
