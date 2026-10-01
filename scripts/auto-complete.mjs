@@ -13,7 +13,7 @@
  * the whole job (so an auth blip can't abort auto-complete).
  */
 import { readFileSync, existsSync } from 'node:fs';
-import { resolve, dirname } from 'node:path';
+import { resolve, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
 
@@ -53,15 +53,36 @@ function safeGit(args, fallback = '') {
 
 function log(m) { console.log(`[auto ${new Date().toISOString()}] ${m}`); }
 
-// Stripe links if script exists
-if (existsSync(envPath)) {
-  const env = readFileSync(envPath, 'utf8');
-  const m = env.match(/STRIPE_SECRET_KEY=(\S+)/);
-  if (m && m[1] && m[1].startsWith('sk_') && existsSync(resolve(root, 'scripts/gen-stripe-links.mjs'))) {
-    log('key + gen script found — generating links…');
-    try { execSync('node scripts/gen-stripe-links.mjs', { cwd: root, stdio: 'inherit' }); log('✅ links done'); }
-    catch (e) { log(`⚠ links failed: ${e.message}`); }
+// Stripe links if script exists.
+// Key lookup order: .env, then .env.local (both gitignored; this repo uses .env.local).
+const envCandidates = [envPath, resolve(root, ".env.local")];
+for (const candidate of envCandidates) {
+  if (!existsSync(candidate)) continue;
+  const raw = readFileSync(candidate, "utf8");
+  const line = raw.split(String.fromCharCode(10)).map((l) => l.trim())
+    .find((l) => l.startsWith("STRIPE_SECRET_KEY=") || l.startsWith("export STRIPE_SECRET_KEY="));
+  if (!line) continue;
+  let key = line.slice(line.indexOf("=") + 1).trim();
+  if (key.startsWith("\"") || key.startsWith(String.fromCharCode(96))) key = key.slice(1);
+  if (key.endsWith("\"") || key.endsWith(String.fromCharCode(96))) key = key.slice(0, -1);
+  if (!key.startsWith("sk_")) continue;
+  if (!existsSync(resolve(root, "scripts/gen-stripe-links.mjs"))) {
+    log(`key found in ${basename(candidate)} but scripts/gen-stripe-links.mjs is missing - skipped`);
+    continue;
   }
+  log(`key found in ${basename(candidate)} - generating per-book links...`);
+  try {
+    // The generator reads process.env, so the key MUST be passed through to it.
+    execSync("node scripts/gen-stripe-links.mjs", {
+      cwd: root,
+      stdio: "inherit",
+      env: { ...process.env, STRIPE_SECRET_KEY: key },
+    });
+    log("links done");
+  } catch (e) {
+    log(`links failed: ${String(e.message).split(String.fromCharCode(10))[0]}`);
+  }
+  break;
 }
 
 // Git auto-push
@@ -77,10 +98,14 @@ try {
   // Integrate any remote-ahead work before pushing (avoids non-fast-forward).
   safeGit(`pull --rebase origin ${b}`, '');
   if (committed) {
-    safeGit(`push origin ${b}`, '');
-    log('✅ pushed (with new commits)');
+    // safeGit() swallows failures and returns "", so it can NEVER confirm a
+    // successful push. Use git() directly so a failure is not reported as done.
+    let ok = false;
+    try { git(`push origin ${b}`); ok = true; }
+    catch (e) { log(`push FAILED: ${e.message}`); }
+    if (ok) log(`pushed (with new commits)`);
   } else {
-    log('ℹ nothing to push — already up to date');
+        log('ℹ nothing to push — already up to date');
   }
 } catch (e) { log(`⚠ push section error: ${e.message}`); }
 log('done.');
