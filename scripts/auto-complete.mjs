@@ -98,13 +98,18 @@ try {
   const b = safeGit('branch --show-current', 'master') || 'master';
   // Integrate any remote-ahead work before pushing (avoids non-fast-forward).
   safeGit(`pull --rebase origin ${b}`, '');
-  if (committed) {
+  // Push when there is ANYTHING unpushed, not only when this run just made a
+  // commit. Gating on `committed` meant any commit created by another tool
+  // (or by a run whose only change was already committed) stayed local forever.
+  const ahead = safeGit(`rev-list --count origin/${b}..HEAD`, '0').trim();
+  const pending = committed || (Number(ahead) > 0);
+  if (pending) {
     // safeGit() swallows failures and returns "", so it can NEVER confirm a
     // successful push. Use git() directly so a failure is not reported as done.
     let ok = false;
     try { git(`push origin ${b}`); ok = true; }
     catch (e) { log(`push FAILED: ${e.message}`); }
-    if (ok) log(`pushed (with new commits)`);
+    if (ok) log(`pushed (HEAD ahead by ${ahead} commit(s))`);
   } else {
         log('ℹ nothing to push — already up to date');
   }
