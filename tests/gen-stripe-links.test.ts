@@ -36,11 +36,15 @@ function readCalls(): { url: string; body: URLSearchParams }[] {
     });
 }
 
+// ALLOW_TEST_LINKS=1 is REQUIRED here: gen-stripe-links.mjs refuses sk_test_ keys
+// unless that flag is set, because public/books.json is the LIVE catalog. These
+// runs execute against a throwaway temp repo with a stubbed fetch, never the
+// real catalog, so the opt-in is safe here — the gate gets its own tests below.
 function run(env: Record<string, string> = { STRIPE_SECRET_KEY: 'sk_test_fake' }) {
   execFileSync(
     'node',
     ['--import', pathToFileURL(STUB).href, join(dir, 'scripts', 'gen-stripe-links.mjs')],
-    { env: { ...process.env, CALLS_FILE: callsFile, ...env }, stdio: 'pipe' },
+    { env: { ...process.env, CALLS_FILE: callsFile, ALLOW_TEST_LINKS: '1', ...env }, stdio: 'pipe' },
   );
 }
 
@@ -101,5 +105,31 @@ describe('gen-stripe-links Stripe API contract', () => {
 
   it('exits non-zero with a clear message when STRIPE_SECRET_KEY is absent', () => {
     expect(() => run({ STRIPE_SECRET_KEY: '' })).toThrow();
+  });
+
+  it('SAFETY GATE: refuses a test key (sk_test_) without ALLOW_TEST_LINKS and writes nothing', () => {
+    expect(() =>
+      execFileSync(
+        'node',
+        ['--import', pathToFileURL(STUB).href, join(dir, 'scripts', 'gen-stripe-links.mjs')],
+        {
+          env: {
+            ...process.env,
+            CALLS_FILE: callsFile,
+            STRIPE_SECRET_KEY: 'sk_test_fake',
+            ALLOW_TEST_LINKS: '',
+          },
+          stdio: 'pipe',
+        },
+      ),
+    ).toThrow(/REFUSED/);
+    expect(readCalls()).toHaveLength(0);
+    const books = JSON.parse(readFileSync(join(dir, 'public', 'books.json'), 'utf8'));
+    expect(books[0].stripeUrl).toBeUndefined();
+  });
+
+  it('SAFETY GATE: a live key (sk_live_) needs no opt-in', () => {
+    run({ STRIPE_SECRET_KEY: 'sk_live_fake', ALLOW_TEST_LINKS: '' });
+    expect(linkCalls()).toHaveLength(2);
   });
 });
