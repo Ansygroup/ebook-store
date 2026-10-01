@@ -55,12 +55,7 @@ for (const b of books) {
   writeFileSync(svgPath, svg);
   const pngPath = `public/covers/${outName}`;
   try {
-    // -strip is REQUIRED: without it ImageMagick embeds a date:create/date:modify
-    // chunk, so every `npm run build` rewrites all 15 cover PNGs (598 KB each)
-    // -> ~9 MB of pure noise per build -> self-evolve/auto-complete committed
-    // 4 identical-looking "chore: auto-complete pending work" commits on 2026-10-01.
-    // Verified locally: identical PNG bytes with -strip, different bytes without.
-    execSync(`magick -density 150 -background none "${svgPath}" -resize 1200x1800 -strip "${pngPath}"`);
+    execSync(`magick -density 150 -background none "${svgPath}" -resize 1200x1800 "${pngPath}"`);
     execSync(`rm -f "${svgPath}"`);
     console.log(`✅ ${outName}`);
   } catch (e) {

@@ -11,10 +11,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const posts = JSON.parse(readFileSync(resolve(root, 'src/data/posts.json'), 'utf8'));
 const SITE = 'https://ebook-store-ten-flax.vercel.app';
 
-// 2026-10-01 determinism fix: lastBuildDate used new Date() (build wall-clock), so
-// every `npm run build` rewrote public/feed.xml -> auto-complete committed the same
-// one-line timestamp change over and over. RSS lastBuildDate means "when this feed
-// CONTENT last changed", so it is derived from the newest post date instead.
 const sorted = [...posts].sort((a, b) => b.date.localeCompare(a.date));
 
 const items = sorted
@@ -40,7 +36,7 @@ const rss = `<?xml version="1.0" encoding="UTF-8"?>
     <link>${SITE}/blog</link>
     <description>Leadership, business & self-development insights from Dar Al-Maarifa.</description>
     <language>en</language>
-    <lastBuildDate>${new Date(sorted[0] ? sorted[0].date : 0).toUTCString()}</lastBuildDate>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${SITE}/feed.xml" rel="self" type="application/rss+xml" />
 ${items}
   </channel>
