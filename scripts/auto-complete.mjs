@@ -56,8 +56,10 @@ function log(m) { console.log(`[auto ${new Date().toISOString()}] ${m}`); }
 // Stripe links if script exists.
 // Key lookup order: .env, then .env.local (both gitignored; this repo uses .env.local).
 const envCandidates = [envPath, resolve(root, ".env.local")];
+let sawEnv = false, linksGenerated = false;
 for (const candidate of envCandidates) {
   if (!existsSync(candidate)) continue;
+  sawEnv = true;
   const raw = readFileSync(candidate, "utf8");
   const line = raw.split(String.fromCharCode(10)).map((l) => l.trim())
     .find((l) => l.startsWith("STRIPE_SECRET_KEY=") || l.startsWith("export STRIPE_SECRET_KEY="));
@@ -80,10 +82,19 @@ for (const candidate of envCandidates) {
       env: { ...process.env, STRIPE_SECRET_KEY: key },
     });
     log("links done");
+    linksGenerated = true;
   } catch (e) {
     log(`links failed: ${String(e.message).split(String.fromCharCode(10))[0]}`);
   }
   break;
+}
+
+// Without this line a missing key is SILENT: the run prints "done." and looks
+// green while every book is still stuck on the shared legacy link. Say so.
+if (!linksGenerated) {
+  log(sawEnv
+    ? "PENDING: env file present but no usable STRIPE_SECRET_KEY (sk_live_*) - per-book links NOT generated"
+    : "PENDING: no .env/.env.local found - per-book Stripe links NOT generated");
 }
 
 // Git auto-push
