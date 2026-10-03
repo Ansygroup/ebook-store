@@ -123,13 +123,13 @@ function auditLinks() {
         return /^https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+$/.test(u) && owners.get(u) === 1;
       }).length;
       if (perBook === books.length && shared.length === 0) {
-        log(`OK: all ${books.length} books carry UNIQUE per-book buy.stripe.com links (${basename(p)}) - nothing to regenerate`);
+        log(`OK: all ${books.length} books carry UNIQUE per-book buy.stripe.com links (${p.slice(root.length + 1).split(/[\/]/).join("/")}) - nothing to regenerate`);
         return true;
       }
-      log(`audit ${basename(p)}: ${uniq}/${books.length} books have their OWN link; ${shared.length} legacy link(s) shared by >1 book - regeneration required`);
+      log(`audit ${p.slice(root.length + 1).split(/[\/]/).join("/")}: ${uniq}/${books.length} books have their OWN link; ${shared.length} legacy link(s) shared by >1 book - regeneration required`);
       for (const [u, n] of shared) log(`  shared x${n}: ${u}`);
     } catch (e) {
-      log(`audit ${basename(p)} skipped: ${String(e.message).split(String.fromCharCode(10))[0]}`);
+      log(`audit ${p.slice(root.length + 1).split(/[\/]/).join("/")} skipped: ${String(e.message).split(String.fromCharCode(10))[0]}`);
     }
   }
   return false;
