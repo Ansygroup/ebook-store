@@ -106,11 +106,28 @@ function auditLinks() {
       const perBook = books.filter(
         (b) => b && typeof b.stripeUrl === "string" && /buy\.stripe\.com/.test(b.stripeUrl)
       ).length;
-      if (perBook === books.length) {
-        log(`OK: all ${books.length} books already carry per-book buy.stripe.com links (${basename(p)}) - nothing to regenerate`);
+      // "Per-book" must ALSO mean UNIQUE. All 15 books still share ONE legacy
+      // catch-all link (buy.stripe.com/eVqdR9f...), which satisfies the regex
+      // above, so this audit reported OK forever while every buyer on the LIVE
+      // store was sent to the same single product. gen-stripe-links.mjs already
+      // treats a link owned by >1 book as legacy and regenerates it - the audit
+      // must agree with the generator or the job is a permanent false green.
+      const owners = new Map();
+      for (const b of books) {
+        const u = b && typeof b.stripeUrl === "string" ? b.stripeUrl : "";
+        if (u) owners.set(u, (owners.get(u) ?? 0) + 1);
+      }
+      const shared = [...owners.entries()].filter(([, n]) => n > 1);
+      const uniq = books.filter((b) => {
+        const u = b && typeof b.stripeUrl === "string" ? b.stripeUrl : "";
+        return /^https:\/\/buy\.stripe\.com\/[A-Za-z0-9]+$/.test(u) && owners.get(u) === 1;
+      }).length;
+      if (perBook === books.length && shared.length === 0) {
+        log(`OK: all ${books.length} books carry UNIQUE per-book buy.stripe.com links (${basename(p)}) - nothing to regenerate`);
         return true;
       }
-      log(`audit ${basename(p)}: ${perBook}/${books.length} books have per-book links - regeneration required`);
+      log(`audit ${basename(p)}: ${uniq}/${books.length} books have their OWN link; ${shared.length} legacy link(s) shared by >1 book - regeneration required`);
+      for (const [u, n] of shared) log(`  shared x${n}: ${u}`);
     } catch (e) {
       log(`audit ${basename(p)} skipped: ${String(e.message).split(String.fromCharCode(10))[0]}`);
     }
