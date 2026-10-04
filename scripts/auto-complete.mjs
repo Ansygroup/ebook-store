@@ -156,7 +156,14 @@ try {
   }
   const b = safeGit('branch --show-current', 'master') || 'master';
   // Integrate any remote-ahead work before pushing (avoids non-fast-forward).
-  safeGit(`pull --rebase origin ${b}`, '');
+  // `git pull --rebase origin <b>` is NOT concurrency-safe here: it resolves its
+  // upstream from .git/FETCH_HEAD, a file several jobs share (this cron script,
+  // the autonomous-os hourly, deploy-loop). An overlapping fetch rewrites that
+  // file mid-read and git aborts with "fatal: Cannot rebase onto multiple
+  // branches." -- reproduced 4/4 under concurrent runs, 0/4 in isolation.
+  // Explicit fetch + rebase onto origin/<b> never reads FETCH_HEAD: 5/5 clean.
+  safeGit(`fetch origin ${b}`, '');
+  safeGit(`rebase origin/${b}`, '');
   // Push when there is ANYTHING unpushed, not only when this run just made a
   // commit. Gating on `committed` meant any commit created by another tool
   // (or by a run whose only change was already committed) stayed local forever.
