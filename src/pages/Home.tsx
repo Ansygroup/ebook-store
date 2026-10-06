@@ -12,7 +12,6 @@ import JsonLd from '../components/JsonLd';
 import { featuredBooks, formatPrice, books } from '../data/books';
 import { asset } from '../data/assets';
 import { coupons } from '../data/coupons';
-import { getRecent } from '../data/wishlist';
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
