@@ -151,8 +151,10 @@ try {
   const st = safeGit('status --short');
   if (st) {
     try { execSync('git add -A', { cwd: root }); } catch (e) { /* ignore */ }
-    safeGit('-c user.email="ansy0@ansygroup.com" -c user.name="ansy0" commit -q -m "chore: auto-complete pending work"');
-    committed = true;
+    try {
+      git('-c user.email="ansy0@ansygroup.com" -c user.name="ansy0" commit -q -m "chore: auto-complete pending work"');
+      committed = true;
+    } catch (e) { log(`commit skipped: ${e.message}`); }
   }
   const b = safeGit('branch --show-current', 'master') || 'master';
   // Integrate any remote-ahead work before pushing (avoids non-fast-forward).
